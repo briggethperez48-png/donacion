@@ -18,7 +18,7 @@ class CreateDonantesTable extends Migration
             $datoD->string('Nombre');
             $datoD->string('ApPaterno');
             $datoD->string('ApMaterno');
-            $datoD->date('FechaNac');
+            $datoD->string('FechaNac');
             $datoD->string('Ocupacion');
             $datoD->string('EstCiv');
             $datoD->string('Estudios');
@@ -28,7 +28,7 @@ class CreateDonantesTable extends Migration
             $datoD->string('Sexo');
             $datoD->string('Alcaldia');
             $datoD->string('Colonia');
-            $datoD->boolean('Donador');
+            $datoD->string('Donador');
             $datoD->string('Organo');
             $datoD->string('Referencias');
             $datoD->string('Telefono');

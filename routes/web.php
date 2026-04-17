@@ -14,4 +14,4 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('donantes', 'DonanteController');
+Route::resource('donador', 'DonanteController');

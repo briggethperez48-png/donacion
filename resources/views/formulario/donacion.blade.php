@@ -14,7 +14,7 @@
     </div>
 @endif
 
-<form action="{{url('/donantes')}}" method="POST" enctype="multipart/form-data">
+<form action="{{url('/donador')}}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div>
         <Label for="Nombre">Nombre</Label>

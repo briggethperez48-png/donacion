@@ -14,7 +14,6 @@ class DonanteController extends Controller
      */
     public function index()
     {
-        return view('formulario.donacion');
         $datoD['donantes']=Donante::paginate(20);
             return view('formulario.donacion', $datoD);
     }
@@ -38,10 +37,10 @@ class DonanteController extends Controller
     public function store(Request $request)
     {
         $campos = [
-            'Nombre' => 'required|string|max:100',
-            'ApPaterno' => 'required|string|max:100',
-            'ApMaterno' => 'required|string|max:100',
-            'FechaNac' => 'required|string|max:150',
+            'Nombre' => 'required',
+            'ApPaterno' => 'required',
+            'ApMaterno' => 'required',
+            'FechaNac' => 'required',
             'Ocupacion' => 'required',
             'EstCiv' => 'required',
             'Estudios' => 'required',
@@ -64,7 +63,7 @@ class DonanteController extends Controller
         ];
         $this->validate($request,$campos,$mensaje);
         $datosUsuario = request()->except('_token');
-        dd($datosUsuario);
+        // dd($datosUsuario);
 
         foreach ($datosUsuario as $key => $value) {
             if($key != 'email' && $key != 'password'){
@@ -74,7 +73,8 @@ class DonanteController extends Controller
 
         Donante::create($datosUsuario);
 
-        return redirect()->route('formulario');
+        return view('formulario.donacion');
+        // return redirect()->route('donador');
     }
 
     /**
