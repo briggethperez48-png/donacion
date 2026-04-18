@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Donante;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DonanteController extends Controller
 {
@@ -25,7 +26,10 @@ class DonanteController extends Controller
      */
     public function create()
     {
-        return view('formulario.donacion');
+        $estado_list = DB::table('MunicipiosAlcaldias')
+                        ->groupBy('Entidad')
+                        ->get();
+        return view('formulario.donacion')->with;
     }
 
     /**
