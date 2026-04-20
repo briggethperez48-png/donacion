@@ -90,10 +90,6 @@
          </select>
     </div>
     <div>
-        <Label for="EstadoProc">Estado de Procedencia</Label>
-        <input name="EstadoProc" type="text">
-    </div>
-    <div>
         <Label for="Religion">Religion</Label>
         <!-- <input name="Religion" type="text"> -->
         <input list="religiones" name="Religion" id="Religion">
@@ -121,14 +117,31 @@
                 <option value="OTRO">
             </datalist>
     </div>
+
+    <div>
+        <Label for="EstadoProc">Estado de Procedencia</Label>
+        <select name="EstadoProc" id="Entidad" data-dependent="Municipio" class="dynamic">
+            <option value="">Escoge uno</option>
+            @foreach($estado_list as $estado)
+                <option value="{{$estado->Entidad}}">{{$estado->Entidad}}</option>
+            @endforeach
+        </select>
+    </div>
+
     <div>
         <Label for="Alcaldia">Alcaldía</Label>
-        <input name="Alcaldia" type="text">
+        <select name="Alcaldia" id="Municipio" data-dependent="Localidad" class="dynamic">
+            <option value="">Escoge uno</option>
+        </select>
     </div>
+
     <div>
         <Label for="Colonia">Colonia</Label>
-        <input name="Colonia" type="text">
+        <select name="Colonia" id="Localidad">
+            <option value="">Escoge uno</option>
+        </select>
     </div>
+
     <div>
         <!-- <Label for="Donador">¿Deseas ser donador de órganos?</Label>
         <input name="Donador" type="ratio"> Sí -->
@@ -148,16 +161,16 @@
         <P>Estamos agradecidos con su decisión.</P>
         <Label for="Organo">¿Qué órganos desea donar?</Label>
         <div>
-            <input name="Organo" type="checkbox" value="PULMONES">PULMONES
-            <input type="checkbox" name="Organo" id="" value="HUESO">HUESO
-            <input type="checkbox" name="Organo" id="" value="CORAZÓN">CORAZÓN
-            <input type="checkbox" name="Organo" id="" value="CORNEAS">CORNEAS
-            <input type="checkbox" name="Organo" id="" value="RIÑÓN">RIÑÓN
-            <input type="checkbox" name="Organo" id="" value="VÁLVULAS">VÁLVULAS
-            <input type="checkbox" name="Organo" id="" value="PIEL">PIEL
-            <input type="checkbox" name="Organo" id="" value="PÁNCREAS">PÁNCREAS
-            <input type="checkbox" name="Organo" id="" value="TENDONES">TENDONES
-            <input type="checkbox" name="Organo" id="" value="HÍGADO">HÍGADO
+            <input name="Organo[]" type="checkbox" value="PULMONES">PULMONES
+            <input type="checkbox" name="Organo[]" id="" value="HUESO">HUESO
+            <input type="checkbox" name="Organo[]" id="" value="CORAZÓN">CORAZÓN
+            <input type="checkbox" name="Organo[]" id="" value="CORNEAS">CORNEAS
+            <input type="checkbox" name="Organo[]" id="" value="RIÑÓN">RIÑÓN
+            <input type="checkbox" name="Organo[]" id="" value="VÁLVULAS">VÁLVULAS
+            <input type="checkbox" name="Organo[]" id="" value="PIEL">PIEL
+            <input type="checkbox" name="Organo[]" id="" value="PÁNCREAS">PÁNCREAS
+            <input type="checkbox" name="Organo[]" id="" value="TENDONES">TENDONES
+            <input type="checkbox" name="Organo[]" id="" value="HÍGADO">HÍGADO
         </div>
     </div>
     <div>
@@ -198,4 +211,42 @@
         <button type="submit">Guardar</button>
     </div>
 </form>
+    @section('scripts')
+        <script>
+            $(document).ready(function(){
+                $('.dynamic').change(function(){
+                    var dependent = $(this).data('dependent');
+
+                    if($(this).attr("id") == "Entidad") {
+                        $('#Localidad').html('<option value="">Escoge uno</option>');
+                    }
+
+                    if($(this).val() != '') {
+                        var select = $(this).attr("id");
+                        var value =$(this).val();
+                        var dependent = $(this).data('dependent');
+                        var _token = $('input[name="_token"]').val();
+
+                        $.ajax({
+                            // El primer '/' es vital para que busque desde la raíz del dominio
+                            url: "{{ route('donante.fetch') }}", 
+                            method: "POST",
+                            data: {
+                                select: $(this).attr("id"), 
+                                value: $(this).val(), 
+                                _token: $('input[name="_token"]').val(), 
+                                dependent: $(this).data('dependent')
+                            },
+                            success: function(result) {
+                                $('#' + dependent).html(result); // Usamos el ID dinámico
+                            }.bind(this), // Importante para que 'this' siga siendo el select
+                            error: function(xhr) {
+                                console.log(xhr.responseText);
+                            }
+                        });
+                    }
+                });
+            })
+        </script>
+    @endsection
 @endsection
