@@ -66,9 +66,9 @@ class DonanteController extends Controller
     public function store(Request $request)
     {
         $campos = [
-            'Nombre' => 'required',
-            'ApPaterno' => 'required',
-            'ApMaterno' => 'required',
+            'Nombre' => 'required|min:3',
+            'ApPaterno' => 'required|min:3',
+            'ApMaterno' => 'required|min:3',
             'FechaNac' => 'required',
             'Ocupacion' => 'required',
             'EstCiv' => 'required',
@@ -90,7 +90,7 @@ class DonanteController extends Controller
             'Referencias' => 'nullable|numeric|digits:10',
             'Telefono' => 'required|numeric|digits:10',
             'Pregunta' => 'required',
-            'Respuesta' => 'required|string|min:3',
+            'Respuesta' => 'required|string|min:3|max:50',
         ];
 
         $mensaje=[
