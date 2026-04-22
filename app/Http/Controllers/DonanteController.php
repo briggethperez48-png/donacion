@@ -49,7 +49,7 @@ class DonanteController extends Controller
                 ->orderBy($dependent, 'asc')
                 ->get();
 
-        $output = '<option value="">Selecciona ' . $dependent . '</option>';
+        $output = '<option value="">SELECCIONE UNO </option>';
         foreach ($data as $row) {
             $output .= '<option value="' . $row->$dependent . '">' . $row->$dependent . '</option>';
         }
@@ -84,7 +84,7 @@ class DonanteController extends Controller
             ],
             'Sexo' => 'required',
             'Alcaldia' => 'required',
-            'Colonia' => 'required|max:20',
+            'Colonia' => 'required',
             'Donador' => 'required|in:SI,NO',
             'Organo' => 'required_if:Donador,SI|array',
             'Referencias' => 'nullable|numeric|digits:10',
@@ -94,15 +94,40 @@ class DonanteController extends Controller
         ];
 
         $mensaje=[
-            'required'=>'El campo ":attribute" es requerido.',
+            'required'=>'El campo :attribute es requerido',
             'CURP.regex' => 'El formato del CURP no es válido.',
             'CURP.unique' => 'Este CURP ya se encuentra registrado.',
+            'CURP.size' => 'Complete el campo correctamente',
+            'Organo.required_if' => 'Si desea ser donador, debe seleccionar al menos un órgano.',
+            'min' => 'Complete el campo correctamente',
+            'max' => 'Ha excedido la cantidad de caracteres establecidos',
             'Telefono.digits' => 'El teléfono debe tener exactamente 10 dígitos.',
-            'Organo.required_if' => 'Si desea ser donador, debe seleccionar al menos un órgano.'
+            'Telefono.unique' => 'Este teléfono ya ha sido registrado'
         ];
         $this->validate($request,$campos,$mensaje,[
+            'Nombre' => 'Nombre',
+            'ApPaterno' => 'Apellido paterno',
+            'ApMaterno' => 'Apellido materno',
+            'FechaNac' => 'Fecha de nacimiento',
+            'Ocupacion' => 'Ocupacion',
+            'EstCiv' => 'Estado civil',
+            'Estudios' => 'Estudios',
+            'EstadoProc' => 'Entidad de procedencia',
+            'Religion' => 'Religión',
+            'CURP' => 'CURP',
+            'Sexo' => 'Sexo',
+            'Alcaldia' => 'Municipio o Alcaldía',
+            'Colonia' => 'Localidad',
+            'Donador' => 'solicitado', //XD
+            'Organo' => 'Órgano',
+            'Referencias' => 'Referencias',
+            'Telefono' => 'Telefono',
+            'Pregunta' => 'solicitado',
+            'Respuesta' => 'solicitado',
+        ]);
+        $this->validate($request,$campos,$mensaje,[
             'Nombre' => 'required',
-            'Organo' => 'required|array' // Verificamos que al menos uno esté marcado
+            'Organo' => 'required|array'
         ]);
         $datosUsuario = request()->except('_token');
         // dd($datosUsuario);
