@@ -1,1 +1,43 @@
 /* Voy */
+.legend {
+    background-color: #9d2148;
+    color: #fffae9;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+.input:focus {
+    background-color: #fffae9;
+    border-color: #b28e5c;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 0 5px rgba(157,33,72, 0.5);
+    color: #9d2148;
+}
+.select:focus {
+    background-color: #fffae9;
+    border-color: #b28e5c;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 0 5px rgba(157,33,72, 0.5);
+    color: #857f78;
+}
+
+@keyframes subirEfecto {
+    from {
+        background-color: #b28e5c;
+        opacity: 0;
+        transform: translateY(30px); /* Empieza 30px abajo */
+    }
+    to {
+        background-color: none;
+        opacity: 1;
+        transform: translateY(0);    /* Llega a su posición original */
+    }
+}
+
+.card-animada {
+    opacity: 0; /* Invisible al inicio */
+    animation-name: subirEfecto;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards; /* Se queda visible al terminar */
+    animation-timing-function: ease-out;
+}
