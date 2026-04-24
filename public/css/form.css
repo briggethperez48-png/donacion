@@ -18,26 +18,67 @@
     border-style: solid;
     border-width: 1px;
     box-shadow: 0 0 5px rgba(157,33,72, 0.5);
-    color: #857f78;
+    color: #857f78; 
 }
 
 @keyframes subirEfecto {
     from {
         background-color: #b28e5c;
         opacity: 0;
-        transform: translateY(30px); /* Empieza 30px abajo */
+        transform: translateY(30px);
     }
     to {
         background-color: none;
         opacity: 1;
-        transform: translateY(0);    /* Llega a su posición original */
+        transform: translateY(0);
     }
 }
 
 .card-animada {
-    opacity: 0; /* Invisible al inicio */
+    opacity: 0;
     animation-name: subirEfecto;
     animation-duration: 0.8s;
-    animation-fill-mode: forwards; /* Se queda visible al terminar */
+    animation-fill-mode: forwards;
     animation-timing-function: ease-out;
+}
+p, label {
+    color: 55585a;
+}
+.seccion-organos {
+    position: absolute;
+    margin: 0 10px;
+    padding: 0 8px;
+
+    order: 2px solid transparent;
+    border-top: none;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-width: 2px;
+    border-color: #fff;
+    color: transparent;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 400ms ease-in-out;
+    
+    opacity: 0;
+}
+.seccion-organos.activo {
+    position: relative;
+    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.4);
+    color: #b28e5c;
+
+    margin: -2px 10px 0 10px;
+    padding: 10px 8px 0 8px;
+
+    border-style: solid;
+    border-top: none;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-width: 2px;
+    border-color: #b28e5c;
+
+    max-height: 500px;
+    opacity: 1;
 }
