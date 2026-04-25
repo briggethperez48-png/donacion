@@ -3,11 +3,14 @@
 @section('title', 'Donador')
 
 @section('content')
-<section class="margen my-3">
+<section class="margen my-4">
     <div class="p-4 shadow m-2">
-        <div class="text-center align-self-center mb-2">
+        <div class="align-self-center mb-2 col">
+            <div class="position-relative">
+                <img src="{{ asset('imagen/SEDESANOV.png') }}" class="img-fluid" style="width: 20rem; height:auto;" alt="">
+            </div>
             <div>
-                <h1 style="color: 55585a;">
+                <h1 style="color: 55585a;"class="text-center">
                     Registro de nuevo donador
                 </h1>
             </div>
@@ -175,6 +178,11 @@
                     <legend class="h5 mb-0 font-weight-bold ml-3 align-self-center">Domicilio</legend>
                 </div>
                 <div class="card-body">
+                    @if(count($errors)>0)
+                        <div class="alert alert-danger shadow-sm mb-4">
+                            <i class="fas fa-exclamation-triangle mr-2"></i> Favor de llenar este campo.
+                        </div>
+                    @endif
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="EstadoProc" class="font-weight-bold">Estado de Procedencia</label>
@@ -229,10 +237,17 @@
                         <div class="row px-3 mt-2">
                             @php $lista_organos = ['PULMONES', 'HUESO', 'CORAZON', 'CORNEAS', 'RIÑON', 'VALVULAS', 'PIEL', 'PANCREAS', 'TENDONES', 'HIGADO']; @endphp
                             @foreach($lista_organos as $org)
-                                <div class="col-6 col-md-3 mb-2 small font-weight-bold">
-                                    <input name="Organo[]" type="checkbox" value="{{ $org }}" id="check{{ $org }}"
-                                        {{ is_array(old('Organo')) && in_array($org, old('Organo')) ? 'checked' : '' }}>
-                                    <label for="check{{ $org }}">{{ $org }}</label>
+                                <div class="col-6 col-md-3 mb-3">
+                                    <div class="custom-control custom-checkbox">
+                                        <input name="Organo[]" type="checkbox" 
+                                            class="custom-control-input" 
+                                            id="check{{ $org }}" 
+                                            value="{{ $org }}"
+                                            {{ is_array(old('Organo')) && in_array($org, old('Organo')) ? 'checked' : '' }}>
+                                        <label class="custom-control-label font-weight-bold" for="check{{ $org }}">
+                                            {{ $org }}
+                                        </label>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
@@ -291,19 +306,25 @@
                 </div>
             </fieldset>
 
-            <div class="mb-5 text-center d-flex justify-content-between">
-                <div class="m-3">
-                    <button type="submit" class="btn btn-success btn-lg px-5 shadow text-uppercase">Guardar Registro</button>
+            <div class="mb-5 d-flex flex-column flex-md-row justify-content-md-between align-items-center">
+                <div class="m-2 w-100 w-md-auto text-center">
+                    <button type="submit" class="btn btn-success btn-lg px-5 shadow text-uppercase w-100 w-md-auto">
+                        Guardar Registro
+                    </button>
                 </div>
-                <div class="btn btn-secondary text-light btn-lg px-5 shadow m-3">
-                    <a href="https://salud.cdmx.gob.mx/" target="_blank" rel="noopener noreferrer" class="text-light text-center">
+
+                <div class="m-2 w-100 w-md-auto text-center">
+                    <a href="https://salud.cdmx.gob.mx/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="btn btn-secondary btn-lg px-5 shadow text-light w-100 w-md-auto">
                         Regresar
                     </a>
                 </div>
             </div>
         </form>
     </div>
-<!-- </section> -->
+</section>
     @section('scripts')
         <script>
             $(document).ready(function(){
@@ -345,7 +366,6 @@
     <script>
         function mostrarOrganos(esDonador) {
             const contenedor = document.getElementById('seccion-organos');
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
             // alert(esDonador);
             
             if (esDonador) {
@@ -358,6 +378,14 @@
             }
         }
     </script>
+    <!-- <script>
+        const cuadrito = document.getElementById('check{{ $org }}');
+        const check = document.getElementById('Check');
+
+        cuadrito.addEventListener('click', function() {
+            check.style.display = 'block';
+        })
+    </script> -->
     <script>
         const contenedorA = document.getElementById('Entidad');
         const contenedorB = document.getElementById('MunicipioI');
@@ -406,30 +434,15 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Seleccionamos todos los fieldset que funcionan como cards
+            
             const secciones = document.querySelectorAll('form fieldset.card');
             
             secciones.forEach((seccion, indice) => {
-                // 1. Le agregamos la clase que contiene la animación
+                
                 seccion.classList.add('card-animada');
                 
-                // 2. Calculamos el retraso: indice * 0.2 segundos
-                // El primero (0) inicia en 0s, el segundo (1) en 0.2s, etc.
                 seccion.style.animationDelay = `${indice * 0.2}s`;
             });
         });
     </script>
-
-    <!-- <script>
-        const contentA = document.querySelectorAll('.Donador');
-
-        contentA.forEach(contentA => {
-            const contentB = contentA.querySelector('.pregunta');
-            const contentC = contentA.querySelector('.seccion-organos');
-
-            contentB.addEventListener('click', () => {
-                contentC.classList.toggle('activo');
-            });
-        });
-    </script> -->
 @endsection

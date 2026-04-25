@@ -139,6 +139,12 @@ class DonanteController extends Controller
 
         foreach ($datosUsuario as $key => $value) {
             if($key != 'email' && $key != 'password'){
+                $value = str_replace(
+                    ['Á','É','Í','Ó','Ú','á','é','í','ó','ú'],
+                    ['A','E','I','O','U','A','E','I','O','U'],
+                    $value
+                );
+
                 $datosUsuario[$key] = strtoupper($value);
             }
         }

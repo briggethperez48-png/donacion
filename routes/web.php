@@ -13,10 +13,13 @@
 
 // use Symfony\Component\Routing\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/donador/avisoprivacidad', function () {
+//     return view('donante
+//     ');
+// });
 
 Route::post('/donador/fetch', 'DonanteController@fetch')->name('donante.fetch');
 
 Route::resource('donador', 'DonanteController');
+
+Route::view('/avisoprivacidad', 'aviso');

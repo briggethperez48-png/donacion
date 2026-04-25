@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,8 +32,8 @@
         @yield('content')
     </div>
 
-    <footer class="footer">
-        <div class="SEDESA">
+    <footer class="footer d-flex justify-content-between position-fixed">
+        <div class="SEDESA text-justify">
             <small class="text-light">
                 <b>© 2026 Secretaría de Salud Pública de la Ciudad de México</b>
             </small>
@@ -66,7 +66,7 @@
             </a>
         </div>
         <div class="priv">
-            <a href="{{url('/content/avisoprivacidad')}}">
+            <a href="{{url('/avisoprivacidad')}}" target="_blank" rel="noopener noreferrer">
                 Aviso de privacidad
             </a>
         </div>
