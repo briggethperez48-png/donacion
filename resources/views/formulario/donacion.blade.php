@@ -229,6 +229,9 @@
                         <input class="form-check-input" type="radio" name="Donador" id="DonadorNo" value="NO" 
                             onclick="mostrarOrganos(false)" {{ old('Donador') == 'NO' ? 'checked' : (old('Donador') == null ? 'checked' : '') }}>
                         <label class="form-check-label" for="DonadorNo">NO</label>
+                        @if($errors->has('Donador'))
+                            <span class="text-danger small"><strong>{{ $errors->first('Donador') }}</strong></span>
+                        @endif
                     </div>
                     <!-- <div id="seccion-organos" class="seccion-organos mt-1 p-3 bg-light rounded" style="display: none;"> -->
                     <div id="seccion-organos" class="seccion-organos mt-3 p-3 bg-light rounded">
@@ -251,6 +254,11 @@
                                 </div>
                             @endforeach
                         </div>
+                    </div>
+                    <div>
+                        @if($errors->has('Organo'))
+                            <span class="text-danger small"><strong>{{ $errors->first('Organo') }}</strong></span>
+                        @endif
                     </div>
                 </div>
             </fieldset>
@@ -276,6 +284,9 @@
                             <label for="Telefono" class="font-weight-bold">Teléfono</label>
                             <input name="Telefono" type="tel" class="form-control input" id="Telefono" pattern="^(55|56)[0-9]{8}$" 
                                 placeholder="5512345678" value="{{ old('Telefono') }}">
+                            @if($errors->has('Telefono'))
+                                <span class="text-danger small"><strong>{{ $errors->first('Telefono') }}</strong></span>
+                            @endif
                         </div>
                     </div>
 
@@ -297,11 +308,17 @@
                             <option value="MASCOTAPRIMNOM" {{ old('Pregunta') == 'MASCOTAPRIMNOM' ? 'selected' : '' }}>¿NOMBRE DE TU PRIMERA MASCOTA?</option>
                             <option value="APODO" {{ old('Pregunta') == 'APODO' ? 'selected' : '' }}>¿CUÁL ERA TU APODO DE NIÑO?</option>
                         </select>
+                        @if($errors->has('Pregunta'))
+                            <span class="text-danger small"><strong>{{ $errors->first('Pregunta') }}</strong></span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="Respuesta" class="font-weight-bold">Respuesta de seguridad</label>
                         <textarea name="Respuesta" id="Respuesta" rows="2" class="form-control input" maxlength="50" placeholder="Máximo 50 caracteres...">{{ old('Respuesta') }}</textarea>
                         <small id="contador" class="form-text text-muted text-right">0 / 50 caracteres</small>
+                        @if($errors->has('Respuesta'))
+                            <span class="text-danger small"><strong>{{ $errors->first('Respuesta') }}</strong></span>
+                        @endif
                     </div>
                 </div>
             </fieldset>
@@ -365,27 +382,17 @@
     @endsection
     <script>
         function mostrarOrganos(esDonador) {
-            const contenedor = document.getElementById('seccion-organos');
-            // alert(esDonador);
-            
-            if (esDonador) {
-                $('#seccion-organos').show();
-                contenedor.classList.toggle('activo');
-            } else {
-                // contenedor.style.display = 'none';
-                $('#seccion-organos').hide();
-                checkboxes.forEach(cb => cb.checked = false);
-            }
-        }
+    const contenedor = document.getElementById('seccion-organos');
+    
+    if (esDonador) {
+        contenedor.classList.add('activo');
+    } else {
+        contenedor.classList.remove('activo');
+        const checkboxes = contenedor.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(cb => cb.checked = false);
+    }
+}
     </script>
-    <!-- <script>
-        const cuadrito = document.getElementById('check{{ $org }}');
-        const check = document.getElementById('Check');
-
-        cuadrito.addEventListener('click', function() {
-            check.style.display = 'block';
-        })
-    </script> -->
     <script>
         const contenedorA = document.getElementById('Entidad');
         const contenedorB = document.getElementById('MunicipioI');
