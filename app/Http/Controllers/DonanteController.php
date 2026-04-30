@@ -36,9 +36,9 @@ class DonanteController extends Controller
     }
 
     function fetch(Request $request) {
-        $select = $request->input('select');    // Traerá "Entidad" o "Municipio"
-        $value = $request->input('value');      // Traerá el nombre seleccionado
-        $dependent = $request->input('dependent'); // Traerá "Municipio" o "Localidad"
+        $select = $request->input('select');   
+        $value = $request->input('value');      
+        $dependent = $request->input('dependent');
 
         $column = $select;
 
@@ -49,7 +49,7 @@ class DonanteController extends Controller
                 ->orderBy($dependent, 'asc')
                 ->get();
 
-        $output = '<option value="">SELECCIONE UNO </option>';
+        $output = '<option value="">SELECCIONE UNO</option>';
         foreach ($data as $row) {
             $output .= '<option value="' . $row->$dependent . '">' . $row->$dependent . '</option>';
         }
@@ -83,11 +83,12 @@ class DonanteController extends Controller
                 'regex:/^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE|CD)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/'
             ],
             'Sexo' => 'required',
+            'estadoNac' => 'required',
             'Alcaldia' => 'required',
             'Colonia' => 'required',
             'Donador' => 'required|in:SI,NO',
             'Organo' => 'required_if:Donador,SI|array',
-            'Referencias' => 'nullable|numeric|digits:10',
+            'Referencias' => 'required|max:20',
             'Telefono' => 'required|numeric|digits:10',
             'Pregunta' => 'required',
             'Respuesta' => 'required|string|min:3|max:50',
@@ -116,6 +117,7 @@ class DonanteController extends Controller
             'Religion' => 'Religión',
             'CURP' => 'CURP',
             'Sexo' => 'Sexo',
+            'estadoNac' => 'Estado de Nacimiento', 
             'Alcaldia' => 'Municipio o Alcaldía',
             'Colonia' => 'Localidad',
             'Donador' => 'solicitado', //XD

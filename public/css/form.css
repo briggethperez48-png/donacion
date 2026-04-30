@@ -41,8 +41,12 @@
     animation-fill-mode: forwards;
     animation-timing-function: ease-out;
 }
+.btnSc {
+    background-color: #b28e5c;
+    color: #fffae9;
+}
 p, label {
-    color: 55585a;
+    color: #55585a;
 }
 .seccion-organos {
     position: absolute;
@@ -81,4 +85,41 @@ p, label {
 
     max-height: 500px;
     opacity: 1;
+}
+
+.checkbox {
+    appearance: none;           /* Elimina el estilo por defecto */
+    -webkit-appearance: none;   /* Compatibilidad con WebKit */
+    width: 15px;
+    height: 15px;
+    border: 1px solid #555;
+    border-radius: 4px;         /* Bordes redondeados */
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+/* Efecto al pasar el mouse */
+.checkbox:hover {
+    border-color: #b28e5c;
+}
+
+/* Estado marcado */
+.checkbox:checked {
+    background-color: #9d2148;
+    border-color: #b28e5c;
+}
+
+/* Icono de check usando pseudo-elemento */
+.checkbox:checked::after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
 }

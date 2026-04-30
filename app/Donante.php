@@ -20,6 +20,7 @@ class Donante extends Model
             'Religion',
             'CURP',
             'Sexo',
+            'estadoNac',
             'Alcaldia',
             'Colonia',
             'Donador',

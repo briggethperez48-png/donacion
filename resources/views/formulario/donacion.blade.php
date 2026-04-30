@@ -3,8 +3,8 @@
 @section('title', 'Donador')
 
 @section('content')
-<section class="margen my-4">
-    <div class="p-4 shadow m-2">
+<section class="margen my-4 mb-4">
+    <div class="p-4 shadow m-2 mb-4">
         <div class="align-self-center mb-2 col">
             <div class="position-relative">
                 <img src="{{ asset('imagen/SEDESANOV.png') }}" class="img-fluid" style="width: 20rem; height:auto;" alt="">
@@ -30,7 +30,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="form-group col-md-4">
-                            <label for="Nombre" class="font-weight-bold">Nombre</label>
+                            <label for="Nombre" class="font-weight-bold">Nombre(s)</label>
                             <input name="Nombre" type="text" placeholder="ESCRIBA SU NOMBRE AQUÍ..." 
                                 class="form-control input" id="Nombre" value="{{ old('Nombre') }}">
                             @if($errors->has('Nombre'))
@@ -63,14 +63,14 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="Ocupacion" class="font-weight-bold">Ocupación</label>
-                            <select name="Ocupacion" id="Ocupacion" class="form-control select">
+                            <select name="Ocupacion" id="Ocupacion" class="form-control input">
                                 <option value="">SELECCIONE UNO...</option>
                                 <option value="TH" {{ old('Ocupacion') == 'TH' ? 'selected' : '' }}>TAREAS DEL HOGAR</option>
                                 <option value="E" {{ old('Ocupacion') == 'E' ? 'selected' : '' }}>ESTUDIANTE</option>
                                 <option value="AOT" {{ old('Ocupacion') == 'AOT' ? 'selected' : '' }}>ARTESANA(O), OBRERA(O), TRABAJADOR(A)</option>
                                 <option value="EOTA" {{ old('Ocupacion') == 'EOTA' ? 'selected' : '' }}>EMPLEADA(O) DE OFICINA, TRABAJADOR(A) EN ACTIVIDADES ADMINISTRATIVAS O DE SERVICIOS</option>
                                 <option value="CEC" {{ old('Ocupacion') == 'CEC' ? 'selected' : '' }}>COMERCIANTE O EMPLEADA(O) DE COMERCIO</option>
-                                <option value="JP" {{ old('Ocupacion') == 'JP' ? 'selected' : '' }}>JUBILADA(0) / PENSIONADA(0)</option>
+                                <option value="JP" {{ old('Ocupacion') == 'JP' ? 'selected' : '' }}>JUBILADA(O) / PENSIONADA(O)</option>
                                 <option value="TAA" {{ old('Ocupacion') == 'TAA' ? 'selected' : '' }}>TRABAJADOR(A) EN ACTIVIDADES AGRÍCOLAS</option>
                                 <option value="TSD" {{ old('Ocupacion') == 'TSD' ? 'selected' : '' }}>TRABAJADOR(A) EN SERVICIOS DOMÉSTICOS</option>
                                 <option value="VA" {{ old('Ocupacion') == 'VA' ? 'selected' : '' }}>VENDEDOR(A) AMBULANTE</option>
@@ -78,13 +78,13 @@
                                 <option value="TSSYFA" {{ old('Ocupacion') == 'TSSYFA' ? 'selected' : '' }}>TRABAJADOR(A) EN SERVICIOS DE SEGURIDAD Y/O FUERZAS ARMADAS</option>
                                 <option value="MDTE" {{ old('Ocupacion') == 'MDTE' ? 'selected' : '' }}>MAESTRA(O), DOCENTE O TRABAJADOR(A) DE LA EDUCACIÓN</option>
                                 <option value="PTI" {{ old('Ocupacion') == 'PTI' ? 'selected' : '' }}>PROFESIONISTA O TÉCNICA(O) INDEPENDIENTE</option>
-                                <option value="LDSSC" {{ old('Ocupacion') == 'LDSSC' ? 'selected' : '' }}>LIDER O DIRECTIVA(0) DEL SECTOR SOCIAL O CIVIL</option>
+                                <option value="LDSSC" {{ old('Ocupacion') == 'LDSSC' ? 'selected' : '' }}>LIDER O DIRECTIVA DEL SECTOR SOCIAL O CIVIL</option>
                                 <option value="FSP" {{ old('Ocupacion') == 'FSP' ? 'selected' : '' }}>FUNCIONARIA(O) DEL SECTOR PÚBLICO</option>
-                                <option value="EGDE" {{ old('Ocupacion') == 'EGDE' ? 'selected' : '' }}>EMPRESARIA(O), GERENTE O DIRECTIVA(0) DE EMPRESA</option>
+                                <option value="EGDE" {{ old('Ocupacion') == 'EGDE' ? 'selected' : '' }}>EMPRESARIA(O), GERENTE O DIRECTIVA(O) DE EMPRESA</option>
                                 <option value="TCP" {{ old('Ocupacion') == 'TCP' ? 'selected' : '' }}>TRABAJADOR(A) POR CUENTA PROPIA</option>
-                                <option value="DBT" {{ old('Ocupacion') == 'DBT' ? 'selected' : '' }}>DESEMPLEADA(0) / BUSCADOR(A) DE TRABAJO</option>
-                                <option value="OTRO" {{ old('Ocupacion') == 'OTRO' ? 'selected' : '' }}>OTRA OCUPACIÓN NO ESPECIFICADA</option>
-                                <option value="SN" {{ old('Ocupacion') == 'SN' ? 'selected' : '' }}>NO SABE/SIN RESPUESTA</option>
+                                <option value="DBT" {{ old('Ocupacion') == 'DBT' ? 'selected' : '' }}>DESEMPLEADA(O) / BUSCADOR(A) DE TRABAJO</option>
+                                <option value="OTRO" {{ old('Ocupacion') == 'OTRO' ? 'selected' : '' }}>OTRA OCUPACIÓN / NO ESPECIFICADA</option>
+                                <option value="SN" {{ old('Ocupacion') == 'SN' ? 'selected' : '' }}>NO SABE</option>
                             </select>
                             @if($errors->has('Ocupacion'))
                                 <span class="text-danger small"><strong>{{ $errors->first('Ocupacion') }}</strong></span>
@@ -92,7 +92,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label for="EstCiv" class="font-weight-bold">Estado Civil</label>
-                            <select name="EstCiv" id="EstCiv" class="form-control select">
+                            <select name="EstCiv" id="EstCiv" class="form-control input">
                                 <option value="">SELECCIONE UNO...</option>
                                 <option value="SOLTERO" {{ old('EstCiv') == 'SOLTERO' ? 'selected' : '' }}>SOLTERA(O)</option>
                                 <option value="CASADO" {{ old('EstCiv') == 'CASADO' ? 'selected' : '' }}>CASADA(O)</option>
@@ -110,7 +110,7 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="Estudios" class="font-weight-bold">Estudios</label>
-                            <select name="Estudios" id="Estudios" class="form-control select">
+                            <select name="Estudios" id="Estudios" class="form-control input">
                                 <option value="">SELECCIONE UNO...</option>
                                 <option value="NINGUNO" {{ old('Estudios') == 'NINGUNO' ? 'selected' : '' }}>NINGUNO</option>
                                 <option value="PREESCOLAR" {{ old('Estudios') == 'PREESCOLAR' ? 'selected' : '' }}>PREESCOLAR</option>
@@ -132,16 +132,16 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="Religion" class="font-weight-bold">Religión</label>
-                            <input list="religiones" name="Religion" id="Religion" class="form-control input" value="{{old('Religion')}}">
-                            <datalist id="religiones">
-                                <option value="CATÓLICA">
-                                <option value="JUDÍA">
-                                <option value="CRISTIANA">
-                                <option value="TESTIGO DE JEHOVÁ">
-                                <option value="EVANGELISTA">
-                                <option value="NINGUNA">
-                                <option value="OTRO">
-                            </datalist>
+                            <select name="Religion" id="Religion" class="form-control input">
+                                <option value="">SELECCIONE UNO...</option>
+                                <option value="CATÓLICA" {{ old('Religion') == 'CATÓLICA' ? 'selected' : '' }}>CATÓLICA</option>
+                                <option value="JUDÍA" {{ old('Religion') == 'JUDÍA' ? 'selected' : '' }}>JUDÍA</option>
+                                <option value="CRISTIANA" {{ old('Religion') == 'CRISTIANA' ? 'selected' : '' }}>CRISTIANA</option>
+                                <option value="TESTIGO DE JEHOVÁ" {{ old('Religion') == 'TESTIGO DE JEHOVÁ' ? 'selected' : '' }}>TESTIGO DE JEHOVÁ</option>
+                                <option value="EVANGELISTA" {{ old('Religion') == 'EVANGELISTA' ? 'selected' : '' }}>EVANGELISTA</option>
+                                <option value="NINGUNA" {{ old('Religion') == 'NINGUNA' ? 'selected' : '' }}>NINGUNA</option>
+                                <option value="OTRO" {{ old('Religion') == 'OTRO' ? 'selected' : '' }}>OTRO</option>
+                            </select>
                             @if($errors->has('Religion'))
                                 <span class="text-danger small"><strong>{{ $errors->first('Religion') }}</strong></span>
                             @endif
@@ -158,12 +158,29 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="Sexo" class="font-weight-bold">Sexo</label>
-                            <input list="sexo" name="Sexo" id="Sexo" class="form-control input" value="{{old('Sexo')}}">
-                            <datalist id="sexo">
-                                <option value="HOMBRE"><option value="MUJER"><option value="OTRO">
-                            </datalist>
+                            <select name="Sexo" id="Sexo" class="form-control input">
+                                <option value="">SELECCIONE UNO...</option>
+                                <option value="HOMBRE" {{ old('Sexo') == 'HOMBRE' ? 'selected' : '' }}>HOMBRE</option>>
+                                <option value="MUJER" {{ old('Sexo') == 'MUJER' ? 'selected' : '' }}>MUJER</option>>
+                                <option value="OTRO" {{ old('Sexo') == 'OTRO' ? 'selected' : '' }}>OTRO</option>>
+                            </select>
                             @if($errors->has('Sexo'))
                                 <span class="text-danger small"><strong>{{ $errors->first('Sexo') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="form-group col-md-4">
+                            @php $listaEstados = 
+                                ['AGUASCALIENTES','BAJA CALIFORNIA','BAJA CALIFORNIA SUR','CAMPECHE','CHIAPAS','CHIHUAHUA','COAHUILA DE ZARAGOZA','COLIMA','CIUDAD DE MÉXICO','DURANGO','GUANAJUATO','GUERRERO','HIDALGO','JALISCO','ESTADO DE MÉXICO','MICHOACÁN DE OCAMPO','MORELOS','NAYARIT','NUEVO LEÓN','OAXACA','PUEBLA','QUERÉTARO DE ARTEAGA','QUINTANA ROO','SAN LUIS POTOSÍ','SINALOA','SONORA','TABASCO','TAMAULIPAS','TLAXCALA','VERACRUZ DE IGNACIO DE LA LLAVE','YUCATÁN','ZACATECAS'];
+                            @endphp
+                            <label for="estadoNac" class="font-weight-bold">Estado de Nacimiento</label>
+                                <select name="estadoNac" id="estadoNac" class="form-control input">
+                                    <option value="">SELECCIONE UNO...</option>
+                                    @foreach($listaEstados as $Estado)
+                                        <option value="{{$Estado}}" {{ old('estadoNac') == $Estado ? 'selected' : '' }}>{{$Estado}}</option>
+                                    @endforeach
+                                </select>
+                            @if($errors->has('estadoNac'))
+                                <span class="text-danger small"><strong>{{ $errors->first('estadoNac') }}</strong></span>
                             @endif
                         </div>
                     </div>
@@ -186,7 +203,7 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="EstadoProc" class="font-weight-bold">Estado de Procedencia</label>
-                            <select name="EstadoProc" id="Entidad" data-dependent="Municipio" class="dynamic form-control select">
+                            <select name="EstadoProc" id="Entidad" data-dependent="Municipio" class="dynamic form-control input">
                                 <option value="">SELECCIONE UNO...</option>
                                 @foreach($estado_list as $estado)
                                     <option value="{{$estado->Entidad}}">{{$estado->Entidad}}</option>
@@ -198,14 +215,14 @@
                         </div>
                         <div class="form-group col-md-4" id="MunicipioI" style="display:none;">
                             <label for="Alcaldia" class="font-weight-bold">Alcaldía</label>
-                            <select name="Alcaldia" id="Municipio" data-dependent="Localidad" class="dynamic form-control select">
-                                <option value="">SELECCIONE UNO...</option>
+                            <select name="Alcaldia" id="Municipio" data-dependent="Localidad" class="dynamic form-control input">
+                                <option value="">-</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4" id="LocalidadI" style="display:none;">
                             <label for="Colonia" class="font-weight-bold">Colonia</label>
-                            <select name="Colonia" id="Localidad" class="form-control select">
-                                <option value="">SELECCIONE UNO...</option>
+                            <select name="Colonia" id="Localidad" class="form-control input">
+                                <option value="">-</option>
                             </select>
                         </div>
                     </div>
@@ -238,16 +255,16 @@
                         <p class="font-weight-bold small">Estamos agradecidos con su decisión.</p>
                         <label class="font-weight-bold">¿Qué órganos desea donar?</label>
                         <div class="row px-3 mt-2">
-                            @php $lista_organos = ['PULMONES', 'HUESO', 'CORAZON', 'CORNEAS', 'RIÑON', 'VALVULAS', 'PIEL', 'PANCREAS', 'TENDONES', 'HIGADO']; @endphp
+                            @php $lista_organos = ['PULMONES', 'HUESO', 'CORAZÓN', 'CORNEAS', 'RIÑÓN', 'VÁLVULAS', 'PIEL', 'PÁNCREAS', 'TENDONES', 'HÍGADO']; @endphp
                             @foreach($lista_organos as $org)
                                 <div class="col-6 col-md-3 mb-3">
                                     <div class="custom-control custom-checkbox">
                                         <input name="Organo[]" type="checkbox" 
-                                            class="custom-control-input" 
+                                             class="checkbox"
                                             id="check{{ $org }}" 
                                             value="{{ $org }}"
                                             {{ is_array(old('Organo')) && in_array($org, old('Organo')) ? 'checked' : '' }}>
-                                        <label class="custom-control-label font-weight-bold" for="check{{ $org }}">
+                                        <label class="ml-1 font-weight-bold" for="check{{ $org }}">
                                             {{ $org }}
                                         </label>
                                     </div>
@@ -275,7 +292,7 @@
                         <div class="form-group col-md-6">
                             <label for="Referencias" class="font-weight-bold">Referencias</label>
                             <input name="Referencias" type="tel" class="form-control input" id="Referencias" pattern="^(55|56)[0-9]{8}$" 
-                                placeholder="5512345678" value="{{ old('Referencias') }}">
+                                placeholder="Coloque alguna referencia..." value="{{ old('Referencias') }}">
                             @if($errors->has('Referencias'))
                                 <span class="text-danger small"><strong>{{ $errors->first('Referencias') }}</strong></span>
                             @endif
@@ -283,7 +300,8 @@
                         <div class="form-group col-md-6">
                             <label for="Telefono" class="font-weight-bold">Teléfono</label>
                             <input name="Telefono" type="tel" class="form-control input" id="Telefono" pattern="^(55|56)[0-9]{8}$" 
-                                placeholder="5512345678" value="{{ old('Telefono') }}">
+                                placeholder="5512345678" value="{{ old('Telefono') }}" maxLength="10" inputmode="numeric">
+                            <small id="contadorA" class="form-text text-muted text-right">0 / 10 caracteres</small>
                             @if($errors->has('Telefono'))
                                 <span class="text-danger small"><strong>{{ $errors->first('Telefono') }}</strong></span>
                             @endif
@@ -292,7 +310,7 @@
 
                     <div class="form-group">
                         <label for="Pregunta" class="font-weight-bold">Pregunta de seguridad</label>
-                        <select name="Pregunta" id="Pregunta" class="form-control select">
+                        <select name="Pregunta" id="Pregunta" class="form-control input">
                             <option value="">SELECCIONE UNO...</option>
                             <option value="MASCOTA" {{ old('Pregunta') == 'MASCOTA' ? 'selected' : '' }}>¿NOMBRE DE TU MASCOTA?</option>
                             <option value="NOVIA" {{ old('Pregunta') == 'NOVIA' ? 'selected' : '' }}>¿NOMBRE DE ALGUNA NOVIA?</option>
@@ -323,20 +341,22 @@
                 </div>
             </fieldset>
 
-            <div class="mb-5 d-flex flex-column flex-md-row justify-content-md-between align-items-center">
-                <div class="m-2 w-100 w-md-auto text-center">
-                    <button type="submit" class="btn btn-success btn-lg px-5 shadow text-uppercase w-100 w-md-auto">
-                        Guardar Registro
-                    </button>
-                </div>
+            <div class="mb-4">
+                <div class="mb-5 d-flex flex-column flex-md-row justify-content-md-between align-items-center">
+                    <div class="m-2 w-100 w-md-auto text-center">
+                        <button type="submit" class="btn btnSc btn-lg px-5 shadow text-uppercase w-100 w-md-auto">
+                            Guardar Registro
+                        </button>
+                    </div>
 
-                <div class="m-2 w-100 w-md-auto text-center">
-                    <a href="https://salud.cdmx.gob.mx/" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="btn btn-secondary btn-lg px-5 shadow text-light w-100 w-md-auto">
-                        Regresar
-                    </a>
+                    <div class="m-2 w-100 w-md-auto text-center">
+                        <a href="https://salud.cdmx.gob.mx/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        class="btn btn-secondary btn-lg px-5 shadow text-light w-100 w-md-auto">
+                            Regresar
+                        </a>
+                    </div>
                 </div>
             </div>
         </form>
@@ -349,7 +369,7 @@
                     var dependent = $(this).data('dependent');
 
                     if($(this).attr("id") == "Entidad") {
-                        $('#Localidad').html('<option value="">ESCOJA UNO</option>');
+                        $('#Localidad').html('<option value="">-</option>');
                     }
 
                     if($(this).val() != '') {
@@ -426,6 +446,89 @@
 
             actualizarContador();
         })();
+    </script>
+    <script>
+        function validarCURP(curp) {
+            const regex = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMS]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/;
+            
+            const validado = curp.match(regex);
+            if (!validado) {
+                return false; 
+            }
+            
+            function digitoVerificador(curp17) {
+                const diccionario = "0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+                let suma = 0;
+                let cuenta = 18;
+                for (let i = 0; i < 17; i++) {
+                    suma += diccionario.indexOf(curp17.charAt(i)) * cuenta;
+                    cuenta--;
+                }
+                const residuo = suma % 10;
+                const valorEsperado = (10 - residuo) % 10;
+                return valorEsperado;
+            }
+
+            if (validado[2] != digitoVerificador(validado[1])) {
+                return false; 
+            }
+
+            return true;
+        }
+    </script>
+    <script>
+        document.getElementById('CURP').addEventListener('input', function(e) {
+            let curp = e.target.value.toUpperCase().trim();
+            e.target.value = curp;
+
+            if (curp.length === 0) {
+                e.target.classList.remove('is-valid', 'is-invalid');
+                return;
+            }
+
+            if (curp.length === 18) {
+                if (validarCURP(curp)) {
+                    e.target.classList.remove('is-invalid');
+                    e.target.classList.add('is-valid');
+                } else {
+                    e.target.classList.remove('is-valid');
+                    e.target.classList.add('is-invalid');
+                }
+            } else {
+                e.target.classList.remove('is-valid', 'is-invalid');
+            }
+
+            if (curp.length > 18 || curp.length < 18) {
+                e.target.classList.add('is-invalid');
+            }
+        });
+    </script>
+
+    <script>
+        (function() {
+            const telefono = document.getElementById('Telefono');
+            const contador = document.getElementById('contadorA');
+            const maxCaracteres = telefono.maxLength;
+
+            function actualizarContador() {
+                const longitud = telefono.value.length;
+                contador.textContent = `${longitud} / ${maxCaracteres}`;
+
+                if (longitud >= maxCaracteres) {
+                    contador.classList.add('alerta');
+                } else {
+                    contador.classList.remove('alerta');
+                }
+            }
+
+            telefono.addEventListener('input', actualizarContador);
+
+            actualizarContador();
+        })();
+
+        document.getElementById('Telefono').addEventListener('input', function (e) {
+            this.value = this.value.replace(/\D/g, '');
+        });
     </script>
 
     @if(session('mensaje'))

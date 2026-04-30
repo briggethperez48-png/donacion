@@ -26,6 +26,7 @@ class CreateDonantesTable extends Migration
             $datoD->string('Religion');
             $datoD->string('CURP');
             $datoD->string('Sexo');
+            $datoD->string('estadoNac');
             $datoD->string('Alcaldia');
             $datoD->string('Colonia');
             $datoD->string('Donador');
