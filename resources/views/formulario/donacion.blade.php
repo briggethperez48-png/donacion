@@ -1,8 +1,4 @@
-@extends('layouts.appA')
 
-@section('title', 'Donador')
-
-@section('content')
 <section class="margen my-4 mb-4">
     <div class="p-4 shadow m-2 mb-4">
         <div class="align-self-center mb-2 col">
@@ -11,7 +7,7 @@
             </div>
             <div>
                 <h1 style="color: 55585a;"class="text-center">
-                    Registro de nuevo donador
+                    {{$modo}} de  donador
                 </h1>
             </div>
         </div>
@@ -341,7 +337,7 @@
                 </div>
             </fieldset>
 
-            <div class="mb-4">
+            <div class="mb-4 pb-4">
                 <div class="mb-5 d-flex flex-column flex-md-row justify-content-md-between align-items-center">
                     <div class="m-2 w-100 w-md-auto text-center">
                         <button type="submit" class="btn btnSc btn-lg px-5 shadow text-uppercase w-100 w-md-auto">
@@ -362,6 +358,9 @@
         </form>
     </div>
 </section>
+    
+    
+
     @section('scripts')
         <script>
             $(document).ready(function(){
@@ -555,4 +554,3 @@
             });
         });
     </script>
-@endsection

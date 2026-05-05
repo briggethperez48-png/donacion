@@ -31,7 +31,7 @@ class DonanteController extends Controller
                         ->distinct()
                         ->orderBy('Entidad', 'asc')
                         ->get();
-        return view('formulario.donacion')->with('estado_list'
+        return view('formulario.create')->with('estado_list'
             , $estado_list);
     }
 

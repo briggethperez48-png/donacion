@@ -22,4 +22,14 @@ Route::post('/donador/fetch', 'DonanteController@fetch')->name('donante.fetch');
 
 Route::resource('donador', 'DonanteController');
 
-Route::view('/avisoprivacidad', 'aviso');
+//Route::view('/avisoprivacidad', 'aviso'); 
+
+Route::prefix('content')->group(function () {
+    Route::view('/', 'contenido/index'); //Dashboard
+    Route::view('/buscador', 'contenido/buscador'); //Buscador
+    Route::view('/reportes', 'contenido/reporte'); //Reportes de Excel
+    Route::view('/control', 'contenido/graficas'); //Muestra las gráficas 
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

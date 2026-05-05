@@ -12,6 +12,69 @@ form {
     width: 100%;
 }
 
+.all{
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    overflow-x: hidden !important;
+}
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 10;
+    width: 100%;
+    background-color: #9d2148;
+    padding: 1em;
+
+    display: flex;
+    flex-flow: row wrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    justify-content: space-between;
+    align-content: center;
+}
+.header h1{
+    font-size: 20px;
+    color: #fffae9;
+    font-weight: 800;
+}
+.header h2{
+    font-size: 16px;
+    color: #b28e5c;
+}
+.header .a{
+    color: #b28e5c;
+}
+.header .a:hover{
+    color: #fffae9;
+}
+.a{
+    font-weight: 400;
+    color: #9d2148;
+}
+.a:hover{
+    color: #fdc60a;
+    text-decoration: none;
+    font-weight: 600;
+}
+.header .logo img{
+    height: 30px;
+    font-weight: 600;
+}
+.header .buttonW{
+    border-radius: 10px;
+    border: none;
+}
+.header .butterfly{
+    width: 30px;
+}
+
     /*Footer*/
 .footer{
     position: fixed; 
