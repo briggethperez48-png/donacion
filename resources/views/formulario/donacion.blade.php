@@ -222,7 +222,6 @@
                     </div>
                 </div>
             </fieldset>
-
             <fieldset class="card mb-4 shadow-sm border-light">
                 <div class="legend card-header border-bottom border-dark d-flex">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-pulse" viewBox="0 0 16 16">
