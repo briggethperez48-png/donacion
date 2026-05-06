@@ -12,9 +12,7 @@
             </div>
         </div>
             <hr>
-        <form action="{{url('/donador')}}" method="POST" enctype="multipart/form-data" style="width: 100%;">
-            {{ csrf_field() }}
-
+        <div>
             <fieldset class="card mb-4 shadow-sm border-light">
                 <div class="legend card-header border-bottom border-dark d-flex">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -28,21 +26,21 @@
                         <div class="form-group col-md-4">
                             <label for="Nombre" class="font-weight-bold">Nombre(s)</label>
                             <input name="Nombre" type="text" placeholder="ESCRIBA SU NOMBRE AQUÍ..." 
-                                class="form-control input" id="Nombre" value="{{ old('Nombre') }}">
+                                class="form-control input" id="Nombre" value="{{ isset($donante->Nombre) ? $donante->Nombre : old('Nombre') }}">
                             @if($errors->has('Nombre'))
                                 <span class="text-danger small"><strong>{{ $errors->first('Nombre') }}</strong></span>
                             @endif
                         </div>
                         <div class="form-group col-md-4">
                             <label for="ApPaterno" class="font-weight-bold">Apellido Paterno</label>
-                            <input name="ApPaterno" type="text" class="form-control input" id="ApPaterno" value="{{ old('ApPaterno') }}">
+                            <input name="ApPaterno" type="text" class="form-control input" id="ApPaterno" value="{{ isset($donante->ApPaterno) ? $donante->ApPaterno : old('ApPaterno') }}">
                             @if($errors->has('ApPaterno'))
                                 <span class="text-danger small"><strong>{{ $errors->first('ApPaterno') }}</strong></span>
                             @endif
                         </div>
                         <div class="form-group col-md-4">
                             <label for="ApMaterno" class="font-weight-bold">Apellido Materno</label>
-                            <input name="ApMaterno" type="text" class="form-control input" id="ApMaterno" value="{{ old('ApMaterno') }}">
+                            <input name="ApMaterno" type="text" class="form-control input" id="ApMaterno" value="{{ isset($donante->ApMaterno) ? $donante->ApMaterno : old('ApMaterno') }}">
                             @if($errors->has('ApMaterno'))
                                 <span class="text-danger small"><strong>{{ $errors->first('ApMaterno') }}</strong></span>
                             @endif
@@ -52,7 +50,7 @@
                     <div class="row">
                         <div class="form-group col-md-3">
                             <label for="FechaNac" class="font-weight-bold">Fecha de Nacimiento</label>
-                            <input name="FechaNac" type="date" class="form-control input" id="FechaNac" value="{{ old('FechaNac') }}">
+                            <input name="FechaNac" type="date" class="form-control input" id="FechaNac" value="{{ isset($donante->FechaNac) ? $donante->FechaNac : old('FechaNac') }}">
                             @if($errors->has('FechaNac'))
                                 <span class="text-danger small"><strong>{{ $errors->first('FechaNac') }}</strong></span>
                             @endif
@@ -287,8 +285,8 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="Referencias" class="font-weight-bold">Referencias</label>
-                            <input name="Referencias" type="tel" class="form-control input" id="Referencias" pattern="^(55|56)[0-9]{8}$" 
-                                placeholder="Coloque alguna referencia..." value="{{ old('Referencias') }}">
+                            <input name="Referencias" class="form-control input" id="Referencias" pattern="^(55|56)[0-9]{8}$" 
+                                placeholder="Coloque alguna referencia..." value="{{ isset($donante->Referencias) ? $donante->Referencias : old('Referencias') }}">
                             @if($errors->has('Referencias'))
                                 <span class="text-danger small"><strong>{{ $errors->first('Referencias') }}</strong></span>
                             @endif
@@ -296,7 +294,7 @@
                         <div class="form-group col-md-6">
                             <label for="Telefono" class="font-weight-bold">Teléfono</label>
                             <input name="Telefono" type="tel" class="form-control input" id="Telefono" pattern="^(55|56)[0-9]{8}$" 
-                                placeholder="5512345678" value="{{ old('Telefono') }}" maxLength="10" inputmode="numeric">
+                                placeholder="5512345678" value="{{ isset($donante->Telefono) ? $donante->Telefono : old('Telefono') }}" maxLength="10" inputmode="numeric">
                             <small id="contadorA" class="form-text text-muted text-right">0 / 10 caracteres</small>
                             @if($errors->has('Telefono'))
                                 <span class="text-danger small"><strong>{{ $errors->first('Telefono') }}</strong></span>
@@ -328,7 +326,7 @@
                     </div>
                     <div class="form-group">
                         <label for="Respuesta" class="font-weight-bold">Respuesta de seguridad</label>
-                        <textarea name="Respuesta" id="Respuesta" rows="2" class="form-control input" maxlength="50" placeholder="Máximo 50 caracteres...">{{ old('Respuesta') }}</textarea>
+                        <textarea name="Respuesta" id="Respuesta" rows="2" class="form-control input" maxlength="50" placeholder="Máximo 50 caracteres...">{{ isset($donante->Respuesta) ? $donante->Respuesta : old('Respuesta') }}</textarea>
                         <small id="contador" class="form-text text-muted text-right">0 / 50 caracteres</small>
                         @if($errors->has('Respuesta'))
                             <span class="text-danger small"><strong>{{ $errors->first('Respuesta') }}</strong></span>
@@ -355,7 +353,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </section>
     

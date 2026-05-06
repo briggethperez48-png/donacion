@@ -13,11 +13,6 @@
 
 // use Symfony\Component\Routing\Route;
 
-// Route::get('/donador/avisoprivacidad', function () {
-//     return view('donante
-//     ');
-// });
-
 Route::post('/donador/fetch', 'DonanteController@fetch')->name('donante.fetch');
 
 Route::resource('donador', 'DonanteController');
@@ -27,8 +22,9 @@ Route::resource('donador', 'DonanteController');
 Route::prefix('content')->group(function () {
     Route::view('/', 'contenido/index'); //Dashboard
     Route::view('/buscador', 'contenido/buscador'); //Buscador
-    Route::view('/reportes', 'contenido/reporte'); //Reportes de Excel
-    Route::view('/control', 'contenido/graficas'); //Muestra las gráficas 
+    Route::view('/reportes', 'contenido/reporte'); //Reportes de Excel. Sólo aplica a Organos
+    Route::view('/estadisticas', 'contenido/graficas'); //Muestra las gráficas. Sólo aplica a Organos
+    Route::view('/buscador', 'contenido/buscador'); 
 });
 Auth::routes();
 

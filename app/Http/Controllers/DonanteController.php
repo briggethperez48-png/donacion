@@ -16,7 +16,7 @@ class DonanteController extends Controller
     public function index()
     {
         $datoD['donantes']=Donante::paginate(20);
-            return view('formulario.donacion', $datoD);
+            return view('contenido.gestionOrg', $datoD);
     }
 
     /**
@@ -66,14 +66,14 @@ class DonanteController extends Controller
     public function store(Request $request)
     {
         $campos = [
-            'Nombre' => 'required|min:3',
-            'ApPaterno' => 'required|min:3',
-            'ApMaterno' => 'required|min:3',
+            'Nombre' => 'required|min:3', //
+            'ApPaterno' => 'required|min:3', //
+            'ApMaterno' => 'required|min:3', //
             'FechaNac' => 'required',
-            'Ocupacion' => 'required',
+            'Ocupacion' => 'required', //
             'EstCiv' => 'required',
             'Estudios' => 'required',
-            'EstadoProc' => 'required',
+            'EstadoProc' => 'required', //
             'Religion' => 'required',
             'CURP' => [
                 'required',
@@ -81,15 +81,15 @@ class DonanteController extends Controller
                 'size:18',
                 'unique:donantes,CURP',
                 'regex:/^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE|CD)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/'
-            ],
-            'Sexo' => 'required',
-            'estadoNac' => 'required',
-            'Alcaldia' => 'required',
-            'Colonia' => 'required',
+            ], //
+            'Sexo' => 'required', //
+            'estadoNac' => 'required', //
+            'Alcaldia' => 'required', //
+            'Colonia' => 'required', //
             'Donador' => 'required|in:SI,NO',
-            'Organo' => 'required_if:Donador,SI|array',
+            'Organo' => 'required_if:Donador,SI|array', //
             'Referencias' => 'required|max:20',
-            'Telefono' => 'required|numeric|digits:10',
+            'Telefono' => 'required|numeric|digits:10', //
             'Pregunta' => 'required',
             'Respuesta' => 'required|string|min:3|max:50',
         ];
@@ -178,7 +178,16 @@ class DonanteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $donante = Donante::findOrFail($id);
+    
+        // Necesitas cargar la lista de estados igual que en el método create
+        $estado_list = DB::table('municipiosalcaldias')
+                        ->select('ClaveEntidad', 'Entidad')
+                        ->distinct()
+                        ->orderBy('Entidad', 'asc')
+                        ->get();
+
+        return view('formulario.edit', compact('donante', 'estado_list'));
     }
 
     /**
@@ -190,7 +199,41 @@ class DonanteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 1. Definir validaciones (similar a store pero ajustando el CURP único)
+        $campos = [
+            'Nombre' => 'required|min:3',
+            'ApPaterno' => 'required|min:3',
+            'CURP' => 'required|string|size:18|unique:donantes,CURP,'.$id, // Ignora el registro actual
+            // ... agrega los demás campos que necesites validar
+        ];
+
+        $mensaje = ['required' => 'El campo :attribute es requerido'];
+        $this->validate($request, $campos, $mensaje);
+
+        // 2. Preparar los datos
+        $datosUsuario = $request->except(['_token', '_method']);
+
+        // Manejo de Órganos (igual que en store)
+        if ($request->has('Organo')) {
+            $datosUsuario['Organo'] = implode(', ', $request->input('Organo'));
+        }
+
+        // 3. Limpieza de texto (Mayúsculas y acentos)
+        foreach ($datosUsuario as $key => $value) {
+            if(is_string($value)) {
+                $value = str_replace(
+                    ['Á','É','Í','Ó','Ú','á','é','í','ó','ú'],
+                    ['A','E','I','O','U','A','E','I','O','U'],
+                    $value
+                );
+                $datosUsuario[$key] = strtoupper($value);
+            }
+        }
+
+        // 4. Actualizar en la base de datos
+        Donante::where('id', '=', $id)->update($datosUsuario);
+
+        return redirect('donador')->with('mensaje', '¡Registro actualizado con éxito!');
     }
 
     /**
@@ -201,6 +244,8 @@ class DonanteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Donante::destroy($id);
+        return redirect('donador')
+            ->with('mensaje','¡Éxito! Usuario eliminado');
     }
 }
