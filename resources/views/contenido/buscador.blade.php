@@ -13,7 +13,7 @@
         
         <script>
                 window.addEventListener("load", function() {
-                        buscar.addEventListener("click",(e)=>(
+                        buscar.addEventListener("keyup",(e)=>(
                                 fetch(`/buscador`,{
                                         method:'post',
                                         body:JSON.stringify({texto : buscar.value}),
