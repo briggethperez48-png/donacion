@@ -13,6 +13,17 @@
 
 // use Symfony\Component\Routing\Route;
 
+use App\Http\Controllers\BuscadorController;
+Route::get('/', function() {
+    //$pdf = App::make('dompdf.wrapper');
+
+    $pdf = app('dompdf.wrapper');
+
+    $pdf -> loadHTML('<h1>Hola, putas. Estoy en helper APP</h1>');
+
+    return $pdf -> stream();
+});
+
 Route::post('/donador/fetch', 'DonanteController@fetch')->name('donante.fetch');
 
 Route::resource('donador', 'DonanteController');
@@ -26,6 +37,13 @@ Route::prefix('content')->group(function () {
     Route::view('/estadisticas', 'contenido/graficas'); //Muestra las gráficas. Sólo aplica a Organos
     Route::view('/buscador', 'contenido/buscador'); 
 });
+
+//Route::get('buscador', [BuscadorController::class, 'index']);
+//Route::post('buscador', [BuscadorController::class, 'buscar']);
+
+Route::get('buscador', 'BuscadorController@index');
+Route::post('buscador', 'BuscadorController@buscar');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

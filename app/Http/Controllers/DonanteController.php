@@ -13,10 +13,29 @@ class DonanteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = trim($request->get('busqueda'));
+
+        // Si hay búsqueda, filtramos; si no, traemos todos
+        $donantes = Donante::when($query, function ($filter) use ($query) {
+                return $filter->where('Nombre', 'LIKE', '%' . $query . '%')
+                            ->orWhere('ApPaterno', 'LIKE', '%' . $query . '%')
+                            ->orWhere('CURP', 'LIKE', '%' . $query . '%')
+                            ->orWhere('estadoNac', 'LIKE', '%' . $query . '%')
+                            ->orWhere('Organo', 'LIKE', '%' . $query . '%');;
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+
+        // Es vital usar appends para que al cambiar de página no se pierda la búsqueda
+        $donantes->appends(['busqueda' => $query]);
+
         $datoD['donantes']=Donante::paginate(20);
-            return view('contenido.gestionOrg', $datoD);
+
+    return view('contenido.gestionOrg', compact('donantes', 'query'), $datoD);
+        // $datoD['donantes']=Donante::paginate(20);
+        //     return view('contenido.gestionOrg', $datoD);
     }
 
     /**
@@ -35,15 +54,13 @@ class DonanteController extends Controller
             , $estado_list);
     }
 
-    function fetch(Request $request) {
+    public function fetch(Request $request) {
         $select = $request->input('select');   
-        $value = $request->input('value');      
+        $value = trim($request->input('value')); // Limpieza de entrada
         $dependent = $request->input('dependent');
 
-        $column = $select;
-
         $data = DB::table('municipiosalcaldias')
-                ->where($column, $value)
+                ->where($select, $value)
                 ->select($dependent)
                 ->distinct()
                 ->orderBy($dependent, 'asc')
@@ -51,7 +68,14 @@ class DonanteController extends Controller
 
         $output = '<option value="">SELECCIONE UNO</option>';
         foreach ($data as $row) {
-            $output .= '<option value="' . $row->$dependent . '">' . $row->$dependent . '</option>';
+            // Limpiamos espacios y quitamos acentos del VALOR técnico
+            $valorTecnico = strtoupper(str_replace(
+                ['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($row->$dependent)
+            ));
+            
+            // El texto que ve el usuario puede quedarse con acentos si así viene del CSV,
+            // pero el VALUE debe ser plano para que la comparación de JS no falle.
+            $output .= '<option value="' . $valorTecnico . '">' . $row->$dependent . '</option>';
         }
 
         return response()->json($output);
@@ -197,30 +221,39 @@ class DonanteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        // 1. Definir validaciones (similar a store pero ajustando el CURP único)
+    public function update(Request $request, $id) {
+        $input = $request->all();
+        foreach ($input as $key => $value) {
+            if (is_string($value)) {
+                $input[$key] = trim($value);
+            }
+        }
+        $request->replace($input);
+        
         $campos = [
-            'Nombre' => 'required|min:3',
+            'Nombre'    => 'required|min:3',
             'ApPaterno' => 'required|min:3',
-            'CURP' => 'required|string|size:18|unique:donantes,CURP,'.$id, // Ignora el registro actual
-            // ... agrega los demás campos que necesites validar
+            'CURP'      => 'required|string|size:18|unique:donantes,CURP,'.$id,
+            'EstadoProc' => 'required',
+            'Alcaldia'   => 'required',
         ];
 
-        $mensaje = ['required' => 'El campo :attribute es requerido'];
+        $mensaje = [
+            'required' => 'El campo :attribute es requerido',
+            'size'     => 'La CURP debe tener exactamente 18 caracteres',
+            'unique'   => 'Esta CURP ya está registrada'
+        ];
+
         $this->validate($request, $campos, $mensaje);
 
-        // 2. Preparar los datos
         $datosUsuario = $request->except(['_token', '_method']);
+        
+        $datosUsuario['Organo'] = $request->has('Organo') 
+            ? implode(', ', $request->input('Organo')) 
+            : null;
 
-        // Manejo de Órganos (igual que en store)
-        if ($request->has('Organo')) {
-            $datosUsuario['Organo'] = implode(', ', $request->input('Organo'));
-        }
-
-        // 3. Limpieza de texto (Mayúsculas y acentos)
         foreach ($datosUsuario as $key => $value) {
-            if(is_string($value)) {
+            if (is_string($value) && $key !== 'Organo') {
                 $value = str_replace(
                     ['Á','É','Í','Ó','Ú','á','é','í','ó','ú'],
                     ['A','E','I','O','U','A','E','I','O','U'],
@@ -230,8 +263,7 @@ class DonanteController extends Controller
             }
         }
 
-        // 4. Actualizar en la base de datos
-        Donante::where('id', '=', $id)->update($datosUsuario);
+        Donante::where('id', $id)->update($datosUsuario);
 
         return redirect('donador')->with('mensaje', '¡Registro actualizado con éxito!');
     }

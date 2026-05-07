@@ -4,6 +4,21 @@
 
 @section('content')
 <!-- https://youtu.be/EfzORBnuUak?list=RDtgMUtp9A50k -->
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <form action="{{ url('/donador') }}" method="GET" class="form-inline">
+                <div class="input-group">
+                    <input type="text" name="busqueda" class="form-control" placeholder="Buscar por Nombre o CURP..." value="{{ request('busqueda') }}">
+                    <div class="input-group-append">
+                        <button class="btn btn-info" type="submit">
+                            <i class="fa fa-search"></i> Buscar
+                        </button>
+                        <a href="{{ url('/donador') }}" class="btn btn-secondary">Limpiar</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="table-responsive">
         <table class="table table-striped border-2 shadow-sm">
             <thead class="text-center">
