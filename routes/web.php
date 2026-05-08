@@ -14,15 +14,21 @@
 // use Symfony\Component\Routing\Route;
 
 use App\Http\Controllers\BuscadorController;
-Route::get('/', function() {
-    //$pdf = App::make('dompdf.wrapper');
+use App\Http\Controllers\ReporteController;
 
-    $pdf = app('dompdf.wrapper');
 
-    $pdf -> loadHTML('<h1>Hola, putas. Estoy en helper APP</h1>');
+//07/05/2026-> Primero haremos el xlsx y luego el PDF
+//Librerías: DOMPDF y maatwebsite 
 
-    return $pdf -> stream();
-});
+// Route::get('/', function() {
+//     //$pdf = App::make('dompdf.wrapper');
+
+//     $pdf = app('dompdf.wrapper');
+
+//     $pdf -> loadHTML('<h1>Hola, putas. Estoy en helper APP</h1>');
+
+//     return $pdf -> stream();
+// });
 
 Route::post('/donador/fetch', 'DonanteController@fetch')->name('donante.fetch');
 
@@ -33,7 +39,7 @@ Route::resource('donador', 'DonanteController');
 Route::prefix('content')->group(function () {
     Route::view('/', 'contenido/index'); //Dashboard
     Route::view('/buscador', 'contenido/buscador'); //Buscador
-    Route::view('/reportes', 'contenido/reporte'); //Reportes de Excel. Sólo aplica a Organos
+    Route::view('/reporte', 'contenido/reporte'); //Reportes de Excel. Sólo aplica a Organos
     Route::view('/estadisticas', 'contenido/graficas'); //Muestra las gráficas. Sólo aplica a Organos
     Route::view('/buscador', 'contenido/buscador'); 
 });
@@ -43,6 +49,10 @@ Route::prefix('content')->group(function () {
 
 Route::get('buscador', 'BuscadorController@index');
 Route::post('buscador', 'BuscadorController@buscar');
+
+Route::get('content/reporte', 'ReporteController@index')->name('reporte.index');
+Route::post('content/reporte-import', 'ReporteController@import')->name('reporte.import');
+Route::get('content/reporte-export', 'ReporteController@export')->name('reporte.export');
 
 Auth::routes();
 

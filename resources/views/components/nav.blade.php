@@ -30,7 +30,7 @@
                             <a href="{{url('/content/buscador')}}" class="a">Buscador</a>
                         </li>
                         <li class="li nav-item">
-                            <a href="{{url('/content/reportes')}}" class="a">Reporte</a>
+                            <a href="{{url('/content/reporte')}}" class="a">Reporte</a>
                         </li>
                         <li class="li nav-item">
                             <a href="{{url('/')}}" class="a">Log out</a>
