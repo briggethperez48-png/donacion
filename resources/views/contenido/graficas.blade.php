@@ -5,6 +5,6 @@
 
 @section('content')
 
-        Se hace con DOMPDF
+        No se hace con DOMPDF
 
 @endsection

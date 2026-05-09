@@ -11,8 +11,7 @@ class CreateDonantesTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('donantes', function (Blueprint $datoD) {
             $datoD->increments('id');
             $datoD->string('Nombre');
@@ -35,7 +34,8 @@ class CreateDonantesTable extends Migration
             $datoD->string('Telefono');
             $datoD->string('Pregunta');
             $datoD->string('Respuesta');
-            $datoD->timestamps();
+            $datoD->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $datoD->timestamp('created_at')->useCurrent();
         });
     }
 

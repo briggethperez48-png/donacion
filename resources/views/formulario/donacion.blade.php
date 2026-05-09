@@ -206,14 +206,12 @@
                         </div>
                     @endif
                     <div class="row">
-                        {{-- SELECT 1: ESTADO --}}
                         <div class="form-group col-md-4">
                             <label for="EstadoProc" class="font-weight-bold">Estado de Procedencia</label>
                             <select name="EstadoProc" id="Entidad" data-dependent="Municipio" class="dynamic form-control input">
                                 <option value="">SELECCIONE UNO...</option>
                                 @foreach($estado_list as $estado)
                                     @php
-                                        // Normalizamos ambos para comparar "peras con peras"
                                         $dbEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($donante->EstadoProc ?? '')));
                                         $listEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($estado->Entidad)));
                                     @endphp
@@ -224,7 +222,6 @@
                             </select>
                         </div>
 
-                        {{-- SELECT 2: ALCALDÍA --}}
                         <div class="form-group col-md-4" id="MunicipioI" style="{{ old('Alcaldia', $donante->Alcaldia ?? '') ? '' : 'display:none;' }}">
                             <label for="Alcaldia" class="font-weight-bold">Alcaldía</label>
                             <select name="Alcaldia" id="Municipio" data-dependent="Localidad" class="dynamic form-control input">
@@ -232,7 +229,6 @@
                             </select>
                         </div>
 
-                        {{-- SELECT 3: COLONIA --}}
                         <div class="form-group col-md-4" id="LocalidadI" style="{{ old('Colonia', $donante->Colonia ?? '') ? '' : 'display:none;' }}">
                             <label for="Colonia" class="font-weight-bold">Colonia</label>
                             <select name="Colonia" id="Localidad" class="form-control input">

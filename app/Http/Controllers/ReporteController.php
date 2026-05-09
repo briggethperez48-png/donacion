@@ -4,45 +4,65 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\ReportesImport;
 use App\Exports\ReportesExport;
-use App\Reporte;
 use App\Donante;
-use app\Http\App\Http\Controllers\DonanteController;
+use Illuminate\Support\Facades\DB;
 
 
 class ReporteController extends Controller
 {
     public function index(Request $request) {
-        $query = trim($request->get('busqueda'));
-        $datoD['donantes']=Donante::paginate(20);
+    // 1. Cargamos la lista para los selects (siempre necesaria)
+    $estado_list = DB::table('municipiosalcaldias')
+                    ->select('ClaveEntidad', 'Entidad')
+                    ->distinct()
+                    ->orderBy('Entidad', 'asc')
+                    ->get();
 
-        $donantes = Donante::when($query, function ($filter) use ($query) {
-                return $filter->where('Nombre', 'LIKE', '%' . $query . '%')
-                            ->orWhere('ApPaterno', 'LIKE', '%' . $query . '%')
-                            ->orWhere('CURP', 'LIKE', '%' . $query . '%')
-                            ->orWhere('estadoNac', 'LIKE', '%' . $query . '%')
-                            ->orWhere('Organo', 'LIKE', '%' . $query . '%');;
-            })
-            ->orderBy('id', 'desc')
-            ->paginate(10);
+    // 2. Verificamos si hay parámetros de filtrado en la URL
+    // Excluimos 'page' para que al navegar entre páginas de la tabla no se oculte
+    $filtros = $request->except('page');
 
-        $reportes = Reporte::all();
-
-        return view('contenido.reporte', compact('reportes','donantes', 'query'), $datoD);
+    if (!empty($filtros)) {
+        $donantes = $this->filtrarDonantes($request)->paginate(15);
+        
+        // Creamos la sesión de éxito para mostrar la tabla
+        session()->now('success', 'Resultados obtenidos correctamente.');
+    } else {
+        // Si no hay filtros, mandamos una colección vacía para no cargar datos innecesarios
+        $donantes = collect(); 
     }
 
-    public function import(Request $request) {
-        $request->validate([
-            'file'=>'required||max:2024'
-        ]);
+    return view('contenido.reporte', compact('donantes', 'estado_list'));
+}
 
-        Excel::import(new ReportesImport, $request->file('file'));
+public function export(Request $request) {
+    // Enviamos el request completo al Excel
+    return Excel::download(new ReportesExport($request), 'reporte_donantes.xlsx');
+}
 
-       return back()->with('success','Felicidades!');
-    }
-
-    public function export() {
-        return Excel::download(new ReportesExport, "reporte.csv");
-    }
+// Función privada para asegurar que la Vista y el Excel vean lo mismo
+private function filtrarDonantes(Request $request) {
+    return Donante::query()
+        ->when($request->mesIni, function ($q) use ($request) {
+            return $q->where('created_at', '>=', $request->mesIni . '-01');
+        })
+        ->when($request->mesFin, function ($q) use ($request) {
+            return $q->where('created_at', '<=', $request->mesFin . '-31');
+        })
+        ->when($request->EstadoProc, function ($q) use ($request) {
+            return $q->where('EstadoProc', $request->EstadoProc);
+        })
+        ->when($request->Sexo && $request->Sexo != 'TODOS', function ($q) use ($request) {
+            return $q->where('Sexo', $request->Sexo);
+        })
+        ->when($request->Organo, function ($q) use ($request) {
+            return $q->where(function($sub) use ($request) {
+                foreach($request->Organo as $org) {
+                    $sub->orWhere('Organo', 'LIKE', '%' . $org . '%');
+                }
+            });
+        })
+        ->orderBy('id', 'desc');
+}
 }

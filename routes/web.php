@@ -31,6 +31,7 @@ use App\Http\Controllers\ReporteController;
 // });
 
 Route::post('/donador/fetch', 'DonanteController@fetch')->name('donante.fetch');
+Route::post('content/reporte/fetch', 'ReporteController@fetch')->name('reporte.fetch');
 
 Route::resource('donador', 'DonanteController');
 

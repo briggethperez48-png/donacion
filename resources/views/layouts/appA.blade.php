@@ -44,7 +44,8 @@
 
     @if(!Route::is('donador.create', 'donador.edit'))
         <section>
-            @include('components.footerGen')
+            {{--@include('components.footerGen')--}}
+            <div>El footer</div>
         </section>
         @else
             <section>
