@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Keboola\Csv\CsvReader;
 use Illuminate\Support\Facades\DB;
 
 class alcaldiaSeeder extends Seeder

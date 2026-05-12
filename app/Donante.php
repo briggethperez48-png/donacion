@@ -30,4 +30,7 @@ class Donante extends Model
             'Pregunta',
             'Respuesta'
     ];
+    public function organos() {
+        return $this->belongsToMany('App\Organo', 'relacion_o_d', 'donante_id', 'organo_id');
+    }
 }

@@ -41,7 +41,7 @@ Route::prefix('content')->group(function () {
     Route::view('/', 'contenido/index'); //Dashboard
     Route::view('/buscador', 'contenido/buscador'); //Buscador
     Route::view('/reporte', 'contenido/reporte'); //Reportes de Excel. Sólo aplica a Organos
-    Route::view('/estadisticas', 'contenido/graficas'); //Muestra las gráficas. Sólo aplica a Organos
+    //Route::view('/estadisticas', 'contenido/graficas'); //Muestra las gráficas. Sólo aplica a Organos
     Route::view('/buscador', 'contenido/buscador'); 
 });
 
@@ -54,6 +54,8 @@ Route::post('buscador', 'BuscadorController@buscar');
 Route::get('content/reporte', 'ReporteController@index')->name('reporte.index');
 Route::post('content/reporte-import', 'ReporteController@import')->name('reporte.import');
 Route::get('content/reporte-export', 'ReporteController@export')->name('reporte.export');
+
+Route::get('content/estadisticas', 'GraficasController@verGrafica'); 
 
 Auth::routes();
 

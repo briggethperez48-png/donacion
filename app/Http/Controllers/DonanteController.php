@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Donante;
+use App\Organo;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -45,18 +46,19 @@ class DonanteController extends Controller
      */
     public function create()
     {
+        $todos_los_organos = Organo::all();
         $estado_list = DB::table('municipiosalcaldias')
                         ->select('ClaveEntidad', 'Entidad')
                         ->distinct()
                         ->orderBy('Entidad', 'asc')
                         ->get();
-        return view('formulario.create')->with('estado_list'
+        return view('formulario.create', compact('todos_los_organos'))->with('estado_list'
             , $estado_list);
     }
 
     public function fetch(Request $request) {
         $select = $request->input('select');   
-        $value = trim($request->input('value')); // Limpieza de entrada
+        $value = trim($request->input('value')); 
         $dependent = $request->input('dependent');
 
         $data = DB::table('municipiosalcaldias')
@@ -68,13 +70,11 @@ class DonanteController extends Controller
 
         $output = '<option value="">SELECCIONE UNO</option>';
         foreach ($data as $row) {
-            // Limpiamos espacios y quitamos acentos del VALOR técnico
+            
             $valorTecnico = strtoupper(str_replace(
                 ['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($row->$dependent)
             ));
             
-            // El texto que ve el usuario puede quedarse con acentos si así viene del CSV,
-            // pero el VALUE debe ser plano para que la comparación de JS no falle.
             $output .= '<option value="' . $valorTecnico . '">' . $row->$dependent . '</option>';
         }
 
@@ -97,19 +97,19 @@ class DonanteController extends Controller
             'Ocupacion' => 'required', //
             'EstCiv' => 'required',
             'Estudios' => 'required',
-            'EstadoProc' => 'required', //
+            'EstadoProc' => 'required', // 
+            'Alcaldia' => 'required', 
+            'Colonia' => 'required', 
             'Religion' => 'required',
             'CURP' => [
                 'required',
                 'string',
                 'size:18',
-                'unique:donantes,CURP',
+                //'unique:donantes,CURP',
                 'regex:/^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE|CD)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/'
             ], 
             'Sexo' => 'required', 
-            'estadoNac' => 'required', 
-            'Alcaldia' => 'required', 
-            'Colonia' => 'required', 
+            'estadoNac' => 'required',
             'Donador' => 'required|in:SI,NO',
             'Organo' => 'required_if:Donador,SI|array', 
             'Referencias' => 'required|max:20',
@@ -155,43 +155,38 @@ class DonanteController extends Controller
             'Nombre' => 'required',
             'Organo' => 'required|array'
         ]);
-        $datosUsuario = request()->except('_token');
-        // dd($datosUsuario);
-        if ($request->has('Organo')) {
-            $datosUsuario['Organo'] = implode(', ', $request->input('Organo'));
-        } else {
-            $datosUsuario['Organo'] = 'NINGUNO';
+        
+        $datosUsuario = $request->except(['_token', 'Organo']);
+
+    foreach ($datosUsuario as $key => $value) {
+        if(is_string($value)){
+            $value = str_replace(
+                ['Á','É','Í','Ó','Ú','á','é','í','ó','ú'],
+                ['A','E','I','O','U','A','E','I','O','U'],
+                $value
+            );
+            $datosUsuario[$key] = strtoupper($value);
         }
-
-        foreach ($datosUsuario as $key => $value) {
-            if($key != 'email' && $key != 'password'){
-                $value = str_replace(
-                    ['Á','É','Í','Ó','Ú','á','é','í','ó','ú'],
-                    ['A','E','I','O','U','A','E','I','O','U'],
-                    $value
-                );
-
-                $datosUsuario[$key] = strtoupper($value);
-            }
-        }
-
-        // Donante::create($datosUsuario);
-        DB::table('donantes')->insert($datosUsuario);
-
-        // return view('formulario.donacion');
-        // return redirect()->route('donador');
-        return redirect('donador/create')->with('mensaje', '¡Registro guardado con éxito!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    $datosUsuario['Organo'] = 'TABLA PIVOTE';
+
+    DB::beginTransaction();
+
+    try {
+        $donante = Donante::create($datosUsuario);
+
+        if ($request->has('Organo')) {
+            $donante->organos()->attach($request->input('Organo'));
+        }
+
+        DB::commit();
+        return redirect('donador/create')->with('mensaje', '¡Registro guardado con éxito!');
+
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return back()->withErrors(['error' => 'Error al guardar: ' . $e->getMessage()])->withInput();
+    }
     }
 
     /**
@@ -202,16 +197,16 @@ class DonanteController extends Controller
      */
     public function edit($id)
     {
-        $donante = Donante::findOrFail($id);
+        $donante = Donante::with('organos')->findOrFail($id);
+        $todos_los_organos = Organo::all();
     
-        // Necesitas cargar la lista de estados igual que en el método create
         $estado_list = DB::table('municipiosalcaldias')
                         ->select('ClaveEntidad', 'Entidad')
                         ->distinct()
                         ->orderBy('Entidad', 'asc')
                         ->get();
 
-        return view('formulario.edit', compact('donante', 'estado_list'));
+        return view('formulario.edit', compact('donante', 'estado_list','todos_los_organos'));
     }
 
     /**
@@ -246,26 +241,30 @@ class DonanteController extends Controller
 
         $this->validate($request, $campos, $mensaje);
 
-        $datosUsuario = $request->except(['_token', '_method']);
-        
-        $datosUsuario['Organo'] = $request->has('Organo') 
-            ? implode(', ', $request->input('Organo')) 
-            : null;
+        $donante = Donante::findOrFail($id);
 
-        foreach ($datosUsuario as $key => $value) {
-            if (is_string($value) && $key !== 'Organo') {
-                $value = str_replace(
-                    ['Á','É','Í','Ó','Ú','á','é','í','ó','ú'],
-                    ['A','E','I','O','U','A','E','I','O','U'],
-                    $value
-                );
-                $datosUsuario[$key] = strtoupper($value);
-            }
+        $datosUsuario = $request->except(['_token', '_method', 'Organo']);
+
+    foreach ($datosUsuario as $key => $value) {
+        if (is_string($value)) {
+            $value = str_replace(
+                ['Á','É','Í','Ó','Ú','á','é','í','ó','ú'],
+                ['A','E','I','O','U','A','E','I','O','U'],
+                $value
+            );
+            $datosUsuario[$key] = strtoupper($value);
         }
+    }
 
-        Donante::where('id', $id)->update($datosUsuario);
+    $donante->update($datosUsuario);
+    
+    if ($request->has('Organo')) {
+        $donante->organos()->sync($request->input('Organo'));
+    } else {
+        $donante->organos()->detach();
+    }
 
-        return redirect('donador')->with('mensaje', '¡Registro actualizado con éxito!');
+    return redirect('donador')->with('mensaje', '¡Registro actualizado con éxito!');
     }
 
     /**

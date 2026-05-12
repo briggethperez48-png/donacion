@@ -1,4 +1,13 @@
 
+@if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <section class="margen my-4 mb-4">
     <div class="p-4 shadow m-2 mb-4">
         <div class="align-self-center mb-2 col">
@@ -275,48 +284,35 @@
                     
                     <div class="row px-3 mt-2">
                             @php 
-                                // CLAVE = Valor para la BD (Sin acento) => VALOR = Lo que ve el usuario (Con acento)
-                                $lista_organos = [
-                                    'PULMONES' => 'PULMONES',
-                                    'HUESO'    => 'HUESO',
-                                    'CORAZON'  => 'CORAZÓN',
-                                    'CORNEAS'  => 'CÓRNEAS',
-                                    'RIÑON'    => 'RIÑÓN',
-                                    'VALVULAS' => 'VÁLVULAS',
-                                    'PIEL'     => 'PIEL',
-                                    'PANCREAS' => 'PÁNCREAS',
-                                    'TENDONES' => 'TENDONES',
-                                    'HIGADO'   => 'HÍGADO'
-                                ]; 
-                                $db_organos = $donante->Organo ?? [];
-                                if (is_string($db_organos)) {
-                                    $db_organos = explode(',', $db_organos);
-                                }
-                                $organosSeleccionados = old('Organo', $db_organos);
+                                // 1. Determinamos qué órganos ya están seleccionados
+                                // Si hay 'old' (error de validación), mandamos eso primero.
+                                // Si no, si el donante existe y tiene órganos, sacamos sus IDs.
+                                // Si es nuevo, mandamos un array vacío.
+                                $seleccionados = old('Organo', isset($donante) ? $donante->organos->pluck('id')->toArray() : []);
                             @endphp
 
-                            @foreach($lista_organos as $claveBD => $nombreVisual)
+                            @foreach($todos_los_organos as $organo)
                                 <div class="col-6 col-md-3 mb-3">
                                     <div class="custom-control custom-checkbox">
                                         <input name="Organo[]" type="checkbox" 
                                             class="checkbox custom-control-input"
-                                            id="check{{ $claveBD }}" 
-                                            value="{{ $claveBD }}"
-                                            {{ (is_array($organosSeleccionados) && in_array($claveBD, $organosSeleccionados)) ? 'checked' : '' }}>
-                                        <label class="custom-control-label ml-1 font-weight-bold" for="check{{ $claveBD }}">
-                                            {{ $nombreVisual }}
+                                            id="check{{ $organo->id }}" 
+                                            value="{{ $organo->id }}"
+                                            {{ in_array($organo->id, $seleccionados) ? 'checked' : '' }}>
+                                        
+                                        <label class="custom-control-label ml-1 font-weight-bold" for="check{{ $organo->id }}">
+                                            {{ $organo->nombre }}
                                         </label>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
+                        <div>
+                            @if($errors->has('Organo'))
+                                <span class="text-danger small"><strong>{{ $errors->first('Organo') }}</strong></span>
+                            @endif
+                        </div>
                     </div>
-                    <div>
-                        @if($errors->has('Organo'))
-                            <span class="text-danger small"><strong>{{ $errors->first('Organo') }}</strong></span>
-                        @endif
-                    </div>
-                </div>
             </fieldset>
 
             <fieldset class="card mb-4 shadow-sm border-light">
