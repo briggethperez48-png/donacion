@@ -65,15 +65,16 @@ class GraficasController extends Controller {
         $valoresN = $resultadosN->pluck('total');
 
         // Para la gráfica 8
-        $resultadosN = DB::table('donantes')
-            ->select('donantes.EstadoProc')
-            ->where
-            ->groupBy('donantes.Donador')
+        $resultadosA = DB::table('relacion_o_d')
+            ->join('donantes', 'relacion_o_d.donante_id', '=', 'donantes.id')
+            ->where('donantes.EstadoProc', 'CIUDAD DE MEXICO')
+            ->select('donantes.Alcaldia', DB::raw('count(*) as total'))
+            ->groupBy('donantes.Alcaldia')
             ->orderBy('total', 'desc')
             ->get();
 
-        $labelsN = $resultadosN->pluck('Donador');
-        $valoresN = $resultadosN->pluck('total');
+        $labelsA = $resultadosA->pluck('Alcaldia');
+        $valoresA = $resultadosA->pluck('total');
 
         return view('contenido.graficas', compact(
             'labelsP', 
@@ -85,6 +86,8 @@ class GraficasController extends Controller {
             'labelsC', 
             'valoresC',
             'labelsN', 
-            'valoresN'));
+            'valoresN',
+            'labelsA', 
+            'valoresA'));
     }
 }

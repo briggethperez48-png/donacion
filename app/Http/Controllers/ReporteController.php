@@ -18,9 +18,7 @@ class ReporteController extends Controller
                     ->distinct()
                     ->orderBy('Entidad', 'asc')
                     ->get();
-
-    // 2. Verificamos si hay parámetros de filtrado en la URL
-    // Excluimos 'page' para que al navegar entre páginas de la tabla no se oculte
+                    
     $filtros = $request->except('page');
 
     if (!empty($filtros)) {

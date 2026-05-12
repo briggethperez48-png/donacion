@@ -44,6 +44,10 @@
                         <h3>Tabla: Comparación entre Donantes y No Donantes</h3>
 						<canvas id="graficaDonador"></canvas>
 					</div>
+                    <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
+                        <h3>Tabla: Alcaldía Vs Órganos</h3>
+						<canvas id="graficaAlcaldias"></canvas>
+					</div>
 
                 </section>
 
@@ -93,7 +97,7 @@
     var ctx = document.getElementById('graficaOrganosEstados').getContext('2d');
     
     var myChart = new Chart(ctx, {
-        type: 'doughnut', // Puede ser 'pie', 'doughnut', o 'bar'
+        type: 'pie', // Puede ser 'pie', 'doughnut', o 'bar'
         data: {
             labelsP: {!! $labelsP !!}, 
             datasets: [{
@@ -261,6 +265,46 @@
             datasets: [{
                 label: 'Número de Donantes',
                 data: {!! $valoresN !!},
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+					'rgba(30, 128, 63, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+					'rgba(234, 166, 158,1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+<script>
+    var ctx = document.getElementById('graficaAlcaldias').getContext('2d');
+    
+    var myChart = new Chart(ctx, {
+        type: 'polarArea', 
+        data: {
+            labelsA: {!! $labelsA !!}, 
+            datasets: [{
+                label: 'Número de Donantes',
+                data: {!! $valoresA !!},
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
