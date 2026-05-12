@@ -56,6 +56,7 @@ Route::post('content/reporte-import', 'ReporteController@import')->name('reporte
 Route::get('content/reporte-export', 'ReporteController@export')->name('reporte.export');
 
 Route::get('content/estadisticas', 'GraficasController@verGrafica'); 
+//Route::get('content/estadisticas', 'GraficasController@verGrafPolar');
 
 Auth::routes();
 

@@ -156,7 +156,9 @@ class DonanteController extends Controller
             'Organo' => 'required|array'
         ]);
         
-        $datosUsuario = $request->except(['_token', 'Organo']);
+        $datosUsuario = $request->except(['_token']);
+        $organosSeleccionados = $request->input('Organo'); // Guardamos los IDs para después
+            unset($datosUsuario['Organo']);
 
     foreach ($datosUsuario as $key => $value) {
         if(is_string($value)){
@@ -168,16 +170,16 @@ class DonanteController extends Controller
             $datosUsuario[$key] = strtoupper($value);
         }
     }
-
-    $datosUsuario['Organo'] = 'TABLA PIVOTE';
+    
 
     DB::beginTransaction();
 
     try {
+        
         $donante = Donante::create($datosUsuario);
 
-        if ($request->has('Organo')) {
-            $donante->organos()->attach($request->input('Organo'));
+        if (!empty($organosSeleccionados)) {
+            $donante->organos()->attach($organosSeleccionados);
         }
 
         DB::commit();
@@ -185,7 +187,7 @@ class DonanteController extends Controller
 
     } catch (\Exception $e) {
         DB::rollBack();
-        return back()->withErrors(['error' => 'Error al guardar: ' . $e->getMessage()])->withInput();
+        return "Error al guardar: " . $e->getMessage();
     }
     }
 

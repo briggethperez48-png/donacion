@@ -30,8 +30,7 @@ class CreateDonantesTable extends Migration
             $datoD->string('Sexo');
             $datoD->string('Donador');
             $datoD->string('Organo')
-                ->nullable()
-                ->change();
+                ->nullable();
             $datoD->string('Referencias');
             $datoD->string('Telefono');
             $datoD->string('Pregunta');
