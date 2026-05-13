@@ -6,7 +6,7 @@
 @section('content')
 
         		<section class="card-body border-1 rounded-2 shadow-sm my-3">
-                    <h4>No sé cómo voy a hacer esta cosa</h4>
+                    <!-- <h4>No sé cómo voy a hacer esta cosa</h4>
 					<h5>Dios, ayuda. Qué es una tabla pivote</h5>
 					<h6>Yupi!</h6>
 					<h6>Tablas por hacer: 
@@ -21,33 +21,61 @@
 							<li>Alcaldía Vs Órganos</li>
 						</ol>
 						<p>Usar la lógica de los reportes para la filtración por fechas</p>
-					</h6>
+					</h6> -->
+                    <div class="container-fluid px-0 my-2"> {{-- Asegura que el padre use todo el ancho --}}
+                        <div>
+                            <h4 class="font-weight-bold text-center">Lapso del la Gráfica</h4>
+                        </div>
+                        
+                        {{-- justify-content-between separa los elementos a los extremos --}}
+                        <div class="row d-flex align-items-center justify-content-between mx-0">
+                            
+                            <div class="col-auto">
+                                <p class="font-weight-bold mb-0">Del</p>
+                            </div>
+                            
+                            <div class="form-group col-md-5 mb-0"> {{-- Subimos a col-5 para que abarquen más espacio --}}
+                                <input name="mesIni" type="month" class="form-control input" id="mesIni" value="{{ request('mesIni') }}">
+                            </div>
+                            
+                            <div class="col-auto">
+                                <p class="font-weight-bold mb-0">al</p>
+                            </div>
+                            
+                            <div class="form-group col-md-5 mb-0">
+                                <input name="mesFin" type="month" class="form-control input" id="mesFin" value="{{ request('mesFin') }}">
+                            </div>
+                            
+                        </div> 
+                    </div>
 
 									
-                    <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
-                        <h3>Tabla: Estados Vs Órganos</h3>
-						<canvas id="graficaOrganosEstados"></canvas>
-					</div>
-                    <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
-                        <h3>Tabla: Sexo Vs Óganos</h3>
-						<canvas id="graficaOrganosSexo"></canvas>
-					</div>
-					<div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
-                        <h3>Tabla: CantidadGen Vs Órganos</h3>
-						<canvas id="graficaOrganos"></canvas>
-					</div>
-                    <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
-                        <h3>Tabla: Estados Vs Cantidad de Registros</h3>
-						<canvas id="graficaCantidadEstado"></canvas>
-					</div>
-                    <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
-                        <h3>Tabla: Comparación entre Donantes y No Donantes</h3>
-						<canvas id="graficaDonador"></canvas>
-					</div>
-                    <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
-                        <h3>Tabla: Alcaldía Vs Órganos</h3>
-						<canvas id="graficaAlcaldias"></canvas>
-					</div>
+                    <section class="justify-content-center">
+                        <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
+                            <h3>Tabla: Estados Vs Órganos</h3>
+                            <canvas id="graficaOrganosEstados"></canvas>
+                        </div>
+                        <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
+                            <h3>Tabla: Sexo Vs Óganos</h3>
+                            <canvas id="graficaOrganosSexo"></canvas>
+                        </div>
+                        <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
+                            <h3>Tabla: CantidadGen Vs Órganos</h3>
+                            <canvas id="graficaOrganos"></canvas>
+                        </div>
+                        <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
+                            <h3>Tabla: Estados Vs Cantidad de Registros</h3>
+                            <canvas id="graficaCantidadEstado"></canvas>
+                        </div>
+                        <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
+                            <h3>Tabla: Comparación entre Donantes y No Donantes</h3>
+                            <canvas id="graficaDonador"></canvas>
+                        </div>
+                        <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
+                            <h3>Tabla: Alcaldía Vs Órganos</h3>
+                            <canvas id="graficaAlcaldias"></canvas>
+                        </div>
+                    </section>
 
                 </section>
 
