@@ -17,6 +17,7 @@ class ReportesExport implements FromQuery, WithHeadings {
     public function query() {
         // Aplicamos exactamente los mismos filtros que en el controlador
         return Donante::query()
+            ->with('organos')
             ->when($this->request->mesIni, function ($q) {
                 return $q->where('created_at', '>=', $this->request->mesIni . '-01');
             })
@@ -27,12 +28,12 @@ class ReportesExport implements FromQuery, WithHeadings {
                 return $q->where('Sexo', $this->request->Sexo);
             })
             ->when($this->request->Organo, function ($q) {
-                return $q->where(function($sub) {
-                    foreach($this->request->Organo as $org) {
-                        $sub->orWhere('Organo', 'LIKE', '%' . $org . '%');
-                    }
+                return $q->whereHas('organos', function($sub) {
+                    // Filtramos por el nombre del órgano (el texto que viene del form)
+                    $sub->whereIn('nombre', (array)$this->request->Organo);
                 });
-            });
+            })
+            ->orderBy('id', 'desc');
     }
 
     public function headings(): array {

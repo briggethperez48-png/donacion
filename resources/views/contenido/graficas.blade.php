@@ -22,32 +22,51 @@
 						</ol>
 						<p>Usar la lógica de los reportes para la filtración por fechas</p>
 					</h6> -->
-                    <div class="container-fluid px-0 my-2"> {{-- Asegura que el padre use todo el ancho --}}
-                        <div>
-                            <h4 class="font-weight-bold text-center">Lapso del la Gráfica</h4>
-                        </div>
-                        
-                        {{-- justify-content-between separa los elementos a los extremos --}}
-                        <div class="row d-flex align-items-center justify-content-between mx-0">
-                            
-                            <div class="col-auto">
-                                <p class="font-weight-bold mb-0">Del</p>
-                            </div>
-                            
-                            <div class="form-group col-md-5 mb-0"> {{-- Subimos a col-5 para que abarquen más espacio --}}
-                                <input name="mesIni" type="month" class="form-control input" id="mesIni" value="{{ request('mesIni') }}">
-                            </div>
-                            
-                            <div class="col-auto">
-                                <p class="font-weight-bold mb-0">al</p>
-                            </div>
-                            
-                            <div class="form-group col-md-5 mb-0">
-                                <input name="mesFin" type="month" class="form-control input" id="mesFin" value="{{ request('mesFin') }}">
-                            </div>
-                            
-                        </div> 
-                    </div>
+                        <form action="{{ route('estadisticas.verGraficas') }}" method="GET" enctype="multipart/form-data">
+                                                <!-- Fechas -->
+                                        <div class="container-fluid px-0 my-2"> {{-- Asegura que el padre use todo el ancho --}}
+                                            <div>
+                                                <h4 class="font-weight-bold text-center">Lapso del Reporte</h4>
+                                            </div>
+                                            
+                                            {{-- justify-content-between separa los elementos a los extremos --}}
+                                            <div class="row d-flex align-items-center justify-content-between mx-0">
+                                                
+                                                <div class="col-auto">
+                                                    <p class="font-weight-bold mb-0">Del</p>
+                                                </div>
+                                                
+                                                <div class="form-group col-md-5 mb-0"> {{-- Subimos a col-5 para que abarquen más espacio --}}
+                                                    <input name="mesIni" type="month" class="form-control input" id="mesIni" value="{{ request('mesIni') }}">
+                                                </div>
+                                                
+                                                <div class="col-auto">
+                                                    <p class="font-weight-bold mb-0">al</p>
+                                                </div>
+                                                
+                                                <div class="form-group col-md-5 mb-0">
+                                                    <input name="mesFin" type="month" class="form-control input" id="mesFin" value="{{ request('mesFin') }}">
+                                                </div>
+                                                
+                                            </div> 
+                                        </div>
+                                        <div class="mb-2">
+                                                <div class="mb-1 d-flex flex-column flex-md-row justify-content-md-between align-items-center">
+                                                    <div class="m-2 w-100 w-md-auto text-center">
+                                                            <button type="submit" class="btn btnSc btn-lg px-5 shadow text-uppercase w-100 w-md-auto">
+                                                                Filtrar
+                                                            </button>
+                                                    </div>
+
+                                                    <div class="m-2 w-100 w-md-auto text-center">
+                                                            <a href="{{ url('/content/estadisticas') }}" 
+                                                                    class="btn btn-secondary btn-lg px-5 shadow text-light w-100 w-md-auto">
+                                                                    Limpiar
+                                                            </a>
+                                                    </div>
+                                                </div>
+                                        </div>
+                        </form>
 
 									
                     <section class="justify-content-center">
@@ -125,12 +144,12 @@
     var ctx = document.getElementById('graficaOrganosEstados').getContext('2d');
     
     var myChart = new Chart(ctx, {
-        type: 'pie', // Puede ser 'pie', 'doughnut', o 'bar'
+        type: 'pie', 
         data: {
-            labelsP: {!! $labelsP !!}, 
+            labelsP: {!! json_encode($labelsP) !!}, 
             datasets: [{
-                label: 'Número de Donantes',
-                data: {!! $valoresP !!},
+                label: 'Número de Donantes', 
+                data: {!! json_encode($valoresP) !!},
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -173,16 +192,16 @@
                 label: 'Número de Donantes',
                 data: {!! $valoresS !!},
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
                     'rgba(255, 206, 86, 0.2)',
                     'rgba(75, 192, 192, 0.2)',
                     'rgba(153, 102, 255, 0.2)',
 					'rgba(30, 128, 63, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
                     'rgba(255, 206, 86, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(153, 102, 255, 1)',

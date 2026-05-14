@@ -175,7 +175,15 @@
                                                                 <td>{{$dato->Ocupacion}}</td>
                                                                 <td>{{$dato->EstadoProc}}</td>
                                                                 <td>{{$domicilio}}</td>
-                                                                <td>{{$dato->Organo}}</td>
+                                                                <td>
+                                                                    @if($dato->organos->count() > 0)
+																		@foreach($dato->organos as $organo)
+																				{{ $organo->nombre }}
+																		@endforeach
+																	@else
+																		NINGUNO
+																	@endif
+                                                                </td>
                                                                 <td>{{$dato->Telefono}}</td>
                                                         </tr>
                                                         @endforeach
@@ -208,7 +216,6 @@
                     var _token = $('input[name="_token"]').val();
 
                     if (value != '') {
-                        // Mostrar el contenedor del siguiente select
                         $('#' + dependent + 'I').show();
 
                         $.ajax({
@@ -221,17 +228,12 @@
                                 dependent: dependent
                             },
                             success: function(result) {
-                                // Llenar el select con el HTML que manda el controlador
                                 $('#' + dependent).html(result);
 
-                                // SI estamos en edición y tenemos un valor guardado
                                 if (valorParaSeleccionar) {
-                                    // Seleccionamos el valor (quitando espacios por si acaso)
                                     $('#' + dependent).val(valorParaSeleccionar.trim());
 
-                                    // Si el que acabamos de llenar también tiene un hijo (ej. Municipio -> Localidad)
                                     if ($('#' + dependent).hasClass('dynamic')) {
-                                        // Disparamos la carga del siguiente nivel
                                         cargarDependiente($('#' + dependent), "{{ old('Colonia', $donante->Colonia ?? '') }}");
                                     }
                                 }
@@ -240,9 +242,7 @@
                     }
                 }
 
-                // 2. Evento cuando cambias un select manualmente
                 $('.dynamic').change(function(){
-                    // Si cambias el estado, reseteamos la colonia
                     if($(this).attr("id") == "Entidad") {
                         $('#Localidad').html('<option value="">-</option>');
                         $('#LocalidadI').hide();

@@ -19,7 +19,8 @@ class DonanteController extends Controller
         $query = trim($request->get('busqueda'));
 
         // Si hay búsqueda, filtramos; si no, traemos todos
-        $donantes = Donante::when($query, function ($filter) use ($query) {
+        $donantes = Donante::with('organos')
+                            ->when($query, function ($filter) use ($query) {
                 return $filter->where('Nombre', 'LIKE', '%' . $query . '%')
                             ->orWhere('ApPaterno', 'LIKE', '%' . $query . '%')
                             ->orWhere('CURP', 'LIKE', '%' . $query . '%')
@@ -170,7 +171,6 @@ class DonanteController extends Controller
             $datosUsuario[$key] = strtoupper($value);
         }
     }
-    
 
     DB::beginTransaction();
 
@@ -230,7 +230,7 @@ class DonanteController extends Controller
         $campos = [
             'Nombre'    => 'required|min:3',
             'ApPaterno' => 'required|min:3',
-            'CURP'      => 'required|string|size:18|unique:donantes,CURP,'.$id,
+            'CURP'      => 'required|string|size:18',
             'EstadoProc' => 'required',
             'Alcaldia'   => 'required',
         ];

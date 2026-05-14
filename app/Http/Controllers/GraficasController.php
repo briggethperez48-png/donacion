@@ -7,87 +7,67 @@ use Illuminate\Support\Facades\DB;
 use App\Organo;
 
 class GraficasController extends Controller {
-    // public function verGrafica() {
-    //     $organos = Organo::withCount('donantes')->get();
+    public function verGraficas(Request $request) {
+        $mesIni = $request->get('mesIni');
+        $mesFin = $request->get('mesFin');
 
-    //     $labels = $organos->pluck('nombre');
-    //     $valores = $organos->pluck('donantes_count'); 
-
-    //     return view('contenido.graficas', compact('labels', 'valores'));
-    // }
-    public function verGrafica() {
-        //Para la gráfica 1
-        $resultados = DB::table('relacion_o_d')
-            ->join('donantes', 'relacion_o_d.donante_id', '=', 'donantes.id')
-            ->select('donantes.EstadoProc', DB::raw('count(*) as total'))
-            ->groupBy('donantes.EstadoProc')
-            ->orderBy('total', 'desc')
-            ->get();
-
-        $labelsP = $resultados->pluck('EstadoProc');
-        $valoresP = $resultados->pluck('total');
-
-        // Para la gráfica 2
-        $resultadosS = DB::table('relacion_o_d')
-            ->join('donantes', 'relacion_o_d.donante_id', '=', 'donantes.id')
-            ->select('donantes.Sexo', DB::raw('count(*) as total'))
-            ->groupBy('donantes.Sexo')
-            ->orderBy('total', 'desc')
-            ->get();
-
-        $labelsS = $resultadosS->pluck('Sexo');
-        $valoresS = $resultadosS->pluck('total');
         
-        //Para la gráfica 3
-        $organos = Organo::withCount('donantes')->get();
+        $filtrarPorFecha = function($query) use ($mesIni, $mesFin) {
+            return $query->when($mesIni, function($q) use ($mesIni) {
+                $q->where('donantes.created_at', '>=', $mesIni . '-01');
+            })->when($mesFin, function($q) use ($mesFin) {
+                $q->where('donantes.created_at', '<=', $mesFin . '-31');
+            });
+        };
 
-        $labels = $organos->pluck('nombre');
-        $valores = $organos->pluck('donantes_count');
+        // Gráficas 1, 2 y 8 (Usan Join)
+        $baseJoin = DB::table('relacion_o_d')
+            ->join('donantes', 'relacion_o_d.donante_id', '=', 'donantes.id');
 
-        // Para la gráfica 6
-        $resultadosC = DB::table('donantes')
+        $resultadosP = $filtrarPorFecha(clone $baseJoin)
             ->select('donantes.EstadoProc', DB::raw('count(*) as total'))
-            ->groupBy('donantes.EstadoProc')
-            ->orderBy('total', 'desc')
-            ->get();
+            ->groupBy('donantes.EstadoProc')->orderBy('total', 'desc')->get();
 
-        $labelsC = $resultadosC->pluck('EstadoProc');
-        $valoresC = $resultadosC->pluck('total');
+        $resultadosS = $filtrarPorFecha(clone $baseJoin)
+            ->select('donantes.Sexo', DB::raw('count(*) as total'))
+            ->groupBy('donantes.Sexo')->get();
 
-        // Para la gráfica 7
-        $resultadosN = DB::table('donantes')
-            ->select('donantes.Donador', DB::raw('count(*) as total'))
-            ->groupBy('donantes.Donador')
-            ->orderBy('total', 'desc')
-            ->get();
-
-        $labelsN = $resultadosN->pluck('Donador');
-        $valoresN = $resultadosN->pluck('total');
-
-        // Para la gráfica 8
-        $resultadosA = DB::table('relacion_o_d')
-            ->join('donantes', 'relacion_o_d.donante_id', '=', 'donantes.id')
+        $resultadosA = $filtrarPorFecha(clone $baseJoin)
             ->where('donantes.EstadoProc', 'CIUDAD DE MEXICO')
             ->select('donantes.Alcaldia', DB::raw('count(*) as total'))
             ->groupBy('donantes.Alcaldia')
-            ->orderBy('total', 'desc')
             ->get();
 
-        $labelsA = $resultadosA->pluck('Alcaldia');
-        $valoresA = $resultadosA->pluck('total');
+        // Gráfica 3: Órganos (Eloquent con filtro interno)
+        $organos = Organo::withCount(['donantes' => function($q) use ($mesIni, $mesFin) {
+            $q->when($mesIni, fn($query) => $query->where('donantes.created_at', '>=', $mesIni . '-01'))
+            ->when($mesFin, fn($query) => $query->where('donantes.created_at', '<=', $mesFin . '-31'));
+        }])->get();
 
-        return view('contenido.graficas', compact(
-            'labelsP', 
-            'valoresP', 
-            'labels', 
-            'valores',
-            'labelsS', 
-            'valoresS',
-            'labelsC', 
-            'valoresC',
-            'labelsN', 
-            'valoresN',
-            'labelsA', 
-            'valoresA'));
+        // Gráficas 6 y 7 (Directo a tabla donantes)
+        $queryDonantes = DB::table('donantes');
+
+        $resultadosC = $filtrarPorFecha(clone $queryDonantes)
+            ->select('EstadoProc', DB::raw('count(*) as total'))
+            ->groupBy('EstadoProc')->get();
+
+        $resultadosN = $filtrarPorFecha(clone $queryDonantes)
+            ->select('Donador', DB::raw('count(*) as total'))
+            ->groupBy('Donador')->get();
+
+        return view('contenido.graficas', [
+            'labelsP' => $resultadosP->pluck('EstadoProc'),
+            'valoresP' => $resultadosP->pluck('total'),
+            'labelsS' => $resultadosS->pluck('Sexo'),
+            'valoresS' => $resultadosS->pluck('total'),
+            'labels'  => $organos->pluck('nombre'),
+            'valores' => $organos->pluck('donantes_count'),
+            'labelsC' => $resultadosC->pluck('EstadoProc'),
+            'valoresC' => $resultadosC->pluck('total'),
+            'labelsN' => $resultadosN->pluck('Donador'),
+            'valoresN' => $resultadosN->pluck('total'),
+            'labelsA' => $resultadosA->pluck('Alcaldia'),
+            'valoresA' => $resultadosA->pluck('total'),
+        ]);
     }
 }

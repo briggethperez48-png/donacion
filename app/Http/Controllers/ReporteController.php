@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\DB;
 class ReporteController extends Controller
 {
     public function index(Request $request) {
-    // 1. Cargamos la lista para los selects (siempre necesaria)
     $estado_list = DB::table('municipiosalcaldias')
                     ->select('ClaveEntidad', 'Entidad')
                     ->distinct()
@@ -21,14 +20,16 @@ class ReporteController extends Controller
                     
     $filtros = $request->except('page');
 
+    $donantes = collect();
+
     if (!empty($filtros)) {
+        // filtrarDonantes ya trae el "with('organos')", así que esto es eficiente
         $donantes = $this->filtrarDonantes($request)->paginate(15);
         
-        // Creamos la sesión de éxito para mostrar la tabla
+        // Importante: para que la paginación no pierda los filtros al dar clic a "Siguiente"
+        $donantes->appends($request->all());
+        
         session()->now('success', 'Resultados obtenidos correctamente.');
-    } else {
-        // Si no hay filtros, mandamos una colección vacía para no cargar datos innecesarios
-        $donantes = collect(); 
     }
 
     return view('contenido.reporte', compact('donantes', 'estado_list'));
@@ -41,7 +42,7 @@ public function export(Request $request) {
 
 // Función privada para asegurar que la Vista y el Excel vean lo mismo
 private function filtrarDonantes(Request $request) {
-    return Donante::query()
+    return Donante::with('organos') // Cargamos la relación para el reporte
         ->when($request->mesIni, function ($q) use ($request) {
             return $q->where('created_at', '>=', $request->mesIni . '-01');
         })
@@ -54,11 +55,11 @@ private function filtrarDonantes(Request $request) {
         ->when($request->Sexo && $request->Sexo != 'TODOS', function ($q) use ($request) {
             return $q->where('Sexo', $request->Sexo);
         })
+        // NUEVA LÓGICA PARA LA TABLA PIVOTE
         ->when($request->Organo, function ($q) use ($request) {
-            return $q->where(function($sub) use ($request) {
-                foreach($request->Organo as $org) {
-                    $sub->orWhere('Organo', 'LIKE', '%' . $org . '%');
-                }
+            return $q->whereHas('organos', function($sub) use ($request) {
+                // Filtra donantes que tengan cualquiera de los órganos seleccionados
+                $sub->whereIn('nombre', $request->Organo); 
             });
         })
         ->orderBy('id', 'desc');
