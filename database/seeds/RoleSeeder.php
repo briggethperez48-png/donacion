@@ -20,5 +20,10 @@ class RoleSeeder extends Seeder
         $role4 = Role::create(['name'=>'Reader']);
 
         Permission::create(['name'=>'Dashboard']);
+        Permission::create(['name'=>'GestionOrg']);
+        Permission::create(['name'=>'GestionUsers']);
+        Permission::create(['name'=>'Reportes']);
+        Permission::create(['name'=>'Buscador']);
+        Permission::create(['name'=>'Estadisticas']);
     }
 }
