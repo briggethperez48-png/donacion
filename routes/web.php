@@ -32,6 +32,7 @@ use App\Http\Controllers\ReporteController;
 
 Route::post('/donador/fetch', 'DonanteController@fetch')->name('donante.fetch');
 Route::post('content/reporte/fetch', 'ReporteController@fetch')->name('reporte.fetch');
+Route::post('content/buscador/fetch', 'BuscadorController@fetch')->name('buscador.fetch');
 
 Route::resource('donador', 'DonanteController');
 
@@ -45,14 +46,11 @@ Route::prefix('content')->group(function () {
     Route::view('/buscador', 'contenido/buscador'); 
 });
 
-//Route::get('buscador', [BuscadorController::class, 'index']);
-//Route::post('buscador', [BuscadorController::class, 'buscar']);
-
-Route::get('buscador', 'BuscadorController@index');
-Route::post('buscador', 'BuscadorController@buscar');
+Route::get('content/buscador', 'BuscadorController@index')->name('buscador.index');
+Route::post('content/buscador', 'BuscadorController@buscar');
 
 Route::get('content/reporte', 'ReporteController@index')->name('reporte.index');
-Route::post('content/reporte-import', 'ReporteController@import')->name('reporte.import');
+// Route::post('content/reporte-import', 'ReporteController@import')->name('reporte.import');
 Route::get('content/reporte-export', 'ReporteController@export')->name('reporte.export');
 
 Route::get('content/estadisticas', 'GraficasController@verGraficas')->name('estadisticas.verGraficas'); 

@@ -6,7 +6,7 @@
 <!-- https://youtu.be/EfzORBnuUak?list=RDtgMUtp9A50k -->
     <section class="contentGestion">
         <div class="row mb-3">
-            <div class="col-md-12">
+            <div class="col-md-12 m-3">
                 <form action="{{ url('/donador') }}" method="GET" class="form-inline">
                     <div class="input-group">
                         <input type="text" name="busqueda" class="form-control" placeholder="Buscar por Nombre o CURP..." value="{{ request('busqueda') }}">

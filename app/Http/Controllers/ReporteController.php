@@ -12,28 +12,51 @@ use Illuminate\Support\Facades\DB;
 class ReporteController extends Controller
 {
     public function index(Request $request) {
-    $estado_list = DB::table('municipiosalcaldias')
-                    ->select('ClaveEntidad', 'Entidad')
-                    ->distinct()
-                    ->orderBy('Entidad', 'asc')
-                    ->get();
-                    
-    $filtros = $request->except('page');
+        $estado_list = DB::table('municipiosalcaldias')
+                        ->select('ClaveEntidad', 'Entidad')
+                        ->distinct()
+                        ->orderBy('Entidad', 'asc')
+                        ->get();
+                        
+        $filtros = $request->except('page');
 
-    $donantes = collect();
+        $donantes = collect();
 
-    if (!empty($filtros)) {
-        // filtrarDonantes ya trae el "with('organos')", así que esto es eficiente
-        $donantes = $this->filtrarDonantes($request)->paginate(15);
-        
-        // Importante: para que la paginación no pierda los filtros al dar clic a "Siguiente"
-        $donantes->appends($request->all());
-        
-        session()->now('success', 'Resultados obtenidos correctamente.');
+        if (!empty($filtros)) {
+            $donantes = $this->filtrarDonantes($request)->paginate(15);
+            
+            $donantes->appends($request->all());
+            
+            session()->now('success', 'Resultados obtenidos correctamente.');
+        }
+
+        return view('contenido.reporte', compact('donantes', 'estado_list'));
     }
 
-    return view('contenido.reporte', compact('donantes', 'estado_list'));
-}
+    public function fetch(Request $request) {
+        $select = $request->input('select');   
+        $value = trim($request->input('value')); 
+        $dependent = $request->input('dependent');
+
+        $data = DB::table('municipiosalcaldias')
+                ->where($select, $value)
+                ->select($dependent)
+                ->distinct()
+                ->orderBy($dependent, 'asc')
+                ->get();
+
+        $output = '<option value="">SELECCIONE UNO</option>';
+        foreach ($data as $row) {
+            
+            $valorTecnico = strtoupper(str_replace(
+                ['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($row->$dependent)
+            ));
+            
+            $output .= '<option value="' . $valorTecnico . '">' . $row->$dependent . '</option>';
+        }
+
+        return response()->json($output);
+    }
 
 public function export(Request $request) {
     // Enviamos el request completo al Excel

@@ -7,7 +7,8 @@
                 <div class="mb-4">
                     <h1>Reportes de Donantes</h1>
                 </div>
-                <form action="{{ route('reporte.index') }}" method="GET" enctype="multipart/form-data">
+                <form action="{{ url('/content/reporte') }}" method="GET" enctype="multipart/form-data">
+					{{ csrf_field() }}
                                         <!-- Fechas -->
                                 <div class="container-fluid px-0 my-2"> {{-- Asegura que el padre use todo el ancho --}}
                                     <div>
@@ -38,27 +39,37 @@
                                         <!-- Domicilio y Sexo-->
                                 <div class="row">
                                         <div class="form-group col-md-4">
-                                                <label for="EstadoProc" class="font-weight-bold">Estado de Procedencia</label>
-                                                <select name="EstadoProc" id="Entidad" data-dependent="Municipio" class="dynamic form-control input">
-                                                        <option value="">SELECCIONE UNO...</option>
-                                                        @foreach($estado_list as $estado)
-                                                        @php
-                                                                $dbEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($donante->EstadoProc ?? '')));
-                                                                $listEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($estado->Entidad)));
-                                                        @endphp
-                                                        <option value="{{ $listEstado }}" {{ $dbEstado == $listEstado ? 'selected' : '' }}>
-                                                                {{ $estado->Entidad }}
-                                                        </option>
-                                                        @endforeach
-                                                </select>
-                                        </div>
+											<label for="EstadoProc" class="font-weight-bold">Estado de Procedencia</label>
+											<select name="EstadoProc" id="Entidad" data-dependent="Municipio" class="dynamic form-control input">
+												<option value="">SELECCIONE UNO...</option>
+												@foreach($estado_list as $estado)
+													@php
+														$dbEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($donante->EstadoProc ?? '')));
+														$listEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($estado->Entidad)));
+													@endphp
+													<option value="{{ $listEstado }}" {{ $dbEstado == $listEstado ? 'selected' : '' }}>
+														{{ $estado->Entidad }}
+													</option>
+												@endforeach
+											</select>
+										</div>
 
-                                        <div class="form-group col-md-4" id="MunicipioI">
-                                                <label for="Alcaldia" class="font-weight-bold">Alcaldía</label>
-                                                <select name="Alcaldia" id="Municipio" class="form-control input">
-                                                        <option value="">-</option>
-                                                </select>
-                                        </div>
+										<div class="form-group col-md-4" id="MunicipioI" style="{{ old('Alcaldia', $donante->Alcaldia ?? '') ? '' : 'display:none;' }}">
+											<label for="Alcaldia" class="font-weight-bold">Alcaldía</label>
+											<select name="Alcaldia" id="Municipio" data-dependent="Localidad" class="dynamic form-control input">
+												<option value="">-</option>
+											</select>
+										</div>
+
+										<div class="form-group col-md-4" id="LocalidadI" style="{{ old('Colonia', $donante->Colonia ?? '') ? '' : 'display:none;' }}">
+											<label for="Colonia" class="font-weight-bold">Colonia</label>
+											<select name="Colonia" id="Localidad" class="form-control input">
+												<option value="">-</option>
+											</select>
+										</div>
+
+
+
                                         <div class="form-group col-md-4">
                                                 <label for="Sexo" class="font-weight-bold">Sexo</label>
                                                 <select name="Sexo" id="Sexo" class="form-control input">
@@ -219,7 +230,7 @@
                         $('#' + dependent + 'I').show();
 
                         $.ajax({
-                            url: "{{ route('donante.fetch') }}",
+                            url: "{{ route('reporte.fetch') }}",
                             method: "POST",
                             data: {
                                 select: selectID, 
@@ -228,12 +239,17 @@
                                 dependent: dependent
                             },
                             success: function(result) {
+                                // Llenar el select con el HTML que manda el controlador
                                 $('#' + dependent).html(result);
 
+                                // SI estamos en edición y tenemos un valor guardado
                                 if (valorParaSeleccionar) {
+                                    // Seleccionamos el valor (quitando espacios por si acaso)
                                     $('#' + dependent).val(valorParaSeleccionar.trim());
 
+                                    // Si el que acabamos de llenar también tiene un hijo (ej. Municipio -> Localidad)
                                     if ($('#' + dependent).hasClass('dynamic')) {
+                                        // Disparamos la carga del siguiente nivel
                                         cargarDependiente($('#' + dependent), "{{ old('Colonia', $donante->Colonia ?? '') }}");
                                     }
                                 }
@@ -249,6 +265,7 @@
                     }
                     cargarDependiente(this);
                 });
+
                 var entidadYaSeleccionada = $('#Entidad').val();
                 
                 if(entidadYaSeleccionada != '') {
