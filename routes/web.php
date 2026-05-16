@@ -35,11 +35,12 @@ Route::post('content/reporte/fetch', 'ReporteController@fetch')->name('reporte.f
 Route::post('content/buscador/fetch', 'BuscadorController@fetch')->name('buscador.fetch');
 
 Route::resource('donador', 'DonanteController');
+Route::resource('user', 'UserController');
 
 //Route::view('/avisoprivacidad', 'aviso'); 
 
 Route::prefix('content')->group(function () {
-    Route::view('/', 'contenido/index'); //Dashboard
+    Route::view('/', 'contenido/dashboard'); //Dashboard
     Route::view('/buscador', 'contenido/buscador'); //Buscador
     Route::view('/reporte', 'contenido/reporte'); //Reportes de Excel. Sólo aplica a Organos
     //Route::view('/estadisticas', 'contenido/graficas'); //Muestra las gráficas. Sólo aplica a Organos

@@ -21,7 +21,7 @@
                             <a href="{{url('/donador')}}" class="a">Gestión de Donantes</a>
                         </li>
                         <li class="li nav-item">
-                            <a href="{{url('/')}}" class="a">Gestión de Usuarios</a>
+                            <a href="{{url('/user')}}" class="a">Gestión de Usuarios</a>
                         </li>
                         <li class="li nav-item">
                             <a href="{{url('/content/estadisticas')}}" class="a">Estadísticas</a>
