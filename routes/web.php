@@ -15,6 +15,7 @@
 
 use App\Http\Controllers\BuscadorController;
 use App\Http\Controllers\ReporteController;
+use App\Http\Controllers\Auth\RegisterController;
 
 
 //07/05/2026-> Primero haremos el xlsx y luego el PDF
@@ -56,6 +57,6 @@ Route::get('content/reporte-export', 'ReporteController@export')->name('reporte.
 
 Route::get('content/estadisticas', 'GraficasController@verGraficas')->name('estadisticas.verGraficas'); 
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');

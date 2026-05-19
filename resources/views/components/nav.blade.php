@@ -1,8 +1,8 @@
 <!-- php artisan serve --host=0.0.0.0 --port=8080 -->
-<section class="menu">
+    <section class="menu">
         <div>
             <nav class="nav navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Qué miedo. Casi me empiezo a preocupar por el style</a>
+                <a class="navbar-brand" href="#">Ya casiiii</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -15,7 +15,7 @@
                             <a href="{{url('/donador/create')}}" class="a">Registro de Donante</a>
                         </li>
                         <li class="li nav-item">
-                            <a href="{{url('/register')}}" class="a">Registro de Usuario</a>
+                            <a href="{{url('/user/create')}}" class="a">Registro de Usuario</a>
                         </li>
                         <li class="li nav-item">
                             <a href="{{url('/donador')}}" class="a">Gestión de Donantes</a>

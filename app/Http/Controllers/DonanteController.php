@@ -30,7 +30,7 @@ class DonanteController extends Controller
             ->orderBy('id', 'desc')
             ->paginate(10);
 
-        // Es vital usar appends para que al cambiar de página no se pierda la búsqueda
+        
         $donantes->appends(['busqueda' => $query]);
 
         $datoD['donantes']=Donante::paginate(20);

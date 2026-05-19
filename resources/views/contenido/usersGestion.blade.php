@@ -11,6 +11,9 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
+                        <th scope="col">Área</th>
+                        <th scope="col">Fecha de Alta</th>
+                        <th scope="col">Estado</th>
                         <th scope="col">Correo Electrónico</th>
                         <th scope="col">Acciones</th>
                     </tr>
@@ -18,8 +21,14 @@
                 <tbody class="text-justify text-center">
                         @foreach($users as $user)
                             <tr>
+                                @php 
+                                    $nomCom = $user->nombre . ' ' . $user->apPaterno . ' ' . $user->apMaterno;
+                                @endphp
                                 <td>{{$user->id}}</td>
-                                <td>{{$user->name}}</td>
+                                <td>{{$nomCom}}</td>
+                                <td>{{$user->area}}</td>
+                                <td>{{$user->fechaAlta}}</td>
+                                <td>{{$user->status}}</td>
                                 <td>{{$user->email}}</td>
                                 <td class="align-content-center">
                                     <div class="d-flex">
