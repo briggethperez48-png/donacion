@@ -34,8 +34,8 @@
     @if(!Route::is('donador.create', 'donador.edit'))
         
         <section>
-            
             @include('components.nav')
+            @include('components.headerGen')
         </section>
     @endif
 
