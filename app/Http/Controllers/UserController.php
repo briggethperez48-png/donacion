@@ -3,16 +3,47 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use Spatie\Permission\Models\Role;
+
 use App\User;
 use App\Area;
-use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller 
 {
-    public function index() {
-        $areas = Area::all();
-        $users = User::paginate(10);
-        return view('contenido.usersGestion', compact('users','areas'));
+    public function index(Request $request) {
+
+        $query = trim($request->get('buscar'));
+
+        if($request->deleted == 1) {
+            $users = User::onlyTrashed()->with('relacionArea')
+                            ->when($query, function ($filter) use ($query) {
+                        return $filter->where('nombre', 'LIKE', '%' . $query . '%')
+                            ->orWhere('apPaterno', 'LIKE', '%' . $query . '%')
+                            ->orWhere('apMaterno', 'LIKE', '%' . $query . '%');;
+                            })
+                            ->orderBy('id')
+                            ->paginate(5);
+            $users->appends(['buscar' => $query]);
+
+            $datoU['users']=User::paginate(5);
+        } else {
+            $users = User::with('relacionArea')
+                            ->when($query, function ($filter) use ($query) {
+                        return $filter->where('nombre', 'LIKE', '%' . $query . '%')
+                            ->orWhere('apPaterno', 'LIKE', '%' . $query . '%')
+                            ->orWhere('apMaterno', 'LIKE', '%' . $query . '%');;
+                            })
+                            ->orderBy('id')
+                            ->paginate(5);
+            $users->appends(['buscar' => $query]);
+
+            $datoU['users']=User::paginate(5);
+        }
+    
+        return view('contenido.usersGestion', compact('users', 'query'), $datoU);
     }
     
     public function create() {
@@ -70,7 +101,7 @@ class UserController extends Controller
         }
 
         // Encriptar la contraseña antes de guardar
-        $datosUsuario['contraseña'] = Hash::make($datosUsuario['contraseña']);
+        //$datosUsuario['contraseña'] = Hash::make($datosUsuario['contraseña']);
 
         // AHORA SÍ SE GUARDA EN LA BASE DE DATOS
         User::create($datosUsuario);
@@ -80,9 +111,10 @@ class UserController extends Controller
 
     public function edit($id)
     {
+        $roles = Role::all();
         $user = User::findOrFail($id);
         $areas = Area::all();
-        return view('users.editUser', compact('user','areas'));
+        return view('users.editUser', compact('user','areas','roles'));
     }
 
     public function update(Request $request, $id) {
@@ -134,11 +166,11 @@ class UserController extends Controller
         }
 
         // Si se escribió una nueva contraseña se encripta, si no, se remueve para no alterarla
-        if (!empty($datosUsuario['contraseña'])) {
-            $datosUsuario['contraseña'] = Hash::make($datosUsuario['contraseña']);
-        } else {
-            unset($datosUsuario['contraseña']);
-        }
+        // if (!empty($datosUsuario['contraseña'])) {
+        //     $datosUsuario['contraseña'] = Hash::make($datosUsuario['contraseña']);
+        // } else {
+        //     unset($datosUsuario['contraseña']);
+        // }
 
         $user->update($datosUsuario);
 
@@ -147,7 +179,21 @@ class UserController extends Controller
 
     public function destroy($id)
     {
+        // $datosUsuario = User::findOrFail($id);
+        // $datosUsuario['status']=
         User::destroy($id);
         return redirect('content')->with('mensaje','¡Éxito! Usuario eliminado');
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function restore($id) {
+        $user = User::onlyTrashed()
+                    ->find($id)
+                    ->restore();
+        return redirect()->back();
     }
 }

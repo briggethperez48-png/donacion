@@ -5,11 +5,13 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+use App\Area;
 
 class User extends Model
 {
-    use Notifiable;
-     use HasRoles;
+    use Notifiable, HasRoles, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -28,5 +30,7 @@ class User extends Model
         'contraseña',
         'responsable', //Quien metió al usuario
     ];
-
+    public function relacionArea() {
+        return $this->belongsTo(Area::class, 'area', 'idArea');
+    }
 }

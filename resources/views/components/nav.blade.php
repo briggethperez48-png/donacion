@@ -1,7 +1,7 @@
 <!-- php artisan serve --host=0.0.0.0 --port=8080 -->
     <section class="manu">
         <div>
-            <nav class="mt-5">
+            <nav class="m-2">
                 <a class="" href="#">Ayuda</a>
                 <button class="" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

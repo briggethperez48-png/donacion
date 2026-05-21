@@ -12,6 +12,7 @@
 */
 
 // use Symfony\Component\Routing\Route;
+use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BuscadorController;
 use App\Http\Controllers\ReporteController;
@@ -19,7 +20,7 @@ use App\Http\Controllers\Auth\RegisterController;
 
 
 //07/05/2026-> Primero haremos el xlsx y luego el PDF
-//Librerías: DOMPDF y maatwebsite 
+//Librerías: DOMPDF, maatwebsite, Spatie, Colletive 
 
 // Route::get('/', function() {
 //     //$pdf = App::make('dompdf.wrapper');
@@ -37,8 +38,10 @@ Route::post('content/buscador/fetch', 'BuscadorController@fetch')->name('buscado
 
 Route::resource('donador', 'DonanteController');
 Route::resource('user', 'UserController');
+Route::get('user/restore/{id}', 'UserController@restore')->name('user.restore');
 
 //Route::view('/avisoprivacidad', 'aviso'); 
+Route::view('/prohibido', 'desactivado'); 
 
 Route::prefix('content')->group(function () {
     Route::view('/', 'contenido/dashboard'); //Dashboard

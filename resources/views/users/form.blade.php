@@ -2,7 +2,7 @@
     <div class="p-4 shadow m-2 mb-4">
         <div class="align-self-center mb-2 col">
             <div class="position-relative">
-                <!-- <img src="{{ asset('imagen/SEDESANOV.png') }}" class="img-fluid" style="width: 20rem; height:auto;" alt=""> -->
+                <img src="{{ asset('css/imagen/SEDESANOV.png') }}" class="img-fluid" style="width: 20rem; height:auto;" alt="">
             </div>
             <div>
                 <h1 style="color: 55585a;"class="text-center">
