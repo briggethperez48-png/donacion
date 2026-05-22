@@ -59,7 +59,10 @@
                             <select name="area" id="area" class="form-control input">
                                 <option value="">SELECCIONE UNO...</option>
                                 @foreach($areas as $area)
-                                    <option value="{{ $area->idArea }}">{{ $area->area }}</option>
+                                    <option value="{{ $area->idArea }}" 
+                                        @if(old('area', isset($user->idArea) ? $user->idArea : (isset($user->area) ? $user->area : null)) == $area->idArea) selected @endif>
+                                        {{ $area->area }}
+                                    </option>
                                 @endforeach
                             </select>
                             @if($errors->has('area'))
@@ -79,8 +82,8 @@
                         <div class="form-group col-md-4">
                             <label for="status" class="font-weight-bold">Estatus del usuario</label>
                                 <div>
-                                        <input type="radio" name="status" id="status" value="ACTIVO" checked> ACTIVO
-                                        <input type="radio" name="status" id="status" value="INACTIVO"> INACTIVO
+                                        <input type="radio" name="status" id="status" value="ACTIVO"> ACTIVO
+                                        <input type="radio" name="status" id="status" value="INACTIVO" checked> INACTIVO
                                 </div>
                             @if($errors->has('status'))
                                 <span class="text-danger small"><strong>{{ $errors->first('status') }}</strong></span>
@@ -95,10 +98,10 @@
                             @endif
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="contraseña" class="font-weight-bold">Contraseña</label>
-                            <input name="contraseña" type="password" class="form-control input" id="contraseña" value="{{ isset($user->contraseña) ? $user->contraseña : old('contraseña') }}">
-                            @if($errors->has('contraseña'))
-                                <span class="text-danger small"><strong>{{ $errors->first('contraseña') }}</strong></span>
+                            <label for="password" class="font-weight-bold">Contraseña</label>
+                            <input name="password" type="password" class="form-control input" id="password" value="{{ isset($user->password) ? $user->password : old('password') }}">
+                            @if($errors->has('password'))
+                                <span class="text-danger small"><strong>{{ $errors->first('password') }}</strong></span>
                             @endif
                         </div>
                     </div>

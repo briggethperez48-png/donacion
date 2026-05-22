@@ -61,7 +61,7 @@ class UserController extends Controller
             'telefono' => 'required|numeric|digits:10',
             'status' => 'required|string|max:50', 
             'email' => 'required|string|email|max:255|unique:users', 
-            'contraseña' => 'string|min:6',
+            'password' => 'string|min:6',
             'responsable' => 'nullable|string', 
         ];
 
@@ -82,7 +82,7 @@ class UserController extends Controller
             'telefono' => 'El teléfono',
             'status' => 'El estado', 
             'email' => 'El correo electrónico', 
-            'contraseña' => 'La contraseña',
+            'password' => 'La contraseña',
             'responsable' => 'El responsable', 
         ]);
         
@@ -117,8 +117,8 @@ class UserController extends Controller
         return view('users.editUser', compact('user','areas','roles'));
     }
 
-    public function update(Request $request, $id) {
-        $user = User::findOrFail($id);
+    public function update(Request $request, User $user) {
+        $user->roles()->sync($request->roles);
 
         $input = $request->all();
         foreach ($input as $key => $value) {
@@ -137,7 +137,7 @@ class UserController extends Controller
             'telefono' => 'required|numeric|digits:10',
             'status' => 'required|string|max:50',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id, 
-            'contraseña' => 'nullable|string|min:6', 
+            'password' => 'nullable|string|min:6', 
             'responsable' => 'nullable|string', 
         ];
 
@@ -155,7 +155,7 @@ class UserController extends Controller
 
         // Formatear texto (Ignorando email y password)
         foreach ($datosUsuario as $key => $value) {
-            if (is_string($value) && !in_array($key, ['email', 'contraseña'])) {
+            if (is_string($value) && !in_array($key, ['email', 'password'])) {
                 $value = str_replace(
                     ['Á','É','Í','Ó','Ú','á','é','í','ó','ú'],
                     ['A','E','I','O','U','A','E','I','O','U'],
@@ -174,7 +174,9 @@ class UserController extends Controller
 
         $user->update($datosUsuario);
 
-        return redirect('content')->with('mensaje', '¡Registro actualizado con éxito!');
+        return redirect()
+            ->route('user.edit', $user)
+            -> with('mensaje', '¡Registro actualizado con éxito!');
     }
 
     public function destroy($id)

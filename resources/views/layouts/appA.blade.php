@@ -31,8 +31,7 @@
 </head>
 <body>
     
-    @if(!Route::is('donador.create', 'donador.edit'))
-        
+    @if(!Route::is('donador.create', 'donador.edit', 'login', 'login.post', 'logout'))
         <section>
             @include('components.headerGen')
             @include('components.nav')
@@ -43,12 +42,18 @@
         @yield('content')
     </div>
 
-    @if(!Route::is('donador.create', 'donador.edit'))
+    @if(!Route::is('donador.create', 'donador.edit','login', 'login.post', 'logout'))
         <section>
             {{--@include('components.footerGen')--}}
             <div>El footer</div>
         </section>
-        @else
+
+    @elseif(Route::is('login', 'login.post', 'logout'))
+        <section>
+           
+        </section>
+        
+    @else
             <section>
                 @include('components.footerForm')
             </section>

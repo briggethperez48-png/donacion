@@ -4,6 +4,7 @@
 
 @section('content')
 
+@can('Users index')
     <section class="contentGestion">
         <div class="card mt-3">
             <div class="card-header">
@@ -46,7 +47,6 @@
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Área</th>
                                     <th scope="col">Fecha de Alta</th>
-                                    <th scope="col">Estado</th>
                                     <th scope="col">Correo Electrónico</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
@@ -61,34 +61,39 @@
                                             <td>{{$nomCom}}</td>
                                             <td>{{ $user->relacionArea->area ?? 'Sin Área' }}</td>
                                             <td>{{$user->fechaAlta}}</td>
-                                            <td>{{$user->status}}</td>
                                             <td>{{$user->email}}</td>
                                             <td class="align-content-center">
                                                 <div class="d-flex">
                                                     
                                                         @if(request()->deleted == 1)
-                                                            <div class="m-2">
-                                                                <a href="{{ route('user.restore', $user->id) }}"" class="btn btn-outline-warning">
-                                                                    Restaurar
-                                                                </a>
-                                                            </div>
+                                                            @can('Users restore')
+                                                                <div class="m-2">
+                                                                    <a href="{{ route('user.restore', $user->id) }}"" class="btn btn-outline-warning">
+                                                                        Restaurar
+                                                                    </a>
+                                                                </div>
+                                                            @endcan
                                                         @else
-                                                            <div class="m-2">
-                                                                <form action="{{ url('/user/'.$user->id) }}" method="post">
-                                                                    {{ csrf_field() }}
-                                                                    {{ method_field('DELETE') }}
-                                                                    <button type="submit" class="btn btn-outline-danger" 
-                                                                            onclick="return confirm('¿Seguro que quieres eliminar este registro?')">
-                                                                        Eliminar
-                                                                    </button>
-                                                                </form>
-                                                            </div>
+                                                            @can('Users destroy')
+                                                                <div class="m-2">
+                                                                    <form action="{{ url('/user/'.$user->id) }}" method="post">
+                                                                        {{ csrf_field() }}
+                                                                        {{ method_field('DELETE') }}
+                                                                        <button type="submit" class="btn btn-outline-danger" 
+                                                                                onclick="return confirm('¿Seguro que quieres eliminar este registro?')">
+                                                                            Eliminar
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                            @endcan
                                                         @endif
-                                                    <div class="m-2">
-                                                        <a href="{{ url('/user/'.$user->id.'/edit') }}" class="btn btn-outline-secondary">
-                                                            Editar
-                                                        </a>
-                                                    </div>
+                                                    @can('Users edit')
+                                                        <div class="m-2">
+                                                            <a href="{{ url('/user/'.$user->id.'/edit') }}" class="btn btn-outline-secondary">
+                                                                Editar
+                                                            </a>
+                                                        </div>
+                                                    @endcan
                                                 </div>
                                             </td>
                                         </tr>
@@ -107,4 +112,6 @@
             @endif
         </div>
     </section>
+@endcan
+
 @endsection

@@ -3,6 +3,7 @@
 @section('title', 'Donador')
 
 @section('content')
+@can('Donador index')
 <!-- https://youtu.be/EfzORBnuUak?list=RDtgMUtp9A50k -->
     <section class="contentGestion">
         <div class="row mb-3">
@@ -62,21 +63,26 @@
                             <td>{{$dato->Telefono}}</td>
                             <td class="align-content-center">
                                 <div class="d-flex">
-                                    <div class="m-2">
-                                        <form action="{{ url('/donador/'.$dato->id) }}" method="post">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <button type="submit" class="btn btn-outline-danger" 
-                                                    onclick="return confirm('¿Seguro que quieres eliminar este registro?')">
-                                                Eliminar
-                                            </button>
-                                        </form>
-                                    </div>
-                                    <div class="m-2">
-                                        <a href="{{ url('/donador/'.$dato->id.'/edit') }}" class="btn btn-outline-secondary">
-                                            Editar
-                                        </a>
-                                    </div>
+                                    @can('Donador destroy')
+                                        <div class="m-2">
+                                            <form action="{{ url('/donador/'.$dato->id) }}" method="post">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                                <button type="submit" class="btn btn-outline-danger" 
+                                                        onclick="return confirm('¿Seguro que quieres eliminar este registro?')">
+                                                    Eliminar
+                                                </button>
+                                            </form>
+                                        </div>
+                                    @endcan
+
+                                    @can('Donador edit')
+                                        <div class="m-2">
+                                            <a href="{{ url('/donador/'.$dato->id.'/edit') }}" class="btn btn-outline-secondary">
+                                                Editar
+                                            </a>
+                                        </div>
+                                    @endcan
                                 </div>
                             </td>
                         </tr>
@@ -85,5 +91,7 @@
             </table>
         </div>
     </section>
+
+@endcan
 
 @endsection

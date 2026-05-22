@@ -13,8 +13,8 @@
     <title>Aviso de Privacidad</title>
 </head>
 <body>
-    
-        <iframe src="{{ asset('documents/57-57.pdf') }}" frameborder="0"
-        style="width:100%; height:100vh;"></iframe>
+    <div class="">
+        <h1>¿Y la raíz de mi proyecto?</h1>
+    </div>
 </body>
 </html>

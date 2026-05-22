@@ -3,9 +3,10 @@
 @section('title', 'Inicio')
 
 @section('content')
+@can('Dashboard')
 <section>
     <div>
-        <h1>Bienvenido, YCuandoHayaRegistrosHabraUnUser</h1>
+        <h1>Este intento de Dashboard qué</h1>
     </div>
     <div>
         <div id="info"> </div>
@@ -14,6 +15,7 @@
         </div>
     </div>
 </section>
+@endcan
 
 <script>
   // Selecciona el SVG

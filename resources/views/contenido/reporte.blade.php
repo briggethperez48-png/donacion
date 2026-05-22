@@ -3,6 +3,7 @@
 @section('title', 'Reporte')
 
 @section('content')
+@can('Reportes index')
         <div>
                 <section class="mt-3">
                         <div class="mb-4">
@@ -149,10 +150,12 @@
                         <section class="card-body border-1 rounded-2 shadow-sm my-3">
                         @if (session('success'))
                                 <div class="p-3">
-                                <h2>Su reporte:</h2>
-                                <a href="{{ route('reporte.export', request()->query()) }}" class="btn btn-success">
-                                        <i class="fa fa-file-excel-o"></i> Exportar
+                                    <h2>Su reporte:</h2>
+                                    @can('Reportes export')
+                                        <a href="{{ route('reporte.export', request()->query()) }}" class="btn btn-success">
+                                            <i class="fa fa-file-excel-o"></i> Exportar
                                         </a>
+                                    @endcan
                                 </div>
                                 <div class="alert alert-success">
                                         {{ session('success') }}
@@ -218,6 +221,7 @@
                         </section>
                 </section>
         </div>
+@endcan
 
 @section('scripts')
         <script>

@@ -17,7 +17,7 @@ class AreasSeeder extends Seeder
     
     $file = fopen($path, 'r');
     
-    $puntoDeCorte = 1; 
+    $puntoDeCorte = 0; 
     $filaActual = 0;
     $lote = [];
 

@@ -4,6 +4,7 @@
 @section('title', 'Gráficas')
 
 @section('content')
+@can('Estadisticas index')
 
         		<section class="card-body border-1 rounded-2 shadow-sm my-3">
                     <!-- <h4>No sé cómo voy a hacer esta cosa</h4>
@@ -97,6 +98,7 @@
                     </section>
 
                 </section>
+@endcan
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>

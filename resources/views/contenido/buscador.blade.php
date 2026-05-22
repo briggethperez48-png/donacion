@@ -3,6 +3,7 @@
 @section('title', 'Buscador')
 
 @section('content')
+@can('Buscador index')
     <section>
 		<div class="mb-4">
             <h1>Buscador</h1>
@@ -196,6 +197,7 @@
                 </section>
     </section>
 
+@endcan
 @section('scripts')
         <script>
             $(document).ready(function(){

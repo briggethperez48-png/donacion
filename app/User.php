@@ -3,15 +3,17 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Area;
 
-class User extends Model
+class User extends Authenticatable
 {
     use Notifiable, HasRoles, SoftDeletes;
+
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -23,14 +25,20 @@ class User extends Model
         'apPaterno',
         'apMaterno',
         'area', 
-        'fechaAlta', //Fecha de Alta en la página 
+        'fechaAlta', 
         'telefono',
         'status', //Tipo Logico: Activado/Desactivado
         'email', 
-        'contraseña',
+        'password',
         'responsable', //Quien metió al usuario
     ];
     public function relacionArea() {
         return $this->belongsTo(Area::class, 'area', 'idArea');
+    }
+    public function setPasswordAttribute($value)
+    {
+        if (!empty($value)) {
+            $this->attributes['password'] = bcrypt($value);
+        }
     }
 }
