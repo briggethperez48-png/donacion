@@ -68,12 +68,16 @@ Route::get('/login', 'AuthController@index')->name('login');
 Route::post('/login', 'AuthController@login')->name('login.post');
 Route::post('/logout', 'AuthController@logout')->name('logout');
 
+Route::get('denegado', function () {
+    return view('denegado');
+})->middleware('auth');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('user/restore/{id}', 'UserController@restore')->name('user.restore');
     Route::resource('user', 'UserController');
     Route::resource('donador', 'DonanteController')->except(['create', 'store']);
     
-    Route::view('/denegado', 'denegado'); 
+    //Route::view('/denegado', 'denegado'); 
 
     // 4. Grupo con Prefijo 'content'
     Route::prefix('content')->group(function () {

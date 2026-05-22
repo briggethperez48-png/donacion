@@ -1,4 +1,4 @@
-@extends('layouts.appA')
+@extends('layouts.app')
 
 @section('title', 'login')
 
@@ -9,7 +9,6 @@
             {{ csrf_field() }}
             
             <div class="card shadow border-0 rounded-lg">
-                <!-- Encabezado de la Tarjeta -->
                 <div class="card-header bg-dark text-white text-center py-4">
                     <div class="d-flex justify-content-center align-items-center mb-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -20,10 +19,8 @@
                     <h5 class="font-weight-bold mb-0">Inicio de Sesión</h5>
                 </div>
 
-                <!-- Cuerpo de la Tarjeta -->
                 <div class="card-body p-4">
                     
-                    <!-- Campo: E-Mail -->
                     <div class="form-group mb-3">
                         <label for="email" class="font-weight-bold text-secondary">Correo Electrónico</label>
                         <input id="email" type="email" 
@@ -52,10 +49,9 @@
                         @endif
                     </div>
 
-                    <!-- Botón de Acción -->
                     <div class="form-group mb-0">
                         <button type="submit" class="btn btn-dark btn-block btn-lg shadow-sm font-weight-bold">
-                            Ingresar al Sistema
+                            Ingresar
                         </button>
                     </div>
 
