@@ -12,8 +12,7 @@ class RoleSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
         $role1 = Role::create(['name'=>'SuperAdmin']);
         $role2 = Role::create(['name'=>'Admin']);
         $role3 = Role::create(['name'=>'Editor']);
@@ -21,6 +20,8 @@ class RoleSeeder extends Seeder
         $role5 = Role::create(['name'=>'Inactivo']);
 
         Permission::create(['name'=>'Dashboard'])
+            ->syncRoles([$role1, $role2, $role3, $role4]);
+        Permission::create(['name'=>'Components'])
             ->syncRoles([$role1, $role2, $role3, $role4]);
 
             //Donantes
@@ -45,9 +46,9 @@ class RoleSeeder extends Seeder
 
             //Reportes
         Permission::create(['name'=>'Reportes index'])
-            ->syncRoles([$role1, $role2, $role3]);
+            ->syncRoles([$role1, $role2, $role3, $role4]);
         Permission::create(['name'=>'Reportes export'])
-            ->syncRoles([$role1, $role2, $role3]);
+            ->syncRoles([$role1, $role2, $role3, $role4]);
 
              //Buscador
         Permission::create(['name'=>'Buscador index'])

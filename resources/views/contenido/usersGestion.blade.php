@@ -76,11 +76,10 @@
                                                         @else
                                                             @can('Users destroy')
                                                                 <div class="m-2">
-                                                                    <form action="{{ url('/user/'.$user->id) }}" method="post">
+                                                                    <form action="{{ url('/user/'.$user->id) }}" id="form-eliminar-{{ $user->id }}" method="post">
                                                                         {{ csrf_field() }}
                                                                         {{ method_field('DELETE') }}
-                                                                        <button type="submit" class="btn btn-outline-danger" 
-                                                                                onclick="return confirm('¿Seguro que quieres eliminar este registro?')">
+                                                                        <button type="button" class="btn btn-outline-danger btn-eliminar" data-id="{{ $user->id }}">
                                                                             Eliminar
                                                                         </button>
                                                                     </form>
@@ -113,5 +112,52 @@
         </div>
     </section>
 @endcan
+    @section('scripts')
+        @if(session('error_permiso'))
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Acceso Denegado',
+                    text: "{{ session('error_permiso') }}",
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Entendido'
+                });
+            </script>
+        @endif
 
+        @if(session('mensaje'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Operación Exitosa!',
+                    text: "{{ session('mensaje') }}",
+                    timer: 3000,
+                    showConfirmButton: false
+                });
+            </script>
+        @endif
+
+        <script>
+            $(document).on('click', '.btn-eliminar', function(e) {
+                e.preventDefault(); 
+                
+                let usuarioId = $(this).data('id');
+                
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: "Esta acción enviará al usuario a la papelera.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#form-eliminar-' + usuarioId).submit();
+                    }
+                });
+            });
+        </script>
+    @endsection
 @endsection

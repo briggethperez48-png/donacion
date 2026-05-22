@@ -1,4 +1,5 @@
 <!-- Header -->
+@can('Components')
 <section class="all">
     <section class="header">
         <div class="logo">
@@ -11,3 +12,4 @@
         </div>
     </section>
 </section>
+@endcan

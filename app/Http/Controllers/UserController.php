@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Role;
 
 use App\User;
 use App\Area;
+use App\Auditoria;
 
 
 class UserController extends Controller 
@@ -50,8 +51,12 @@ class UserController extends Controller
         $areas = Area::all();
         return view('users.createUser', compact('areas'));
     }
-
     public function store(Request $request) {
+        $this->authorize('create', User::class);
+
+        if (!auth()->user()->hasRole('SuperAdmin') && $request->input('roles') === 'SuperAdmin') {
+            return back()->withErrors(['roles' => 'No tienes autorización para asignar este rol.']);
+        }
         $campos = [
             'nombre' => 'required|string|max:50',
             'apPaterno' => 'required|string|max:50',
@@ -61,7 +66,7 @@ class UserController extends Controller
             'telefono' => 'required|numeric|digits:10',
             'status' => 'required|string|max:50', 
             'email' => 'required|string|email|max:255|unique:users', 
-            'password' => 'string|min:6',
+            'password' => 'required|string|min:6',
             'responsable' => 'nullable|string', 
         ];
 
@@ -87,38 +92,45 @@ class UserController extends Controller
         ]);
         
         $datosUsuario = $request->except(['_token']);
-
-        // Formatear texto (Ignorando email y password)
         foreach ($datosUsuario as $key => $value) {
-            if (is_string($value) && !in_array($key, ['email', 'contraseña'])) {
-                $value = str_replace(
-                    ['Á','É','Í','Ó','Ú','á','é','í','ó','ú'],
-                    ['A','E','I','O','U','A','E','I','O','U'],
-                    $value
-                );
-                $datosUsuario[$key] = strtoupper($value);
+            if (is_string($value)) {
+                if ($key === 'email') {
+                    $datosUsuario[$key] = strtolower($value);
+                }
+                elseif ($key === 'password') {
+                    continue; 
+                }
+                else {
+                    $value = str_replace(
+                        ['Á','É','Í','Ó','Ú','á','é','í','ó','ú'],
+                        ['A','E','I','O','U','A','E','I','O','U'],
+                        $value
+                    );
+                    $datosUsuario[$key] = strtoupper($value);
+                }
             }
         }
 
-        // Encriptar la contraseña antes de guardar
-        //$datosUsuario['contraseña'] = Hash::make($datosUsuario['contraseña']);
-
-        // AHORA SÍ SE GUARDA EN LA BASE DE DATOS
-        User::create($datosUsuario);
+        User::create($datosUsuario)->assignRole('Inactivo');
 
         return redirect('content')->with('mensaje', '¡Registro guardado con éxito!');
     }
-
-    public function edit($id)
-    {
-        $roles = Role::all();
+    public function edit($id) {
         $user = User::findOrFail($id);
+        
+        $this->authorize('update', $user);
+
+        $roles = Role::all();
         $areas = Area::all();
-        return view('users.editUser', compact('user','areas','roles'));
+        return view('users.editUser', compact('user', 'areas', 'roles'));
     }
 
     public function update(Request $request, User $user) {
-        $user->roles()->sync($request->roles);
+        $this->authorize('update', $user);
+
+        if (!auth()->user()->hasRole('SuperAdmin') && in_array('SuperAdmin', (array)$request->roles)) {
+            return back()->withErrors(['roles' => 'No puedes promover usuarios a SuperAdmin.']);
+        }
 
         $input = $request->all();
         foreach ($input as $key => $value) {
@@ -150,41 +162,52 @@ class UserController extends Controller
         ];
 
         $this->validate($request, $campos, $mensaje);
+        $datosUsuario = $request->except(['_token', '_method', 'roles']);
 
-        $datosUsuario = $request->except(['_token', '_method']);
-
-        // Formatear texto (Ignorando email y password)
         foreach ($datosUsuario as $key => $value) {
-            if (is_string($value) && !in_array($key, ['email', 'password'])) {
-                $value = str_replace(
-                    ['Á','É','Í','Ó','Ú','á','é','í','ó','ú'],
-                    ['A','E','I','O','U','A','E','I','O','U'],
-                    $value
-                );
-                $datosUsuario[$key] = strtoupper($value);
+            if (is_string($value)) {
+                if ($key === 'email') {
+                    $datosUsuario[$key] = strtolower($value);
+                } 
+                elseif ($key === 'password') {
+                    continue; 
+                }
+                else {
+                    $value = str_replace(
+                        ['Á','É','Í','Ó','Ú','á','é','í','ó','ú'],
+                        ['A','E','I','O','U','A','E','I','O','U'],
+                        $value
+                    );
+                    $datosUsuario[$key] = strtoupper($value);
+                }
             }
         }
-
-        // Si se escribió una nueva contraseña se encripta, si no, se remueve para no alterarla
-        // if (!empty($datosUsuario['contraseña'])) {
-        //     $datosUsuario['contraseña'] = Hash::make($datosUsuario['contraseña']);
-        // } else {
-        //     unset($datosUsuario['contraseña']);
-        // }
+        
+        if (empty($datosUsuario['password'])) {
+            unset($datosUsuario['password']);
+        }
 
         $user->update($datosUsuario);
 
+        $user->roles()->sync($request->roles);
+
         return redirect()
-            ->route('user.edit', $user)
-            -> with('mensaje', '¡Registro actualizado con éxito!');
+            ->route('users.edit', $user->id) 
+            ->with('mensaje', '¡Registro actualizado con éxito!');
     }
 
-    public function destroy($id)
-    {
-        // $datosUsuario = User::findOrFail($id);
-        // $datosUsuario['status']=
-        User::destroy($id);
-        return redirect('content')->with('mensaje','¡Éxito! Usuario eliminado');
+    public function destroy($id) {
+        $userDestroy = User::findOrFail($id);
+        $this->authorize('delete', $userDestroy);
+
+        $userDestroy->status = 'INACTIVO';
+        $userDestroy->save();
+
+        $userDestroy->syncRoles([]); 
+        
+        $userDestroy->delete();
+
+        return redirect()->route('user.index')->with('mensaje', '¡Usuario enviado a la papelera y despojado de sus roles!');
     }
     /**
      * Remove the specified resource from storage.
@@ -193,9 +216,14 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function restore($id) {
-        $user = User::onlyTrashed()
-                    ->find($id)
-                    ->restore();
-        return redirect()->back();
+        $user = User::onlyTrashed()->findOrFail($id);
+        $user->restore();
+
+        $user->status = 'ACTIVO';
+        $user->save();
+
+        $user->syncRoles(['Editor']);
+
+        return redirect()->route('user.index')->with('mensaje', '¡Usuario restaurado y reactivado con éxito!');
     }
 }

@@ -35,10 +35,15 @@ class User extends Authenticatable
     public function relacionArea() {
         return $this->belongsTo(Area::class, 'area', 'idArea');
     }
-    public function setPasswordAttribute($value)
-    {
+    public function setPasswordAttribute($value) {
         if (!empty($value)) {
-            $this->attributes['password'] = bcrypt($value);
+            // Si ya viene encriptado (empieza con $2y$ o $2a$), lo dejamos pasar tal cual
+            if (preg_match('/^\$2[ay]\$/', $value)) {
+                $this->attributes['password'] = $value;
+            } else {
+                // Si viene en texto plano (como en el registro), lo encriptamos
+                $this->attributes['password'] = bcrypt($value);
+            }
         }
     }
 }

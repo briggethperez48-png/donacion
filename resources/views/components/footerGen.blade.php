@@ -1,3 +1,4 @@
+@can('Components')
 <footer class="footer">
     <div class="SEDESA">
         SEDESA © 2026
@@ -25,3 +26,4 @@
         </a>
     </div>
 </footer>
+@endcan

@@ -12,14 +12,19 @@ class AuthController extends Controller
         return view('users.loginUser');
     }
     
-    public function login(Request $request)
-    {
-        $credentials = $request->validate([
+    public function login(Request $request) {
+        $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required'
         ]);
 
+        $credentials = [
+            'email' => strtolower($request->input('email')),
+            'password' => $request->input('password'),
+        ];
+
         if (Auth::attempt($credentials)) {
+            
             $request->session()->regenerate();
             
             return redirect()->intended('/content'); 
@@ -27,7 +32,7 @@ class AuthController extends Controller
 
         return back()->withErrors([
             'email' => 'Las credenciales no coinciden con nuestros registros.',
-        ])->onlyInput('email');
+        ])->withInput($request->only('email')); // Ajustado a la sintaxis de Laravel 5.5
     }
 
     public function logout(Request $request)

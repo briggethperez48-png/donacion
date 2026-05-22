@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="{{asset('css/web.css')}}">
     <link rel="stylesheet" href="{{asset('css/form.css')}}">
     <link rel="stylesheet" href="{{asset('css/content.css')}}">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <title>@yield('title')</title>
 </head>
@@ -44,8 +43,7 @@
 
     @if(!Route::is('donador.create', 'donador.edit','login', 'login.post', 'logout'))
         <section>
-            {{--@include('components.footerGen')--}}
-            <div>El footer</div>
+            @include('components.footerGen')
         </section>
 
     @elseif(Route::is('login', 'login.post', 'logout'))
@@ -60,8 +58,8 @@
     @endif
     
     
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @yield('scripts')
 </body>

@@ -3,7 +3,7 @@
 @section('title', 'login')
 
 @section('content')
-<section class="container d-flex justify-content-center align-items-center" style="">
+<section class="container d-flex justify-content-center align-items-center">
     <div class="col-12 col-sm-8 col-md-6 col-lg-5">
         <form method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}

@@ -1,4 +1,5 @@
 <!-- php artisan serve --host=0.0.0.0 --port=8080 -->
+@can('Components')
     <section class="manu">
         <div>
             <nav class="m-2">
@@ -59,3 +60,4 @@
             </nav>
         </div>
     </section>
+@endcan
