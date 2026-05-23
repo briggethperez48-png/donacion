@@ -37,7 +37,7 @@
         </section>
     @endif
 
-    <div class="m-4">
+    <div class="m-4 interior">
         @yield('content')
     </div>
 
