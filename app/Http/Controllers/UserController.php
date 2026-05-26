@@ -49,7 +49,8 @@ class UserController extends Controller
     
     public function create() {
         $areas = Area::all();
-        return view('users.createUser', compact('areas'));
+        $roles = Role::all();
+        return view('users.createUser', compact('areas','roles'));
     }
     public function store(Request $request) {
         $this->authorize('create', User::class);
@@ -111,7 +112,16 @@ class UserController extends Controller
             }
         }
 
-        User::create($datosUsuario)->assignRole('Inactivo');
+        $user=User::create($datosUsuario)->assignRole('Inactivo');
+
+        Auditoria::create([
+            'user_id'     => auth()->id(),
+            'accion'      => 'CREAR',
+            'tabla'       => 'users',
+            'registro_id' => $user->id,
+            'detalles'    => "Se registró al usuario: {$user->nombre} {$user->apPaterno} ({$user->email}) con estatus INACTIVO."
+        ]);
+
 
         return redirect('content')->with('mensaje', '¡Registro guardado con éxito!');
     }
@@ -122,6 +132,7 @@ class UserController extends Controller
 
         $roles = Role::all();
         $areas = Area::all();
+
         return view('users.editUser', compact('user', 'areas', 'roles'));
     }
 
@@ -191,8 +202,28 @@ class UserController extends Controller
 
         $user->roles()->sync($request->roles);
 
+        $cambios = $user->getChanges();
+        unset($cambios['updated_at']);
+
+
+        $textoDetalles = "Se actualizó al usuario ({$user->email}). ";
+        if (!empty($cambios)) {
+            $textoDetalles .= "Campos modificados: " . json_encode($cambios);
+        } else {
+            $textoDetalles .= "Sin cambios relevantes.";
+        }
+
+        Auditoria::create([
+            'user_id'     => auth()->id(),
+            'accion'      => 'EDITAR',
+            'tabla'       => 'users',
+            'registro_id' => $user->id,
+            'detalles'    => $textoDetalles
+        ]);
+
+
         return redirect()
-            ->route('users.edit', $user->id) 
+            ->route('user.edit', $user->id) 
             ->with('mensaje', '¡Registro actualizado con éxito!');
     }
 
@@ -202,10 +233,17 @@ class UserController extends Controller
 
         $userDestroy->status = 'INACTIVO';
         $userDestroy->save();
-
         $userDestroy->syncRoles([]); 
         
         $userDestroy->delete();
+
+        Auditoria::create([
+            'user_id'     => auth()->id(),
+            'accion'      => 'ELIMINAR',
+            'tabla'       => 'users',
+            'registro_id' => $userDestroy->id,
+            'detalles'    => "El usuario {$userDestroy->nombre} ({$userDestroy->email}) fue eliminado."
+        ]);
 
         return redirect()->route('user.index')->with('mensaje', '¡Usuario enviado a la papelera y despojado de sus roles!');
     }
@@ -216,13 +254,23 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function restore($id) {
-        $user = User::onlyTrashed()->findOrFail($id);
+        $user = User::onlyTrashed()
+                    ->findOrFail($id);
         $user->restore();
 
         $user->status = 'ACTIVO';
         $user->save();
 
         $user->syncRoles(['Editor']);
+
+        Auditoria::create([
+            'user_id'     => auth()->id(),
+            'accion'      => 'RESTAURAR',
+            'tabla'       => 'users',
+            'registro_id' => $user->id,
+            'detalles'    => "El usuario ({$user->email}) fue restaurado."
+        ]);
+
 
         return redirect()->route('user.index')->with('mensaje', '¡Usuario restaurado y reactivado con éxito!');
     }
