@@ -6,7 +6,7 @@
 @can('Dashboard')
 <section>
     <div>
-        <h1>Este intento de Dashboard qué</h1>
+        <h1>Bienvenido, {{auth()->user()->nombre}}</h1>
     </div>
     <div>
         <div id="info"> </div>

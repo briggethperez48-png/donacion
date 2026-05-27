@@ -159,22 +159,50 @@
     </section>
     <script>
         const body = document.querySelector("body"),
-                sidebar = body.querySelector(".sidebar"),
-                toggle = body.querySelector(".toggle"),
-                modeSwitch = body.querySelector(".toggle-switch"),
-                modeText = body.querySelector(".mode-text");
+            sidebar = body.querySelector(".sidebar"),
+            toggle = body.querySelector(".toggle"),
+            modeSwitch = body.querySelector(".toggle-switch"),
+            modeText = body.querySelector(".mode-text");
 
-                toggle.addEventListener("click", () => {
-                    sidebar.classList.toggle("close");
-                });
-                modeSwitch.addEventListener("click", () => {
-                    body.classList.toggle("dark");
+        // Control del menú lateral (Sidebar)
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
 
-                    if(body.classList.contains("dark")) {
-                        modeText.innerText = "Claro"
-                    } else {
-                        modeText.innerText = "Oscuro"
-                    }
-                });
+        // Función para actualizar el texto del modo
+        function updateModeText(isDarkActive) {
+            if (isDarkActive) {
+                modeText.innerText = "Claro"; // Si está oscuro, el botón ofrece cambiar a 'Claro'
+            } else {
+                modeText.innerText = "Oscuro"; // Si está claro, el botón ofrece cambiar a 'Oscuro'
+            }
+        }
+
+        // Control del Interruptor de Modo Oscuro
+        modeSwitch.addEventListener("click", () => {
+            body.classList.toggle("dark");
+
+            // CORRECCIÓN: Validamos si la clase 'dark' existe en el body justo ahora
+            const isDark = body.classList.contains("dark");
+            
+            // Guardamos el string 'true' o 'false' en localStorage
+            localStorage.setItem('dark', isDark);
+
+            // Actualizamos el texto
+            updateModeText(isDark);
+        });
+
+        // Al cargar el documento, recuperamos el estado guardado
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedMode = localStorage.getItem('dark');
+
+            if (savedMode === 'true') {
+                body.classList.add('dark');
+                updateModeText(true);
+            } else {
+                body.classList.remove('dark');
+                updateModeText(false);
+            }
+        });
     </script>
 @endcan

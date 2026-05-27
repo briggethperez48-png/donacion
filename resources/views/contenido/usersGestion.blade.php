@@ -38,7 +38,7 @@
             </div>
         
             @if($users->count())
-                <div class="card-body bg-transparent">
+                <div class="card-body bg-transparent background">
                     <div class="gestion table-responsive">
                         <table class="border-2 shadow-sm table">
                             <thead class="text-center">
