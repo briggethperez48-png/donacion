@@ -18,7 +18,6 @@
 @endcan
 
 <script>
-  // Selecciona el SVG
   const svg = document.querySelector('svg');
   const info = document.getElementById('info');
 
@@ -31,5 +30,4 @@
     }
   });
 </script>
-
 @endsection
