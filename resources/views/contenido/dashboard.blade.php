@@ -6,13 +6,15 @@
 @can('Dashboard')
 <section>
     <div>
-        <h1>Bienvenido, {{auth()->user()->nombre}}</h1>
+        <h1>Bienvenido, {{auth()->user()->nombre}}.</h1>
+        <hr>
     </div>
     <div>
         <div id="info"> </div>
-        <div>
+        <div class="dashboard">
             @include('components.mexicoSVG')
         </div>
+        @include('components.footerGen')
     </div>
 </section>
 @endcan

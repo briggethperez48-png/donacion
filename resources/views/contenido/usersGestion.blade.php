@@ -6,8 +6,8 @@
 
 @can('Users index')
     <section class="contentGestion">
-        <div class="card mt-3">
-            <div class="card-header">
+        <div class="card mt-3 bg-transparent">
+            <div class="card-header bg-transparent">
                 <div class="row">
                     <div class="col-md-8">
                         <h2>Usuarios</h2>
@@ -21,10 +21,10 @@
                             <a class="btn btn-outline-dark" href="{{route('user.index', ['deleted' => 1])}}">Eliminados</a>
                         </div>
                     @endif
-                    <div class="col-md-8 m-3">
+                    <div class="col-md-8 m-3 user-form">
                         <form action="{{ url('/user') }}" method="GET" class="form-inline">
                             <div class="input-group">
-                                <input type="text" name="buscar" class="form-control" placeholder="Buscar por Nombre" value="{{ request('buscar') }}">
+                                <input type="text" name="buscar" class="form-control input" placeholder="Buscar por Nombre" value="{{ request('buscar') }}">
                                 <div class="input-group-append">
                                     <button class="btn btn-info" type="submit">
                                         <i class="fa fa-search"></i> Buscar

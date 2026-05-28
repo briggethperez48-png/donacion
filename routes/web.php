@@ -81,7 +81,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // 4. Grupo con Prefijo 'content'
     Route::prefix('content')->group(function () {
-        Route::view('/', 'contenido/dashboard'); 
+        Route::view('/', 'contenido/dashboard')->name('content'); 
         Route::get('buscador', 'BuscadorController@index')->name('buscador.index');
         Route::post('buscador', 'BuscadorController@buscar');
         Route::get('reporte', 'ReporteController@index')->name('reporte.index');

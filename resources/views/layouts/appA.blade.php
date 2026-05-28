@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{asset('css/web.css')}}">
     <link rel="stylesheet" href="{{asset('css/form.css')}}">
+    <link rel="stylesheet" href="{{asset('css/formUser.css')}}">
     <link rel="stylesheet" href="{{asset('css/content.css')}}">
 
     <title>@yield('title')</title>
@@ -46,11 +47,12 @@
 
 
     <!-- Footer -->
-    @if(!Route::is('donador.create', 'donador.edit','login', 'login.post', 'logout'))
-        <section>
-            @include('components.footerGen')
+    @if(!Route::is('donador.create', 'donador.edit','login', 'login.post', 'logout','content'))
+        <section></section>
+    @elseif(Route::is('content'))
+        <section style="position: fixed;">
+            
         </section>
-
     @elseif(Route::is('login', 'login.post', 'logout'))
         <section></section>
     @else

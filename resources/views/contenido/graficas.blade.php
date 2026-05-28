@@ -6,7 +6,7 @@
 @section('content')
 @can('Estadisticas index')
 
-        		<section class="card-body border-1 rounded-2 shadow-sm my-3">
+        		<section class="card-body border-1 rounded-2 shadow-sm my-3 user-form">
                     <!-- <h4>No sé cómo voy a hacer esta cosa</h4>
 					<h5>Dios, ayuda. Qué es una tabla pivote</h5>
 					<h6>Yupi!</h6>
@@ -25,19 +25,18 @@
 					</h6> -->
                         <form action="{{ route('estadisticas.verGraficas') }}" method="GET" enctype="multipart/form-data">
                                                 <!-- Fechas -->
-                                        <div class="container-fluid px-0 my-2"> {{-- Asegura que el padre use todo el ancho --}}
+                                        <div class="container-fluid px-0 my-2">
                                             <div>
                                                 <h4 class="font-weight-bold text-center">Lapso del Reporte</h4>
                                             </div>
                                             
-                                            {{-- justify-content-between separa los elementos a los extremos --}}
                                             <div class="row d-flex align-items-center justify-content-between mx-0">
                                                 
                                                 <div class="col-auto">
                                                     <p class="font-weight-bold mb-0">Del</p>
                                                 </div>
                                                 
-                                                <div class="form-group col-md-5 mb-0"> {{-- Subimos a col-5 para que abarquen más espacio --}}
+                                                <div class="form-group col-md-5 mb-0">
                                                     <input name="mesIni" type="month" class="form-control input" id="mesIni" value="{{ request('mesIni') }}">
                                                 </div>
                                                 

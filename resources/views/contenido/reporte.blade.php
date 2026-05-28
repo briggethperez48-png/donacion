@@ -5,7 +5,7 @@
 @section('content')
 @can('Reportes index')
         <div>
-                <section class="mt-3">
+                <section class="mt-3 user-form">
                         <div class="mb-4">
                         <h1>Reportes de Donantes</h1>
                         </div>
@@ -146,8 +146,8 @@
                                         </div>
                                 </div>
                         </form>
-
-                        <section class="card-body border-1 rounded-2 shadow-sm my-3">
+                                <hr>
+                        <section class="card-body border-1 rounded-2 shadow-sm my-1 bg-transparent">
                         @if (session('success'))
                                 <div class="p-3">
                                     <h2>Su reporte:</h2>
@@ -192,12 +192,12 @@
                                                                         <td>{{$domicilio}}</td>
                                                                         <td>
                                                                         @if($dato->organos->count() > 0)
-                                                                                                                                                        @foreach($dato->organos as $organo)
-                                                                                                                                                                        {{ $organo->nombre }}
-                                                                                                                                                        @endforeach
-                                                                                                                                                @else
-                                                                                                                                                        NINGUNO
-                                                                                                                                                @endif
+                                                                                @foreach($dato->organos as $organo)
+                                                                                                {{ $organo->nombre }}
+                                                                                @endforeach
+                                                                        @else
+                                                                                NINGUNO
+                                                                        @endif
                                                                         </td>
                                                                         <td>{{$dato->Telefono}}</td>
                                                                 </tr>

@@ -5,12 +5,16 @@
 @section('content')
 @can('Donador index')
 <!-- https://youtu.be/EfzORBnuUak?list=RDtgMUtp9A50k -->
+        
     <section class="contentGestion">
-        <div class="row mb-3">
-            <div class="col-md-12 m-3">
+        <div class="row justify-content-between align-content-center">
+            <div class="col-md-6">
+                <h1>Gestión de donantes</h1>
+            </div>
+            <div class="col-md-6 user-form">
                 <form action="{{ url('/donador') }}" method="GET" class="form-inline">
                     <div class="input-group">
-                        <input type="text" name="busqueda" class="form-control" placeholder="Buscar por Nombre o CURP..." value="{{ request('busqueda') }}">
+                        <input type="text" name="busqueda" class="form-control bg-transparent input" placeholder="Buscar por Nombre o CURP..." value="{{ request('busqueda') }}">
                         <div class="input-group-append">
                             <button class="btn btn-info" type="submit">
                                 <i class="fa fa-search"></i> Buscar
@@ -20,6 +24,7 @@
                     </div>
                 </form>
             </div>
+            <hr>
         </div>
         <div class="gestion table-responsive">
             <table class="border-2 shadow-sm table">

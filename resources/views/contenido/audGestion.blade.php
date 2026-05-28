@@ -5,7 +5,7 @@
 @section('content')
 
 @can('Users novedades')
-        <div class="card mt-3">
+        <div class="card mt-3 bg-transparent">
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-8">
