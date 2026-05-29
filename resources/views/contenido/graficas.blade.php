@@ -6,7 +6,11 @@
 @section('content')
 @can('Estadisticas index')
 
-        		<section class="card-body border-1 rounded-2 shadow-sm my-3 user-form">
+        		<section class="card-body border-1 rounded-2 shadow-sm mt-1 mb-3 user-form">
+                    <div>
+                        <h1>Estadísticas.</h1>
+                        <hr>
+                    </div>
                     <!-- <h4>No sé cómo voy a hacer esta cosa</h4>
 					<h5>Dios, ayuda. Qué es una tabla pivote</h5>
 					<h6>Yupi!</h6>
@@ -27,7 +31,7 @@
                                                 <!-- Fechas -->
                                         <div class="container-fluid px-0 my-2">
                                             <div>
-                                                <h4 class="font-weight-bold text-center">Lapso del Reporte</h4>
+                                                <h4 class="font-weight-bold text-center">Lapso de búsqueda</h4>
                                             </div>
                                             
                                             <div class="row d-flex align-items-center justify-content-between mx-0">
@@ -69,30 +73,36 @@
                         </form>
 
 									
-                    <section class="justify-content-center">
-                        <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
-                            <h3>Tabla: Estados Vs Órganos</h3>
-                            <canvas id="graficaOrganosEstados"></canvas>
+                    <section class="justify-content-center graficas">
+                        <div class="d-flex">
+                            <div style="margin: auto;" class="grafica m-5 border-1 shadow rounded p-2">
+                                <h3>Cantidad de Registros por Entidad</h3>
+                                <canvas id="graficaCantidadEstado"></canvas>
+                            </div>
+                            <div style="margin: auto;" class="grafica m-5 border-1 shadow rounded p-2">
+                                <h3>Donantes y No Donantes</h3>
+                                <canvas id="graficaDonador"></canvas>
+                            </div>
+                            <div style="margin: auto;" class="grafica m-5 border-1 shadow rounded p-2">
+                                <h3>Alcaldía y Órganos</h3>
+                                <canvas id="graficaAlcaldias"></canvas>
+                            </div>
                         </div>
-                        <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
-                            <h3>Tabla: Sexo Vs Óganos</h3>
-                            <canvas id="graficaOrganosSexo"></canvas>
+                        <div>
+                            <div style="margin: auto;" class="grafica m-5 border-1 shadow rounded p-2">
+                                <h3>Órganos</h3>
+                                <canvas id="graficaOrganos"></canvas>
+                            </div>
                         </div>
-                        <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
-                            <h3>Tabla: CantidadGen Vs Órganos</h3>
-                            <canvas id="graficaOrganos"></canvas>
-                        </div>
-                        <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
-                            <h3>Tabla: Estados Vs Cantidad de Registros</h3>
-                            <canvas id="graficaCantidadEstado"></canvas>
-                        </div>
-                        <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
-                            <h3>Tabla: Comparación entre Donantes y No Donantes</h3>
-                            <canvas id="graficaDonador"></canvas>
-                        </div>
-                        <div style="width: 80%; margin: auto;" class="m-5 border-1 shadow rounded p-2">
-                            <h3>Tabla: Alcaldía Vs Órganos</h3>
-                            <canvas id="graficaAlcaldias"></canvas>
+                        <div class="d-flex">
+                            <div style="margin: auto;" class="grafica m-5 border-1 shadow rounded p-2">
+                                <h3>Órganos por entidad</h3>
+                                <canvas id="graficaOrganosEstados"></canvas>
+                            </div>
+                            <div style="margin: auto;" class="grafica m-5 border-1 shadow rounded p-2">
+                                <h3>Donaciones por Sexo</h3>
+                                <canvas id="graficaOrganosSexo"></canvas>
+                            </div>
                         </div>
                     </section>
 

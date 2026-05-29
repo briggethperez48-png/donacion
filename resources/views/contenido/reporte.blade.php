@@ -12,19 +12,18 @@
                         <form action="{{ url('/content/reporte') }}" method="GET" enctype="multipart/form-data">
                                                 {{ csrf_field() }}
                                                 <!-- Fechas -->
-                                        <div class="container-fluid px-0 my-2"> {{-- Asegura que el padre use todo el ancho --}}
+                                        <div class="container-fluid px-0 my-2">
                                         <div>
                                                 <h4 class="font-weight-bold text-center">Lapso del Reporte</h4>
                                         </div>
                                         
-                                        {{-- justify-content-between separa los elementos a los extremos --}}
                                         <div class="row d-flex align-items-center justify-content-between mx-0">
                                                 
                                                 <div class="col-auto">
                                                 <p class="font-weight-bold mb-0">Del</p>
                                                 </div>
                                                 
-                                                <div class="form-group col-md-5 mb-0"> {{-- Subimos a col-5 para que abarquen más espacio --}}
+                                                <div class="form-group col-md-5 mb-0">
                                                 <input name="mesIni" type="month" class="form-control input" id="mesIni" value="{{ request('mesIni') }}">
                                                 </div>
                                                 
@@ -40,37 +39,27 @@
                                         </div>
                                                 <!-- Domicilio y Sexo-->
                                         <div class="row">
-                                                <div class="form-group col-md-4">
-                                                                                                <label for="EstadoProc" class="font-weight-bold">Estado de Procedencia</label>
-                                                                                                <select name="EstadoProc" id="Entidad" data-dependent="Municipio" class="dynamic form-control input">
-                                                                                                        <option value="">SELECCIONE UNO...</option>
-                                                                                                        @foreach($estado_list as $estado)
-                                                                                                                @php
-                                                                                                                        $dbEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($donante->EstadoProc ?? '')));
-                                                                                                                        $listEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($estado->Entidad)));
-                                                                                                                @endphp
-                                                                                                                <option value="{{ $listEstado }}" {{ $dbEstado == $listEstado ? 'selected' : '' }}>
-                                                                                                                        {{ $estado->Entidad }}
-                                                                                                                </option>
-                                                                                                        @endforeach
-                                                                                                </select>
-                                                                                        </div>
-
-                                                                                        <div class="form-group col-md-4" id="MunicipioI" style="{{ old('Alcaldia', $donante->Alcaldia ?? '') ? '' : 'display:none;' }}">
-                                                                                                <label for="Alcaldia" class="font-weight-bold">Alcaldía</label>
-                                                                                                <select name="Alcaldia" id="Municipio" data-dependent="Localidad" class="dynamic form-control input">
-                                                                                                        <option value="">-</option>
-                                                                                                </select>
-                                                                                        </div>
-
-                                                                                        <div class="form-group col-md-4" id="LocalidadI" style="{{ old('Colonia', $donante->Colonia ?? '') ? '' : 'display:none;' }}">
-                                                                                                <label for="Colonia" class="font-weight-bold">Colonia</label>
-                                                                                                <select name="Colonia" id="Localidad" class="form-control input">
-                                                                                                        <option value="">-</option>
-                                                                                                </select>
-                                                                                        </div>
-
-
+                                            <div class="form-group col-md-4">
+                                                <label for="EstadoProc" class="font-weight-bold">Estado de Procedencia</label>
+                                                <select name="EstadoProc" id="Entidad" data-dependent="Municipio" class="dynamic form-control input">
+                                                        <option value="">SELECCIONE UNO...</option>
+                                                        @foreach($estado_list as $estado)
+                                                                @php
+                                                                        $dbEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($donante->EstadoProc ?? '')));
+                                                                        $listEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($estado->Entidad)));
+                                                                @endphp
+                                                                <option value="{{ $listEstado }}" {{ $dbEstado == $listEstado ? 'selected' : '' }}>
+                                                                        {{ $estado->Entidad }}
+                                                                </option>
+                                                        @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-4" id="MunicipioI" style="{{ old('Alcaldia', $donante->Alcaldia ?? '') ? '' : 'display:none;' }}">
+                                                    <label for="Alcaldia" class="font-weight-bold">Alcaldía</label>
+                                                    <select name="Alcaldia" id="Municipio" class=" form-control input">
+                                                            <option value="">-</option>
+                                                    </select>
+                                            </div>
 
                                                 <div class="form-group col-md-4">
                                                         <label for="Sexo" class="font-weight-bold">Sexo</label>
@@ -147,7 +136,7 @@
                                 </div>
                         </form>
                                 <hr>
-                        <section class="card-body border-1 rounded-2 shadow-sm my-1 bg-transparent">
+                    <section class="card-body border-1 rounded-2 shadow-sm my-1 bg-transparent">
                         @if (session('success'))
                                 <div class="p-3">
                                     <h2>Su reporte:</h2>
@@ -207,18 +196,18 @@
                                         </div>
                                 </div>
                         @else
-                        <div class="m-3 text-center text-secondary">
-                                <div class="mb-5">
-                                        <h1>Filtre su búsqueda</h1>
+                                <div class="m-3 text-center text-secondary">
+                                        <div class="mb-5">
+                                                <h1>Filtre su búsqueda</h1>
+                                        </div>
+                                        <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                                </svg>
+                                        </div>
                                 </div>
-                                <div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                                        </svg>
-                                </div>
-                        </div>
                         @endif
-                        </section>
+                    </section>
                 </section>
         </div>
 @endcan

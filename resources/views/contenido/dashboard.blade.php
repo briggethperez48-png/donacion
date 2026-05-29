@@ -13,6 +13,7 @@
         <div id="info"> </div>
         <div class="dashboard">
             @include('components.mexicoSVG')
+            @include('components.cdmxSVG')
         </div>
         @include('components.footerGen')
     </div>

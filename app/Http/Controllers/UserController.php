@@ -212,12 +212,13 @@ class UserController extends Controller
         unset($cambios['updated_at']);
 
 
-        $textoDetalles = "Se actualizó al usuario ({$user->email}). ";
+        $textoDetalles = "Se actualizó al usuario {$user->nombre} {$user->apPaterno} ({$user->email}). ";
         if (!empty($cambios)) {
             $textoDetalles .= "Campos modificados: " . json_encode($cambios);
         } else {
             $textoDetalles .= "Sin cambios relevantes.";
         }
+        
 
         Auditoria::create([
             'user_id'     => auth()->id(),

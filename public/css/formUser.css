@@ -20,7 +20,7 @@ body.dark .user-form select option {
     color: var(--inner-text);
 }
 
-body.dark .user-form select option:checked {
+body.dark .user-form select:checked {
     background-color: var(--form-input-focus);
     border-color: var(--fill-hover);
     border-style: solid;

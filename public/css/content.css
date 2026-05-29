@@ -30,6 +30,7 @@ hr {
 
 /* Mapa */
 .Mapa {
+    height: 100vh;
     position: relative;
     display: flex;
     justify-content: center;
@@ -56,4 +57,24 @@ hr {
     scale: 1.01;
     transform: translateY(-5px);
     transition: normal 0.6s;
+}
+
+/* Dashboard */
+.dashboard {
+    display: flex;
+}
+
+/* Gráficas */
+.graficas {
+    width: 100vw;
+    margin: 20px;
+    justify-content: center;
+    align-content: center;
+}
+.graficas .grafica {
+    border-style: solid;
+    border-color: var(--stroke-color);
+    border-width: 1.5px;
+    background-color: var(--table-background);
+    align-items: center;
 }

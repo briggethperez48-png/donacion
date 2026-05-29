@@ -18,7 +18,7 @@
                 <li>Sexo</li>
             </ol>
         </p> -->
-		<section>
+		<section class="user-form">
 			<form action="{{url('/content/buscador')}}" method="GET" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<div>
@@ -87,8 +87,8 @@
                                                         @endforeach
                                                 </div>
                                                 
-                                                <div class="mt-3 mx-3">
-                                                        <div class="custom-control custom-checkbox">
+                                                <div class="mt-3 mx-3 justify-content-end">
+                                                        <div class="custom-control custom-checkbox text-right">
                                                                 <input type="checkbox" class="custom-control-input" id="checkTodos">
                                                                 <label class="custom-control-label font-weight-bold" for="checkTodos">SELECCIONAR TODOS</label>
                                                         </div>

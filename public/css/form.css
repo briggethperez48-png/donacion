@@ -88,12 +88,12 @@ p, label {
 }
 
 .checkbox {
-    appearance: none;           /* Elimina el estilo por defecto */
-    -webkit-appearance: none;   /* Compatibilidad con WebKit */
+    appearance: none;
+    -webkit-appearance: none;
     width: 15px;
     height: 15px;
     border: 1px solid #555;
-    border-radius: 4px;         /* Bordes redondeados */
+    border-radius: 4px;
     background-color: white;
     cursor: pointer;
     position: relative;

@@ -128,7 +128,7 @@
                             <li class="nav-link">
                                 <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                     {{ csrf_field() }}
-                                    <button type="submit" class="a" style="display: inline; cursor: pointer;">
+                                    <button type="submit" class="a button" style="display: inline; cursor: pointer;">
                                         <span class="text nav-text">Cerrar Sesión</span>
                                     </button>
                                 </form>
