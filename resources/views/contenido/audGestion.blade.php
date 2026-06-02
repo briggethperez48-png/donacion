@@ -11,6 +11,19 @@
                     <div class="col-md-8">
                         <h2> Historial de Movimientos </h2>
                     </div>
+                    <div class="col-md-8 m-3 user-form">
+                        <form action="{{ url('content/novedades') }}" method="GET" class="form-inline">
+                            <div class="input-group">
+                                <input type="text" name="buscar" class="form-control input" placeholder="Buscar por Nombre" value="{{ request('buscar') }}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-info" type="submit">
+                                        <i class="fa fa-search"></i> Buscar
+                                    </button>
+                                    <a href="{{ url('content/novedades') }}" class="btn btn-secondary">Limpiar</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 

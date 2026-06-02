@@ -32,32 +32,7 @@ Route::post('/donador/fetch', 'DonanteController@fetch')->name('donante.fetch');
 Route::post('content/reporte/fetch', 'ReporteController@fetch')->name('reporte.fetch');
 Route::post('content/buscador/fetch', 'BuscadorController@fetch')->name('buscador.fetch');
 
-// Route::resource('donador', 'DonanteController');
-// Route::resource('user', 'UserController');
-// Route::get('user/restore/{id}', 'UserController@restore')->name('user.restore');
-
 Route::view('/', 'aviso'); 
-
-// Route::view('/prohibido', 'desactivado'); 
-
-// Route::prefix('content')->group(function () {
-//     Route::view('/', 'contenido/dashboard'); //Dashboard
-//     Route::view('/buscador', 'contenido/buscador'); //Buscador
-//     Route::view('/reporte', 'contenido/reporte'); //Reportes de Excel. Sólo aplica a Organos
-//     //Route::view('/estadisticas', 'contenido/graficas'); //Muestra las gráficas. Sólo aplica a Organos
-//     Route::view('/buscador', 'contenido/buscador'); 
-// });
-
-// Route::get('content/buscador', 'BuscadorController@index')->name('buscador.index');
-// Route::post('content/buscador', 'BuscadorController@buscar');
-
-// Route::get('content/reporte', 'ReporteController@index')->name('reporte.index');
-// // Route::post('content/reporte-import', 'ReporteController@import')->name('reporte.import');
-// Route::get('content/reporte-export', 'ReporteController@export')->name('reporte.export');
-
-// Route::get('content/estadisticas', 'GraficasController@verGraficas')->name('estadisticas.verGraficas'); 
-
-//Auth::routes(['register' => false]);
 
 Route::get('donador/create', 'DonanteController@create')->name('donador.create');
 Route::post('donador', 'DonanteController@store')->name('donador.store');

@@ -344,7 +344,8 @@ body.dark td, body.dark th {
     color: var(--fill-color);
     transform: translateY(-10px) scale(1.5);
 }
-.footerEnd footer .menu li a {
+.footerEnd footer .menu li a,
+.footerEnd footer .menu li .a {
     font-size: 1.2em;
     color: var(--toggle-color);
     margin: 0 20px;
@@ -352,8 +353,12 @@ body.dark td, body.dark th {
     text-decoration: none;
     transition: var(--tran-02);
     opacity: 0.75;
+
+    background: transparent;
+    border-style: none;
 }
-.footerEnd footer .menu li a:hover {
+.footerEnd footer .menu li a:hover,
+.footerEnd footer .menu li .a:hover {
     opacity: 1;
 }
 .footerEnd footer .wave {

@@ -32,19 +32,22 @@
         </ul>
         <ul class="menu">
             <li>
-                <a href="">
+                <a href="https://www.salud.cdmx.gob.mx/" target="_blank">
                     SEDESA
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{url('/content/')}}">
                     Inicio
                 </a>
             </li>
             <li>
-                <a href="">
-                    Log out
-                </a>
+                <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                    {{ csrf_field() }}
+                    <button type="submit" class="a button" style="display: inline; cursor: pointer;">
+                        <span class="text nav-text">Cerrar Sesión</span>
+                    </button>
+                </form>
             </li>
         </ul>
     </footer>

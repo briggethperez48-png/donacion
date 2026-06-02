@@ -17,3 +17,7 @@
                 {!! Form::close() !!}
     </section>
 @endsection
+
+<script>
+    // Algo
+</script>

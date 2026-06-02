@@ -12,7 +12,8 @@
     backdrop-filter: blur(5px);
     mix-blend-mode: multiply;
 }
-.gestion tr {
+.gestion tr,
+ strong {
     color: var(--inner-text);
     opacity: 1;
 }
