@@ -18,6 +18,16 @@
     </section>
 @endsection
 
-<script>
-    // Algo
-</script>
+@section('scripts') 
+    <script>
+        const input = document.getElementById('password');
+        const boton = document.getElementById('resetButton');
+        const label = document.getElementById('aviso');
+
+        boton.addEventListener('click', function() {
+            input.value = "SEDESACDMX";
+            
+            label.classList.add('success');
+        });
+    </script>
+@endsection

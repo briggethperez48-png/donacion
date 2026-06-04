@@ -14,7 +14,7 @@
                     <div class="col-md-8 m-3 user-form">
                         <form action="{{ url('content/novedades') }}" method="GET" class="form-inline">
                             <div class="input-group">
-                                <input type="text" name="buscar" class="form-control input" placeholder="Buscar por Nombre" value="{{ request('buscar') }}">
+                                <input type="text" name="buscar" class="form-control input" placeholder="Buscar por Acción" value="{{ request('buscar') }}">
                                 <div class="input-group-append">
                                     <button class="btn btn-info" type="submit">
                                         <i class="fa fa-search"></i> Buscar

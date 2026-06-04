@@ -59,13 +59,11 @@ class ReporteController extends Controller
     }
 
 public function export(Request $request) {
-    // Enviamos el request completo al Excel
     return Excel::download(new ReportesExport($request), 'reporte_donantes.xlsx');
 }
 
-// Función privada para asegurar que la Vista y el Excel vean lo mismo
 private function filtrarDonantes(Request $request) {
-    return Donante::with('organos') // Cargamos la relación para el reporte
+    return Donante::with('organos')
         ->when($request->mesIni, function ($q) use ($request) {
             return $q->where('created_at', '>=', $request->mesIni . '-01');
         })
@@ -78,10 +76,8 @@ private function filtrarDonantes(Request $request) {
         ->when($request->Sexo && $request->Sexo != 'TODOS', function ($q) use ($request) {
             return $q->where('Sexo', $request->Sexo);
         })
-        // NUEVA LÓGICA PARA LA TABLA PIVOTE
         ->when($request->Organo, function ($q) use ($request) {
             return $q->whereHas('organos', function($sub) use ($request) {
-                // Filtra donantes que tengan cualquiera de los órganos seleccionados
                 $sub->whereIn('nombre', $request->Organo); 
             });
         })

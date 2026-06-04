@@ -10,7 +10,7 @@
             <div class="card-header bg-transparent">
                 <div class="row">
                     <div class="col-md-8">
-                        <h2>Usuarios</h2>
+                        <h2>Gestión de Usuarios</h2>
                     </div>
                     @if(request()->deleted == 1)
                         <div class="col-md-4">

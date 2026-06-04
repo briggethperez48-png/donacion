@@ -99,7 +99,15 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="password" class="font-weight-bold">Contraseña</label>
-                            <input name="password" type="password" class="form-control input" id="password" value="{{ isset($user->password) ? $user->password : old('password') }}">
+                            <input name="password" type="password" class="form-control input mb-2" id="password" value="{{ isset($user->password) ? $user->password : old('password') }}">
+                            @if(Route::is('user.edit'))
+                                <button type="button" class="btn btnSc btn-lg px-5 shadow text-uppercase w-100 w-md-auto" id="resetButton">
+                                    Reasignar
+                                </button>
+                            @endif
+                            <label id="aviso" for="password" class="aviso font-weight-bold">
+                                La nueva contraseña es: SEDESACDMX
+                            </label>
                             @if($errors->has('password'))
                                 <span class="text-danger small"><strong>{{ $errors->first('password') }}</strong></span>
                             @endif
