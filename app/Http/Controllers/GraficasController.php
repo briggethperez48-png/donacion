@@ -11,7 +11,6 @@ class GraficasController extends Controller {
         $mesIni = $request->get('mesIni');
         $mesFin = $request->get('mesFin');
 
-        
         $filtrarPorFecha = function($query) use ($mesIni, $mesFin) {
             return $query->when($mesIni, function($q) use ($mesIni) {
                 $q->where('donantes.created_at', '>=', $mesIni . '-01');
@@ -38,11 +37,38 @@ class GraficasController extends Controller {
             ->groupBy('donantes.Alcaldia')
             ->get();
 
-        // Gráfica 3: Órganos (Eloquent con filtro interno)
-        $organos = Organo::withCount(['donantes' => function($q) use ($mesIni, $mesFin) {
-            $q->when($mesIni, fn($query) => $query->where('donantes.created_at', '>=', $mesIni . '-01'))
-            ->when($mesFin, fn($query) => $query->where('donantes.created_at', '<=', $mesFin . '-31'));
-        }])->get();
+        // Gráfica 3: Órganos (Estructura Apilada)
+        $todosLosOrganos = \App\Organo::pluck('nombre')->toArray(); 
+
+        // Consultamos las donaciones reales agrupadas por órgano y sexo
+        $organosPorSexo = DB::table('relacion_o_d')
+            ->join('donantes', 'relacion_o_d.donante_id', '=', 'donantes.id')
+            ->join('organos', 'relacion_o_d.organo_id', '=', 'organos.id')
+            ->select('organos.nombre as organo', 'donantes.Sexo', DB::raw('count(*) as total'))
+            ->when($mesIni, function($q) use ($mesIni) {
+                $q->where('donantes.created_at', '>=', $mesIni . '-01');
+            })
+            ->when($mesFin, function($q) use ($mesFin) {
+                $q->where('donantes.created_at', '<=', $mesFin . '-31');
+            })
+            ->groupBy('organos.nombre', 'donantes.Sexo')
+            ->get();
+
+        // Procesamos los datos para Chart.js (inicializamos los arreglos en cero)
+        $valoresMasculino = array_fill(0, count($todosLosOrganos), 0);
+        $valoresFemenino  = array_fill(0, count($todosLosOrganos), 0);
+
+        foreach ($organosPorSexo as $registro) {
+            $index = array_search($registro->organo, $todosLosOrganos);
+            
+            if ($index !== false) {
+                if (strtoupper($registro->Sexo) === 'MASCULINO') {
+                    $valoresMasculino[$index] = $registro->total;
+                } elseif (strtoupper($registro->Sexo) === 'FEMENINO') {
+                    $valoresFemenino[$index] = $registro->total;
+                }
+            }
+        }
 
         // Gráficas 6 y 7 (Directo a tabla donantes)
         $queryDonantes = DB::table('donantes');
@@ -56,18 +82,19 @@ class GraficasController extends Controller {
             ->groupBy('Donador')->get();
 
         return view('contenido.graficas', [
-            'labelsP' => $resultadosP->pluck('EstadoProc'),
-            'valoresP' => $resultadosP->pluck('total'),
-            'labelsS' => $resultadosS->pluck('Sexo'),
-            'valoresS' => $resultadosS->pluck('total'),
-            'labels'  => $organos->pluck('nombre'),
-            'valores' => $organos->pluck('donantes_count'),
-            'labelsC' => $resultadosC->pluck('EstadoProc'),
-            'valoresC' => $resultadosC->pluck('total'),
-            'labelsN' => $resultadosN->pluck('Donador'),
-            'valoresN' => $resultadosN->pluck('total'),
-            'labelsA' => $resultadosA->pluck('Alcaldia'),
-            'valoresA' => $resultadosA->pluck('total'),
+            'labelsP'          => $resultadosP->pluck('EstadoProc')->toArray(),
+            'valoresP'         => $resultadosP->pluck('total')->toArray(),
+            'labelsS'          => $resultadosS->pluck('Sexo')->toArray(),
+            'valoresS'         => $resultadosS->pluck('total')->toArray(),
+            'labels'           => $todosLosOrganos,         
+            'valoresMasculino' => $valoresMasculino,        
+            'valoresFemenino'  => $valoresFemenino,         
+            'labelsC'          => $resultadosC->pluck('EstadoProc')->toArray(),
+            'valoresC'         => $resultadosC->pluck('total')->toArray(),
+            'labelsN'          => $resultadosN->pluck('Donador')->toArray(),
+            'valoresN'         => $resultadosN->pluck('total')->toArray(),
+            'labelsA'          => $resultadosA->pluck('Alcaldia')->toArray(),
+            'valoresA'         => $resultadosA->pluck('total')->toArray(),
         ]);
     }
 }

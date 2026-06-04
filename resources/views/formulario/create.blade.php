@@ -9,4 +9,7 @@
                 @include('formulario.donacion', ['modo'=>'Registro'])
         </form>
     </section>
+        <section>
+            @include('components.footerForm')
+        </section>
 @endsection

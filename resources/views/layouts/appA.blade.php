@@ -48,18 +48,10 @@
 
 
     <!-- Footer -->
-    @if(!Route::is('donador.create', 'donador.edit','login', 'login.post', 'logout','content'))
-        <section></section>
-    @elseif(Route::is('content'))
-        <section style="position: fixed;">
-            
+    @if(Route::is('login', 'login.post', 'logout'))
+        <section>
+           
         </section>
-    @elseif(Route::is('login', 'login.post', 'logout'))
-        <section></section>
-    @else
-            <section>
-                @include('components.footerForm')
-            </section>
     @endif
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>

@@ -16,6 +16,7 @@ body.dark .user-form .input {
 }
 
 body.dark .user-form .input::placeholder,
+body.dark .user-form .input,
 body.dark .user-form select option {
     color: var(--inner-text);
 }

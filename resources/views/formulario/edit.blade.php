@@ -10,4 +10,7 @@
                 @include('formulario.donacion', ['modo'=>'Edición'])
         </form>
     </section>
+        <section>
+            @include('components.footerForm')
+        </section>
 @endsection
