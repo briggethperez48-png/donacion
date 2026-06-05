@@ -46,6 +46,27 @@
         @yield('content')
     </div>
 
+    <div class="modal fade" id="modalGraficaLugar" tabindex="-1" role="dialog" aria-labelledby="modalLugarLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLugarLabel">Detalle de Órganos en: <span id="nombreLugar" class="font-weight-bold"></span></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div style="position: relative; height:400px; width:100%">
+                        <canvas id="graficaModalDynamic"></canvas>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">Cerrar Ventana</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Footer -->
     @if(Route::is('login', 'login.post', 'logout'))
@@ -53,11 +74,14 @@
            
         </section>
     @endif
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @yield('scripts')
 </body>
 </html>

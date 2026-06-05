@@ -12,6 +12,7 @@
     --toggle-color:#b28e5c;
     --text-color:#fffae9;
     --table-background: rgba(255,255,255,0.4);
+    --T-background: rgba(178,142,92,0.4);
     --inner-text: #55585a;
     --titles-text: #9d2148;
     --fill-color:#fffae9;
@@ -47,6 +48,7 @@ body.dark {
     --toggle-color:#bfb7af;
     --text-color:#fffae9;
     --table-background: rgba(88,89,90,0.4);
+    --T-background: rgba(157,33,72,0.4);
     --inner-text: #fffae9;
     --titles-text: #b28e5c;
     --fill-color: #121212;

@@ -4,13 +4,13 @@
 
 @section('content')
 @can('Dashboard')
-<section class="Dashboard">
+<section class="Dashboard" id="dashboardContainer">
     <div>
         <h1>Bienvenido, {{ auth()->user()->nombre }}.</h1>
         <hr>
     </div>
-    <div>
-        <div id="info"></div>
+    <div class="mapas">
+        <div class="nombreLugar" id="info" style="min-height: 24px; margin-bottom: 10px;"></div>
         <div class="containerD">
             <div class="swiper">
                 <div class="swiper-wrapper">
@@ -27,115 +27,99 @@
         </div>
         @include('components.footerGen')
     </div>
+</section> 
 
-    <div class="modal fade" id="modalGraficaLugar" tabindex="-1" aria-labelledby="modalLugarLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalLugarLabel">Detalle de Órganos en: <span id="nombreLugar"></span></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div style="position: relative; height:400px; width:100%">
-                        <canvas id="graficaModalDynamic"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 @endcan
 @endsection
 
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      const swiper = new Swiper('.swiper', {
-        autoplay: {
-          delay: 5000,
-          disableOnDirection: false,
-        },
-        loop: true,
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-      });
-    </script>
 
-    <script>
-        const info = document.getElementById('info');
-        let miGraficaModal = null;
+<script>
+    $('#modalGraficaLugar').appendTo("body");
+  // Inicialización de Swiper
+  const swiper = new Swiper('.swiper', {
+    autoplay: {
+      delay: 5000,
+      disableOnDirection: false,
+    },
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
 
-        // 1. EFECTO HOVER (Sirve para ambos mapas gracias a la clase .map-region)
-        document.querySelectorAll('.map-region').forEach(region => {
-            region.addEventListener('mouseover', function(event) {
-                // Busca data-estado, si no existe usa data-alcaldia, si no data-name
-                const name = this.getAttribute('data-estado') || this.getAttribute('data-alcaldia') || this.getAttribute('data-name');
-                if (name) {
-                    info.textContent = name;
-                }
-            });
-        });
+<script>
+    // Usamos el document directamente para evitar problemas de sincronización en el DOM con Swiper
+    let miGraficaModal = null;
+    const info = document.getElementById('info');
 
-        // 2. EVENTO CLIC PARA ABRIR EL MODAL Y LLAMAR AJAX
-        document.querySelectorAll('.map-region').forEach(region => {
-            region.addEventListener('click', function() {
-                const estado = this.getAttribute('data-estado');
-                const alcaldia = this.getAttribute('data-alcaldia');
-                const lugarNombre = estado || alcaldia;
+    // 1. Manejo del HOVER en tiempo real
+    document.addEventListener('mouseover', function(event) {
+        if (event.target.classList.contains('map-region')) {
+            const name = event.target.getAttribute('data-estado') || 
+                         event.target.getAttribute('data-alcaldia') || 
+                         event.target.getAttribute('data-name');
+            if (name && info) {
+                info.textContent = name;
+            }
+        }
+    });
 
-                if (!lugarNombre) return; // Si no tiene datos, no hace nada
+    // 2. Manejo del CLICK en tiempo real (Soluciona CDMX clonada)
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('map-region')) {
+            const target = event.target;
+            const estado = target.getAttribute('data-estado');
+            const alcaldia = target.getAttribute('data-alcaldia');
+            const lugarNombre = estado || alcaldia;
 
-                // Actualizamos el título del modal
-                document.getElementById('nombreLugar').innerText = lugarNombre;
+            if (!lugarNombre) return;
 
-                // Obtener filtros de fecha
-                const mesIni = document.getElementById('mesIni')?.value || '';
-                const mesFin = document.getElementById('mesFin')?.value || '';
+            document.getElementById('nombreLugar').innerText = lugarNombre;
 
-                // URL base generada por Laravel
-                let url = `{{ route('estadisticas.organosLugar') }}?mesIni=${mesIni}&mesFin=${mesFin}`;
-                if (estado) url += `&estado=${encodeURIComponent(estado)}`;
-                if (alcaldia) url += `&alcaldia=${encodeURIComponent(alcaldia)}`;
+            const mesIni = document.getElementById('mesIni')?.value || '';
+            const mesFin = document.getElementById('mesFin')?.value || '';
 
-                // Petición AJAX
-                fetch(url)
-                    .then(response => response.json())
-                    .then(data => {
-                        const ctxModal = document.getElementById('graficaModalDynamic').getContext('2d');
+            let url = `{{ route('estadisticas.organosLugar') }}?mesIni=${mesIni}&mesFin=${mesFin}`;
+            if (estado) url += `&estado=${encodeURIComponent(estado)}`;
+            if (alcaldia) url += `&alcaldia=${encodeURIComponent(alcaldia)}`;
 
-                        if (miGraficaModal) {
-                            miGraficaModal.destroy();
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const ctxModal = document.getElementById('graficaModalDynamic').getContext('2d');
+
+                    if (miGraficaModal) {
+                        miGraficaModal.destroy();
+                    }
+
+                    miGraficaModal = new Chart(ctxModal, {
+                        type: 'bar',
+                        data: {
+                            labels: data.labels,
+                            datasets: [{
+                                label: `Órganos Donados`,
+                                data: data.valores,
+                                backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: { y: { beginAtZero: true } }
                         }
+                    });
 
-                        miGraficaModal = new Chart(ctxModal, {
-                            type: 'bar',
-                            data: {
-                                labels: data.labels,
-                                datasets: [{
-                                    label: `Órganos Donados`,
-                                    data: data.valores,
-                                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
-                                    borderColor: 'rgba(75, 192, 192, 1)',
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                scales: { y: { beginAtZero: true } }
-                            }
-                        });
-
-                        // Mostrar Modal
-                        const modalElement = document.getElementById('modalGraficaLugar');
-                        const modalInstancia = bootstrap.Modal.getOrCreateInstance(modalElement);
-                        modalInstancia.show();
-                    })
-                    .catch(error => console.error('Error al obtener los datos:', error));
-            });
-        });
-    </script>
+                    // Activa el modal usando el jQuery que ya vive en tu Layout
+                    $('#modalGraficaLugar').modal('show');
+                })
+                .catch(error => console.error('Error al obtener los datos:', error));
+        }
+    });
+</script>
 @endsection
