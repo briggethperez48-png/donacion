@@ -195,7 +195,7 @@
         }
     });
 
-    // 6. Gráfica de Donaciones por Sexo -> TIPO RADAR
+    // 6. Gráfica de Donaciones por Sexo -> TIPO LÍNEA
     new Chart(document.getElementById('graficaOrganosSexo'), {
         type: 'line', 
         data: {

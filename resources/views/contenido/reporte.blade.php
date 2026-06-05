@@ -34,7 +34,6 @@
                                                 <div class="form-group col-md-5 mb-0">
                                                 <input name="mesFin" type="month" class="form-control input" id="mesFin" value="{{ request('mesFin') }}">
                                                 </div>
-                                                
                                         </div> 
                                         </div>
                                                 <!-- Domicilio y Sexo-->
@@ -169,8 +168,8 @@
                                                                 @foreach($donantes as $dato)
                                                                 <tr>
                                                                         @php 
-                                                                        $nomCom = $dato->Nombre . ' ' . $dato->ApPaterno . ' ' . $dato->ApMaterno;
-                                                                        $domicilio = $dato->EstadoProc . ', ' . $dato->Alcaldia . ', ' . $dato->Colonia;
+                                                                            $nomCom = $dato->Nombre . ' ' . $dato->ApPaterno . ' ' . $dato->ApMaterno;
+                                                                            $domicilio = $dato->EstadoProc . ', ' . $dato->Alcaldia . ', ' . $dato->Colonia;
                                                                         @endphp
                                                                         <td scope="row">{{$dato->id}}</td>
                                                                         <td>{{$nomCom}}</td>
@@ -180,13 +179,11 @@
                                                                         <td>{{$dato->EstadoProc}}</td>
                                                                         <td>{{$domicilio}}</td>
                                                                         <td>
-                                                                        @if($dato->organos->count() > 0)
-                                                                                @foreach($dato->organos as $organo)
-                                                                                                {{ $organo->nombre }}
-                                                                                @endforeach
-                                                                        @else
+                                                                            @if($dato->organos && $dato->organos->isNotEmpty())
+                                                                                {{ $dato->organos->implode('nombre', ', ') }}
+                                                                            @else
                                                                                 NINGUNO
-                                                                        @endif
+                                                                            @endif
                                                                         </td>
                                                                         <td>{{$dato->Telefono}}</td>
                                                                 </tr>

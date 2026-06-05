@@ -40,7 +40,6 @@ class GraficasController extends Controller {
         // Gráfica 3: Órganos (Estructura Apilada)
         $todosLosOrganos = \App\Organo::pluck('nombre')->toArray(); 
 
-        // Consultamos las donaciones reales agrupadas por órgano y sexo
         $organosPorSexo = DB::table('relacion_o_d')
             ->join('donantes', 'relacion_o_d.donante_id', '=', 'donantes.id')
             ->join('organos', 'relacion_o_d.organo_id', '=', 'organos.id')
@@ -54,7 +53,6 @@ class GraficasController extends Controller {
             ->groupBy('organos.nombre', 'donantes.Sexo')
             ->get();
 
-        // Procesamos los datos para Chart.js (inicializamos los arreglos en cero)
         $valoresMasculino = array_fill(0, count($todosLosOrganos), 0);
         $valoresFemenino  = array_fill(0, count($todosLosOrganos), 0);
 
@@ -62,9 +60,11 @@ class GraficasController extends Controller {
             $index = array_search($registro->organo, $todosLosOrganos);
             
             if ($index !== false) {
-                if (strtoupper($registro->Sexo) === 'MASCULINO') {
+                $sexoFormateado = strtoupper(trim($registro->Sexo));
+
+                if ($sexoFormateado === 'MASCULINO' || $sexoFormateado === 'M' || $sexoFormateado === 'HOMBRE') {
                     $valoresMasculino[$index] = $registro->total;
-                } elseif (strtoupper($registro->Sexo) === 'FEMENINO') {
+                } elseif ($sexoFormateado === 'FEMENINO' || $sexoFormateado === 'F' || $sexoFormateado === 'MUJER') {
                     $valoresFemenino[$index] = $registro->total;
                 }
             }
@@ -97,4 +97,38 @@ class GraficasController extends Controller {
             'valoresA'         => $resultadosA->pluck('total')->toArray(),
         ]);
     }
+
+    public function getOrganosPorLugar(Request $request) {
+        $estado = $request->get('estado');
+        $alcaldia = $request->get('alcaldia');
+        $mesIni = $request->get('mesIni');
+        $mesFin = $request->get('mesFin');
+
+
+        // Base de la consulta
+        $query = DB::table('relacion_o_d')
+            ->join('donantes', 'relacion_o_d.donante_id', '=', 'donantes.id')
+            ->join('organos', 'relacion_o_d.organo_id', '=', 'organos.id');
+
+
+        // Filtramos dinámicamente si es Estado o Alcaldía
+        if ($estado) {
+            $query->where('donantes.EstadoProc', $estado);
+        } elseif ($alcaldia) {
+            $query->where('donantes.Alcaldia', $alcaldia);
+        }
+
+        if ($mesIni) { $query->where('donantes.created_at', '>=', $mesIni . '-01'); }
+        if ($mesFin) { $query->where('donantes.created_at', '<=', $mesFin . '-31'); }
+
+        $resultados = $query->select('organos.nombre as organo', DB::raw('count(*) as total'))
+            ->groupBy('organos.nombre')
+            ->get();
+
+        return response()->json([
+            'labels' => $resultados->pluck('organo'),
+            'valores' => $resultados->pluck('total')
+        ]);
+    }
+
 }

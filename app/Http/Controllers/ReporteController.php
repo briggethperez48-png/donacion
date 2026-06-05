@@ -9,8 +9,7 @@ use App\Donante;
 use Illuminate\Support\Facades\DB;
 
 
-class ReporteController extends Controller
-{
+class ReporteController extends Controller {
     public function index(Request $request) {
         $estado_list = DB::table('municipiosalcaldias')
                         ->select('ClaveEntidad', 'Entidad')

@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Donante extends Model
 {
+    protected $casts = [
+        'FechaNac' => 'date',
+    ];    
     
     protected $fillable = [
             'Nombre',

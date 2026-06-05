@@ -52,7 +52,7 @@
             <td>{{ $donador->Nombre }}</td>
             <td>{{ $donador->ApPaterno }}</td>
             <td>{{ $donador->ApMaterno }}</td>
-            <td>{{ $donador->FechaNac }}</td>
+            <td>{{ $donador->FechaNac ? $donador->FechaNac->format('d/m/Y') : ''}}</td>
             <td>{{ $donador->estadoNac }}</td>
             <td>{{ $donador->Ocupacion }}</td>
             <td>{{ $donador->EstCiv }}</td>
@@ -64,12 +64,19 @@
             <td>{{ $donador->CURP }}</td>
             <td>{{ $donador->Sexo }}</td>
             <td>{{ $donador->Donador }}</td>
-            <td>{{ $donador->Organo }}</td>
+            <!-- <td>{{ $donador->Organo }}</td> -->
+            <td>
+                @if($donador->organos && $donador->organos->isNotEmpty())
+                    {{ $donador->organos->implode('nombre', ', ') }}
+                @else
+                    NINGUNO
+                @endif
+            </td>
             <td>{{ $donador->Referencias }}</td>
             <td>{{ $donador->Telefono }}</td>
             <td>{{ $donador->Pregunta }}</td>
             <td>{{ $donador->Respuesta }}</td>
-            <td>{{ $donador->created_at }}</td>
+            <td>{{ $donador->created_at ? $donador->created_at->format('d/m/Y') : '' }}</td>
         </tr>
         @endforeach
     </tbody>

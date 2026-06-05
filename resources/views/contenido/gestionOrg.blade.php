@@ -57,10 +57,8 @@
                             <td>{{$dato->estadoNac}}</td>
                             <td>{{$domicilio}}</td>
                             <td>
-                                @if($dato->organos->count() > 0)
-                                    @foreach($dato->organos as $organo)
-                                            {{ $organo->nombre }}
-                                    @endforeach
+                                @if($dato->organos && $dato->organos->isNotEmpty())
+                                    {{ $dato->organos->implode('nombre', ', ') }}
                                 @else
                                     NINGUNO
                                 @endif
