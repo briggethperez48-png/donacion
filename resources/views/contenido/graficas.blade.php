@@ -5,7 +5,7 @@
 @section('content')
 @can('Estadisticas index')
 
-    <section class="card-body border-1 rounded-2 shadow-sm mt-1 mb-3 user-form">
+    <section class="estadisticas justify-content-center card-body border-1 rounded-2 shadow-sm mt-1 mb-3 user-form">
         <div>
             <h1>Estadísticas del Sistema</h1>
             <hr>
@@ -14,16 +14,16 @@
         <form action="{{ route('estadisticas.verGraficas') }}" method="GET" enctype="multipart/form-data">
             <div class="container-fluid px-0 my-2">
                 <div>
-                    <h4 class="font-weight-bold text-center">Lapso de búsqueda</h4>
+                    <h4 class="font-weight-bold text-center">Lapso de filtrado</h4>
                 </div>
                 <div class="row d-flex align-items-center justify-content-between mx-0">
                     <div class="col-auto"><p class="font-weight-bold mb-0">Del</p></div>
                     <div class="form-group col-md-5 mb-0">
-                        <input name="mesIni" type="month" class="form-control input" id="mesIni" value="{{ request('mesIni') }}">
+                        <input name="mesIni" type="date" class="form-control input" id="mesIni" value="{{ request('mesIni') }}">
                     </div>
                     <div class="col-auto"><p class="font-weight-bold mb-0">al</p></div>
                     <div class="form-group col-md-5 mb-0">
-                        <input name="mesFin" type="month" class="form-control input" id="mesFin" value="{{ request('mesFin') }}">
+                        <input name="mesFin" type="date" class="form-control input" id="mesFin" value="{{ request('mesFin') }}">
                     </div>
                 </div> 
             </div>

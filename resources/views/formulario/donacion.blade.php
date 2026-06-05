@@ -59,7 +59,9 @@
                         <div class="row">
                             <div class="form-group col-md-3">
                                 <label for="FechaNac" class="font-weight-bold">Fecha de Nacimiento</label>
-                                <input name="FechaNac" type="date" class="form-control input" id="FechaNac" value="{{ isset($donante->FechaNac) ? $donante->FechaNac : old('FechaNac') }}">
+                                <input name="FechaNac" type="date" class="form-control input" id="FechaNac" 
+                                value="{{ old('FechaNac', isset($donante->FechaNac) ? $donante->FechaNac->format('Y-m-d') : '') }}">
+                                
                                 @if($errors->has('FechaNac'))
                                     <span class="text-danger small"><strong>{{ $errors->first('FechaNac') }}</strong></span>
                                 @endif
@@ -137,10 +139,10 @@
                                 <label for="Religion" class="font-weight-bold">Religión</label>
                                 <select name="Religion" id="Religion" class="form-control input">
                                     <option value="">SELECCIONE UNO...</option>
-                                    <option value="CATÓLICA" {{ old('Religion', $donante->Religion ?? '') == 'CATÓLICA' ? 'selected' : '' }}>CATÓLICA</option>
-                                    <option value="JUDÍA" {{ old('Religion', $donante->Religion ?? '') == 'JUDÍA' ? 'selected' : '' }}>JUDÍA</option>
+                                    <option value="CATÓLICA" {{ old('Religion', $donante->Religion ?? '') == 'CATOLICA' ? 'selected' : '' }}>CATÓLICA</option>
+                                    <option value="JUDÍA" {{ old('Religion', $donante->Religion ?? '') == 'JUDIA' ? 'selected' : '' }}>JUDÍA</option>
                                     <option value="CRISTIANA" {{ old('Religion', $donante->Religion ?? '') == 'CRISTIANA' ? 'selected' : '' }}>CRISTIANA</option>
-                                    <option value="TESTIGO DE JEHOVÁ" {{ old('Religion', $donante->Religion ?? '') == 'TESTIGO DE JEHOVÁ' ? 'selected' : '' }}>TESTIGO DE JEHOVÁ</option>
+                                    <option value="TESTIGO DE JEHOVÁ" {{ old('Religion', $donante->Religion ?? '') == 'TESTIGO DE JEHOVA' ? 'selected' : '' }}>TESTIGO DE JEHOVÁ</option>
                                     <option value="EVANGELISTA" {{ old('Religion', $donante->Religion ?? '') == 'EVANGELISTA' ? 'selected' : '' }}>EVANGELISTA</option>
                                     <option value="NINGUNA" {{ old('Religion', $donante->Religion ?? '') == 'NINGUNA' ? 'selected' : '' }}>NINGUNA</option>
                                     <option value="OTRO" {{ old('Religion', $donante->Religion ?? '') == 'OTRO' ? 'selected' : '' }}>OTRO</option>
@@ -152,7 +154,7 @@
                             <div class="form-group col-md-4">
                                 <label for="CURP" class="font-weight-bold">CURP</label>
                                 <input name="CURP" type="text" class="form-control input" id="CURP" value="{{ isset($donante->CURP) ? $donante->CURP : old('CURP') }}" 
-                                placeholder="EJEMPLO: AUAM630703HHGTGRR02">
+                                placeholder="EJEMPLO: AUAM630703HGTGRR02" maxlength="18" minlength="18">
                                 @if($errors->has('CURP'))
                                     <span class="text-danger small"><strong>{{ $errors->first('CURP') }}</strong></span>
                                 @endif
@@ -283,11 +285,7 @@
                         <label class="font-weight-bold">¿Qué órganos desea donar?</label>
                         
                         <div class="row px-3 mt-2">
-                                @php 
-                                    // 1. Determinamos qué órganos ya están seleccionados
-                                    // Si hay 'old' (error de validación), mandamos eso primero.
-                                    // Si no, si el donante existe y tiene órganos, sacamos sus IDs.
-                                    // Si es nuevo, mandamos un array vacío.
+                                @php
                                     $seleccionados = old('Organo', isset($donante) ? $donante->organos->pluck('id')->toArray() : []);
                                 @endphp
 
@@ -335,7 +333,7 @@
                             <div class="form-group col-md-6">
                                 <label for="Telefono" class="font-weight-bold">Teléfono</label>
                                 <input name="Telefono" type="tel" class="form-control input" id="Telefono" pattern="^(55|56)[0-9]{8}$" 
-                                    placeholder="5512345678" value="{{ isset($donante->Telefono) ? $donante->Telefono : old('Telefono') }}" maxLength="10" inputmode="numeric">
+                                    placeholder="5512345678" value="{{ isset($donante->Telefono) ? $donante->Telefono : old('Telefono') }}" minLength="10" maxLength="10" inputmode="numeric">
                                 <small id="contadorA" class="form-text text-muted text-right">0 / 10 caracteres</small>
                                 @if($errors->has('Telefono'))
                                     <span class="text-danger small"><strong>{{ $errors->first('Telefono') }}</strong></span>
@@ -383,15 +381,14 @@
                                 Guardar
                             </button>
                         </div>
-
-                        <div class="m-2 w-100 w-md-auto text-center">
-                            <a href="https://salud.cdmx.gob.mx/" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            class="btn btn-secondary btn-lg px-5 shadow text-light w-100 w-md-auto">
-                                Regresar
-                            </a>
-                        </div>
+                        @can('Donador edit')
+                            <div class="m-2 w-100 w-md-auto text-center">
+                                <a href="{{url('/donador')}}" 
+                                class="btn btn-secondary btn-lg px-5 shadow text-light w-100 w-md-auto">
+                                    Regresar
+                                </a>
+                            </div>
+                        @endcan
                     </div>
                 </div>
             </div>

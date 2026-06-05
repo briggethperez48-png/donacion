@@ -1,6 +1,6 @@
 @extends('layouts.appA')
 
-@section('title', 'Donador')
+@section('title', 'Usuarios')
 
 @section('content')
 
@@ -12,18 +12,20 @@
                     <div class="col-md-8">
                         <h2>Gestión de Usuarios</h2>
                     </div>
+                    
                     @if(request()->deleted == 1)
-                        <div class="col-md-4">
-                            <a class="btn btn-outline-info" href="{{route('user.index')}}">Regresar</a>
+                        <div class="col-md-4 text-md-right mb-3 mb-md-0">
+                            <a class="btn btnSc btn-lg px-5 shadow text-uppercase w-100 w-md-auto" href="{{route('user.index')}}">Activos</a>
                         </div>
                     @else
-                        <div class="col-md-4">
-                            <a class="btn btn-outline-dark" href="{{route('user.index', ['deleted' => 1])}}">Eliminados</a>
+                        <div class="col-md-4 text-md-right mb-3 mb-md-0">
+                            <a class="btn btnSc btn-lg px-5 shadow text-uppercase w-100 w-md-auto" href="{{route('user.index', ['deleted' => 1])}}">Eliminados</a>
                         </div>
                     @endif
-                    <div class="col-md-8 m-3 user-form">
-                        <form action="{{ url('/user') }}" method="GET" class="form-inline">
-                            <div class="input-group">
+
+                    <div class="col-12 mt-3 user-form">
+                        <form action="{{ url('/user') }}" method="GET" class="w-100">
+                            <div class="input-group w-100">
                                 <input type="text" name="buscar" class="form-control input" placeholder="Buscar por Nombre" value="{{ request('buscar') }}">
                                 <div class="input-group-append">
                                     <button class="btn btn-info" type="submit">
@@ -34,8 +36,10 @@
                             </div>
                         </form>
                     </div>
+
                 </div>
             </div>
+        </div>
         
             @if($users->count())
                 <div class="card-body bg-transparent background">

@@ -10,7 +10,10 @@
         <hr>
     </div>
     <div class="mapas">
-        <div class="nombreLugar" id="info" style="min-height: 24px; margin-bottom: 10px;"></div>
+        <div  class="nombreLugar">
+            <div class="mr-1">DONACIONES EN: </div>
+            <div id="info" style="min-height: 24px; margin-bottom: 10px;"></div>
+        </div>
         <div class="containerD">
             <div class="swiper">
                 <div class="swiper-wrapper">

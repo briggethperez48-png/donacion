@@ -13,9 +13,9 @@ class GraficasController extends Controller {
 
         $filtrarPorFecha = function($query) use ($mesIni, $mesFin) {
             return $query->when($mesIni, function($q) use ($mesIni) {
-                $q->where('donantes.created_at', '>=', $mesIni . '-01');
+                return $q->whereDate('donantes.created_at', '>=', $mesIni);
             })->when($mesFin, function($q) use ($mesFin) {
-                $q->where('donantes.created_at', '<=', $mesFin . '-31');
+                return $q->whereDate('donantes.created_at', '<=', $mesFin);
             });
         };
 

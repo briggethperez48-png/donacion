@@ -1,10 +1,10 @@
     <footer class="footer position-fixed">
         <div class="priv text-left mb-1" style="line-height: 0.9;">
             <small class="text-light" style="font-size: 11px;">
-                Registro de donadores voluntarios del Centro Nacional de Transpantes:
+                Registro de donadores voluntarios del Centro Nacional de Transplantes:
             </small>
-            <a href="https://dv.cenatra.salud.gob.mx/registrar.php" target="_blank" rel="noopener noreferrer" style="font-size: 11px;">
-                <b>https://dv.cenatra.salud.gob.mx/registrar.php</b>
+            <a href="https://www.donavida-cenatra.atdt.gob.mx/" target="_blank" rel="noopener noreferrer" style="font-size: 11px;">
+                <b>https://www.donavida-cenatra.atdt.gob.mx/</b>
             </a>
             <br>
             <small class="text-light" style="font-size: 11px;">
@@ -16,7 +16,7 @@
         </div>
         <div class="SEDESA text-justify" style="line-height: 0.9;">
             <small class="text-light" style="font-size: 11px;">
-                    Copyright © 2017 Secretaría de Salud de la CDMX Derechos Reservados. Dirección General de Planeación y Coordinación Sectorial Dirección de Sistemas Institucionales y Comunicaciones Jefatura Departamental de Desarrollo de Sistemas y Capacitación.
+                     © 2017 Secretaría de Salud Pública de la CDMX Derechos Reservados. Dirección General de Planeación y Coordinación Sectorial Dirección de Información en Salud y Sistemas Institucionales.
             </small>
         </div>
     </footer>

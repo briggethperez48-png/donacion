@@ -101,7 +101,7 @@ hr {
     border-radius: 5px;
 }
 .nombreLugar {
-    display: inline-block;
+    display: flex;
 
     width: 100%;
     height: 50px;
@@ -155,13 +155,18 @@ hr {
 
 
 /* Gráficas */
+.estadisticas {
+    justify-content: center;
+    align-content: center;
+}
 .graficas {
-    width: 100vw;
-    margin: 20px;
+    width: 85vw;
+    margin: 10px;
     justify-content: center;
     align-content: center;
 }
 .graficas .grafica {
+    margin: auto;
     border-style: solid;
     border-color: var(--stroke-color);
     border-width: 1.5px;

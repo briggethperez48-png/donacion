@@ -150,6 +150,10 @@ body .content .aComponents {
     transform: translateX(-150px);
 }
 
+.sidebar.close .text {
+    position: absolute;
+}
+
 .sidebar header {
     position: relative;
 }
@@ -426,8 +430,6 @@ body.dark .footerEnd footer .wave {
     }
 
 /* Footer Form Donantes */
-
-    /*Footer*/
 .footer{
     position: fixed; 
     bottom: 0;

@@ -24,7 +24,7 @@
                                                 </div>
                                                 
                                                 <div class="form-group col-md-5 mb-0">
-                                                <input name="mesIni" type="month" class="form-control input" id="mesIni" value="{{ request('mesIni') }}">
+                                                <input name="mesIni" type="date" class="form-control input" id="mesIni" value="{{ request('mesIni') }}">
                                                 </div>
                                                 
                                                 <div class="col-auto">
@@ -32,7 +32,7 @@
                                                 </div>
                                                 
                                                 <div class="form-group col-md-5 mb-0">
-                                                <input name="mesFin" type="month" class="form-control input" id="mesFin" value="{{ request('mesFin') }}">
+                                                <input name="mesFin" type="date" class="form-control input" id="mesFin" value="{{ request('mesFin') }}">
                                                 </div>
                                         </div> 
                                         </div>
@@ -106,12 +106,9 @@
                                                                                 </div>
                                                                         </div>
                                                                 @endforeach
-                                                        </div>
-                                                        
-                                                        <div class="mt-3 mx-3">
-                                                                <div class="custom-control custom-checkbox">
+                                                                <div class="col-3 custom-control custom-checkbox text-right">
                                                                         <input type="checkbox" class="custom-control-input" id="checkTodos">
-                                                                        <label class="custom-control-label font-weight-bold" for="checkTodos">SELECCIONAR TODOS</label>
+                                                                        <label class="custom-control-label font-weight-bold text-left" for="checkTodos">SELECCIONAR TODOS</label>
                                                                 </div>
                                                         </div>
                                                 </div>

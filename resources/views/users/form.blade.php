@@ -71,7 +71,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label for="telefono" class="font-weight-bold">Teléfono</label>
-                            <input name="telefono" type="tel" class="form-control input" id="telefono" value="{{ isset($user->telefono) ? $user->telefono : old('telefono') }}">
+                            <input name="telefono" type="tel" class="form-control input" minlength="10" maxlength="10" id="telefono" value="{{ isset($user->telefono) ? $user->telefono : old('telefono') }}">
                             @if($errors->has('telefono'))
                                 <span class="text-danger small"><strong>{{ $errors->first('telefono') }}</strong></span>
                             @endif
@@ -79,29 +79,29 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-4" style="opacity: 0; position: absolute;">
                             <label for="status" class="font-weight-bold">Estatus del usuario</label>
                                 <div class="d-flex justify-content-between">
-                                        <p> <input type="radio" name="status" id="status" value="ACTIVO"> ACTIVO</p>
-                                        <p> <input type="radio" name="status" id="status" value="INACTIVO" checked> INACTIVO</p>
+                                        <p> <input type="radio" name="status" id="status" value="ACTIVO" checked> ACTIVO</p>
+                                        <p> <input type="radio" name="status" id="status" value="INACTIVO"> INACTIVO</p>
                                 </div>
                             @if($errors->has('status'))
                                 <span class="text-danger small"><strong>{{ $errors->first('status') }}</strong></span>
                             @endif
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label for="email" class="font-weight-bold">Correo Eléctronico</label>
-                            <input name="email" type="email" class="form-control input" id="email" value="{{ isset($user->email) ? $user->email : old('email') }}"
+                            <input name="email" type="email" class="form-control input text-lowercase" id="email" value="{{ isset($user->email) ? $user->email : old('email') }}"
                             placeholder="EJEMPLO: tucorreo@gmail.com">
                             @if($errors->has('email'))
                                 <span class="text-danger small"><strong>{{ $errors->first('email') }}</strong></span>
                             @endif
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label for="password" class="font-weight-bold">Contraseña</label>
                             <input name="password" type="password" class="form-control input mb-2" id="password" value="{{ isset($user->password) ? $user->password : old('password') }}">
                             @if(Route::is('user.edit'))
-                                <button type="button" class="btn btnSc btn-lg px-5 shadow text-uppercase w-100 w-md-auto" id="resetButton">
+                                <button type="button" class="btn btnSc btn-lg px-5 shadow text-uppercase w-100 w-md-auto mt-2" id="resetButton">
                                     Reasignar
                                 </button>
                             @endif
@@ -116,7 +116,6 @@
                 </div>
             </fieldset>
 
-            @if(Route::is('user.edit'))
                 <fieldset class="card mb-1 shadow-sm bg-transparent">
                     <div class="legend card-header border-bottom border-dark d-flex">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -140,7 +139,6 @@
                         </div>
                     </div>
                 </fieldset>
-            @endif
 
 
             <div class="mb-4 pb-4">

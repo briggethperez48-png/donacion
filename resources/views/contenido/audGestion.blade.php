@@ -8,12 +8,13 @@
         <div class="card mt-3 bg-transparent">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-md-8">
-                        <h2> Historial de Movimientos </h2>
+                    <div class="col-12">
+                        <h2>Historial de Movimientos</h2>
                     </div>
-                    <div class="col-md-8 m-3 user-form">
-                        <form action="{{ url('content/novedades') }}" method="GET" class="form-inline">
-                            <div class="input-group">
+                    
+                    <div class="col-12 mt-3 user-form">
+                        <form action="{{ url('content/novedades') }}" method="GET" class="w-100">
+                            <div class="input-group w-100">
                                 <input type="text" name="buscar" class="form-control input" placeholder="Buscar por Acción" value="{{ request('buscar') }}">
                                 <div class="input-group-append">
                                     <button class="btn btn-info" type="submit">

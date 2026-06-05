@@ -85,14 +85,12 @@
                                                                         </div>
                                                                 </div>
                                                         @endforeach
+                                                                <div class="col-3 custom-control custom-checkbox text-right">
+                                                                        <input type="checkbox" class="custom-control-input" id="checkTodos">
+                                                                        <label class="custom-control-label font-weight-bold text-left" for="checkTodos">SELECCIONAR TODOS</label>
+                                                                </div>
                                                 </div>
                                                 
-                                                <div class="mt-3 mx-3 justify-content-end">
-                                                        <div class="custom-control custom-checkbox text-right">
-                                                                <input type="checkbox" class="custom-control-input" id="checkTodos">
-                                                                <label class="custom-control-label font-weight-bold" for="checkTodos">SELECCIONAR TODOS</label>
-                                                        </div>
-                                                </div>
                                         </div>
                         </div>
 						<div class="row">
@@ -106,7 +104,7 @@
 								</select>
 							</div>
 							<div class="form-group col-md-4">
-								<label for="mesRe" class="font-weight-bold">Fecha de resgistro</label>
+								<label for="mesRe" class="font-weight-bold">Fecha de registro</label>
 								<input name="mesRe" type="date" placeholder="ESCRIBA SU NOMBRE AQUÍ..." 
 									class="form-control input" id="Nombre">
 							</div>

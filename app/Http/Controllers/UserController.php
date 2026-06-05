@@ -118,14 +118,16 @@ class UserController extends Controller
             }
         }
 
-        $user=User::create($datosUsuario)->assignRole('Inactivo');
+        // $user=User::create($datosUsuario)->assignRole('Reader');
+        $user=User::create($datosUsuario);
 
+        
         Auditoria::create([
             'user_id'     => auth()->id(),
             'accion'      => 'CREAR',
             'tabla'       => 'users',
             'registro_id' => $user->id,
-            'detalles'    => "Se registró al usuario: {$user->nombre} {$user->apPaterno} ({$user->email}) con estatus INACTIVO."
+            'detalles'    => "Se registró al usuario: {$user->nombre} {$user->apPaterno} ({$user->email})."
         ]);
 
 

@@ -7,13 +7,15 @@
 <!-- https://youtu.be/EfzORBnuUak?list=RDtgMUtp9A50k -->
         
     <section class="contentGestion">
-        <div class="row justify-content-between align-content-center">
-            <div class="col-md-6">
-                <h1>Gestión de donantes</h1>
+        <div class="w-100 px-4"> 
+            <div class="align-content-center">
+                <div>
+                    <h1>Gestión de donantes</h1>
+                </div>
             </div>
-            <div class="col-md-6 user-form">
-                <form action="{{ url('/donador') }}" method="GET" class="form-inline">
-                    <div class="input-group">
+            <div class="user-form mb-4"> 
+                <form action="{{ url('/donador') }}" method="GET" class="w-100">
+                    <div class="input-group w-100">
                         <input type="text" name="busqueda" class="form-control bg-transparent input" placeholder="Buscar por Nombre o CURP..." value="{{ request('busqueda') }}">
                         <div class="input-group-append">
                             <button class="btn btn-info" type="submit">
@@ -24,7 +26,6 @@
                     </div>
                 </form>
             </div>
-            <hr>
         </div>
         <div class="gestion table-responsive">
             <table class="border-2 shadow-sm table">
