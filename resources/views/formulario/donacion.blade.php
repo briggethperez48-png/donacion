@@ -139,10 +139,10 @@
                                 <label for="Religion" class="font-weight-bold">Religión</label>
                                 <select name="Religion" id="Religion" class="form-control input">
                                     <option value="">SELECCIONE UNO...</option>
-                                    <option value="CATÓLICA" {{ old('Religion', $donante->Religion ?? '') == 'CATOLICA' ? 'selected' : '' }}>CATÓLICA</option>
-                                    <option value="JUDÍA" {{ old('Religion', $donante->Religion ?? '') == 'JUDIA' ? 'selected' : '' }}>JUDÍA</option>
+                                    <option value="CATOLICA" {{ old('Religion', $donante->Religion ?? '') == 'CATOLICA' ? 'selected' : '' }}>CATÓLICA</option>
+                                    <option value="JUDIA" {{ old('Religion', $donante->Religion ?? '') == 'JUDIA' ? 'selected' : '' }}>JUDÍA</option>
                                     <option value="CRISTIANA" {{ old('Religion', $donante->Religion ?? '') == 'CRISTIANA' ? 'selected' : '' }}>CRISTIANA</option>
-                                    <option value="TESTIGO DE JEHOVÁ" {{ old('Religion', $donante->Religion ?? '') == 'TESTIGO DE JEHOVA' ? 'selected' : '' }}>TESTIGO DE JEHOVÁ</option>
+                                    <option value="TESTIGO DE JEHOVA" {{ old('Religion', $donante->Religion ?? '') == 'TESTIGO DE JEHOVA' ? 'selected' : '' }}>TESTIGO DE JEHOVÁ</option>
                                     <option value="EVANGELISTA" {{ old('Religion', $donante->Religion ?? '') == 'EVANGELISTA' ? 'selected' : '' }}>EVANGELISTA</option>
                                     <option value="NINGUNA" {{ old('Religion', $donante->Religion ?? '') == 'NINGUNA' ? 'selected' : '' }}>NINGUNA</option>
                                     <option value="OTRO" {{ old('Religion', $donante->Religion ?? '') == 'OTRO' ? 'selected' : '' }}>OTRO</option>
@@ -459,7 +459,7 @@
                 }
             });
         </script>
-    @endsection
+
     <script>
         function mostrarOrganos(esDonador) {
     const contenedor = document.getElementById('seccion-organos');
@@ -595,7 +595,15 @@
         <script>
             Swal.fire({
             title: "¡Gracias por tu registro!",
-            text: "{{ session('success') }}",
+            html: `
+                    <p>{{ session('mensaje') }}</p>
+                    <br>
+                    <a href="{{ route('donante.credencial') }}" 
+                       class="btn btn-success" 
+                       target="_blank">
+                       Descargar Credencial
+                    </a>
+                `,
             icon: "success",
             confirmButtonColor: "#9d2148"
             });
@@ -615,3 +623,6 @@
             });
         });
     </script>
+
+
+@endsection

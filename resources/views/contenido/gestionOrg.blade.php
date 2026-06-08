@@ -99,3 +99,27 @@
 @endcan
 
 @endsection
+
+@section('scripts')
+    @if(session('update'))
+        <script>
+            Swal.fire({
+                title: "¡Donador actualizado!",
+                text: "{{ session('update') }}",
+                icon: "success",
+                confirmButtonColor: "#9d2148"
+                });
+        </script>
+    @endif
+    
+    @if(session('destroy'))
+        <script>
+            Swal.fire({
+                title: "¡Donador eliminado!",
+                text: "{{ session('destroy') }}",
+                icon: "success",
+                confirmButtonColor: "#9d2148"
+                });
+        </script>
+    @endif
+@endsection

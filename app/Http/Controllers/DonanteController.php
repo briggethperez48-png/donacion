@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Donante;
 use App\Organo;
-use App\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -174,21 +173,21 @@ class DonanteController extends Controller
 
     DB::beginTransaction();
 
-    try {
-        
-        $donante = Donante::create($datosUsuario);
+        try {
+            
+            $donante = Donante::create($datosUsuario);
 
-        if (!empty($organosSeleccionados)) {
-            $donante->organos()->attach($organosSeleccionados);
+            if (!empty($organosSeleccionados)) {
+                $donante->organos()->attach($organosSeleccionados);
+            }
+
+            DB::commit();
+            return redirect('donador/create')->with('mensaje', '¡Registro guardado con éxito!');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return "Error al guardar: " . $e->getMessage();
         }
-
-        DB::commit();
-        return redirect('donador/create')->with('mensaje', '¡Registro guardado con éxito!');
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        return "Error al guardar: " . $e->getMessage();
-    }
     }
 
     /**
@@ -266,7 +265,7 @@ class DonanteController extends Controller
         $donante->organos()->detach();
     }
 
-    return redirect('donador')->with('mensaje', '¡Registro actualizado con éxito!');
+    return redirect('donador')->with('update', '¡Registro actualizado con éxito!');
     }
 
     /**
@@ -279,6 +278,6 @@ class DonanteController extends Controller
     {
         Donante::destroy($id);
         return redirect('donador')
-            ->with('mensaje','¡Éxito! Usuario eliminado');
+            ->with('destroy','¡Éxito! Donador eliminado');
     }
 }

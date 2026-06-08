@@ -32,7 +32,7 @@ Route::post('/donador/fetch', 'DonanteController@fetch')->name('donante.fetch');
 Route::post('content/reporte/fetch', 'ReporteController@fetch')->name('reporte.fetch');
 Route::post('content/buscador/fetch', 'BuscadorController@fetch')->name('buscador.fetch');
 
-Route::view('/', 'aviso'); 
+Route::view('/credencial', 'credencial')->name('donante.credencial'); 
 
 Route::get('donador/create', 'DonanteController@create')->name('donador.create');
 Route::post('donador', 'DonanteController@store')->name('donador.store');
