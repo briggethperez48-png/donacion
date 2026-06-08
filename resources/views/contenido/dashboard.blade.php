@@ -6,7 +6,7 @@
 @can('Dashboard')
 <section class="Dashboard" id="dashboardContainer">
     <div>
-        <h1>Bienvenido, {{ auth()->user()->nombre }}.</h1>
+        <h1>Bienvenido(a), {{ auth()->user()->nombre }}.</h1>
         <hr>
     </div>
     <div class="mapas">
@@ -125,5 +125,16 @@
         }
     });
 </script>
+
+    @if(session('createUser'))
+        <script>
+            Swal.fire({
+            title: "¡Éxito!",
+            text: "Usuario registrado en el sistema",
+            icon: "success",
+            confirmButtonColor: "#9d2148"
+            });
+        </script>
+    @endif
 
 @endsection

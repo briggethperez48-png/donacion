@@ -4,7 +4,7 @@
 
 @section('content')
 @can('Buscador index')
-    <section>
+    <section class="mx-5">
 		<div class="mb-4">
             <h1>Buscador</h1>
         </div>
@@ -53,45 +53,46 @@
 					<div>
 						<div class="row">
                             <div class="form-group">
-                                                <div>
-                                                        <h4 class="font-weight-bold text-center">Órganos</h4>
-                                                </div>
-                                                <div class="row px-3 mt-2">
-                                                        @php
-                                                                $lista_organos = [
-                                                                'PULMONES' => 'PULMONES', 'HUESO' => 'HUESO', 'CORAZON' => 'CORAZÓN',
-                                                                'CORNEAS' => 'CÓRNEAS', 'RIÑON' => 'RIÑÓN', 'VALVULAS' => 'VÁLVULAS',
-                                                                'PIEL' => 'PIEL', 'PANCREAS' => 'PÁNCREAS', 'TENDONES' => 'TENDONES', 'HIGADO' => 'HÍGADO'
-                                                                ]; 
-                                                                    $db_organos = $donante->Organo ?? [];
-                                                                if (is_string($db_organos)) {
-                                                                    $db_organos = explode(',', $db_organos);
-                                                                }
-                                                                $organosSeleccionados = old('Organo', $db_organos);
-                                                        @endphp
+                                <div>
+                                    <h4 class="font-weight-bold text-center">Órganos</h4>
+                                </div>
+                                <div class="row px-3 mt-2">
+                                    @php
+                                            $lista_organos = [
+                                            'PULMONES' => 'PULMONES', 'HUESO' => 'HUESO', 'CORAZON' => 'CORAZÓN',
+                                            'CORNEAS' => 'CÓRNEAS', 'RIÑON' => 'RIÑÓN', 'VALVULAS' => 'VÁLVULAS',
+                                            'PIEL' => 'PIEL', 'PANCREAS' => 'PÁNCREAS', 'TENDONES' => 'TENDONES', 'HIGADO' => 'HÍGADO'
+                                            ]; 
+                                                $db_organos = $donante->Organo ?? [];
+                                            if (is_string($db_organos)) {
+                                                $db_organos = explode(',', $db_organos);
+                                            }
+                                            $organosSeleccionados = old('Organo', $db_organos);
+                                    @endphp
 
-                                                        @foreach($lista_organos as $claveBD => $nombreVisual)
-                                                                <div class="col-6 col-md-3 mb-3">
-                                                                        <div class="custom-control custom-checkbox">
-                                                                                <input name="Organo[]" type="checkbox" 
-                                                                                        class="checkbox custom-control-input organo-checkbox"
-                                                                                        id="check{{ $claveBD }}" 
-                                                                                        value="{{ $claveBD }}"
-                                                                                        {{ (is_array($organosSeleccionados) && in_array($claveBD, $organosSeleccionados)) ? 'checked' : '' }}
-                                                                                        >
-                                                                                <label class="custom-control-label ml-1 font-weight-bold" for="check{{ $claveBD }}">
-                                                                                        {{ $nombreVisual }}
-                                                                                </label>
-                                                                        </div>
-                                                                </div>
-                                                        @endforeach
-                                                                <div class="col-3 custom-control custom-checkbox text-right">
-                                                                        <input type="checkbox" class="custom-control-input" id="checkTodos">
-                                                                        <label class="custom-control-label font-weight-bold text-left" for="checkTodos">SELECCIONAR TODOS</label>
-                                                                </div>
+                                    @foreach($lista_organos as $claveBD => $nombreVisual)
+                                        <div class="col-6 col-md-3 mb-3">
+                                                <div class="custom-control custom-checkbox">
+                                                        <input name="Organo[]" type="checkbox" 
+                                                                class="checkbox custom-control-input organo-checkbox"
+                                                                id="check{{ $claveBD }}" 
+                                                                value="{{ $claveBD }}"
+                                                                {{ (is_array($organosSeleccionados) && in_array($claveBD, $organosSeleccionados)) ? 'checked' : '' }}
+                                                                >
+                                                        <label class="custom-control-label ml-1 font-weight-bold" for="check{{ $claveBD }}">
+                                                                {{ $nombreVisual }}
+                                                        </label>
                                                 </div>
-                                                
                                         </div>
+                                    @endforeach
+
+                                    <div class="col-3 custom-control custom-checkbox text-right">
+                                            <input type="checkbox" class="custom-control-input" id="checkTodos">
+                                            <label class="custom-control-label font-weight-bold text-left" for="checkTodos">SELECCIONAR TODOS</label>
+                                    </div>
+                                </div>
+                                                
+                            </div>
                         </div>
 						<div class="row">
 							<div class="form-group col-md-4">
@@ -193,6 +194,7 @@
                     </div>
                     @endif
                 </section>
+                
     </section>
 
 @endcan
@@ -218,17 +220,12 @@
                                 dependent: dependent
                             },
                             success: function(result) {
-                                // Llenar el select con el HTML que manda el controlador
                                 $('#' + dependent).html(result);
 
-                                // SI estamos en edición y tenemos un valor guardado
                                 if (valorParaSeleccionar) {
-                                    // Seleccionamos el valor (quitando espacios por si acaso)
                                     $('#' + dependent).val(valorParaSeleccionar.trim());
 
-                                    // Si el que acabamos de llenar también tiene un hijo (ej. Municipio -> Localidad)
                                     if ($('#' + dependent).hasClass('dynamic')) {
-                                        // Disparamos la carga del siguiente nivel
                                         cargarDependiente($('#' + dependent), "{{ old('Colonia', $donante->Colonia ?? '') }}");
                                     }
                                 }

@@ -7,64 +7,66 @@
 
     <section class="estadisticas justify-content-center card-body border-1 rounded-2 shadow-sm mt-1 mb-3 user-form">
         <div>
-            <h1>Estadísticas del Sistema</h1>
+            <h1>Estadísticas</h1>
             <hr>
         </div>
         
-        <form action="{{ route('estadisticas.verGraficas') }}" method="GET" enctype="multipart/form-data">
-            <div class="container-fluid px-0 my-2">
-                <div>
-                    <h4 class="font-weight-bold text-center">Lapso de filtrado</h4>
+        <div class="mx-3">
+            <form action="{{ route('estadisticas.verGraficas') }}" method="GET" enctype="multipart/form-data">
+                <div class="container-fluid px-0 my-2">
+                    <div>
+                        <h4 class="font-weight-bold text-center">Lapso de filtrado</h4>
+                    </div>
+                    <div class="row d-flex align-items-center justify-content-between mx-0">
+                        <div class="col-auto"><p class="font-weight-bold mb-0">Del</p></div>
+                        <div class="form-group col-md-5 mb-0">
+                            <input name="mesIni" type="date" class="form-control input" id="mesIni" value="{{ request('mesIni') }}">
+                        </div>
+                        <div class="col-auto"><p class="font-weight-bold mb-0">al</p></div>
+                        <div class="form-group col-md-5 mb-0">
+                            <input name="mesFin" type="date" class="form-control input" id="mesFin" value="{{ request('mesFin') }}">
+                        </div>
+                    </div> 
                 </div>
-                <div class="row d-flex align-items-center justify-content-between mx-0">
-                    <div class="col-auto"><p class="font-weight-bold mb-0">Del</p></div>
-                    <div class="form-group col-md-5 mb-0">
-                        <input name="mesIni" type="date" class="form-control input" id="mesIni" value="{{ request('mesIni') }}">
-                    </div>
-                    <div class="col-auto"><p class="font-weight-bold mb-0">al</p></div>
-                    <div class="form-group col-md-5 mb-0">
-                        <input name="mesFin" type="date" class="form-control input" id="mesFin" value="{{ request('mesFin') }}">
-                    </div>
-                </div> 
-            </div>
-            
-            <div class="mb-2">
-                <div class="mb-1 d-flex flex-column flex-md-row justify-content-md-between align-items-center">
-                    <div class="m-2 w-100 w-md-auto text-center">
-                        <button type="submit" class="btn btnSc btn-lg px-5 shadow text-uppercase w-100 w-md-auto">Filtrar</button>
-                    </div>
-                    <div class="m-2 w-100 w-md-auto text-center">
-                        <a href="{{ url('/content/estadisticas') }}" class="btn btn-secondary btn-lg px-5 shadow text-light w-100 w-md-auto">Limpiar</a>
+                
+                <div class="mb-2">
+                    <div class="mb-1 d-flex flex-column flex-md-row justify-content-md-between align-items-center">
+                        <div class="m-2 w-100 w-md-auto text-center">
+                            <button type="submit" class="btn btnSc btn-lg px-5 shadow text-uppercase w-100 w-md-auto">Filtrar</button>
+                        </div>
+                        <div class="m-2 w-100 w-md-auto text-center">
+                            <a href="{{ url('/content/estadisticas') }}" class="btn btn-secondary btn-lg px-5 shadow text-light w-100 w-md-auto">Limpiar</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
 
-        <section class="justify-content-center graficas">
-            <div class="d-flex flex-wrap justify-content-around">
-                <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3 ">
+        <section class="d-flex flex-column align-items-center graficas">
+            <div class="d-flex flex-wrap justify-content-center w-100">
+                <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3">
                     <h3 class="text-center h5">Cantidad de Registros por Entidad</h3>
                     <canvas id="graficaCantidadEstado"></canvas>
                 </div>
-                <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3 ">
+                <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3">
                     <h3 class="text-center h5">Comparativa: Donantes y No Donantes</h3>
                     <canvas id="graficaDonador"></canvas>
                 </div>
             </div>
 
-            <div class="d-flex flex-wrap justify-content-around">
-                <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3 ">
+            <div class="d-flex flex-wrap justify-content-center w-100">
+                <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3">
                     <h3 class="text-center h5">Distribución de Órganos</h3>
                     <canvas id="graficaOrganos"></canvas>
                 </div>
-                <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3 ">
+                <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3">
                     <h3 class="text-center h5">Alcaldías Solicitantes</h3>
                     <canvas id="graficaAlcaldias"></canvas>
                 </div>
             </div>
 
-            <div class="d-flex flex-wrap justify-content-around">
-                <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3 ">
+            <div class="d-flex flex-wrap justify-content-center w-100">
+                <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3">
                     <h3 class="text-center h5">Órganos por Entidad Procedente</h3>
                     <canvas id="graficaOrganosEstados"></canvas>
                 </div>

@@ -70,26 +70,84 @@
                                 <label for="Ocupacion" class="font-weight-bold">Ocupación</label>
                                 <select name="Ocupacion" id="Ocupacion" class="form-control input">
                                     <option value="">SELECCIONE UNO...</option>
-                                    <option value="TH" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'TH' ? 'selected' : '' }}>TAREAS DEL HOGAR</option>
-                                    <option value="E" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'E' ? 'selected' : '' }}>ESTUDIANTE</option>
-                                    <option value="AOT" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'AOT' ? 'selected' : '' }}>ARTESANA(O), OBRERA(O), TRABAJADOR(A)</option>
-                                    <option value="EOTA" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'EOTA' ? 'selected' : '' }}>EMPLEADA(O) DE OFICINA, TRABAJADOR(A) EN ACTIVIDADES ADMINISTRATIVAS O DE SERVICIOS</option>
-                                    <option value="CEC" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'CEC' ? 'selected' : '' }}>COMERCIANTE O EMPLEADA(O) DE COMERCIO</option>
-                                    <option value="JP" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'JP' ? 'selected' : '' }}>JUBILADA(O) / PENSIONADA(O)</option>
-                                    <option value="TAA" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'TAA' ? 'selected' : '' }}>TRABAJADOR(A) EN ACTIVIDADES AGRÍCOLAS</option>
-                                    <option value="TSD" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'TSD' ? 'selected' : '' }}>TRABAJADOR(A) EN SERVICIOS DOMÉSTICOS</option>
-                                    <option value="VA" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'VA' ? 'selected' : '' }}>VENDEDOR(A) AMBULANTE</option>
-                                    <option value="CMT" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'CMT' ? 'selected' : '' }}>CONDUCTOR(A) DE MEDIO DE TRANSPORTE</option>
-                                    <option value="TSSYFA" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'TSSYFA' ? 'selected' : '' }}>TRABAJADOR(A) EN SERVICIOS DE SEGURIDAD Y/O FUERZAS ARMADAS</option>
-                                    <option value="MDTE" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'MDTE' ? 'selected' : '' }}>MAESTRA(O), DOCENTE O TRABAJADOR(A) DE LA EDUCACIÓN</option>
-                                    <option value="PTI" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'PTI' ? 'selected' : '' }}>PROFESIONISTA O TÉCNICA(O) INDEPENDIENTE</option>
-                                    <option value="LDSSC" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'LDSSC' ? 'selected' : '' }}>LIDER O DIRECTIVA DEL SECTOR SOCIAL O CIVIL</option>
-                                    <option value="FSP" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'FSP' ? 'selected' : '' }}>FUNCIONARIA(O) DEL SECTOR PÚBLICO</option>
-                                    <option value="EGDE" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'EDGE' ? 'selected' : '' }}>EMPRESARIA(O), GERENTE O DIRECTIVA(O) DE EMPRESA</option>
-                                    <option value="TCP" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'TCP' ? 'selected' : '' }}>TRABAJADOR(A) POR CUENTA PROPIA</option>
-                                    <option value="DBT" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'DBT' ? 'selected' : '' }}>DESEMPLEADA(O) / BUSCADOR(A) DE TRABAJO</option>
-                                    <option value="OTRO" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'OTRO' ? 'selected' : '' }}>OTRA OCUPACIÓN / NO ESPECIFICADA</option>
-                                    <option value="SN" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'SN' ? 'selected' : '' }}>NO SABE</option>
+                                    <option 
+                                        value="TAREAS DEL HOGAR" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'TAREAS DEL HOGAR' ? 'selected' : '' }}>
+                                        TAREAS DEL HOGAR
+                                    </option>
+                                    <option 
+                                        value="ESTUDIANTE" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'ESTUDIANTE' ? 'selected' : '' }}>
+                                        ESTUDIANTE
+                                    </option>
+                                    <option 
+                                        value="ARTESANA(O), OBRERA(O), TRABAJADOR(A)" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'ARTESANA(O), OBRERA(O), TRABAJADOR(A)' ? 'selected' : '' }}>
+                                        ARTESANA(O), OBRERA(O), TRABAJADOR(A)
+                                    </option>
+                                    <option 
+                                    value="EMPLEADA(O) DE OFICINA, TRABAJADOR(A) EN ACTIVIDADES ADMINISTRATIVAS O DE SERVICIOS" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'EMPLEADA(O) DE OFICINA, TRABAJADOR(A) EN ACTIVIDADES ADMINISTRATIVAS O DE SERVICIOS' ? 'selected' : '' }}>
+                                    EMPLEADA(O) DE OFICINA, TRABAJADOR(A) EN ACTIVIDADES ADMINISTRATIVAS O DE SERVICIOS</option>
+                                    <option 
+                                        value="COMERCIANTE O EMPLEADA(O) DE COMERCIO" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'COMERCIANTE O EMPLEADA(O) DE COMERCIO' ? 'selected' : '' }}>
+                                        COMERCIANTE O EMPLEADA(O) DE COMERCIO
+                                    </option>
+                                    <option 
+                                        value="JUBILADA(O) / PENSIONADA(O)" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'JUBILADA(O) / PENSIONADA(O)' ? 'selected' : '' }}>
+                                        JUBILADA(O) / PENSIONADA(O)
+                                    </option>
+                                    <option 
+                                        value="TRABAJADOR(A) EN ACTIVIDADES AGRICOLAS" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'TRABAJADOR(A) EN ACTIVIDADES AGRICOLAS' ? 'selected' : '' }}>
+                                        TRABAJADOR(A) EN ACTIVIDADES AGRÍCOLAS
+                                    </option>
+                                    <option 
+                                        value="TRABAJADOR(A) EN SERVICIOS DOMESTICOS" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'TRABAJADOR(A) EN SERVICIOS DOMESTICOS' ? 'selected' : '' }}>
+                                        TRABAJADOR(A) EN SERVICIOS DOMÉSTICOS
+                                    </option>
+                                    <option 
+                                    value="VENDEDOR(A) AMBULANTE" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'VENDEDOR(A) AMBULANTE' ? 'selected' : '' }}>
+                                    VENDEDOR(A) AMBULANTE</option>
+                                    <option 
+                                        value="CONDUCTOR(A) DE MEDIO DE TRANSPORTE" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'CONDUCTOR(A) DE MEDIO DE TRANSPORTE' ? 'selected' : '' }}>
+                                        CONDUCTOR(A) DE MEDIO DE TRANSPORTE
+                                    </option>
+                                    <option 
+                                        value="TRABAJADOR(A) EN SERVICIOS DE SEGURIDAD Y/O FUERZAS ARMADAS" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'TRABAJADOR(A) EN SERVICIOS DE SEGURIDAD Y/O FUERZAS ARMADAS' ? 'selected' : '' }}>
+                                        TRABAJADOR(A) EN SERVICIOS DE SEGURIDAD Y/O FUERZAS ARMADAS
+                                    </option>
+                                    <option 
+                                        value="MAESTRA(O), DOCENTE O TRABAJADOR(A) DE LA EDUCACION" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'MAESTRA(O), DOCENTE O TRABAJADOR(A) DE LA EDUCACION' ? 'selected' : '' }}>
+                                        MAESTRA(O), DOCENTE O TRABAJADOR(A) DE LA EDUCACIÓN
+                                    </option>
+                                    <option 
+                                        value="PROFESIONISTA O TECNICA(O) INDEPENDIENTE" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'PROFESIONISTA O TECNICA(O) INDEPENDIENTE' ? 'selected' : '' }}>
+                                        PROFESIONISTA O TÉCNICA(O) INDEPENDIENTE
+                                    </option>
+                                    <option 
+                                        value="LIDER O DIRECTIVA DEL SECTOR SOCIAL O CIVIL" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'LIDER O DIRECTIVA DEL SECTOR SOCIAL O CIVIL' ? 'selected' : '' }}>
+                                        LIDER O DIRECTIVA DEL SECTOR SOCIAL O CIVIL
+                                    </option>
+                                    <option 
+                                        value="FUNCIONARIA(O) DEL SECTOR PUBLICO" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'FUNCIONARIA(O) DEL SECTOR PUBLICO' ? 'selected' : '' }}>
+                                        FUNCIONARIA(O) DEL SECTOR PÚBLICO
+                                    </option>
+                                    <option 
+                                        value="EMPRESARIA(O), GERENTE O DIRECTIVA(O) DE EMPRESA" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'EMPRESARIA(O), GERENTE O DIRECTIVA(O) DE EMPRESA' ? 'selected' : '' }}>
+                                        EMPRESARIA(O), GERENTE O DIRECTIVA(O) DE EMPRESA
+                                    </option>
+                                    <option 
+                                        value="TRABAJADOR(A) POR CUENTA PROPIA" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'TRABAJADOR(A) POR CUENTA PROPIA' ? 'selected' : '' }}>
+                                        TRABAJADOR(A) POR CUENTA PROPIA
+                                    </option>
+                                    <option 
+                                        value="DESEMPLEADA(O) / BUSCADOR(A) DE TRABAJO" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'DESEMPLEADA(O) / BUSCADOR(A) DE TRABAJO' ? 'selected' : '' }}>
+                                        DESEMPLEADA(O) / BUSCADOR(A) DE TRABAJO
+                                    </option>
+                                    <option 
+                                        value="OTRO" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'OTRO' ? 'selected' : '' }}>
+                                        OTRA OCUPACIÓN / NO ESPECIFICADA
+                                    </option>
+                                    <option 
+                                        value="NO SABE" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'NO SABE' ? 'selected' : '' }}>
+                                        NO SABE
+                                    </option>
                                 </select>
                                 @if($errors->has('Ocupacion'))
                                     <span class="text-danger small"><strong>{{ $errors->first('Ocupacion') }}</strong></span>
@@ -182,7 +240,6 @@
                                     <select name="estadoNac" id="estadoNac" class="form-control input">
                                         <option value="">SELECCIONE UNO...</option>
                                         @foreach($listaEstados as $Estado)
-                                        <!-- Se reemplazan las tildes para comparar con la BD -->
                                             @php
                                                 $estadoSinTilde = str_replace(
                                                         ['Á', 'É', 'Í', 'Ó', 'Ú'], 
@@ -278,38 +335,37 @@
                                 <span class="text-danger small"><strong>{{ $errors->first('Donador') }}</strong></span>
                             @endif
                         </div>
-                        <div id="seccion-organos" class="seccion-organos mt-3 p-3 bg-light rounded" 
-                        >
+                        <div id="seccion-organos" class="seccion-organos mt-3 p-3 bg-light rounded">
                         
-                        <p class="font-weight-bold small">Estamos agradecidos con su decisión.</p>
-                        <label class="font-weight-bold">¿Qué órganos desea donar?</label>
-                        
-                        <div class="row px-3 mt-2">
-                                @php
-                                    $seleccionados = old('Organo', isset($donante) ? $donante->organos->pluck('id')->toArray() : []);
-                                @endphp
+                            <p class="font-weight-bold small">Estamos agradecidos con su decisión.</p>
+                            <label class="font-weight-bold">¿Qué órganos desea donar?</label>
+                            
+                            <div class="row px-3 mt-2">
+                                    @php
+                                        $seleccionados = old('Organo', isset($donante) ? $donante->organos->pluck('id')->toArray() : []);
+                                    @endphp
 
-                                @foreach($todos_los_organos as $organo)
-                                    <div class="col-6 col-md-3 mb-3">
-                                        <div class="custom-control custom-checkbox">
-                                            <input name="Organo[]" type="checkbox" 
-                                                class="checkbox custom-control-input"
-                                                id="check{{ $organo->id }}" 
-                                                value="{{ $organo->id }}"
-                                                {{ in_array($organo->id, $seleccionados) ? 'checked' : '' }}>
-                                            
-                                            <label class="custom-control-label ml-1 font-weight-bold" for="check{{ $organo->id }}">
-                                                {{ $organo->nombre }}
-                                            </label>
+                                    @foreach($todos_los_organos as $organo)
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="custom-control custom-checkbox">
+                                                <input name="Organo[]" type="checkbox" 
+                                                    class="checkbox custom-control-input"
+                                                    id="check{{ $organo->id }}" 
+                                                    value="{{ $organo->id }}"
+                                                    {{ in_array($organo->id, $seleccionados) ? 'checked' : '' }}>
+                                                
+                                                <label class="custom-control-label ml-1 font-weight-bold" for="check{{ $organo->id }}">
+                                                    {{ $organo->nombre }}
+                                                </label>
+                                            </div>
                                         </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <div>
-                                @if($errors->has('Organo'))
-                                    <span class="text-danger small"><strong>{{ $errors->first('Organo') }}</strong></span>
-                                @endif
-                            </div>
+                                    @endforeach
+                                </div>
+                                <div>
+                                    @if($errors->has('Organo'))
+                                        <span class="text-danger small"><strong>{{ $errors->first('Organo') }}</strong></span>
+                                    @endif
+                                </div>
                         </div>
                 </fieldset>
 
@@ -345,19 +401,19 @@
                             <label for="Pregunta" class="font-weight-bold">Pregunta de seguridad</label>
                             <select name="Pregunta" id="Pregunta" class="form-control input">
                                 <option value="">SELECCIONE UNO...</option>
-                                <option value="MASCOTA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'MASCOTA' ? 'selected' : '' }}>¿NOMBRE DE TU MASCOTA?</option>
-                                <option value="NOVIA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'NOVIA' ? 'selected' : '' }}>¿NOMBRE DE ALGUNA NOVIA?</option>
-                                <option value="MARCAPREF" {{ old('Pregunta', $donante->Pregunta ?? '') == 'MARCAPREF' ? 'selected' : '' }}>¿MARCA PREFERIDA DE ROPA?</option>
-                                <option value="FECHAIMP" {{ old('Pregunta', $donante->Pregunta ?? '') == 'FECHAIMP' ? 'selected' : '' }}>¿FECHA MÁS IMPORTANTE DE TU VIDA?</option>
-                                <option value="CANCIONPREF" {{ old('Pregunta', $donante->Pregunta ?? '') == 'CANCIONPREF' ? 'selected' : '' }}>¿CANCIÓN PREFERIDA?</option>
-                                <option value="PRIMERNOVIO" {{ old('Pregunta', $donante->Pregunta ?? '') == 'PRIMERNOVIO' ? 'selected' : '' }}>¿QUIÉN FUE TU PRIMER NOVIO(A)?</option>
+                                <option value="NOMBRE MASCOTA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'NOMBRE MASCOTA' ? 'selected' : '' }}>¿NOMBRE DE TU MASCOTA?</option>
+                                <option value="NOMBRE NOVIA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'NOMBRE NOVIA' ? 'selected' : '' }}>¿NOMBRE DE ALGUNA NOVIA?</option>
+                                <option value="MARCA PREFERIDA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'MARCA PREFERIDA' ? 'selected' : '' }}>¿MARCA PREFERIDA DE ROPA?</option>
+                                <option value="FECHA IMPORTANTE" {{ old('Pregunta', $donante->Pregunta ?? '') == 'FECHA IMPORTANTE' ? 'selected' : '' }}>¿FECHA MÁS IMPORTANTE DE TU VIDA?</option>
+                                <option value="CANCION PREFERIDA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'CANCION PREFERIDA' ? 'selected' : '' }}>¿CANCIÓN PREFERIDA?</option>
+                                <option value="PRIMER NOVIO" {{ old('Pregunta', $donante->Pregunta ?? '') == 'PRIMER NOVIO' ? 'selected' : '' }}>¿QUIÉN FUE TU PRIMER NOVIO(A)?</option>
                                 <option value="PRIMARIA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'PRIMARIA' ? 'selected' : '' }}>¿NOMBRE DE LA PRIMARIA EN LA QUE ESTUDIASTE?</option>
-                                <option value="MEJORAMIGO" {{ old('Pregunta', $donante->Pregunta ?? '') == 'MEJORAMIGO' ? 'selected' : '' }}>¿MEJOR AMIGO DE LA INFANCIA?</option>
-                                <option value="MADRENOM" {{ old('Pregunta', $donante->Pregunta ?? '') == 'MADRENOM' ? 'selected' : '' }}>¿NOMBRE COMPLETO DE LA MADRE?</option>
-                                <option value="LUGARMADRE" {{ old('Pregunta', $donante->Pregunta ?? '') == 'LUGARMADRE' ? 'selected' : '' }}>¿LUGAR DE NACIMIENTO DE LA MADRE?</option>
-                                <option value="LUGARPADRE" {{ old('Pregunta', $donante->Pregunta ?? '') == 'LUGARPADRE' ? 'selected' : '' }}>¿LUGAR DE NACIMIENTO DEL PADRE?</option>
-                                <option value="MASCOTAPRIMNOM" {{ old('Pregunta', $donante->Pregunta ?? '') == 'MASCOTAPRIMNOM' ? 'selected' : '' }}>¿NOMBRE DE TU PRIMERA MASCOTA?</option>
-                                <option value="APODO" {{ old('Pregunta', $donante->Pregunta ?? '') == 'APODO' ? 'selected' : '' }}>¿CUÁL ERA TU APODO DE NIÑO?</option>
+                                <option value="MEJOR AMIGO INFANCIA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'MEJOR AMIGO INFANCIA' ? 'selected' : '' }}>¿MEJOR AMIGO DE LA INFANCIA?</option>
+                                <option value="NOMBRE MADRE" {{ old('Pregunta', $donante->Pregunta ?? '') == 'NOMBRE MADRE' ? 'selected' : '' }}>¿NOMBRE COMPLETO DE LA MADRE?</option>
+                                <option value="LUGAR MADRE" {{ old('Pregunta', $donante->Pregunta ?? '') == 'LUGAR MADRE' ? 'selected' : '' }}>¿LUGAR DE NACIMIENTO DE LA MADRE?</option>
+                                <option value="LUGAR PADRE" {{ old('Pregunta', $donante->Pregunta ?? '') == 'LUGAR PADRE' ? 'selected' : '' }}>¿LUGAR DE NACIMIENTO DEL PADRE?</option>
+                                <option value="NOMBRE PRIMERA MASCOTA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'NOMBRE PRIMERA MASCOTA' ? 'selected' : '' }}>¿NOMBRE DE TU PRIMERA MASCOTA?</option>
+                                <option value="APODO INFANCIA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'APODO INFANCIA' ? 'selected' : '' }}>¿CUÁL ERA TU APODO DE NIÑO?</option>
                             </select>
                             @if($errors->has('Pregunta'))
                                 <span class="text-danger small"><strong>{{ $errors->first('Pregunta') }}</strong></span>
@@ -381,14 +437,14 @@
                                 Guardar
                             </button>
                         </div>
-                        @can('Donador edit')
+                        @if(Route::is('donador.edit'))
                             <div class="m-2 w-100 w-md-auto text-center">
                                 <a href="{{url('/donador')}}" 
                                 class="btn btn-secondary btn-lg px-5 shadow text-light w-100 w-md-auto">
                                     Regresar
                                 </a>
                             </div>
-                        @endcan
+                        @endif
                     </div>
                 </div>
             </div>
@@ -407,7 +463,6 @@
                     var _token = $('input[name="_token"]').val();
 
                     if (value != '') {
-                        // Mostrar el contenedor del siguiente select
                         $('#' + dependent + 'I').show();
 
                         $.ajax({
@@ -420,17 +475,12 @@
                                 dependent: dependent
                             },
                             success: function(result) {
-                                // Llenar el select con el HTML que manda el controlador
                                 $('#' + dependent).html(result);
 
-                                // SI estamos en edición y tenemos un valor guardado
                                 if (valorParaSeleccionar) {
-                                    // Seleccionamos el valor (quitando espacios por si acaso)
                                     $('#' + dependent).val(valorParaSeleccionar.trim());
 
-                                    // Si el que acabamos de llenar también tiene un hijo (ej. Municipio -> Localidad)
                                     if ($('#' + dependent).hasClass('dynamic')) {
-                                        // Disparamos la carga del siguiente nivel
                                         cargarDependiente($('#' + dependent), "{{ old('Colonia', $donante->Colonia ?? '') }}");
                                     }
                                 }
@@ -439,9 +489,7 @@
                     }
                 }
 
-                // 2. Evento cuando cambias un select manualmente
                 $('.dynamic').change(function(){
-                    // Si cambias el estado, reseteamos la colonia
                     if($(this).attr("id") == "Entidad") {
                         $('#Localidad').html('<option value="">-</option>');
                         $('#LocalidadI').hide();
@@ -449,12 +497,9 @@
                     cargarDependiente(this);
                 });
 
-                // 3. --- LA CLAVE: AUTO-CARGA AL INICIAR ---
-                // Si el select de Entidad ya viene con algo (porque es Edición)
                 var entidadYaSeleccionada = $('#Entidad').val();
                 
                 if(entidadYaSeleccionada != '') {
-                    // Ejecutamos la carga inicial de Alcaldía
                     cargarDependiente($('#Entidad'), "{{ old('Alcaldia', $donante->Alcaldia ?? '') }}");
                 }
             });
@@ -462,16 +507,26 @@
 
     <script>
         function mostrarOrganos(esDonador) {
-    const contenedor = document.getElementById('seccion-organos');
-    
-    if (esDonador) {
-        contenedor.classList.add('activo');
-    } else {
-        contenedor.classList.remove('activo');
-        const checkboxes = contenedor.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach(cb => cb.checked = false);
-    }
-}
+            const contenedor = document.getElementById('seccion-organos');
+            
+            if (esDonador) {
+                contenedor.classList.add('activo');
+            } else {
+                contenedor.classList.remove('activo');
+                const checkboxes = contenedor.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(cb => cb.checked = false);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const radioSi = document.getElementById('DonadorSi');
+            
+            if (radioSi && radioSi.checked) {
+                mostrarOrganos(true);
+            } else {
+                mostrarOrganos(false);
+            }
+        });
     </script>
     <script>
         const contenedorA = document.getElementById('Entidad');

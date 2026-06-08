@@ -116,6 +116,8 @@
         </div>
     </section>
 @endcan
+@endsection
+
     @section('scripts')
         @if(session('error_permiso'))
             <script>
@@ -163,5 +165,37 @@
                 });
             });
         </script>
+
+        @if(session('updateUser'))
+            <script>
+                Swal.fire({
+                title: "¡Éxito!",
+                text: "{{ session('updateUser') }}",
+                icon: "success",
+                confirmButtonColor: "#9d2148"
+                });
+            </script>
+        @endif
+
+        @if(session('destroyUser'))
+            <script>
+                Swal.fire({
+                title: "¡Éxito!",
+                text: "{{ session('destroyUser') }}",
+                icon: "success",
+                confirmButtonColor: "#9d2148"
+                });
+            </script>
+        @endif
+
+         @if(session('restoreUser'))
+            <script>
+                Swal.fire({
+                title: "¡Éxito!",
+                text: "{{ session('restoreUser') }}",
+                icon: "success",
+                confirmButtonColor: "#9d2148"
+                });
+            </script>
+        @endif
     @endsection
-@endsection

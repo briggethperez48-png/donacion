@@ -308,7 +308,7 @@ body.dark td, body.dark th {
 .footerEnd {
     position: fixed;
     bottom: -10px;
-    left: -10px;
+    left: 0px;
     justify-content: flex-end;
     align-items: flex-end;
     width: 100%;

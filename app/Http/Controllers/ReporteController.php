@@ -63,11 +63,9 @@ public function export(Request $request) {
 
 private function filtrarDonantes(Request $request) {
     return Donante::with('organos')
-        // Filtrar desde la fecha de inicio (inclusive)
         ->when($request->mesIni, function ($q) use ($request) {
             return $q->whereDate('created_at', '>=', $request->mesIni);
         })
-        // Filtrar hasta la fecha fin (inclusive)
         ->when($request->mesFin, function ($q) use ($request) {
             return $q->whereDate('created_at', '<=', $request->mesFin);
         })

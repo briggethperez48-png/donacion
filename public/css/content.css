@@ -13,7 +13,7 @@
     mix-blend-mode: multiply;
 }
 .gestion tr,
- strong {
+.gestion strong {
     color: var(--inner-text);
     opacity: 1;
 }
@@ -155,13 +155,12 @@ hr {
 
 
 /* Gráficas */
-.estadisticas {
+/* .estadisticas {
     justify-content: center;
     align-content: center;
 }
 .graficas {
     width: 85vw;
-    margin: 10px;
     justify-content: center;
     align-content: center;
 }
@@ -172,4 +171,16 @@ hr {
     border-width: 1.5px;
     background-color: var(--table-background);
     align-items: center;
+} */
+
+.graficas {
+    width: 85vw;
+    margin: 0 auto;
+}
+
+.graficas .grafica {
+    border-style: solid;
+    border-color: var(--stroke-color);
+    border-width: 1.5px;
+    background-color: var(--table-background);
 }

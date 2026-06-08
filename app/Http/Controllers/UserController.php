@@ -118,9 +118,7 @@ class UserController extends Controller
             }
         }
 
-        // $user=User::create($datosUsuario)->assignRole('Reader');
         $user=User::create($datosUsuario);
-
         
         Auditoria::create([
             'user_id'     => auth()->id(),
@@ -131,7 +129,7 @@ class UserController extends Controller
         ]);
 
 
-        return redirect('content')->with('mensaje', '¡Registro guardado con éxito!');
+        return redirect('content')->with('createUser', '¡Registro guardado con éxito!');
     }
     public function edit($id) {
         $user = User::findOrFail($id);
@@ -232,8 +230,8 @@ class UserController extends Controller
 
 
         return redirect()
-            ->route('user.edit', $user->id) 
-            ->with('mensaje', '¡Registro actualizado con éxito!');
+            ->route('user.index') 
+            ->with('updateUser', 'Registro actualizado.');
     }
 
     public function destroy($id) {
@@ -254,7 +252,7 @@ class UserController extends Controller
             'detalles'    => "El usuario {$userDestroy->nombre} ({$userDestroy->email}) fue eliminado."
         ]);
 
-        return redirect()->route('user.index')->with('mensaje', '¡Usuario enviado a la papelera y despojado de sus roles!');
+        return redirect()->route('user.index')->with('destroyUser', 'Usuario eliminado.');
     }
     /**
      * Remove the specified resource from storage.
@@ -270,7 +268,7 @@ class UserController extends Controller
         $user->status = 'ACTIVO';
         $user->save();
 
-        $user->syncRoles(['Editor']);
+        $user->syncRoles(['Reader']);
 
         Auditoria::create([
             'user_id'     => auth()->id(),
@@ -281,6 +279,6 @@ class UserController extends Controller
         ]);
 
 
-        return redirect()->route('user.index')->with('mensaje', '¡Usuario restaurado y reactivado con éxito!');
+        return redirect()->route('user.index')->with('restoreUser', 'Usuario restaurado');
     }
 }

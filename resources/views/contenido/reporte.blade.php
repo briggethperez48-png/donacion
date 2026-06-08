@@ -4,7 +4,7 @@
 
 @section('content')
 @can('Reportes index')
-        <div>
+        <div class="mx-5">
                 <section class="mt-3 user-form">
                         <div class="mb-4">
                         <h1>Reportes de Donantes</h1>
