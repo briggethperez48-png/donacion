@@ -27,10 +27,10 @@ class UserController extends Controller
                             ->orWhere('apMaterno', 'LIKE', '%' . $query . '%');;
                             })
                             ->orderBy('id')
-                            ->paginate(5);
+                            ->paginate(20);
             $users->appends(['buscar' => $query]);
 
-            $datoU['users']=User::paginate(5);
+            $datoU['users']=User::paginate(20);
         } else {
             $users = User::with('relacionArea')
                             ->when($query, function ($filter) use ($query) {
@@ -39,10 +39,10 @@ class UserController extends Controller
                             ->orWhere('apMaterno', 'LIKE', '%' . $query . '%');;
                             })
                             ->orderBy('id')
-                            ->paginate(5);
+                            ->paginate(20);
             $users->appends(['buscar' => $query]);
 
-            $datoU['users']=User::paginate(5);
+            $datoU['users']=User::paginate(20);
         }
     
         return view('contenido.usersGestion', compact('users', 'query'), $datoU);

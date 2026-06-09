@@ -109,7 +109,7 @@
                     {{ $users->appends(request()->query())->links('pagination::bootstrap-4') }}
                 </div>
             @else
-                <div class="card-body">
+                <div class="gestion card-body">
                     <strong>No hay registros</strong>
                 </div>
             @endif

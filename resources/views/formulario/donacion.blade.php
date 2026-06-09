@@ -1,13 +1,4 @@
 <section class="aComponents">
-    @if($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
     <section class="margen my-4 mb-4">
         <div class="p-4 shadow m-2 mb-4">
             <div class="align-self-center mb-2 col">
@@ -268,11 +259,6 @@
                         <legend class="h5 mb-0 font-weight-bold ml-3 align-self-center">Domicilio</legend>
                     </div>
                     <div class="card-body">
-                        @if(count($errors)>0)
-                            <div class="alert alert-danger shadow-sm mb-4">
-                                <i class="fas fa-exclamation-triangle mr-2"></i> Favor de llenar este campo.
-                            </div>
-                        @endif
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for="EstadoProc" class="font-weight-bold">Estado de Procedencia</label>
@@ -280,7 +266,9 @@
                                     <option value="">SELECCIONE UNO...</option>
                                     @foreach($estado_list as $estado)
                                         @php
-                                            $dbEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($donante->EstadoProc ?? '')));
+                                            // Agregamos old('EstadoProc') para atrapar el error de validación
+                                            $valorActual = old('EstadoProc', $donante->EstadoProc ?? '');
+                                            $dbEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($valorActual)));
                                             $listEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($estado->Entidad)));
                                         @endphp
                                         <option value="{{ $listEstado }}" {{ $dbEstado == $listEstado ? 'selected' : '' }}>

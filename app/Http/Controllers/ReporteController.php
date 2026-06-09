@@ -17,16 +17,21 @@ class ReporteController extends Controller {
                         ->orderBy('Entidad', 'asc')
                         ->get();
                         
-        $filtros = $request->except('page');
+        $allInputs = $request->all();
 
-        $donantes = collect();
+        $filtrosReales = $request->except('page');
 
-        if (!empty($filtros)) {
-            $donantes = $this->filtrarDonantes($request)->paginate(15);
+        $donantes = new \Illuminate\Pagination\LengthAwarePaginator([], 0, 15);
+
+        if (!empty($filtrosReales) || $request->has('page')) {
             
-            $donantes->appends($request->all());
+            $donantes = $this->filtrarDonantes($request)->paginate(20);
             
-            session()->now('success', 'Resultados obtenidos correctamente.');
+            $donantes->appends($allInputs);
+            
+            if (!empty($filtrosReales)) {
+                session()->now('success', 'Resultados obtenidos correctamente.');
+            }
         }
 
         return view('contenido.reporte', compact('donantes', 'estado_list'));

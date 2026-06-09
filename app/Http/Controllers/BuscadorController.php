@@ -14,17 +14,22 @@ class BuscadorController extends Controller
                         ->distinct()
                         ->orderBy('Entidad', 'asc')
                         ->get();
-                     
-        $filtros = $request->except('page');
+                    
+        $filtros = $request->all();
 
-        $donantes = collect();
+        $filtrosReales = $request->except('page');
 
-        if (!empty($filtros)) {
-            $donantes = $this->buscar($request)->paginate(15);
+        $donantes = new \Illuminate\Pagination\LengthAwarePaginator([], 0, 15);
+
+        if (!empty($filtrosReales) || $request->has('page')) {
             
-            $donantes->appends($request->all());
+            $donantes = $this->buscar($request)->paginate(20);
             
-            session()->now('success', 'Resultados obtenidos correctamente.');
+            $donantes->appends($filtros);
+            
+            if (!empty($filtrosReales)) {
+                session()->now('success', 'Resultados obtenidos correctamente.');
+            }
         }
 
         return view('contenido.buscador', compact('donantes', 'estado_list'));

@@ -19,6 +19,7 @@
     --fill-hover:#b28e5c;
     --stroke-color: #9d2148;
     --shadow-map: rgba(88,89,90,0.7);
+    --pagination-hover: #88683c;
 
     --form-input: rgba(178,142,92,0.4);
 
@@ -55,6 +56,7 @@ body.dark {
     --fill-hover:#9d2148;
     --stroke-color: #b28e5c;
     --shadow-map: rgba(255,250,233,0.7);
+    --pagination-hover: #60122b;
     
     --form-input-focus: rgba(157,33,72,0.4);
 

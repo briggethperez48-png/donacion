@@ -14,29 +14,24 @@ class DonanteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $query = trim($request->get('busqueda'));
 
         $donantes = Donante::with('organos')
-                            ->when($query, function ($filter) use ($query) {
-                return $filter->where('Nombre', 'LIKE', '%' . $query . '%')
-                            ->orWhere('ApPaterno', 'LIKE', '%' . $query . '%')
-                            ->orWhere('CURP', 'LIKE', '%' . $query . '%')
-                            ->orWhere('estadoNac', 'LIKE', '%' . $query . '%')
-                            ->orWhere('Organo', 'LIKE', '%' . $query . '%');;
+            ->when($query, function ($filter) use ($query) {
+                return $filter->where(function($q) use ($query) {
+                    $q->where('Nombre', 'LIKE', '%' . $query . '%')
+                    ->orWhere('ApPaterno', 'LIKE', '%' . $query . '%')
+                    ->orWhere('CURP', 'LIKE', '%' . $query . '%')
+                    ->orWhere('estadoNac', 'LIKE', '%' . $query . '%');
+                });
             })
             ->orderBy('id', 'desc')
-            ->paginate(10);
+            ->paginate(20); 
 
-        
         $donantes->appends(['busqueda' => $query]);
 
-        $datoD['donantes']=Donante::paginate(20);
-
-    return view('contenido.gestionOrg', compact('donantes', 'query'), $datoD);
-        // $datoD['donantes']=Donante::paginate(20);
-        //     return view('contenido.gestionOrg', $datoD);
+        return view('contenido.gestionOrg', compact('donantes', 'query'));
     }
 
     /**
@@ -105,7 +100,7 @@ class DonanteController extends Controller
                 'required',
                 'string',
                 'size:18',
-                'unique:donantes,CURP',
+                // 'unique:donantes,CURP',
                 'regex:/^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE|CD)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/'
             ], 
             'Sexo' => 'required', 

@@ -29,6 +29,26 @@ hr {
     opacity: 0.6;
 }
 
+/* Pagination */
+.page-item.disabled .page-link, .page-item .page-link{
+    color: var(--inner-text);
+    background-color: var(--body-color);
+    border-color: var(--stroke-color);
+
+    transition: var(--tran-03);
+}
+.page-item.active .page-link {
+    background-color: var(--fill-hover) !important;
+    border-color: var(--fill-hover) !important;
+    color: var(--inner-text) !important;
+}
+
+.page-link:hover {
+    color: var(--text-color);
+    background-color: var(--pagination-hover);
+    border-color: var(--pagination-hover);
+}
+
 /* Dashboard */
 .Dashboard {
     width: auto;
