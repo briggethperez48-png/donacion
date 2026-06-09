@@ -16,7 +16,7 @@
             <div class="user-form mb-4"> 
                 <form action="{{ url('/donador') }}" method="GET" class="w-100">
                     <div class="input-group w-100">
-                        <input type="text" name="busqueda" class="form-control bg-transparent input" placeholder="Buscar por Nombre o CURP..." value="{{ request('busqueda') }}">
+                        <input type="text" name="busqueda" class="form-control input" placeholder="Buscar por Nombre o CURP..." value="{{ request('busqueda') }}">
                         <div class="input-group-append">
                             <button class="btn btn-info" type="submit">
                                 <i class="fa fa-search"></i> Buscar
