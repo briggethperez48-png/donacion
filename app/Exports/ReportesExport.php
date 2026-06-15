@@ -32,10 +32,14 @@ class ReportesExport implements FromView, ShouldAutoSize, WithEvents {
             ->when($this->request->Sexo && $this->request->Sexo != 'TODOS', function ($q) {
                 return $q->where('Sexo', $this->request->Sexo);
             })
-            ->when($this->request->Organo, function ($q) {
-                return $q->whereHas('organos', function($sub) {
-                    $sub->whereIn('nombre', (array)$this->request->Organo);
-                });
+            ->where(function ($q) {
+                if ($this->request->has('Organo') && is_array($this->request->Organo) && count($this->request->Organo) > 0) {
+                    $q->whereHas('organos', function($sub) {
+                        $sub->whereIn('nombre', $this->request->Organo);
+                    });
+                } else {
+                    $q->whereDoesntHave('organos');
+                }
             })
             ->orderBy('id', 'desc')
             ->get();

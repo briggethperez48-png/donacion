@@ -80,10 +80,14 @@ private function filtrarDonantes(Request $request) {
         ->when($request->Sexo && $request->Sexo != 'TODOS', function ($q) use ($request) {
             return $q->where('Sexo', $request->Sexo);
         })
-        ->when($request->Organo, function ($q) use ($request) {
-            return $q->whereHas('organos', function($sub) use ($request) {
-                $sub->whereIn('nombre', $request->Organo); 
-            });
+        ->where(function ($q) use ($request) {
+            if ($request->has('Organo') && is_array($request->Organo) && count($request->Organo) > 0) {
+                $q->whereHas('organos', function($sub) use ($request) {
+                    $sub->whereIn('nombre', $request->Organo); 
+                });
+            } else {
+                $q->whereDoesntHave('organos');
+            }
         })
         ->orderBy('id', 'desc');
 }
