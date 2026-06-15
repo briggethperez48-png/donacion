@@ -95,7 +95,9 @@
             </table>
         </div>
     </section>
-
+    <div class="card-footer clearfix">
+        {{ $donantes->links('pagination::bootstrap-4') }}
+    </div>
 @endcan
 
 @endsection

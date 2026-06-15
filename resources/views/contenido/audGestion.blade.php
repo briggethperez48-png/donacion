@@ -35,6 +35,7 @@
                             <thead class="text-center">
                                 <tr>
                                     <th scope="col">ID</th>
+                                    <th scope="col">ID Usuario</th>
                                     <th scope="col">Usuario</th>
                                     <th scope="col">Acción</th>
                                     <th scope="col">Detalles</th>
@@ -46,6 +47,7 @@
                                         <tr>
                                             <td>{{$novedad->id}}</td>
                                             <td>{{$novedad->user_id}}</td>
+                                            <td>{{$novedad->administrador->nombre ?? 'Usuario Eliminado'}}</td>
                                             <td>{{$novedad->accion}}</td>
                                             <td>{{$novedad->detalles}}</td>
                                             <td>{{$novedad->created_at}}</td>

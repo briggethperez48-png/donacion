@@ -14,29 +14,24 @@ class DonanteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $query = trim($request->get('busqueda'));
 
         $donantes = Donante::with('organos')
-                            ->when($query, function ($filter) use ($query) {
-                return $filter->where('Nombre', 'LIKE', '%' . $query . '%')
-                            ->orWhere('ApPaterno', 'LIKE', '%' . $query . '%')
-                            ->orWhere('CURP', 'LIKE', '%' . $query . '%')
-                            ->orWhere('estadoNac', 'LIKE', '%' . $query . '%')
-                            ->orWhere('Organo', 'LIKE', '%' . $query . '%');;
+            ->when($query, function ($filter) use ($query) {
+                return $filter->where(function($q) use ($query) {
+                    $q->where('Nombre', 'LIKE', '%' . $query . '%')
+                    ->orWhere('ApPaterno', 'LIKE', '%' . $query . '%')
+                    ->orWhere('CURP', 'LIKE', '%' . $query . '%')
+                    ->orWhere('estadoNac', 'LIKE', '%' . $query . '%');
+                });
             })
             ->orderBy('id', 'desc')
-            ->paginate(10);
+            ->paginate(20); 
 
-        
         $donantes->appends(['busqueda' => $query]);
 
-        $datoD['donantes']=Donante::paginate(20);
-
-    return view('contenido.gestionOrg', compact('donantes', 'query'), $datoD);
-        // $datoD['donantes']=Donante::paginate(20);
-        //     return view('contenido.gestionOrg', $datoD);
+        return view('contenido.gestionOrg', compact('donantes', 'query'));
     }
 
     /**

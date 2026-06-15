@@ -10,8 +10,7 @@ class UserSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
         User::create([
             'nombre' => 'Joselyn Briggeth',
             'apPaterno' => 'Perez',

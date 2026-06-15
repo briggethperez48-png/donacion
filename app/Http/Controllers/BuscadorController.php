@@ -14,17 +14,22 @@ class BuscadorController extends Controller
                         ->distinct()
                         ->orderBy('Entidad', 'asc')
                         ->get();
-                     
-        $filtros = $request->except('page');
+                    
+        $filtros = $request->all();
 
-        $donantes = collect();
+        $filtrosReales = $request->except('page');
 
-        if (!empty($filtros)) {
-            $donantes = $this->buscar($request)->paginate(15);
+        $donantes = new \Illuminate\Pagination\LengthAwarePaginator([], 0, 15);
+
+        if (!empty($filtrosReales) || $request->has('page')) {
             
-            $donantes->appends($request->all());
+            $donantes = $this->buscar($request)->paginate(20);
             
-            session()->now('success', 'Resultados obtenidos correctamente.');
+            $donantes->appends($filtros);
+            
+            if (!empty($filtrosReales)) {
+                session()->now('success', 'Resultados obtenidos correctamente.');
+            }
         }
 
         return view('contenido.buscador', compact('donantes', 'estado_list'));
@@ -72,11 +77,14 @@ class BuscadorController extends Controller
         ->when($request->Sexo && $request->Sexo != 'TODOS', function ($q) use ($request) {
             return $q->where('Sexo', $request->Sexo);
         })
-        ->when($request->Organo, function ($q) use ($request) {
-            return $q->whereHas('organos', function($sub) use ($request) {
-                // Filtra donantes que tengan cualquiera de los órganos seleccionados
-                $sub->whereIn('nombre', $request->Organo); 
-            });
+        ->where(function ($q) use ($request) {
+            if ($request->has('Organo') && is_array($request->Organo) && count($request->Organo) > 0) {
+                $q->whereHas('organos', function($sub) use ($request) {
+                    $sub->whereIn('nombre', $request->Organo); 
+                });
+            } else {
+                $q->whereDoesntHave('organos');
+            }
         })
         ->orderBy('id', 'desc');
     }

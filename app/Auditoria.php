@@ -17,8 +17,7 @@ class Auditoria extends Model
                         'detalles'
                         ];
                         
-    public function administrador()
-    {
+    public function administrador() {
         return $this->belongsTo(User::class, 'user_id');
     }
 }
