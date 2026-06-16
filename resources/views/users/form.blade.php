@@ -127,11 +127,21 @@
                     <div class="card-body bg-transparent">
                         <div class="row">
                             <div class="form-group col-md-12">
-                                @foreach($roles as $role)
+                               @foreach($roles as $role)
                                     <div>
                                         <label>
-                                            {!! Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']) !!}
-                                            {{$role -> name}}
+                                            <input type="checkbox" 
+                                                name="roles[]" 
+                                                value="{{ $role->id }}" 
+                                                class="mr-1"
+                                                {{-- Comprobación estricta paso a paso --}}
+                                                @if(is_array(old('roles')) && in_array($role->id, old('roles')))
+                                                    checked
+                                                @elseif(isset($usuario) && $usuario->roles->pluck('id')->contains($role->id))
+                                                    checked
+                                                @endif
+                                            >
+                                            {{ $role->name }}
                                         </label>
                                     </div>
                                 @endforeach

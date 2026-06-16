@@ -1,0 +1,79 @@
+/* LoaderGen */
+/* https://youtu.be/ueZFNb1dDWE?si=x6KZs7cav85rJ2qF */
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(26, 26, 46, 1); /* Color oscuro semi-transparente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* Asegura que esté por encima de modales y menús */
+    font-family: 'Roboto', sans-serif;
+}
+
+/* El círculo animado (Mantiene sus dimensiones fijas de 60px) */
+.loader-circle {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    margin-bottom: 30px; /* Separa el círculo del texto inferior */
+}
+
+.loader-circle::before,
+.loader-circle::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    animation: pulsOut 1.0s ease-in-out infinite;
+    filter: drop-shadow(0 0 1rem rgba(145,128,255,0.75));
+}
+
+.loader-circle::before {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(149,128,255,0.15);
+    animation-delay: 0.5s;
+}
+
+.loader-circle::after {
+    width: 75%;
+    height: 75%;
+    background-color: rgba(149,128,255,0.5);
+    top: 12.5%;
+    left: 12.5%;
+}
+
+@keyframes pulsOut {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+/* El texto y la barra ya no están restringidos a los 60px del círculo */
+.loading-text {
+    color: #FFFAE9; /* Combinando con tu paleta institucional alternativa */
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0;
+    letter-spacing: 1px;
+}
+
+.progress-bar-container {
+    width: 200px;
+    height: 6px;
+    background: #731734; /* Tu color vino */
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-line {
+    height: 100%;
+    background: #9580ff;
+    width: 0%;
+    transition: width 0.1s linear;
+}

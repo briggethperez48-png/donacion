@@ -36,12 +36,13 @@
     <link rel="stylesheet" href="{{asset('css/form.css')}}">
     <link rel="stylesheet" href="{{asset('css/formUser.css')}}">
     <link rel="stylesheet" href="{{asset('css/content.css')}}">
+    <link rel="stylesheet" href="{{asset('css/loader.css')}}">
 
 
     <title>@yield('title')</title>
 </head>
 <body>
-    
+    @include('components.loaderGen')
     <!-- Header & menu -->
     @if(!Route::is('donador.create', 'donador.edit', 'login', 'login.post', 'logout'))
         <section class="components">
