@@ -55,7 +55,7 @@ body {
     justify-content: center;
     align-content: center;
     width: 80vw;
-    height: 60vh;
+    /* height: 60vh; */
 
     display: flex;
     flex-direction: row;

@@ -64,7 +64,6 @@
             <td>{{ $donador->CURP }}</td>
             <td>{{ $donador->Sexo }}</td>
             <td>{{ $donador->Donador }}</td>
-            <!-- <td>{{ $donador->Organo }}</td> -->
             <td>
                 @if($donador->organos && $donador->organos->isNotEmpty())
                     {{ $donador->organos->implode('nombre', ', ') }}

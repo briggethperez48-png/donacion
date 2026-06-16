@@ -19,6 +19,14 @@
             display: none;
         }
     </style>
+    
+    @if(Route::is('donador.create', 'donador.edit'))
+        <style>
+            body {
+                background: none !important;
+            }
+        </style>
+    @endif
 
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
@@ -28,6 +36,7 @@
     <link rel="stylesheet" href="{{asset('css/form.css')}}">
     <link rel="stylesheet" href="{{asset('css/formUser.css')}}">
     <link rel="stylesheet" href="{{asset('css/content.css')}}">
+
 
     <title>@yield('title')</title>
 </head>

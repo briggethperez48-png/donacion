@@ -1,6 +1,6 @@
 @extends('layouts.appA')
 
-@section('title', 'Edición')
+@section('title', 'Editar Donador')
 
 @section('content')
     <section>

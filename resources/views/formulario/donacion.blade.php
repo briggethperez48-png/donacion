@@ -266,7 +266,6 @@
                                     <option value="">SELECCIONE UNO...</option>
                                     @foreach($estado_list as $estado)
                                         @php
-                                            // Agregamos old('EstadoProc') para atrapar el error de validación
                                             $valorActual = old('EstadoProc', $donante->EstadoProc ?? '');
                                             $dbEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($valorActual)));
                                             $listEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($estado->Entidad)));
@@ -276,6 +275,9 @@
                                         </option>
                                     @endforeach
                                 </select>
+                                @if($errors->has('EstadoProc'))
+                                    <span class="text-danger small"><strong>{{ $errors->first('EstadoProc') }}</strong></span>
+                                @endif
                             </div>
 
                             <div class="form-group col-md-4" id="MunicipioI" style="{{ old('Alcaldia', $donante->Alcaldia ?? '') ? '' : 'display:none;' }}">
@@ -283,6 +285,9 @@
                                 <select name="Alcaldia" id="Municipio" data-dependent="Localidad" class="dynamic form-control input">
                                     <option value="">-</option>
                                 </select>
+                                @if($errors->has('Alcaldia'))
+                                    <span class="text-danger small"><strong>{{ $errors->first('Alcaldia') }}</strong></span>
+                                @endif
                             </div>
 
                             <div class="form-group col-md-4" id="LocalidadI" style="{{ old('Colonia', $donante->Colonia ?? '') ? '' : 'display:none;' }}">
@@ -290,6 +295,9 @@
                                 <select name="Colonia" id="Localidad" class="form-control input">
                                     <option value="">-</option>
                                 </select>
+                                @if($errors->has('Colonia'))
+                                    <span class="text-danger small"><strong>{{ $errors->first('Colonia') }}</strong></span>
+                                @endif
                             </div>
                         </div>
                     </div>

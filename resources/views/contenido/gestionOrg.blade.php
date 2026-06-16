@@ -1,6 +1,6 @@
 @extends('layouts.appA')
 
-@section('title', 'Donador')
+@section('title', 'Donadores')
 
 @section('content')
 @can('Donador index')

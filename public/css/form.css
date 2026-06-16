@@ -1,4 +1,8 @@
 /* Voy */
+/* .aComponents {
+    background: none !important;
+    width: fit-content;
+} */
 .legend {
     background-color: #9d2148;
     color: #fffae9;
@@ -40,10 +44,6 @@
     animation-duration: 0.8s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-out;
-}
-.btnSc {
-    background-color: #b28e5c;
-    color: #fffae9;
 }
 p, label {
     color: #55585a;
