@@ -24,6 +24,10 @@
     --form-input: rgba(178,142,92,0.4);
 
     /* Variables del Loader */
+    --loader-background: rgba(255, 255, 255, 1);
+    --loader-shadow: drop-shadow(0 0 1rem rgba(136, 104, 60,0.75));
+    --loader-circle-B: rgba(178, 142, 92, 0.15);
+    --loader-circle-A: rgba(178, 142, 92, 0.5);
     
     --tran-01: all 0.2s ease;
     --tran-02: all 0.3s ease;
@@ -61,6 +65,12 @@ body.dark {
     --stroke-color: #b28e5c;
     --shadow-map: rgba(255,250,233,0.7);
     --pagination-hover: #60122b;
+
+    /* Variables del Loader */
+    --loader-background: rgba(96, 18, 43, 1);
+    --loader-shadow: drop-shadow(0 0 1rem rgba(157, 33, 72, 0.75));
+    --loader-circle-B: rgba(210, 119, 148, 0.15);
+    --loader-circle-A: rgba(210, 119, 148, 0.5);
     
     --form-input-focus: rgba(157,33,72,0.4);
 

@@ -49,7 +49,7 @@
                     <canvas id="graficaCantidadEstado"></canvas>
                 </div>
                 <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3">
-                    <h3 class="text-center h5">Comparativa: Donantes y No Donantes</h3>
+                    <h3 class="text-center h5">Donantes y No Donantes</h3>
                     <canvas id="graficaDonador"></canvas>
                 </div>
             </div>
