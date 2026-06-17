@@ -32,7 +32,7 @@ class AuthController extends Controller
 
         return back()->withErrors([
             'email' => 'Las credenciales no coinciden con nuestros registros.',
-        ])->withInput($request->only('email')); // Ajustado a la sintaxis de Laravel 5.5
+        ])->withInput($request->only('email'));
     }
 
     public function logout(Request $request)

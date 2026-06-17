@@ -5,47 +5,34 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
 use Spatie\Permission\Models\Role;
-
 use App\User;
 use App\Area;
 use App\Auditoria;
 
-
 class UserController extends Controller 
 {
     public function index(Request $request) {
-
         $query = trim($request->get('buscar'));
 
+        // Optimización: Evitamos duplicar código usando condiciones sobre la misma consulta
+        $userQuery = User::with('relacionArea');
+
         if($request->deleted == 1) {
-            $users = User::onlyTrashed()->with('relacionArea')
-                            ->when($query, function ($filter) use ($query) {
-                        return $filter->where('nombre', 'LIKE', '%' . $query . '%')
-                            ->orWhere('apPaterno', 'LIKE', '%' . $query . '%')
-                            ->orWhere('apMaterno', 'LIKE', '%' . $query . '%');;
-                            })
-                            ->orderBy('id')
-                            ->paginate(20);
-            $users->appends(['buscar' => $query]);
-
-            $datoU['users']=User::paginate(20);
-        } else {
-            $users = User::with('relacionArea')
-                            ->when($query, function ($filter) use ($query) {
-                        return $filter->where('nombre', 'LIKE', '%' . $query . '%')
-                            ->orWhere('apPaterno', 'LIKE', '%' . $query . '%')
-                            ->orWhere('apMaterno', 'LIKE', '%' . $query . '%');;
-                            })
-                            ->orderBy('id')
-                            ->paginate(20);
-            $users->appends(['buscar' => $query]);
-
-            $datoU['users']=User::paginate(20);
+            $userQuery->onlyTrashed();
         }
+
+        $users = $userQuery->when($query, function ($filter) use ($query) {
+                    return $filter->where('nombre', 'LIKE', '%' . $query . '%')
+                                  ->orWhere('apPaterno', 'LIKE', '%' . $query . '%')
+                                  ->orWhere('apMaterno', 'LIKE', '%' . $query . '%');
+                })
+                ->orderBy('id')
+                ->paginate(20);
+
+        $users->appends(['buscar' => $query, 'deleted' => $request->deleted]);
     
-        return view('contenido.usersGestion', compact('users', 'query'), $datoU);
+        return view('contenido.usersGestion', compact('users', 'query'));
     }
 
     public function show(){
@@ -58,12 +45,15 @@ class UserController extends Controller
         $roles = Role::all();
         return view('users.createUser', compact('areas','roles'));
     }
+
     public function store(Request $request) {
         $this->authorize('create', User::class);
 
-        if (!auth()->user()->hasRole('SuperAdmin') && $request->input('roles') === 'SuperAdmin') {
+        // CORRECCIÓN 1: roles es un array, se debe evaluar con in_array
+        if (!auth()->user()->hasRole('SuperAdmin') && in_array('SuperAdmin', (array)$request->input('roles'))) {
             return back()->withErrors(['roles' => 'No tienes autorización para asignar este rol.']);
         }
+
         $campos = [
             'nombre' => 'required|string|max:50',
             'apPaterno' => 'required|string|max:50',
@@ -98,14 +88,23 @@ class UserController extends Controller
             'responsable' => 'El responsable', 
         ]);
         
-        $datosUsuario = $request->except(['_token']);
+        // Limpieza de inputs
+        $input = $request->all();
+        foreach ($input as $key => $value) {
+            if (is_string($value)) {
+                $input[$key] = trim($value);
+            }
+        }
+        $request->replace($input);
+
+        $datosUsuario = $request->except(['_token', 'roles']);
         foreach ($datosUsuario as $key => $value) {
             if (is_string($value)) {
                 if ($key === 'email') {
                     $datosUsuario[$key] = strtolower($value);
                 }
                 elseif ($key === 'password') {
-                    continue; 
+                    continue; // Excelente, el modelo lo encriptará directamente
                 }
                 else {
                     $value = str_replace(
@@ -118,22 +117,26 @@ class UserController extends Controller
             }
         }
 
-        $user=User::create($datosUsuario);
+        // 2. Se crea el usuario
+        $user = User::create($datosUsuario);
         
+        // CORRECCIÓN 2: Asignación real del rol en la base de datos mediante Spatie
+        $user->assignRole($request->input('roles', []));
+        $rolesAsignados = $user->getRoleNames()->implode(', ');
+
         Auditoria::create([
             'user_id'     => auth()->id(),
             'accion'      => 'CREAR',
             'tabla'       => 'users',
             'registro_id' => $user->id,
-            'detalles'    => "Se registró al usuario: {$user->nombre} {$user->apPaterno} ({$user->email})."
+            'detalles'    => "Se registró al usuario: {$user->nombre} {$user->apPaterno} ({$user->email}) con los roles: [{$rolesAsignados}]."
         ]);
-
 
         return redirect('content')->with('createUser', '¡Registro guardado con éxito!');
     }
+
     public function edit($id) {
         $user = User::findOrFail($id);
-        
         $this->authorize('update', $user);
 
         $roles = Role::all();
@@ -204,22 +207,32 @@ class UserController extends Controller
             unset($datosUsuario['password']);
         }
 
+        $rolesAnteriores = $user->getRoleNames()->toArray();
+
         $user->update($datosUsuario);
 
-        $user->roles()->sync($request->roles);
+        // CORRECCIÓN 3: Uso de syncRoles() para Spatie
+        $user->syncRoles($request->input('roles', []));
 
         $cambios = $user->getChanges();
         unset($cambios['updated_at']);
 
+        $rolesActuales = $user->getRoleNames()->toArray();
+        $cambioRoles = array_diff($rolesAnteriores, $rolesActuales) || array_diff($rolesActuales, $rolesAnteriores);
 
         $textoDetalles = "Se actualizó al usuario {$user->nombre} {$user->apPaterno} ({$user->email}). ";
-        if (!empty($cambios)) {
-            $textoDetalles .= "Campos modificados: " . json_encode($cambios);
+        
+        if (!empty($cambios) || $cambioRoles) {
+            $detallesModificados = $cambios;
+            if ($cambioRoles) {
+                $detallesModificados['roles_anteriores'] = $rolesAnteriores;
+                $detallesModificados['roles_nuevos'] = $rolesActuales;
+            }
+            $textoDetalles .= "Campos modificados: " . json_encode($detallesModificados);
         } else {
             $textoDetalles .= "Sin cambios relevantes.";
         }
         
-
         Auditoria::create([
             'user_id'     => auth()->id(),
             'accion'      => 'EDITAR',
@@ -227,7 +240,6 @@ class UserController extends Controller
             'registro_id' => $user->id,
             'detalles'    => $textoDetalles
         ]);
-
 
         return redirect()
             ->route('user.index') 
@@ -254,20 +266,15 @@ class UserController extends Controller
 
         return redirect()->route('user.index')->with('destroyUser', 'Usuario eliminado.');
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function restore($id) {
-        $user = User::onlyTrashed()
-                    ->findOrFail($id);
+        $user = User::onlyTrashed()->findOrFail($id);
         $user->restore();
 
         $user->status = 'ACTIVO';
         $user->save();
 
+        // syncRoles funciona también aquí con Spatie perfectamente
         $user->syncRoles(['Reader']);
 
         Auditoria::create([
@@ -277,7 +284,6 @@ class UserController extends Controller
             'registro_id' => $user->id,
             'detalles'    => "El usuario ({$user->email}) fue restaurado."
         ]);
-
 
         return redirect()->route('user.index')->with('restoreUser', 'Usuario restaurado');
     }

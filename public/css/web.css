@@ -23,6 +23,8 @@
 
     --form-input: rgba(178,142,92,0.4);
 
+    /* Variables del Loader */
+    
     --tran-01: all 0.2s ease;
     --tran-02: all 0.3s ease;
     --tran-03: all 0.4s ease;

@@ -6,21 +6,20 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(26, 26, 46, 1); /* Color oscuro semi-transparente */
+    background: rgba(26, 26, 46, 1);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 99999; /* Asegura que esté por encima de modales y menús */
+    z-index: 99999;
     font-family: 'Roboto', sans-serif;
 }
 
-/* El círculo animado (Mantiene sus dimensiones fijas de 60px) */
 .loader-circle {
     width: 60px;
     height: 60px;
     position: relative;
-    margin-bottom: 30px; /* Separa el círculo del texto inferior */
+    margin-bottom: 30px;
 }
 
 .loader-circle::before,
@@ -53,9 +52,8 @@
     100% { opacity: 0.3; }
 }
 
-/* El texto y la barra ya no están restringidos a los 60px del círculo */
 .loading-text {
-    color: #FFFAE9; /* Combinando con tu paleta institucional alternativa */
+    color: #FFFAE9;
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
@@ -66,7 +64,7 @@
 .progress-bar-container {
     width: 200px;
     height: 6px;
-    background: #731734; /* Tu color vino */
+    background: #731734;
     border-radius: 3px;
     overflow: hidden;
 }
