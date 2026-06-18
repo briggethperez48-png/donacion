@@ -61,6 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('buscador', 'BuscadorController@buscar');
         Route::get('reporte', 'ReporteController@index')->name('reporte.index');
         Route::get('reporte-export', 'ReporteController@export')->name('reporte.export');
+        Route::get('reporte-users', 'UsersReporteController@index')->name('reporteUser.index');
         Route::get('estadisticas', 'GraficasController@verGraficas')->name('estadisticas.verGraficas');
         Route::get('estadisticas/organos-por-lugar', 'GraficasController@getOrganosPorLugar')->name('estadisticas.organosLugar');
         Route::get('novedades', 'AuditoriasController@index')->name('novedades.index');

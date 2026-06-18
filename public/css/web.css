@@ -183,12 +183,14 @@ body .content .aComponents {
 
 .sidebar.close .text,
 .sidebar.close .toggle-switch,
-.sidebar.close .button {
+.sidebar.close .button,
+.sidebar.close .arrow-report {
     opacity: 0;
     transform: translateX(-150px);
 }
 
-.sidebar.close .text {
+.sidebar.close .text,
+.sidebar.close .arrow-report {
     position: absolute;
 }
 
@@ -258,12 +260,16 @@ header .image-text .header-text {
 }
 
 .sidebar li a:hover .icon,
-.sidebar li .text:hover {
+.sidebar li .text:hover,
+.reportes-index .arrow-report:hover {
     color: var(--toggle-color);
     fill: var(--toggle-color);
     font-weight: 700;
 }
-
+.sidebar.close li a:hover .icon {
+    padding-right: 5px;
+    transform: scale(1.1);
+}
 
 .sidebar .menu-bar {
     height: calc(100% - 40px);
@@ -325,7 +331,6 @@ header .image-text .header-text {
     background: var(--sidebar-color);
     transition: var(--tran-02);
 }
-
 body.dark .switch::before {
     left: 25px;
 }
@@ -340,6 +345,22 @@ body.dark .mode .moon {
 body.dark td, body.dark th {
     color: var(--text-color)
 }
+
+.sidebar .reportes-index {
+    margin: 0;
+    display: grid;
+}
+.reportes-index .arrow-report {
+    margin-left: 50px;
+    color: var(--text-color);
+
+    transition: var(--tran-02);
+}
+.reportes-index .reportes-menu li {
+    height: 100%;
+    padding: 9px 0px 9px 40px;
+}
+
 
 /* Footer */
 
@@ -503,3 +524,15 @@ body.dark .footerEnd footer .wave {
         text-shadow: 1px 1px 3px rgba(0,0,0, 0.5);
         text-decoration: underline;
     }
+    
+@media (max-width: 480px) {
+    .footer{
+        position: relative; 
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: grid;
+        overflow-wrap: break-word;
+        word-break: break-all;
+    }  
+}

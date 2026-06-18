@@ -16,7 +16,7 @@
                         </span>
                         <div class="text header-text">
                             <span class="name">Donaciones</span>
-                            <span class="profession">Control de Registros</span>
+                            <span class="profession">{{ auth()->user()->nombre }}</span>
                         </div>
                     </div>
                     <svg  class="arrow toggle" xmlns="http://www.w3.org/2000/svg" width="24" height="24"  
@@ -115,15 +115,31 @@
                             </li>
                             @endcan
                             @can('Reportes index')
-                            <li class="nav-link">
-                                <a href="{{url('/content/reporte')}}" class="a">
-                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"  
-                                        fill="currentColor" viewBox="0 0 24 24" >
-                                        <path d="M12 7H6v6h6zm-2 4H8V9h2zm3 4H6v2h12v-2zm1-4h4v2h-4zm0-4h4v2h-4z"></path><path d="M4 21h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2M4 5h16v14H4z"></path>
-                                    </svg>
-                                    <span class="text nav-text">Reporte</span>
-                                </a>
-                            </li>
+                                <li class="nav-link reportes-index">
+                                    <a href="#" class="a">
+                                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"  
+                                            fill="currentColor" viewBox="0 0 24 24" >
+                                            <path d="M12 7H6v6h6zm-2 4H8V9h2zm3 4H6v2h12v-2zm1-4h4v2h-4zm0-4h4v2h-4z"></path><path d="M4 21h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2M4 5h16v14H4z"></path>
+                                        </svg>
+                                        <span class="text nav-text">Reporte</span>
+                                        <svg  class="arrow-report" xmlns="http://www.w3.org/2000/svg" width="24" height="24"  
+                                            fill="currentColor" viewBox="0 0 24 24" >
+                                            <path d="m12 15.41 5.71-5.7-1.42-1.42-4.29 4.3-4.29-4.3-1.42 1.42z"></path>
+                                        </svg>
+                                        <ul class="menu-links reportes-menu">
+                                            <li class="nav-link">
+                                                <a href="{{url('/content/reporte')}}" class="a">
+                                                    <span class="text nav-text">Reporte de Donantes</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-link">
+                                                <a href="{{url('/content/reporte-users')}}" class="a">
+                                                    <span class="text nav-text">Reporte de Usuarios</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </a>
+                                </li>
                             @endcan
                             <li class="nav-link">
                                 <form action="{{ route('logout') }}" method="POST" style="display: inline;">

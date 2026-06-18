@@ -449,7 +449,7 @@
 </section>
     
 
-    @section('scripts')
+@section('scripts')
         <script>
             $(document).ready(function(){
                 function cargarDependiente(elementoPadre, valorParaSeleccionar = null) {
