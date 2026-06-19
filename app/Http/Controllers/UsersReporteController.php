@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use App\Area;
 
 class UsersReporteController extends Controller
 {
@@ -13,7 +15,9 @@ class UsersReporteController extends Controller
      */
     public function index(Request $request)
     {
-        return view('contenido.reporteUsers');
+        $areas = Area::all();
+        $roles = Role::all();
+        return view('contenido.reporteUsers', compact('areas', 'roles'));
     }
 
 }
