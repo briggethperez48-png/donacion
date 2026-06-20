@@ -64,8 +64,8 @@
                                             <td>{{$user->id}}</td>
                                             <td>{{$nomCom}}</td>
                                             <td>{{ $user->relacionArea->area ?? 'Sin Área' }}</td>
-                                            <td>{{$user->fechaAlta}}</td>
-                                            <td>{{$user->email}}</td>
+                                            <td>{{ $user->fechaAlta }}</td>
+                                            <td>{{ $user->email }}</td>
                                             <td class="align-content-center">
                                                 <div class="d-flex">
                                                     

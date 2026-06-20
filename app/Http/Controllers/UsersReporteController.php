@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\UsersExport;
 use App\Area;
+use App\User;
 
 class UsersReporteController extends Controller
 {
@@ -17,7 +20,53 @@ class UsersReporteController extends Controller
     {
         $areas = Area::all();
         $roles = Role::all();
-        return view('contenido.reporteUsers', compact('areas', 'roles'));
+
+        $allInputs = $request->all();
+        $filtrosReales = $request->except('page');
+
+        $users = new \Illuminate\Pagination\LengthAwarePaginator([], 0, 15);
+
+        if (!empty($filtrosReales) || $request->has('page')) {
+            $users = $this->filtrarUsuarios($request)->paginate(20);
+            $users->appends($allInputs);
+            
+            if (!empty($filtrosReales) && $users->count() > 0) {
+                session()->now('success', 'Resultados obtenidos correctamente.');
+            } elseif (!empty($filtrosReales) && $users->count() == 0) {
+                session()->now('success', 'No se encontraron registros con los filtros aplicados.');
+            }
+        }
+
+        return view('contenido.reporteUsers', compact('areas', 'roles', 'users'));
     }
 
+    public function export(Request $request) {
+        return Excel::download(new UsersExport($request), 'reporte_usuarios.xlsx');
+    }
+
+    private function filtrarUsuarios(Request $request) 
+    {
+        return User::withTrashed()
+            ->with(['roles', 'relacionArea', 'administrador'])
+            ->when($request->mesIni, function ($q) use ($request) {
+                return $q->whereDate('created_at', '>=', $request->mesIni);
+            })
+            ->when($request->mesFin, function ($q) use ($request) {
+                return $q->whereDate('created_at', '<=', $request->mesFin);
+            })
+            ->when($request->roles, function ($q) use ($request) {
+                return $q->role($request->roles);
+            })
+            ->when($request->area, function ($q) use ($request) {
+                return $q->where('area', $request->area); 
+            })
+            ->when($request->status, function ($q) use ($request) {
+                if ($request->status == 'INACTIVO') {
+                    return $q->whereNotNull('deleted_at');
+                } else {
+                    return $q->whereNull('deleted_at');
+                }
+            })
+            ->orderBy('id', 'desc');
+    }
 }

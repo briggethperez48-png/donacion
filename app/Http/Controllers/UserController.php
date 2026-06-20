@@ -15,7 +15,6 @@ class UserController extends Controller
     public function index(Request $request) {
         $query = trim($request->get('buscar'));
 
-        // Optimización: Evitamos duplicar código usando condiciones sobre la misma consulta
         $userQuery = User::with('relacionArea');
 
         if($request->deleted == 1) {
@@ -35,7 +34,8 @@ class UserController extends Controller
         return view('contenido.usersGestion', compact('users', 'query'));
     }
 
-    public function show(){
+    // Métodos más inútiles no hay
+    public function show() {
         $user = Auth::user();
         return view('contenido.dashboard', compact('user'));
     }
@@ -49,7 +49,6 @@ class UserController extends Controller
     public function store(Request $request) {
         $this->authorize('create', User::class);
 
-        // CORRECCIÓN 1: roles es un array, se debe evaluar con in_array
         if (!auth()->user()->hasRole('SuperAdmin') && in_array('SuperAdmin', (array)$request->input('roles'))) {
             return back()->withErrors(['roles' => 'No tienes autorización para asignar este rol.']);
         }
@@ -88,7 +87,6 @@ class UserController extends Controller
             'responsable' => 'El responsable', 
         ]);
         
-        // Limpieza de inputs
         $input = $request->all();
         foreach ($input as $key => $value) {
             if (is_string($value)) {
@@ -104,7 +102,7 @@ class UserController extends Controller
                     $datosUsuario[$key] = strtolower($value);
                 }
                 elseif ($key === 'password') {
-                    continue; // Excelente, el modelo lo encriptará directamente
+                    continue;
                 }
                 else {
                     $value = str_replace(
@@ -117,10 +115,11 @@ class UserController extends Controller
             }
         }
 
-        // 2. Se crea el usuario
         $user = User::create($datosUsuario);
+        $user->responsable = auth()->user()->id;
+
+        $user->save();
         
-        // CORRECCIÓN 2: Asignación real del rol en la base de datos mediante Spatie
         $user->assignRole($request->input('roles', []));
         $rolesAsignados = $user->getRoleNames()->implode(', ');
 
@@ -211,7 +210,6 @@ class UserController extends Controller
 
         $user->update($datosUsuario);
 
-        // CORRECCIÓN 3: Uso de syncRoles() para Spatie
         $user->syncRoles($request->input('roles', []));
 
         $cambios = $user->getChanges();
@@ -252,7 +250,7 @@ class UserController extends Controller
 
         $userDestroy->status = 'INACTIVO';
         $userDestroy->save();
-        $userDestroy->syncRoles([]); 
+        $userDestroy->syncRoles(['Inactivo']); 
         
         $userDestroy->delete();
 
@@ -274,7 +272,6 @@ class UserController extends Controller
         $user->status = 'ACTIVO';
         $user->save();
 
-        // syncRoles funciona también aquí con Spatie perfectamente
         $user->syncRoles(['Reader']);
 
         Auditoria::create([

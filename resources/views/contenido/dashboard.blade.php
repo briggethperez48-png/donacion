@@ -5,7 +5,7 @@
 @section('content')
 @can('Dashboard')
 <section class="Dashboard" id="dashboardContainer">
-    <div>
+    <div class="">
         <h1>Bienvenido(a), {{ auth()->user()->nombre }}.</h1>
         <hr>
     </div>

@@ -37,13 +37,14 @@ class User extends Authenticatable
     }
     public function setPasswordAttribute($value) {
         if (!empty($value)) {
-            // Si ya viene encriptado (empieza con $2y$ o $2a$), lo dejamos pasar tal cual
             if (preg_match('/^\$2[ay]\$/', $value)) {
                 $this->attributes['password'] = $value;
             } else {
-                // Si viene en texto plano (como en el registro), lo encriptamos
                 $this->attributes['password'] = bcrypt($value);
             }
         }
+    }
+    public function administrador() {
+        return $this->belongsTo(User::class, 'responsable');
     }
 }

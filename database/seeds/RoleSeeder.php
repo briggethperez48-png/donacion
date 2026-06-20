@@ -55,6 +55,8 @@ class RoleSeeder extends Seeder
             ->syncRoles([$role1, $role2]);
         Permission::create(['name'=>'Reportes Usuarios Export'])
             ->syncRoles([$role1, $role2]);
+        Permission::create(['name'=>'Reportes Usuarios Eliminados'])
+            ->assignRole($role1);
 
              //Buscador
         Permission::create(['name'=>'Buscador index'])

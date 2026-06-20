@@ -99,7 +99,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="password" class="font-weight-bold">Contraseña</label>
-                            <input name="password" type="password" class="form-control input mb-2" id="password" value="{{ isset($user->password) ? $user->password : old('password') }}">
+                            <input name="password" type="password" style="text-transform: none;" class="form-control input mb-2" id="password" value="{{ isset($user->password) ? $user->password : old('password') }}">
                             @if(Route::is('user.edit'))
                                 <button type="button" class="btn btnSc btn-lg px-5 shadow text-uppercase w-100 w-md-auto mt-2" id="resetButton">
                                     Reasignar
