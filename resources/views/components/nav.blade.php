@@ -115,31 +115,35 @@
                             </li>
                             @endcan
                             @can('Reportes index')
-                                <li class="nav-link reportes-index">
-                                    <a href="#" class="a">
-                                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"  
-                                            fill="currentColor" viewBox="0 0 24 24" >
-                                            <path d="M12 7H6v6h6zm-2 4H8V9h2zm3 4H6v2h12v-2zm1-4h4v2h-4zm0-4h4v2h-4z"></path><path d="M4 21h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2M4 5h16v14H4z"></path>
-                                        </svg>
-                                        <span class="text nav-text">Reporte</span>
-                                        <svg  class="arrow-report" xmlns="http://www.w3.org/2000/svg" width="24" height="24"  
-                                            fill="currentColor" viewBox="0 0 24 24" >
-                                            <path d="m12 15.41 5.71-5.7-1.42-1.42-4.29 4.3-4.29-4.3-1.42 1.42z"></path>
-                                        </svg>
-                                        <ul class="menu-links reportes-menu">
-                                            <li class="nav-link">
-                                                <a href="{{url('/content/reporte')}}" class="a">
-                                                    <span class="text nav-text">Reporte de Donantes</span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-link">
-                                                <a href="{{url('/content/reporte-users')}}" class="a">
-                                                    <span class="text nav-text">Reporte de Usuarios</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </a>
-                                </li>
+                                <div class="">
+                                    <li class="nav-link reportes">
+                                        <a href="#" class="a reportes-index">
+                                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"  
+                                                fill="currentColor" viewBox="0 0 24 24" >
+                                                <path d="M12 7H6v6h6zm-2 4H8V9h2zm3 4H6v2h12v-2zm1-4h4v2h-4zm0-4h4v2h-4z"></path><path d="M4 21h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2M4 5h16v14H4z"></path>
+                                            </svg>
+                                            <span class="text nav-text">Reporte</span>
+                                                <svg  class="arrow-report" xmlns="http://www.w3.org/2000/svg" width="24" height="24"  
+                                                    fill="currentColor" viewBox="0 0 24 24" >
+                                                    <path d="m12 15.41 5.71-5.7-1.42-1.42-4.29 4.3-4.29-4.3-1.42 1.42z"></path>
+                                                </svg>
+                                        </a>
+                                            <ul class="menu-links reportes-menu">
+                                                <li class="nav-link">
+                                                    <a href="{{url('/content/reporte')}}" class="a">
+                                                        <span class="text nav-text">Reporte de Donantes</span>
+                                                    </a>
+                                                </li>
+                                        @can('Reportes Usuarios Export')
+                                                <li class="nav-link">
+                                                    <a href="{{url('/content/reporte-users')}}" class="a">
+                                                        <span class="text nav-text">Reporte de Usuarios</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        @endCan
+                                    </li>
+                                </div>
                             @endcan
                             <li class="nav-link">
                                 <form action="{{ route('logout') }}" method="POST" style="display: inline;">
@@ -180,35 +184,28 @@
             modeSwitch = body.querySelector(".toggle-switch"),
             modeText = body.querySelector(".mode-text");
 
-        // Control del menú lateral (Sidebar)
         toggle.addEventListener("click", () => {
             sidebar.classList.toggle("close");
         });
 
-        // Función para actualizar el texto del modo
         function updateModeText(isDarkActive) {
             if (isDarkActive) {
-                modeText.innerText = "Claro"; // Si está oscuro, el botón ofrece cambiar a 'Claro'
+                modeText.innerText = "Claro";
             } else {
-                modeText.innerText = "Oscuro"; // Si está claro, el botón ofrece cambiar a 'Oscuro'
+                modeText.innerText = "Oscuro"; 
             }
         }
 
-        // Control del Interruptor de Modo Oscuro
         modeSwitch.addEventListener("click", () => {
             body.classList.toggle("dark");
 
-            // CORRECCIÓN: Validamos si la clase 'dark' existe en el body justo ahora
             const isDark = body.classList.contains("dark");
             
-            // Guardamos el string 'true' o 'false' en localStorage
             localStorage.setItem('dark', isDark);
 
-            // Actualizamos el texto
             updateModeText(isDark);
         });
 
-        // Al cargar el documento, recuperamos el estado guardado
         document.addEventListener('DOMContentLoaded', function() {
             const savedMode = localStorage.getItem('dark');
 
@@ -219,6 +216,13 @@
                 body.classList.remove('dark');
                 updateModeText(false);
             }
+        });
+        
+        const arrow = document.querySelector(".arrow-report"),
+            reportes = document.querySelector(".reportes-menu");
+        
+        arrow.addEventListener("click", () => {
+            reportes.classList.toggle("open");
         });
     </script>
 @endcan

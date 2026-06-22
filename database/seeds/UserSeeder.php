@@ -15,25 +15,25 @@ class UserSeeder extends Seeder
             'nombre' => 'Joselyn Briggeth',
             'apPaterno' => 'Perez',
             'apMaterno' => 'Gonzalez',
-            'area' => 'COMISIÓN DE BIOÉTICA', 
+            'area' => '', 
             'fechaAlta' => '2026-05-01',
             'telefono' => '5512345678',
             'status' => 'ACTIVO',
             'email' => 'briggethperez.2007@gmail.com', 
             'password' => 'Sedesa2026',
             'responsable' => '',
-        ])->assignRole('SuperAdmin');
-         User::create([
+        ])->assignRole('SUPERADMIN');
+        User::create([
             'nombre' => 'Sergio Arturo',
             'apPaterno' => 'Guerrero',
             'apMaterno' => 'Torres',
-            'area' => 'SECRETARIA PARTICULAR DE LA SECRETARIA DE SALUD PÚBLICA DE LA CIUDAD DE MÉXICO', 
+            'area' => '15', 
             'fechaAlta' => '2026-05-01', 
             'telefono' => '5512345678',
             'status' => 'ACTIVO',
             'email' => 'sergio2026@gmail.com', 
             'password' => 'Sedesa2026',
             'responsable' => '',
-        ])->assignRole('SuperAdmin');
+        ])->assignRole('SUPERADMIN');
     }
 }

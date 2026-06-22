@@ -69,7 +69,7 @@ class UsersExport implements FromView, ShouldAutoSize, WithEvents {
 
                 //Dirección
                 $sheet->setCellValueExplicit('F2', 'SECRETARÍA DE SALUD PÚBLICA DE LA CIUDAD DE MÉXICO', DataType::TYPE_STRING);
-                $sheet->getStyle('A1:V5')->applyFromArray([
+                $sheet->getStyle('A1:J5')->applyFromArray([
                     'font' => [
                         'bold' => true,
                         'size' => 12,
@@ -80,8 +80,8 @@ class UsersExport implements FromView, ShouldAutoSize, WithEvents {
                 //Celdas
                     //Título unido
                 $sheet->getRowDimension('6')->setRowHeight(20);
-                $sheet->mergeCells('A6:V6');
-                $sheet->getStyle('A6:V6')->applyFromArray([
+                $sheet->mergeCells('A6:J6');
+                $sheet->getStyle('A6:J6')->applyFromArray([
                     'font' => [
                         'bold' => true,
                         'color' => ['rgb' => '55585a'], 
@@ -104,14 +104,14 @@ class UsersExport implements FromView, ShouldAutoSize, WithEvents {
                     ]
                 ]);
 
-                foreach (range('A', 'V') as $columnID) {
+                foreach (range('A', 'J') as $columnID) {
                     $sheet->getColumnDimension($columnID)->setWidth(30);
                 }
                 
                     //Encabezados
                 $sheet->getRowDimension('7')->setRowHeight(50);
 
-                $sheet->getStyle('A7:V7')->applyFromArray([
+                $sheet->getStyle('A7:J7')->applyFromArray([
                     'font' => [
                         'bold' => true,
                         'color' => ['rgb' => 'FFFAE9'], 
@@ -129,7 +129,7 @@ class UsersExport implements FromView, ShouldAutoSize, WithEvents {
                 ]);
                 
                     //Celdas restantes
-                $sheet->getStyle('A8:V110')->applyFromArray([
+                $sheet->getStyle('A8:J110')->applyFromArray([
                     'font' => [
                         'bold' => false,
                         'color' => ['rgb' => '55585a'], 

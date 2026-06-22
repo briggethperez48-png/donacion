@@ -345,10 +345,12 @@ body.dark .mode .moon {
 body.dark td, body.dark th {
     color: var(--text-color)
 }
-
+.reportes {
+    display: grid !important;
+}
 .sidebar .reportes-index {
+    z-index: 2;
     margin: 0;
-    display: grid;
 }
 .reportes-index .arrow-report {
     margin-left: 50px;
@@ -356,10 +358,31 @@ body.dark td, body.dark th {
 
     transition: var(--tran-02);
 }
-.reportes-index .reportes-menu li {
-    height: 100%;
-    padding: 9px 0px 9px 40px;
+.reportes .reportes-menu {
+    z-index: 1;
 }
+.reportes .reportes-menu li {
+    position: relative;
+    max-height: 0;
+    opacity: 0;
+    padding: 9px 0px 9px 40px;
+
+    transform: translateY(-30px);
+    transition: var(--tran-02);
+}
+.reportes .reportes-menu.open li {
+    max-height: 100%;
+    width: 100%;
+    opacity: 1;
+    padding: 9px 0px 9px 40px;
+
+    transform: translateY(0);
+}
+/* .sidebar.close .reportes-menu.open li {
+    color: var(--text-color);
+    transform: translateY(0);
+    transform: translateX(30px);
+} */
 
 
 /* Footer */

@@ -63,8 +63,8 @@
                                 <div class="form-group col-md-4">
                                         <label for="status" class="font-weight-bold">Estatus del usuario</label>
                                         <div class="d-flex justify-content-between align-items-center mt-2">
-                                                <p> <input type="radio" name="status" value="ACTIVO" {{ request('status') == 'ACTIVO' ? 'checked' : '' }}> ACTIVO </p>
-                                                <p> <input type="radio" name="status" value="INACTIVO" {{ request('status') == 'INACTIVO' ? 'checked' : '' }}> ELIMINADO </p>
+                                                <p> <input type="radio" name="status" value="ACTIVO"> ACTIVO </p>
+                                                <p> <input type="radio" name="status" value="INACTIVO"> ELIMINADO </p>
                                         </div>
                                 </div>
                         </div>
