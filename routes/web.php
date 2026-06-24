@@ -14,20 +14,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
-//07/05/2026-> Primero haremos el xlsx y luego el PDF
-//Librerías: DOMPDF, maatwebsite, Spatie, Colletive 
-
-// Route::get('/', function() {
-//     //$pdf = App::make('dompdf.wrapper');
-
-//     $pdf = app('dompdf.wrapper');
-
-//     $pdf -> loadHTML('<h1>Hola, putas. Estoy en helper APP</h1>');
-
-//     return $pdf -> stream();
-// });
-
 Route::post('/donador/fetch', 'DonanteController@fetch')->name('donante.fetch');
 Route::post('content/reporte/fetch', 'ReporteController@fetch')->name('reporte.fetch');
 Route::post('content/buscador/fetch', 'BuscadorController@fetch')->name('buscador.fetch');
@@ -54,18 +40,29 @@ Route::group(['middleware' => 'auth'], function () {
     
     //Route::view('/denegado', 'denegado'); 
 
-    // 4. Grupo con Prefijo 'content'
+    
     Route::prefix('content')->group(function () {
         Route::view('/', 'contenido/dashboard')->name('content'); 
-        Route::get('buscador', 'BuscadorController@index')->name('buscador.index');
+        Route::get('buscador', 'BuscadorController@index')
+            ->name('buscador.index')
+            ->middleware('role:SUPERADMIN|ADMIN|EDITOR|READER');
         Route::post('buscador', 'BuscadorController@buscar');
-        Route::get('reporte', 'ReporteController@index')->name('reporte.index');
-        Route::get('reporte-export', 'ReporteController@export')->name('reporte.export');
-        Route::get('reporte-users', 'UsersReporteController@index')->name('reporteUser.index');
-        Route::get('reporte-users-export', 'UsersReporteController@export')->name('reporteUser.export');
-        Route::get('estadisticas', 'GraficasController@verGraficas')->name('estadisticas.verGraficas');
-        Route::get('estadisticas/organos-por-lugar', 'GraficasController@getOrganosPorLugar')->name('estadisticas.organosLugar');
-        Route::get('novedades', 'AuditoriasController@index')->name('novedades.index');
+        Route::get('reporte', 'ReporteController@index')
+            ->name('reporte.index')
+            ->middleware('role:SUPERADMIN|ADMIN|EDITOR|READER');
+        Route::get('reporte-export', 'ReporteController@export')
+            ->name('reporte.export');
+        Route::get('reporte-users', 'UsersReporteController@index')
+            ->name('reporteUser.index')
+            ->middleware('role:SUPERADMIN|ADMIN');
+        Route::get('reporte-users-export', 'UsersReporteController@export')
+            ->name('reporteUser.export');
+        Route::get('estadisticas', 'GraficasController@verGraficas')
+            ->name('estadisticas.verGraficas');
+        Route::get('estadisticas/organos-por-lugar', 'GraficasController@getOrganosPorLugar')
+            ->name('estadisticas.organosLugar');
+        Route::get('novedades', 'AuditoriasController@index')
+            ->name('novedades.index')
+            ->middleware('role:SUPERADMIN');
     });
-
 });

@@ -1,0 +1,98 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root {
+    --body: linear-gradient(180deg, #9d2148 75%, #60122b);
+    --error-background: linear-gradient(0deg, #9d2148 90%, #851337);
+    --shadow-button: rgba(88,89,90,0.7);
+    --shadow: rgba(0,0,0,0.9);
+    --gradient-border: #fffae9;
+    --text-color: #fffae9;
+    
+    --tran-01: all 0.2s ease;
+    --tran-02: all 0.3s ease;
+    --tran-03: all 0.4s ease;
+    --tran-04: all 0.5s ease;
+    --tran-out-00: normal 0.5s ease-out;
+}
+body {
+    height: 100vh;
+    width: auto;
+    display: grid;
+
+    background: var(--body);
+    background-repeat : no-repeat;
+    background-size : cover;
+
+    align-content: center;
+    justify-content: center;
+}
+.error {
+    background: var(--error-background);
+    place-items: center;
+    padding: 60px 60px;
+    margin: 25px;
+    border: 3px solid;
+    border-color: var(--gradient-border);
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px var(--shadow);
+
+    color: var(--text-color);
+}
+
+.errorContent {
+    display: flex;
+    gap: 20px;
+    text-align: center;
+    flex-direction: row-reverse;
+}
+
+.errorIndex h1 {
+    font-size: 80px;
+}
+.errorIndex svg {
+    width: 120px;
+    height: 120px;
+}
+
+.errorText {
+    align-content: center;
+}
+
+.btnSc {
+    justify-self: center;
+    background-color: #b28e5c;
+    color: #fffae9;
+    border-radius: 10px;
+    transition: var(--tran-02);
+}
+.btnSc:hover {
+    background-color: #b28e5c;
+    color: #e1dac5;
+    border-radius: 5px;
+    transform: scale(0.95);
+
+    letter-spacing: 2px;
+    filter: drop-shadow(0px 0px 3px var(--shadow-button));
+}
+.btnSc:active {
+    letter-spacing: -1px;
+    border-radius: 10px;
+
+    transform: scale(0.99);
+}
+
+@media (max-width: 760px) {
+    .errorIndex h1 {
+        font-size: 60px;
+    }
+    .errorIndex svg {
+        width: 80px;
+        height: 80px;
+    }
+    .errorContent {
+        flex-direction: column;
+    }
+}

@@ -1,6 +1,5 @@
 <!-- php artisan serve --host=0.0.0.0 --port=8080 -->
 @can('Components')
-
     <section class="menu" style="margin-top: 60px;">
         <div>
             <nav class="sidebar close">
@@ -117,7 +116,7 @@
                             @can('Reportes index')
                                 <div class="">
                                     <li class="nav-link reportes">
-                                        <a href="#" class="a reportes-index">
+                                        <a class="a reportes-index">
                                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"  
                                                 fill="currentColor" viewBox="0 0 24 24" >
                                                 <path d="M12 7H6v6h6zm-2 4H8V9h2zm3 4H6v2h12v-2zm1-4h4v2h-4zm0-4h4v2h-4z"></path><path d="M4 21h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2M4 5h16v14H4z"></path>
