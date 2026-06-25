@@ -168,7 +168,7 @@ class UserController extends Controller
             'telefono' => 'required|numeric|digits:10',
             'status' => 'required|string|max:50',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id, 
-            'password' => 'nullable|string|min:6', 
+            'password' => 'nullable|string|min:6|max:12', 
             'responsable' => 'nullable|string', 
         ];
 

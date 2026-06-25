@@ -377,7 +377,9 @@
                             <div class="form-group col-md-6">
                                 <label for="Referencias" class="font-weight-bold">Referencias</label>
                                 <input name="Referencias" class="form-control input" id="Referencias"
-                                    placeholder="Coloque alguna referencia..." value="{{ isset($donante->Referencias) ? $donante->Referencias : old('Referencias') }}">
+                                    placeholder="Coloque alguna referencia..." value="{{ isset($donante->Referencias) ? $donante->Referencias : old('Referencias') }}"
+                                    maxlength="20">
+                                <small id="contadorC" class="form-text text-muted text-right">0 / 20</small>
                                 @if($errors->has('Referencias'))
                                     <span class="text-danger small"><strong>{{ $errors->first('Referencias') }}</strong></span>
                                 @endif
@@ -554,6 +556,28 @@
             }
 
             textarea.addEventListener('input', actualizarContador);
+
+            actualizarContador();
+        })();
+    </script>
+    <script>
+        (function() {
+            const referemcia = document.getElementById('Referencias');
+            const contador = document.getElementById('contadorC');
+            const maxCaracteres = referemcia.maxLength;
+
+            function actualizarContador() {
+                const longitud = referemcia.value.length;
+                contador.textContent = `${longitud} / ${maxCaracteres}`;
+
+                if (longitud >= maxCaracteres) {
+                    contador.classList.add('alerta');
+                } else {
+                    contador.classList.remove('alerta');
+                }
+            }
+
+            referemcia.addEventListener('input', actualizarContador);
 
             actualizarContador();
         })();

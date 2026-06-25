@@ -2,7 +2,7 @@
     <div class="p-4 m-2 mb-4">
         <div class="align-self-center mb-2 col">
             <div class="position-relative">
-                <img src="{{ asset('css/imagen/SEDESANOV.png') }}" class="img-fluid" style="width: 20rem; height:auto;" alt="">
+                <!-- <img src="{{ asset('css/imagen/SEDESANOV.png') }}" class="img-fluid" style="width: 20rem; height:auto;" alt=""> -->
             </div>
             <div>
                 <h1 class="text-center">
@@ -99,7 +99,10 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="password" class="font-weight-bold">Contraseña</label>
-                            <input name="password" type="password" style="text-transform: none;" class="form-control input mb-2" id="password" value="{{ isset($user->password) ? $user->password : old('password') }}">
+                            <input name="password" type="password" placeholder="••••••••" 
+                                style="text-transform: none;" class="form-control input mb-2" id="password" 
+                                value="{{ isset($user->password) ? $user->password : old('password') }}"
+                                minlength="6" maxlength="12">
                             @if(Route::is('user.edit'))
                                 <button type="button" class="btn btnSc btn-lg px-5 shadow text-uppercase w-100 w-md-auto mt-2" id="resetButton">
                                     Reasignar

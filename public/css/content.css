@@ -54,10 +54,23 @@ hr {
     width: auto;
     height: 100vh;
 }
+.headerDash h1 {
+    animation: up 600ms ease-out;
+    font-weight: 300;
+}   @keyframes up {
+        0% {
+            opacity: 0;
+            letter-spacing: 3px;
+        }
+        100% {
+            opacity: 1;
+            letter-spacing: 0;
+        }
+    }
 .swiper {
     justify-content: center;
     align-content: center;
-    width: 96%; /* Le damos un poco más de aire al carrusel */
+    width: 96%;
     height: fit-content;
 }
 .swiper-slide {
@@ -67,39 +80,29 @@ hr {
     width: 100%;
 }
 
-/* REGLA BASE LIMPIA: 
-   Quitamos los max-width globales que asfixiaban a México 
-*/
 .swiper-slide svg {
     display: block;
     margin: 0 auto;
     height: auto;
 }
 
-/* ========================================================
-   CONTROL DEFINITIVO POR CLASES/ID
-   ======================================================== */
-
-/* 1. MAPA DE MÉXICO: Usamos su ID nativo '#mapa' o la clase contenedora */
 #mapa {
     width: 100% !important;
-    max-width: 1200px !important; /* Pasamos de 950px a 1200px para darle aire libre */
+    max-width: 1200px !important;
     max-height: 680px !important;
 }
 
-/* 2. MAPA DE CDMX: Usamos su ID nativo '#Map' */
 #Map {
     width: 100% !important;
-    max-width: 480px !important; /* Mantiene sus dimensiones estéticas */
+    max-width: 480px !important;
     max-height: 520px !important;
 }
 
-/* Por si tus SVG no tienen esos ID exactamente, usamos también la clase contenedora de tus mapas */
+/* Flechas de Swiper */
 .swiper-slide .SecMapa {
     height: auto;
 }
 
-/* Flechas de Swiper */
 .swiper .swiper-button-prev,
 .swiper .swiper-button-next {
     color: var(--fill-hover);
