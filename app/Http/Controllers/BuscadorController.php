@@ -61,7 +61,7 @@ class BuscadorController extends Controller
     }
 
     public function buscar(Request $request) {
-        return Donante::with('organos') // Cargamos la relación para el reporte
+        return Donante::with('organos') 
         ->when($request->Nombre, function ($q) use ($request) {
             return $q->where('Nombre', $request->Nombre);
         })

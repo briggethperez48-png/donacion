@@ -137,11 +137,11 @@ hr {
     transition: var(--tran-03);
 }
 .Mapa {
-    width: 100%;        /* ¡CRÍTICO! Obliga al contenedor a usar todo el ancho del slide */
-    height: 100%;       /* Obliga al contenedor a usar todo el alto disponible */
+    width: 100%;    
+    height: 100%;
     align-content: center;
     justify-items: center;
-    display: flex;      /* Asegura el centrado interno de lo que tenga adentro */
+    display: flex;
     justify-content: center;
 }
 .SecMapa {

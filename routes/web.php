@@ -38,8 +38,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('user', 'UserController');
     Route::resource('donador', 'DonanteController')->except(['create', 'store']);
     
-    //Route::view('/denegado', 'denegado'); 
-
     
     Route::prefix('content')->group(function () {
         Route::view('/', 'contenido/dashboard')->name('content'); 

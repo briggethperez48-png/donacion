@@ -49,6 +49,9 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Nombre</th>
+                                    @role('SUPERADMIN')
+                                        <th scope="col">Rol</th>
+                                    @endrole
                                     <th scope="col">Área</th>
                                     <th scope="col">Fecha de Alta</th>
                                     <th scope="col">Correo Electrónico</th>
@@ -63,6 +66,9 @@
                                             @endphp
                                             <td>{{$user->id}}</td>
                                             <td>{{$nomCom}}</td>
+                                            @role('SUPERADMIN')
+                                                <td>{{ $user->getRoleNames()->implode(', ') }}</td>
+                                            @endrole
                                             <td>{{ $user->relacionArea->area ?? 'Sin Área' }}</td>
                                             <td>{{ $user->fechaAlta }}</td>
                                             <td>{{ $user->email }}</td>

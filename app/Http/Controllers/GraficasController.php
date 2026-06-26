@@ -19,7 +19,7 @@ class GraficasController extends Controller {
             });
         };
 
-        // Gráficas 1, 2 y 8 (Usan Join)
+        // Gráficas 1, 2 y 8 (Join)
         $baseJoin = DB::table('relacion_o_d')
             ->join('donantes', 'relacion_o_d.donante_id', '=', 'donantes.id');
 
@@ -37,7 +37,7 @@ class GraficasController extends Controller {
             ->groupBy('donantes.Alcaldia')
             ->get();
 
-        // Gráfica 3: Órganos (Estructura Apilada)
+        // Gráfica 3: Órganos
         $todosLosOrganos = \App\Organo::pluck('nombre')->toArray(); 
 
         $organosPorSexo = DB::table('relacion_o_d')
@@ -70,7 +70,7 @@ class GraficasController extends Controller {
             }
         }
 
-        // Gráficas 6 y 7 (Directo a tabla donantes)
+        // Gráficas 6 y 7
         $queryDonantes = DB::table('donantes');
 
         $resultadosC = $filtrarPorFecha(clone $queryDonantes)
@@ -105,13 +105,11 @@ class GraficasController extends Controller {
         $mesFin = $request->get('mesFin');
 
 
-        // Base de la consulta
         $query = DB::table('relacion_o_d')
             ->join('donantes', 'relacion_o_d.donante_id', '=', 'donantes.id')
             ->join('organos', 'relacion_o_d.organo_id', '=', 'organos.id');
 
 
-        // Filtramos dinámicamente si es Estado o Alcaldía
         if ($estado) {
             $query->where('donantes.EstadoProc', $estado);
         } elseif ($alcaldia) {
