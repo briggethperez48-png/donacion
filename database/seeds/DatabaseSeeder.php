@@ -15,8 +15,11 @@ class DatabaseSeeder extends Seeder
         
         $this->call(UserSeeder::class);
         
+        $this->call(InstitucionesSeeder::class);
+        $this->call(UnidadesSeeder::class);
         $this->call(AreasSeeder::class);
         $this->call(OrganosSeeder::class);
         $this->call(alcaldiaSeeder::class);
+
     }
 }

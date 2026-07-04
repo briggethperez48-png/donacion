@@ -13,11 +13,46 @@ class RoleSeeder extends Seeder
      * @return void
      */
     public function run() {
-        $role1 = Role::create(['name'=>'SUPERADMIN']);
-        $role2 = Role::create(['name'=>'ADMIN']);
-        $role3 = Role::create(['name'=>'EDITOR']);
-        $role4 = Role::create(['name'=>'READER']);
-        $role5 = Role::create(['name'=>'INACTIVO']);
+        $role1 = Role::create([
+            'name'=> 'consulta',
+            'slug' => 'consulta',
+            'description' => 'busquedas y consultas'
+        ]);
+        $role2 = Role::create([
+            'name'=>'Administrador',
+            'slug' => 'administrador',
+            'description' => 'Administrador'
+        ]);
+        $role3 = Role::create([
+            'name'=>'developer',
+            'slug' => 'developer',
+            'description' => 'Desarrollador del Sistema'
+        ]);
+        $role4 = Role::create([
+            'name'=>'Users admin',
+            'slug' => 'usersadmin',
+            'description' => 'User Administrador'
+        ]);
+        $role5 = Role::create([
+            'name'=>'Roles Admin',
+            'slug' => 'rolesadmin',
+            'description' => 'Roles Administrador'
+        ]);
+        $role6 = Role::create([
+            'name'=>'Reporteador',
+            'slug' => 'reporteador',
+            'description' => 'Reporteador'
+        ]);
+        $role7 = Role::create([
+            'name'=>'Unidades Admin',
+            'slug' => 'unidadadmin',
+            'description' => 'Administrador de unidades para los usuarios'
+        ]);
+        $role8 = Role::create([
+            'name'=>'Instituciones Admin',
+            'slug' => 'institucionesadmin',
+            'description' => 'Administrador de instituciones para los usuarios'
+        ]);
 
         Permission::create(['name'=>'Dashboard'])
             ->syncRoles([$role1, $role2, $role3, $role4]);
