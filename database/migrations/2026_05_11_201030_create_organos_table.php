@@ -14,8 +14,9 @@ class CreateOrganosTable extends Migration
     public function up()
     {
         Schema::create('organos', function (Blueprint $datoOrg) {
-            $datoOrg->increments('id');
-            $datoOrg->string('nombre');
+            $datoOrg->increments('id_organo');
+            $datoOrg->string('organo');
+            $datoOrg->string('id_tipo_organo');
             $datoOrg->timestamps();
         });
     }

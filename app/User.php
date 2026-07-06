@@ -24,10 +24,12 @@ class User extends Authenticatable
         'nombre',
         'apPaterno',
         'apMaterno',
-        'area', 
+        'login',
+        'area',  //Campo añadido
+        'unidad', //Campo histórico
         'fechaAlta', 
         'telefono',
-        'status', //Tipo Logico: Activado/Desactivado
+        'activo', //Tipo Lógico ->Modificación: 05.Jul.2026 de "status" a "activo"
         'email', 
         'password',
         'responsable', //Quien metió al usuario

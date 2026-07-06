@@ -16,18 +16,18 @@ class CreateRelacionODTable extends Migration
         Schema::create('relacion_o_d', function (Blueprint $datoRel) {
             $datoRel->increments('id'); 
         
-            $datoRel->unsignedInteger('donante_id');
-            $datoRel->unsignedInteger('organo_id');
+            // $datoRel->unsignedInteger('donante_id');
+            // $datoRel->unsignedInteger('organo_id');
 
-            $datoRel->foreign('donante_id')
-                ->references('id')->on('donantes')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            // $datoRel->foreign('donante_id')
+            //     ->references('id')->on('donantes')
+            //     ->onDelete('cascade')
+            //     ->onUpdate('cascade');
 
-            $datoRel->foreign('organo_id')
-                ->references('id')->on('organos')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            // $datoRel->foreign('organo_id')
+            //     ->references('id')->on('organos')
+            //     ->onDelete('cascade')
+            //     ->onUpdate('cascade');
 
             $datoRel->timestamps();
             });

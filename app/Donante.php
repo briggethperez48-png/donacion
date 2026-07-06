@@ -16,21 +16,21 @@ class Donante extends Model
             'ApPaterno',
             'ApMaterno',
             'FechaNac',
-            'Ocupacion',
-            'EstCiv',
-            'Estudios',
+            'Ocupacion',    //
+            'EstCiv',       //
+            'Estudios',     //
             'EstadoProc',
-            'Religion',
+            'Religion',     //
             'CURP',
-            'Sexo',
+            'Sexo',         //
             'estadoNac',
             'Alcaldia',
             'Colonia',
-            'Donador',
-            'Organo',
+            'Donador',      //
+            'Tipo',         //
             'Referencias',
             'Telefono',
-            'Pregunta',
+            'Pregunta',     //
             'Respuesta'
     ];
     public function organos() {
