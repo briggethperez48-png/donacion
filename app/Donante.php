@@ -15,25 +15,32 @@ class Donante extends Model
             'Nombre',
             'ApPaterno',
             'ApMaterno',
-            'FechaNac',
-            'Ocupacion',    //
-            'EstCiv',       //
-            'Estudios',     //
-            'EstadoProc',
-            'Religion',     //
-            'CURP',
             'Sexo',         //
-            'estadoNac',
+            'FechaNac',
+            'EstCiv',       //
+            'Ocupacion',    //
+            'Estudios',     //
+            'CP',           // Forma parte de los datos históricos
+            'EstadoProc',   // Añadido
             'Alcaldia',
             'Colonia',
-            'Donador',      //
-            'Tipo',         //
-            'Referencias',
+            'Calle',        // Histórico
+            'NumExt',       // Histórico
+            'NumInt',       // Histórico
             'Telefono',
-            'Pregunta',     //
-            'Respuesta'
+            'Referencias',
+            'Tipo',         //
+            'Fecha',        // Histórico
+            'Hora',         // Histórico
+            'CURP',
+            'estadoNac',
+            'Religion',     //
+            'Donador'       // No será booleano, pero prevalece como ratio para mantener la función
+                //Formarán parte de otratabla
+            // 'Pregunta',     //
+            // 'Respuesta'
     ];
-    public function organos() {
-        return $this->belongsToMany('App\Organo', 'relacion_o_d', 'donante_id', 'organo_id');
-    }
+    // public function organos() {
+    //     return $this->belongsToMany('App\Organo', 'relacion_o_d', 'donante_id', 'organo_id');
+    // }
 }

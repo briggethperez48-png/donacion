@@ -1,0 +1,2452 @@
+id_colonia,colonia,id_delegacion,codigo_postal,id_entidad
+2107,residencial insurgentes,12,14430,9
+2403,san juan minas,13,16640,9
+2404,san sebastian,13,16730,9
+2448,xochipilli,13,16430,9
+2280,barrio 18,13,16034,9
+2291,cristo rey,13,16780,9
+2295,del carmen,13,16720,9
+2304,el mirador,13,16060,9
+2308,el mirador,13,16776,9
+2405,san juan tepepan,13,16020,9
+2406,san mateo xalpa,13,16800,9
+2407,san pedro,13,16090,9
+2408,santa crucita,13,16070,9
+2447,xaltocan,13,16090,9
+2449,zona ejidal,13,16016,9
+2450,xochimilco,13,16058,9
+2451,xochimilco corporacion,13,16057,9
+2275,año de juarez,13,16440,9
+2276,arcos del sur,13,16010,9
+2278,axcallote,13,16819,9
+2279,axcayote,13,16220,9
+2281,belen,13,16070,9
+2282,bosques del sur,13,16010,9
+2310,guadalupe,13,16840,9
+2311,guadalupe,13,16860,9
+2313,huichapan,13,16030,9
+2315,jardines del sur,13,16050,9
+2317,jardines del sur,13,16058,9
+2323,la cañada,13,16310,9
+2283,bosques residencial del sur,13,16010,9
+2284,bracerasco,13,16350,9
+2285,caltongo,13,16090,9
+2286,calyequita,13,16750,9
+2287,cerro grande,13,16810,9
+2288,comision federal de electricidad,13,16028,9
+2289,club monte sur,13,16909,9
+2290,cuatetlan,13,16249,9
+2292,chapultepec,13,16850,9
+2293,chiquimola,13,16780,9
+2294,del artista,13,16628,9
+2296,division del norte infonavit,13,16030,9
+2297,dolores tlali,13,16245,9
+2298,delegacion politica xochimilco,13,16095,9
+2299,el cedral,13,16870,9
+2301,el arenal,13,16808,9
+2302,el capulin,13,16880,9
+2303,el mirador 2a seccion,13,16810,9
+2305,el rosario,13,16070,9
+2306,el mirador atemoaya,13,16550,9
+2307,el sacrificio,13,16780,9
+2309,el teoca,13,16888,9
+2312,huacahuasta,13,16860,9
+2314,la cebada,13,16034,9
+2318,jimenez morales,13,16096,9
+2319,la candelaria,13,16609,9
+2321,la herradura hueytepec,13,16880,9
+2322,la concepcion tlacoapa,13,16000,9
+1864,los reyes mixquic,11,13610,9
+1866,los reyes,11,13080,9
+1867,manuel m lopez ii,11,13316,9
+1868,los volcanes,11,13316,9
+1931,arenal tepepan,12,14610,9
+1939,cantera,12,14428,9
+1940,cantera puente de piedra,12,14040,9
+1946,corrales,12,14607,9
+1948,cultura maya,12,14230,9
+1949,cruz del farol,12,14248,9
+1950,cuchilla de padierna,12,14220,9
+1952,cumbres de tepetongo,12,14420,9
+1956,cuchilla de padierna,12,14220,9
+1965,el capulin,12,14260,9
+1975,el mirador 3a seccion,12,14449,9
+1841,la estacion,11,13319,9
+1976,el mirador,12,14449,9
+1861,las arboledas,11,13219,9
+1863,los olivos,11,13219,9
+1865,los olivos,11,13210,9
+1875,ojo de agua,11,13450,9
+1892,san nicolas tetelco,11,13700,9
+1895,santa ana,11,13060,9
+1898,santa catarina,11,13120,9
+1899,santa catarina,11,13120,9
+1901,santa ana,11,13300,9
+1907,selene,11,13430,9
+1920,zapotitla,11,13310,9
+1924,zapotitlan,11,13209,9
+1869,manuel m lopez iii,11,13300,9
+1870,manuel gutierrez najera,11,13316,9
+1871,miguel hidalgo,11,13200,9
+1873,nueva tenochtitlan,11,13317,9
+1876,peña alta,11,13549,9
+1877,quiahuatla,11,13090,9
+1878,potrero del llano,11,13550,9
+1882,san agustin mixquic,11,13630,9
+1884,san bartolo mixquic,11,13600,9
+1885,san francisco tlaltenco,11,13400,9
+1886,san jeronimo,11,13240,9
+1888,san juan ixtayopan,11,13500,9
+1889,san miguel,11,13070,9
+1891,san miguel mixquic,11,13640,9
+1893,san miguel,11,13180,9
+1894,san mateo,11,13040,9
+1896,san nicolas tolentino garay,11,13219,9
+1897,santa catarina yecahuizotl,11,13100,9
+1900,santa cruz,11,13625,9
+1902,santa cecilia,11,13010,9
+1904,santiago zapotitlan,11,13300,9
+1905,santiago,11,13300,9
+1908,teozoma,11,13120,9
+1909,tierra blanca,11,13540,9
+1910,tempiluli,11,13363,9
+1911,tierra blanca,11,13540,9
+1912,tlahuac 2,11,13229,9
+1914,tlahuac centro,11,13000,9
+1915,tierra y libertad,11,13080,9
+1916,tlalnepantla,11,13410,9
+1917,villa centroamericana y del caribe,11,13278,9
+1918,villa tlatempa,11,13559,9
+1921,zompantle,11,13450,9
+1922,zacatenco,11,13440,9
+1923,zacatenco,11,13440,9
+1929,amsa,12,14380,9
+1925,2 de octubre,12,14739,9
+1926,3 fuentes,12,14309,9
+1927,actopa,12,14456,9
+1928,ailes 2,12,14266,9
+1932,arenal de guadalupe,12,14389,9
+1933,belvedere de eslava,12,14720,9
+1934,belisario dominguez,12,14310,9
+1935,belisario dominguez seccion xvi,12,14080,9
+1941,colinas del bosque,12,14608,9
+1942,colinas del ajusco,12,14208,9
+1943,club de golf mexico,12,14620,9
+1944,coapa,12,14337,9
+1945,comuneros de santa ursula,12,14049,9
+1947,cuevitas de curamaguey,12,14267,9
+1951,cuemanco,12,14336,9
+1953,chimali residencial,12,14370,9
+1954,cuemanco infonavit,12,14336,9
+1955,chomulco,12,14829,9
+1957,cuitlahuac,12,14039,9
+1958,chimalcoyotl,12,14630,9
+1959,chichicaspatl,12,14108,9
+1962,diamante,12,14427,9
+1963,delegacion politica tlalpan,12,14009,9
+1966,el bosque,12,14266,9
+1967,el cantil,12,14477,9
+1968,el charco,12,14780,9
+1969,el convento,12,14438,9
+1970,el divisadero,12,14406,9
+1971,el maninal,12,14713,9
+1973,el mirador 2a seccion,12,14449,9
+1974,el pedregal,12,14100,9
+1977,el truenito,12,14430,9
+1979,exejido de huipulco,12,14380,9
+1980,estrella mora,12,14550,9
+1981,exejido de tepepan,12,14380,9
+1982,faroles del pedregal,12,14018,9
+1983,exhacienda san juan de dios,12,14387,9
+1984,fuentes de tepepan,12,14643,9
+1986,fuerza armada de mexico,12,14338,9
+1987,fuentes brotantes fovissste,12,14410,9
+1988,floresta coyoacan,12,14310,9
+1989,fuentes de tepepan,12,14648,9
+1990,fuentes brotantes parque nacional,12,14410,9
+1991,gabriel ramos millan,12,14324,9
+1992,granjas coapa,12,14330,9
+1993,guadalupe,12,14388,9
+1994,hacienda de san juan,12,14377,9
+1996,huepanco,12,14620,9
+2008,jardines villa coapa,12,14356,9
+2009,jardines del ajusco,12,14200,9
+2011,jose lopez portillo,12,14230,9
+2019,la joya,12,14090,9
+2022,la fama,12,14269,9
+2038,lomas de padierna,12,14240,9
+2040,lomas hidalgo,12,14240,9
+2045,los volcanes,12,14440,9
+2048,magdalena petlacalco,12,14480,9
+2056,misiones tlalpan,12,14376,9
+2059,mirador del valle,12,14658,9
+2068,niño jesus,12,14080,9
+2070,parres el guarda,12,14900,9
+2071,pedregal del lago,12,14110,9
+2075,paraje 38,12,14275,9
+2081,pedregal de las aguilas,12,14439,9
+2095,popular santa teresa,12,14160,9
+2101,pueblo quieto,12,14040,9
+2108,real del sur,12,14308,9
+2113,residencial villa coapa,12,14390,9
+1997,guadalupita,12,14388,9
+2000,hueso periferico,12,14338,9
+2001,hacienda de san juan de tlalpan 2a seccion,12,14370,9
+2002,heroes de padierna,12,14200,9
+2004,isidro fabela seccion cantil,12,14039,9
+2006,instituto mexicano de la television,12,14141,9
+2007,insurgentes cuicuilco,12,14018,9
+2010,jardines en la montaña,12,14210,9
+2012,jardines de xitle,12,14450,9
+2013,jardines de tlalpan,12,14620,9
+2014,juventud unida,12,14647,9
+2017,la chinita,12,14540,9
+2018,la cuevita,12,14400,9
+2021,la lonja,12,14268,9
+2024,la mesa los hornos,12,14420,9
+2025,la palma,12,14476,9
+2027,la quinta,12,14520,9
+2028,la providencia,12,14839,9
+2029,la tortuga xolalpa,12,14649,9
+2032,las tortolas,12,14609,9
+2033,las margaritas,12,14545,9
+2034,lomas de tepemecatl,12,14735,9
+2035,lomas de belvedere,12,14249,9
+2036,lomas de cuilotepec,12,14730,9
+2037,lomas de padierna sur,12,14740,9
+2041,lomas del pedregal,12,14220,9
+2043,los framboyanes,12,14150,9
+2044,los hornos,12,14420,9
+2046,loteria nacional,12,14328,9
+2047,luis donaldo colosio,12,14038,9
+2049,magisterial,12,14360,9
+2050,mail boxes aquiles serdan alvarez,12,14306,9
+2051,maria esther zuno de echeverria,12,14659,9
+2053,miguel hidalgo,12,14250,9
+2054,miguel hidalgo,12,14260,9
+2055,mirador 2,12,14748,9
+2058,miguel hidalgo 2a seccion,12,14250,9
+2061,miguel hidalgo 4a seccion,12,14250,9
+2062,mirador 1,12,14748,9
+2063,movimiento organizado,12,14647,9
+2064,nueva rio blanco,12,14380,9
+2065,narciso mendoza villa coapa,12,14390,9
+2067,nueva oriental coapa,12,14300,9
+2069,oriente,12,14404,9
+2073,paraje tetenco,12,14656,9
+2074,paraje la joyita,12,14405,9
+2076,pedregal santa ursula xitla,12,14438,9
+2077,pedregal de san nicolas 4a seccion,12,14100,9
+2078,pedregal de san nicolas 2a seccion,12,14100,9
+2079,pemex,12,14130,9
+2082,peña pobre,12,14060,9
+2083,pedregal de san nicolas,12,14109,9
+2084,pedregal de san nicolas 1a seccion,12,14100,9
+2085,parques del pedregal,12,14010,9
+2086,plan de ayala 1a seccion,12,14470,9
+2087,plan de ayala 2a seccion,12,14470,9
+2088,pedregal chichicaspatl,12,14108,9
+2089,pedregal de san nicolas 3a seccion,12,14100,9
+2090,pedregal de topilejo,12,14560,9
+2091,periferico fovissste,12,14335,9
+2092,plaza del oro,12,14309,9
+2093,potrero acoxpa,12,14359,9
+2094,polotlan,12,14099,9
+2097,prado coapa 2a seccion,12,14357,9
+2098,plaza del bosque,12,14264,9
+2099,prado coapa 1a seccion,12,14350,9
+2100,prolongacion los angeles,12,14543,9
+2103,residencial miramontes,12,14300,9
+2104,rancho los colorines,12,14386,9
+2105,rancho canela infonavit,12,14097,9
+2109,rincon de san juan,12,14378,9
+2110,residencial pedregal picacho,12,14129,9
+2111,rinconada coapa 2a seccion,12,14325,9
+2112,residencial acoxpa,12,14300,9
+2114,rinconada coapa 1a seccion,12,14330,9
+2115,reino aventura parque,12,14219,9
+2116,rincon del pedregal,12,14120,9
+2117,residencial villa prado coapa,12,14358,9
+2118,rancho viejo,12,14750,9
+2121,rinconada santa teresa,12,14010,9
+2122,san andres totoltepec,12,14400,9
+2123,san bartolo el chico,12,14380,9
+2126,san jorge,12,14790,9
+2133,san miguel toxiac,12,14543,9
+2137,san nicolas totolapan,12,14100,9
+2127,san miguel ajusco,12,14700,9
+2128,san miguel xicalco,12,14490,9
+2129,san lorenzo huipulco,12,14370,9
+2132,san miguel topilejo,12,14500,9
+2134,san pedro martir,12,14640,9
+2135,san pedro martir fovissste,12,14639,9
+2136,san pedro martir,12,14650,9
+2142,santo tomas ajusco,12,14710,9
+2145,solidaridad,12,14273,9
+2150,tlalmille,12,14657,9
+2159,tecorral,12,14409,9
+2161,tlalpuente,12,14460,9
+2163,tlalcoligia,12,14430,9
+2165,toriello guerra,12,14050,9
+2168,vergel de coyoacan,12,14340,9
+2170,vergel del sur,12,14340,9
+2175,villa lazaro cardenas,12,14370,9
+2178,villa del puente,12,14335,9
+2181,villa cuemanco,12,14360,9
+2184,villa royale,12,14399,9
+2199,24 de abril,17,15980,9
+2229,federal,17,15700,9
+2231,felipe angeles,17,15310,9
+2138,san pedro apostol,12,14070,9
+2139,santa ursula xitla,12,14420,9
+2141,sauzales cebadales,12,14334,9
+2143,santisima trinidad,12,14429,9
+2146,sector 17,12,14100,9
+2148,tecuentitla,12,14830,9
+2151,tlalpan centro,12,14000,9
+2152,tenorios 1,12,14326,9
+2153,tepeximilpa,12,14427,9
+2154,tenorios infonavit,12,14326,9
+2155,tenorios fovissste,12,14329,9
+2156,tepeximilpa,12,14427,9
+2157,tepetongo,12,14420,9
+2160,texcaltenco,12,14426,9
+2164,tlaxcaltengo la mesa,12,14426,9
+2166,valle escondido,12,14600,9
+2167,valle verde o lomas verdes,12,14655,9
+2169,verano,12,14276,9
+2171,vergel coapa,12,14320,9
+2172,valle de tepepan,12,14646,9
+2173,urbano coapa,12,14337,9
+2174,villa del sur,12,14307,9
+2176,vergel tlalpan,12,14310,9
+2179,villa tlalpan,12,14630,9
+2180,villa charra del pedregal,12,14010,9
+2182,vistas del pedregal,12,14737,9
+2183,villa olimpica miguel hidalgo,12,14020,9
+2185,viveros de coatetlan,12,14479,9
+2186,zapote 1,12,14038,9
+2187,zapote 2,12,14038,9
+2188,zona tepepan,12,14647,9
+2190,vistas del valle,12,14406,9
+2191,viveros de cuernavaca,12,14478,9
+2194,zapote 3,12,14038,9
+2195,10 de mayo,17,15290,9
+2196,20 de noviembre,17,15260,9
+2197,20 de noviembre,17,15300,9
+2198,20 de noviembre 5o tramo,17,15309,9
+2200,3 mosqueteros,17,15330,9
+2201,4 arboles,17,15730,9
+2203,aaron saenz,17,15870,9
+2204,adolfo lopez mateos,17,15690,9
+2205,adolfo lopez mateos,17,15670,9
+2206,aeronautica militar,17,15970,9
+2207,aeropuerto ciudad de mexico,17,15620,9
+2208,alvaro obregon,17,15990,9
+2209,aquiles serdan,17,15430,9
+2211,arenal 2a seccion,17,15680,9
+2212,arenal 3a seccion,17,15660,9
+2213,arenal 4a seccion,17,15640,9
+2214,artes graficas,17,15830,9
+2215,aviacion civil,17,15740,9
+2216,aviacion civil,17,15750,9
+2220,caracol,17,15630,9
+2221,ciudad de mexico,17,15620,9
+2222,conjunto boturini inverlat,17,15829,9
+2223,cuchilla pantitlan,17,15610,9
+2224,damian carmona,17,15450,9
+2225,delegacion politica venustiano carranza,17,15909,9
+2227,emiliano zapata,17,15299,9
+2228,emilio carranza,17,15230,9
+2230,escuela de tiro,17,15380,9
+2233,ignacio zaragoza,17,15000,9
+2234,industrial puerto aereo,17,15710,9
+2235,janitzio,17,15200,9
+2237,jamaica,17,15800,9
+2238,jardin balbuena,17,15900,9
+2239,lorenzo boturini,17,15820,9
+2240,magdalena mixhuca,17,15850,9
+2241,magdalena mixhuca,17,15860,9
+2242,madero,17,15360,9
+2243,miguel hidalgo,17,15470,9
+2244,michoacana,17,15240,9
+2246,merced balbuena,17,15810,9
+2247,moctezuma 1a seccion,17,15500,9
+2248,moctezuma 2a seccion,17,15530,9
+2249,morelos,17,15940,9
+2250,nicolas bravo,17,15220,9
+2251,morelos,17,15270,9
+2253,penitenciaria,17,15280,9
+2254,peñon de los baños,17,15520,9
+2255,penitenciaria,17,15350,9
+495,actipan,14,03230,9
+1930,arboledas del sur,12,14376,9
+1936,bosques del pedregal,12,14738,9
+1972,el metro,12,14265,9
+1995,guadalupe tlalpan,12,14389,9
+2015,jose lopez portillo,12,14730,9
+2066,nuevo renacimiento de axalco,12,14408,9
+2124,san buenaventura,12,14629,9
+2131,san juan tepeximilpa,12,14427,9
+2162,torres de padierna,12,14209,9
+2332,la noria,13,16030,9
+2342,lomas de tonalco,13,16410,9
+2345,los morales,13,16060,9
+2348,los cerrillos,13,16780,9
+2369,quirino mendoza,13,16710,9
+2384,san isidro,13,16739,9
+2385,san jeronimo,13,16420,9
+2387,san gregorio atlapulco,13,16600,9
+2393,san lucas xochimanca,13,16300,9
+2401,san lorenzo la cebada,13,16035,9
+2256,popular rastro,17,15220,9
+2257,puerto aereo,17,15710,9
+2258,primero de mayo,17,15440,9
+2259,progresista,17,15370,9
+2261,revolucion,17,15460,9
+2262,romero rubio,17,15400,9
+2263,santa cruz aviacion,17,15540,9
+2265,simon bolivar,17,15420,9
+2266,simon bolivar,17,15410,9
+2267,tribunales de la suprema corte de justicia,17,15968,9
+2269,valle gomez,17,15210,9
+2270,valentin gomez farias,17,15010,9
+2271,venustiano carranza,17,15339,9
+2272,venustiano carranza,17,15340,9
+2273,zona centro,17,15100,9
+2274,zaragoza bahia,17,15720,9
+2316,jazmin,13,16428,9
+2329,la herradura,13,16880,9
+2330,la guadalupana,13,16725,9
+2331,la planta,13,16520,9
+2333,la joya,13,16780,9
+2334,la loma,13,16730,9
+2335,la santisima,13,16080,9
+2336,las cruces,13,16530,9
+2337,las gargolas,13,16059,9
+2338,las animas,13,16749,9
+2339,las torres,13,16910,9
+2340,las mesitas,13,16799,9
+2341,las peritas,13,16010,9
+2343,los corrales,13,16025,9
+2344,loreto y peña pobre,13,16330,9
+2347,los capulines,13,16908,9
+2349,los tepozanes,13,16908,9
+2350,mercado de flores plantas y hortalizas,13,16036,9
+2351,misiones de la noria,13,16010,9
+2352,nativitas infonavit,13,16099,9
+2354,nativitas,13,16450,9
+2355,nativitas la joya,13,16540,9
+2356,nativitas,13,16797,9
+2358,nueva temoxtitla,13,16810,9
+2359,paraje tlalatlaco,13,16247,9
+2361,paraje tlachiutepec,13,16888,9
+2362,ocotlan,13,16248,9
+2363,pedregal de san francisco,13,16910,9
+2364,paseos del sur,13,16010,9
+2365,potrero de san bernardino,13,16030,9
+2366,potreros de la noria,13,16019,9
+2367,progreso,13,16820,9
+2368,programacion y presupuesto,13,16017,9
+2370,rancho tejomulco,13,16429,9
+2371,residencial aldama,13,16010,9
+2372,rinconada del sur,13,16059,9
+2373,rinconada san pablo,13,16105,9
+2374,reclusorio sur,13,16809,9
+2375,rinconada del teoca,13,16888,9
+2376,san antonio,13,16000,9
+2377,san andres ahuayucan,13,16810,9
+2378,rosario tlali,13,16810,9
+2379,san felipe de jesus,13,16770,9
+2380,san cristobal,13,16080,9
+2381,san diego,13,16080,9
+2382,san francisco tlalnepantla,13,16900,9
+2383,san esteban,13,16080,9
+2386,san jose,13,16620,9
+2388,san juan centro,13,16000,9
+2389,san jose obrero,13,16515,9
+2390,san jose zacatepec,13,16220,9
+2391,san lorenzo atemoaya,13,16480,9
+2392,san juan tlaxialtemalco,13,16629,9
+2394,san lorenzo,13,16040,9
+2395,san juan de los lagos,13,16869,9
+2396,san juan moyotepec,13,16630,9
+2397,san luis tlaxialtemalco,13,16610,9
+2398,san marcos,13,16050,9
+2399,san marcos norte,13,16038,9
+2400,san lorenzo atemoaya,13,16400,9
+2402,san marcos,13,16039,9
+2324,la asuncion,13,16040,9
+2325,la guadalupita,13,16629,9
+2326,la guadalupana,13,16629,9
+2327,la guadalupita,13,16740,9
+2328,la guadalupita centro,13,16070,9
+276,polvora,10,01100,9
+1578,sector popular,12,09060,9
+1883,san andres mixquic,11,13600,9
+2226,el parque,17,15960,9
+1862,las puertas,11,13440,9
+1874,nueva tenochtitlan,11,13440,9
+1890,san juan,11,13030,9
+1903,santiago,11,13120,9
+1913,tezontitla,11,13450,9
+1919,villas trabajadores del gobierno del distrito federal,11,13278,9
+93,el piru,10,01520,9
+1937,camara nacional de la industria de la construccion,12,14017,9
+1961,dr ignacio chavez infonavit,12,14339,9
+1978,estacion ajusco,12,14529,9
+1985,fuentes del pedregal,12,14140,9
+1999,h colegio militar niños heroes de chapultepec,12,14651,9
+2020,la nopalera,12,14645,9
+2030,la primavera,12,14270,9
+2039,lomas altas de padierna sur,12,14740,9
+2057,miguel hidalgo 3a seccion,12,14250,9
+2072,paseos de mendoza,12,14070,9
+2080,pedregal de san nicolas 5a seccion,12,14100,9
+2096,prado coapa 3a seccion,12,14357,9
+2106,retornos del pedregal,12,14148,9
+2120,romulo sanchez mireles,12,14070,9
+2140,secretaria del trabajo y prevision social,12,14149,9
+2158,torres tlalpan fovissste,12,14098,9
+2177,villa benalmadena,12,14328,9
+2189,zona arqueologica nopalera,12,14645,9
+2202,7 de julio,17,15390,9
+2210,arenal 1a seccion,17,15600,9
+2218,candelaria de los patos fovissste,17,15120,9
+2236,juan polainas,17,15380,9
+2245,michoacana,17,15250,9
+2252,pensador mexicano,17,15510,9
+1,19 de mayo,10,01388,9
+127,jardines del pedregal,10,01900,9
+6,acueducto,10,01120,9
+7,acueducto,10,01120,9
+2,2 rios,10,01549,9
+3,8 de agosto,10,01180,9
+4,abeto,10,01440,9
+5,abraham gonzalez,10,01170,9
+229,mixcoac,10,01460,9
+1255,biatlon,12,09577,9
+1365,granjas san antonio,12,09070,9
+14,altavista,10,01060,9
+20,arturo martinez,10,01200,9
+21,arvide,10,01280,9
+22,atlamaya,10,01760,9
+27,bejero,10,01340,9
+30,batan barrio viejo,10,01080,9
+34,belen de las flores,10,01110,9
+42,bonanza,10,01220,9
+8,acuilotla,10,01539,9
+9,agricola,10,01050,9
+10,aguila real,10,01769,9
+11,alcantarilla,10,01729,9
+12,alfalfar,10,01470,9
+13,alfonso xii,10,01460,9
+15,alvaro obregon desarrollo urbano,10,01278,9
+16,antonio carrillo flores,10,01379,9
+17,arcadas,10,01440,9
+18,arcos del centenario,10,01618,9
+19,arturo gamiz,10,01506,9
+23,ave real,10,01560,9
+24,axomiatla,10,01820,9
+25,axotla,10,01030,9
+26,balcones de ceguayo,10,01540,9
+28,batallon de san patricio,10,01450,9
+29,belen,10,01209,9
+31,barrio norte,10,01410,9
+32,belen de las flores reacomodo,10,01110,9
+33,bellavista,10,01140,9
+35,bosques de tarango,10,01580,9
+36,bosques 2a seccion,10,01150,9
+37,bosques,10,01160,9
+38,bosques del sur,10,01537,9
+39,boscoso,10,01220,9
+40,bosques seccion torres,10,01150,9
+41,bosques del sol,10,01529,9
+43,cañada del olivar,10,01450,9
+45,carlos a madrazo,10,01320,9
+244,omega,10,01787,9
+432,plenitud,2,02780,9
+1499,pri,12,09368,9
+50,campestre,10,01040,9
+59,colinas de tarango,10,01610,9
+60,colinas del sur,10,01430,9
+61,colinas de tarango,10,01610,9
+64,cove,10,01120,9
+73,cristo rey,10,01150,9
+76,chimalistac,10,01070,9
+81,el capulin,10,01110,9
+85,el capulin,10,01110,9
+44,",camino real de tetelpan",10,01799,9
+46,carlos a madrazo reacomodo,10,01320,9
+47,campo de tiro los gamitos,10,01230,9
+48,campo deportivo revolucion,10,01125,9
+49,calzada de jalalpa,10,01260,9
+51,carola,10,01180,9
+52,cedros santa lucia,10,01510,9
+53,ceguaya,10,01540,9
+54,canutillo 3a seccion,10,01560,9
+55,canutillo la presa,10,01560,9
+56,canutillo,10,01560,9
+57,cerrada san jose,10,01779,9
+58,cerrada del potrero,10,01709,9
+62,cove reacomodo,10,01120,9
+63,corpus christi,10,01530,9
+65,cruz de palo,10,01300,9
+66,cooperativa ceguayo,10,01548,9
+67,corpus christi reacomodo,10,01539,9
+68,cooperativa gaona armenta,10,01500,9
+69,corpus christi,10,01539,9
+70,corpus christi 2o reacomodo,10,01539,9
+71,cuernito becerra reacomodo,10,01289,9
+72,cruz de palo 1er reacomodo,10,01296,9
+74,cuevitas,10,01220,9
+75,cruz de palo 2o reacomodo,10,01378,9
+77,desarrollo santa fe,10,01376,9
+78,desarrollo la loma,10,01376,9
+79,delegacion politica alvaro obregon,10,01159,9
+80,el capulin reacomodo,10,01115,9
+82,el batan,10,01508,9
+83,el arbol,10,01250,9
+84,el cuervo,10,01538,9
+86,el encino,10,01708,9
+87,el cuernito,10,01220,9
+88,el limbo,10,01850,9
+89,el mirador,10,01708,9
+90,el paraiso,10,01130,9
+91,el olivarito,10,01788,9
+92,el pirul,10,01230,9
+94,el pirul,10,01230,9
+95,el pocito,10,01280,9
+96,el piru,10,01276,9
+97,el rincon,10,01590,9
+98,el rodeo,10,01285,9
+1135,santa rosa,5,07620,9
+105,flor de maria,10,01760,9
+108,garcimarrero,10,01510,9
+109,francisco villa,10,01280,9
+112,guadalupe inn,10,01020,9
+113,hidalgo,10,01120,9
+118,hogar y redencion,10,01450,9
+120,hogar y redencion,10,01450,9
+123,isidro fabela,10,01160,9
+125,jalalpa,10,01296,9
+128,jalalpa,10,01297,9
+130,jose maria pino suarez,10,01140,9
+131,jose maria pino suarez,10,01140,9
+132,la cañada,10,01268,9
+99,el tejocote,10,01270,9
+100,ermita,10,01070,9
+101,ermita tizapan,10,01089,9
+102,emancipacion del pueblo,10,01540,9
+103,estado de hidalgo,10,01520,9
+104,estado de hidalgo,10,01520,9
+106,ex hacienda de tarango,10,01618,9
+107,florida,10,01030,9
+110,galeana,10,01407,9
+111,gral antonio rosales,10,01230,9
+114,heron proal,10,01640,9
+115,guadalupe chimalistac,10,01050,9
+116,huertas san juanico,10,01279,9
+117,infonavit,10,01029,9
+119,hueytlate,10,01566,9
+121,huitlalli,10,01567,9
+122,huertas de san juanico,10,01279,9
+124,jalalpa 2a,10,01296,9
+126,jalalpatepito,10,01296,9
+129,jalalpa el grande reacomodo,10,01377,9
+133,la araña,10,01510,9
+134,la cascada,10,01490,9
+135,jurista,10,01630,9
+407,las trancas,2,02450,9
+759,granjas navidad,4,05219,9
+881,imss,15,06698,9
+1204,mercados 2,6,08620,9
+2023,la magueyera,12,14654,9
+146,la cañada,10,01269,9
+156,la otra banda,10,01090,9
+136,la bolsa,10,01849,9
+137,la cebada,10,01260,9
+138,la cebada,10,01259,9
+139,la angostura,10,01770,9
+140,la cañada 2a seccion,10,01269,9
+141,la cebadita,10,01230,9
+142,la estrella,10,01220,9
+143,la conchita,10,01109,9
+144,la mexicana,10,01260,9
+145,la cañada 1a seccion,10,01269,9
+147,la joya,10,01280,9
+148,la herradura,10,01760,9
+149,la herradura,10,01760,9
+150,la huerta,10,01239,9
+151,la joyita,10,01700,9
+152,la esperanza o tlapechico 4a seccion,10,01235,9
+153,la peñita,10,01740,9
+154,la milagrosa,10,01650,9
+155,la presa seccion hornos,10,01270,9
+157,la presa,10,01270,9
+158,la martinica,10,01619,9
+159,la palmita,10,01260,9
+160,la mexicana,10,01260,9
+161,la popular,10,01550,9
+162,las aguilas,10,01759,9
+163,las golondrinas 2a seccion,10,01270,9
+164,ladera grande,10,01250,9
+165,las aguilas,10,01048,9
+166,las golondrinas reacomodo,10,01270,9
+167,las aguilas 3er parque,10,01750,9
+168,las aguilas 2o parque,10,01750,9
+169,las aguilas,10,01710,9
+170,ladera chica,10,01508,9
+171,las aguilas 1er parque,10,01750,9
+532,napoles,14,03840,9
+653,mariana,3,04338,9
+864,condesa,15,06140,9
+1798,tlacpac,9,12400,9
+182,liberales de 1857,10,01110,9
+186,lomas de chamontoya,10,01857,9
+187,lomas de nuevo mexico,10,01250,9
+172,las golondrinas 1a seccion,10,01270,9
+173,las cuevitas reacomodo,10,01220,9
+174,las americas,10,01120,9
+175,las americas,10,01120,9
+176,las butacas,10,01280,9
+177,las golondrinas,10,01270,9
+178,las coronelas,10,01286,9
+179,las palmas,10,01110,9
+180,lomas de becerra granada,10,01279,9
+181,lomas de santo domingo,10,01100,9
+183,lomas de los cedros,10,01870,9
+184,lomas de san angel inn,10,01790,9
+185,lomas de los angeles de tetelpan,10,01790,9
+188,lomas de la hera,10,01860,9
+1938,camisetas,12,14410,9
+202,lomas de guadalupe,10,01720,9
+208,lomas de capula,10,01270,9
+216,llano redondo,10,01540,9
+201,lomas de puerta grande reacomodo,10,01630,9
+203,lomas de tarango reacomodo,10,01589,9
+204,los alpes,10,01010,9
+205,lomas del limbo,10,01850,9
+206,los cedros,10,01870,9
+207,lomas de santa fe,10,01219,9
+209,los alpes,10,01710,9
+210,los gamitos,10,01230,9
+211,los volcanes,10,01339,9
+212,mail boxes paulette kneeland de hernandez,10,01908,9
+213,manzana 20,10,01274,9
+214,mail boxes miguel payro dueñas,10,01905,9
+215,mail boxes mbe post sa de cv,10,01005,9
+217,margarita maza de juarez,10,01250,9
+507,credito constructor,14,03940,9
+956,benito juarez,5,07259,9
+1302,culhuacan,12,09800,9
+250,palmas axotitla,10,01650,9
+262,presidentes,10,01290,9
+247,olivar del conde 1a seccion reacomodo,10,01400,9
+248,olivar del conde 2a seccion,10,01408,9
+249,placio garden,10,01950,9
+251,piloto adolfo lopez mateos reacomodo,10,01298,9
+252,peña blanca santa fe,10,01376,9
+253,perimetro canutillo,10,01509,9
+254,piloto adolfo lopez mateos,10,01298,9
+255,paraje del caballito,10,01856,9
+256,piloto adolfo lopez mateos,10,01290,9
+257,polvora prolongacion,10,01130,9
+258,peotilcos,10,01739,9
+259,pedregal,10,01990,9
+260,polvora 1a seccion,10,01100,9
+261,pirul santa lucia,10,01520,9
+282,puritac,10,01559,9
+884,issste,15,06039,9
+953,atzacoalco,5,07040,9
+1649,la cruz,8,10800,9
+190,lomas de becerra,10,01280,9
+192,lomas de las aguilas,10,01730,9
+194,lomas de tarango,10,01620,9
+197,lomas de axomiatla,10,01820,9
+198,lomas de puerta grande,10,01630,9
+2419,santa ines,13,16810,9
+189,loma bonita,10,01760,9
+191,liberacion proletaria,10,01260,9
+193,lomas de plateros,10,01480,9
+195,lomas de santo domingo,10,01100,9
+196,loreto,10,01090,9
+199,lomas de santo domingo,10,01100,9
+200,lomas de becerra granada reacomodo,10,01279,9
+263,profesor arturo lopez,10,01610,9
+264,ponciano arriaga,10,01645,9
+734,bosques de las lomas,4,05120,9
+1694,2 lagos,16,11460,9
+2016,la cima,12,14900,9
+219,merced gomez,10,01600,9
+232,molino de rosas,10,01470,9
+218,mail boxes fast post sa de cv,10,01035,9
+220,martires de tacubaya,10,01220,9
+221,manzana 20a,10,01274,9
+222,materiales de guerra,10,01120,9
+223,molino de santo domingo,10,01130,9
+224,manzana 17,10,01274,9
+225,maria g de garcia ruiz,10,01160,9
+226,molino de santo domingo,10,01130,9
+227,milpa los cerros,10,01505,9
+228,misiones de tarango,10,01587,9
+230,minas de cristo,10,01419,9
+231,miguel hidalgo,10,01789,9
+1455,minerva,12,09885,9
+245,palmas,10,01410,9
+269,presidentes,10,01299,9
+275,progreso,10,01080,9
+242,olivar del conde 1a seccion,10,01400,9
+243,olivar del conde 4a seccion,10,01408,9
+246,paseo de las lomas,10,01330,9
+265,prados de la montaña,10,01504,9
+266,privada centenario,10,01568,9
+267,presidentes 2a seccion,10,01299,9
+268,pilares aguilas,10,01710,9
+270,presidentes 2a seccion reacomodo,10,01299,9
+271,proletaria km 8.5,10,01390,9
+272,privada del rincon,10,01590,9
+273,presidentes 1a seccion,10,01299,9
+274,pino suarez reacomodo,10,01139,9
+277,proletaria km 8.5,10,01320,9
+278,preconcreto,10,01400,9
+279,punta de ceguayo,10,01540,9
+280,providencia,10,01540,9
+281,proletaria km 9.0,10,01390,9
+753,el molino,4,05240,9
+1325,el eden,12,09520,9
+1676,san bartolo ameyalco,8,10010,9
+2031,las hadas,12,14390,9
+288,pueblo nuevo,10,01240,9
+292,puente colorado,10,01730,9
+298,rincon de la bolsa,10,01849,9
+285,puerta grande reacomodo,10,01630,9
+286,relleno belen de las flores,10,01110,9
+287,puertas del pedregal,10,01090,9
+289,rancho anzaldo y contreras,10,01940,9
+290,proletaria km 9.5,10,01390,9
+291,reacomodo corpus christi,10,01539,9
+293,puerta grande,10,01630,9
+294,real del monte,10,01130,9
+295,real del bosque,10,01220,9
+296,rancho san francisco,10,01807,9
+297,residencial de tarango,10,01588,9
+1393,maestro,12,09170,9
+331,tlacoyaque,10,01858,9
+332,tizampampano,10,01780,9
+335,tlacopac,10,01049,9
+337,tlacuitlapa,10,01650,9
+328,tepiaca,10,01567,9
+329,tlapechico 2a seccion,10,01230,9
+330,tlacuitlapa 1er reacomodo,10,01650,9
+333,tetelpan,10,01700,9
+334,torres de mixcoac,10,01490,9
+336,tetlalpan,10,01507,9
+338,torres de san pedro,10,01183,9
+339,tizapan,10,01090,9
+340,unidad lomas de plateros,10,01480,9
+341,tlapechico 3a seccion,10,01230,9
+342,unidad popular emiliano zapata,10,01450,9
+343,tlacuitlapa 2o reacomodo,10,01650,9
+344,tolteca,10,01150,9
+233,molino de rosas,10,01470,9
+238,olivar del conde,10,01400,9
+240,olivar de los padres,10,01780,9
+308,san gabriel,10,01310,9
+309,san pedro de los pinos,10,01180,9
+234,nelli campo bello,10,01184,9
+235,olivar del conde 3a seccion,10,01409,9
+236,olivar del conde 1a seccion,10,01400,9
+237,olivar del conde 2a seccion reacomodo,10,01408,9
+239,olivar del conde 2a seccion,10,01408,9
+241,ocotillos,10,01700,9
+310,santa fe,10,01210,9
+311,santa fe imss,10,01170,9
+312,santa fe,10,01210,9
+313,santa lucia reacomodo,10,01509,9
+391,euzkadi,2,02660,9
+283,puente colorado,10,01730,9
+284,real de tarango,10,01586,9
+365,zenon delgado,10,01220,9
+468,santa ines,2,02140,9
+469,santa apolonia,2,02790,9
+470,santa cruz de las salinas,2,02340,9
+471,santa maria maninalco,2,02050,9
+472,santa cruz acayucan,2,02770,9
+473,santa barbara,2,02230,9
+367,aguilera,2,02900,9
+368,aldana,2,02910,9
+369,angel zimbron,2,02099,9
+370,arenal,2,02980,9
+371,azcapotzalco,2,02070,9
+373,benito juarez,2,02060,9
+376,claveria,2,02080,9
+379,cosmopolita,2,02920,9
+380,cosmopolita,2,02670,9
+381,del maestro,2,02040,9
+383,del gas,2,02950,9
+363,villa obregon,10,01000,9
+364,vyco,10,01706,9
+372,azcapotzalco centro,2,02000,9
+374,campo encantado,2,02729,9
+375,central rosario,2,02128,9
+377,coltongo,2,02630,9
+378,croc 6 olimpia,2,02109,9
+382,delegacion politica azcapotzalco,2,02008,9
+400,jardin azpeitia,2,02530,9
+1581,sideral,12,09320,9
+399,industrial vallejo,2,02300,9
+402,la preciosa,2,02460,9
+403,la raza,2,02990,9
+405,las salinas,2,02360,9
+409,liberacion,2,02930,9
+410,libertad,2,02050,9
+411,los reyes,2,02010,9
+415,nextengo,2,02070,9
+419,obrero popular,2,02840,9
+421,nueva españa,2,02129,9
+424,patrimonio familiar,2,02980,9
+428,pasteros,2,02150,9
+429,petrolera,2,02480,9
+430,petrolera,2,02470,9
+431,porvenir,2,02940,9
+433,providencia,2,02440,9
+434,potrero del llano,2,02680,9
+435,prados del rosario,2,02410,9
+437,reynosa tamaulipas,2,02200,9
+439,san bernabe,2,02830,9
+442,san antonio,2,02760,9
+443,san antonio,2,02720,9
+447,san alvaro,2,02090,9
+448,san francisco tetecala,2,02730,9
+449,san francisco xocotitla,2,02960,9
+451,san marcos,2,02020,9
+452,san juan tlihuaca,2,02400,9
+453,san miguel amantla,2,02700,9
+455,san marcos,2,02260,9
+456,san mateo,2,02490,9
+457,san pedro xalpa,2,02710,9
+401,jardines de ceylan,2,02350,9
+404,las armas,2,02718,9
+406,lazaro cardenas,2,02479,9
+408,lerdo de tejada,2,02739,9
+412,loteria nacional,2,02080,9
+413,manuel rivera anaya croc 1,2,02109,9
+414,miguel hidalgo,2,02450,9
+416,novedades impacto unidad ecologica,2,02110,9
+417,monte alto,2,02640,9
+418,nueva santa maria,2,02800,9
+420,nueva el rosario,2,02128,9
+422,pantaco,2,02520,9
+423,pantaco,2,02510,9
+425,pdte francisco i madero,2,02430,9
+426,osd cpa mexico sat,2,02528,9
+427,petrolera nueva,2,02720,9
+436,prohogar,2,02600,9
+438,rosendo salazar,2,02409,9
+440,san andres de las salinas,2,02320,9
+441,san bartolito,2,02480,9
+444,san andres,2,02240,9
+445,san andres,2,02240,9
+446,san bartolo cacahualtongo,2,02720,9
+450,san lucas,2,02070,9
+454,san rafael,2,02010,9
+946,aragon,5,07000,9
+324,tepeaca,10,01550,9
+321,sears roebuck,10,01120,9
+322,sociedad cooperativa union poder popular,10,01600,9
+323,tecolalco,10,01250,9
+1584,sifon,12,09400,9
+2192,xolalpa,12,14649,9
+301,sacramento,10,01420,9
+303,san clemente,10,01740,9
+304,san angel inn,10,01060,9
+305,san angel,10,01000,9
+345,tlacoyaque,10,01859,9
+346,torres de potrero,10,01848,9
+348,torres de potrero,10,01840,9
+325,tepeaca,10,01550,9
+353,valentin gomez farias,10,01329,9
+384,del gas,2,02970,9
+300,san bartolo ameyalco,10,01800,9
+302,san agustin,10,01700,9
+306,san francisco,10,01809,9
+307,san jose del olivar,10,01770,9
+347,tlapechico 1a seccion,10,01230,9
+349,tlayacapa,10,01389,9
+350,valentin gomez farias reacomodo,10,01569,9
+2277,atocle,13,16850,9
+326,tecalcapa,10,01700,9
+327,tepopotla,10,01538,9
+351,universal,10,01537,9
+352,union olivos,10,01539,9
+354,victoria primera reacomodo,10,01160,9
+355,victoria primera seccion bosques reacomodo,10,01160,9
+356,villa madena,10,01707,9
+357,victoria primera seccion bosques,10,01160,9
+358,victoria primera,10,01160,9
+359,villa solidaridad,10,01275,9
+360,victoria segunda,10,01160,9
+361,villa progresista,10,01548,9
+362,villa verdum,10,01810,9
+385,ejido el rosario,2,02120,9
+386,el jaguey,2,02519,9
+725,abdias garcia soto,4,05530,9
+1906,selene,11,13420,9
+2125,san fernando,12,14070,9
+393,ferreria,2,02310,9
+395,hogar y seguridad,2,02820,9
+398,hogares ferrocarrileros,2,02540,9
+459,san martin xochinahuac,2,02120,9
+461,san pedro xalpa,2,02719,9
+462,san pedro xalpa,2,02719,9
+464,san salvador xochimanca,2,02870,9
+465,san sebastian,2,02040,9
+466,santa catarina,2,02250,9
+474,santa lucia,2,02760,9
+475,santo tomas,2,02020,9
+476,santo domingo,2,02160,9
+477,santiago ahuizotla,2,02750,9
+478,sector naval,2,02080,9
+479,sindicato mexicano de electricistas,2,02060,9
+481,tlatilco,2,02850,9
+482,tlatilco,2,02860,9
+394,hacienda del rosario,2,02420,9
+396,ignacio allende,2,02810,9
+397,huautla de las salinas,2,02330,9
+2428,tepepan,13,16029,9
+458,san rafael nuevo,2,02010,9
+460,san pablo,2,02110,9
+463,san simon,2,02009,9
+467,san pablo,2,02110,9
+480,tepantongo,2,02127,9
+483,un hogar para cada trabajador,2,02060,9
+1409,la viga,12,09750,9
+485,tezozomoc,2,02459,9
+486,tierra nueva,2,02130,9
+488,trabajadores del hierro,2,02650,9
+490,victoria de las democracias,2,02810,9
+494,acacias,14,03240,9
+493,8 de agosto,14,03820,9
+496,alamos,14,03400,9
+497,albert,14,03560,9
+498,americas unidas,14,03610,9
+499,atenor salas,14,03010,9
+484,trabajadores de pemex,2,02419,9
+487,unidad cuitlahuac,2,02500,9
+489,villa azcapotzalco fovissste,2,02169,9
+491,xochinahuac infonavit,2,02125,9
+492,zermeño,2,02810,9
+500,bancomer sa,14,03339,9
+501,camara nacional de la industria de transformacion,14,03849,9
+502,camara nacional de la industria del hierro y acero,14,03199,9
+503,carmen,14,03540,9
+504,centro hospitalario 20 de noviembre,14,03229,9
+738,cola de pato,4,05770,9
+314,santa lucia,10,01500,9
+316,santa maria nonoalco,10,01420,9
+317,santa rosa xochiac,10,01830,9
+387,el recreo,2,02070,9
+508,del lago,14,03640,9
+509,del valle centro,14,03100,9
+510,del valle norte,14,03103,9
+315,santa fe infonavit,10,01209,9
+318,secretaria de desarrollo social,10,01116,9
+319,segunda del moral,10,01700,9
+320,secretaria de contraloria y desarrollo administrativo,10,01028,9
+388,el rosario infonavit,2,02100,9
+389,estacion de carga de los ffcc nales de mexico,2,02525,9
+390,electricistas,2,02060,9
+392,francisco villa,2,02420,9
+505,conjunto imss narvarte,14,03023,9
+506,ciudad de los deportes,14,03710,9
+511,delegacion politica benito juarez,14,03319,9
+2346,los geranios,13,16098,9
+538,narvarte poniente,14,03020,9
+539,mixcoac,14,03910,9
+542,piedad narvarte,14,03000,9
+543,postal,14,03410,9
+545,portales oriente,14,03570,9
+548,san jose insurgentes,14,03900,9
+549,san juan,14,03730,9
+552,santa cruz atoyac,14,03310,9
+557,tlacoquemecatl del valle,14,03200,9
+558,vertiz narvarte,14,03600,9
+559,villa de cortes,14,03530,9
+571,atlantida,3,04370,9
+572,avante,3,04460,9
+540,niños heroes,14,03440,9
+541,partido accion nacional,14,03109,9
+544,portales norte,14,03303,9
+546,portales sur,14,03300,9
+547,presidente miguel aleman,14,03220,9
+550,san simon ticumac,14,03660,9
+551,san pedro de los pinos,14,03800,9
+553,segunda del periodista,14,03620,9
+554,secretaria de comunicaciones y transportes,14,03028,9
+555,the sidney ross co sa,14,03818,9
+556,unidad de pagos de la sct,14,03027,9
+560,world trade center ciudad de mexico,14,03819,9
+561,xoco,14,03330,9
+562,zacahuitzco,14,03550,9
+563,20 de agosto,3,04259,9
+564,acasulco,3,04350,9
+565,adolfo ruiz cortines,3,04630,9
+566,ajusco,3,04300,9
+567,ajusco montserrat,3,04307,9
+568,alianza popular revolucionaria fovissste,3,04800,9
+569,almacenes generales de la sct,3,04921,9
+570,altillo universidad,3,04350,9
+886,juarez,15,06600,9
+518,independencia,14,03630,9
+519,insurgentes mixcoac,14,03920,9
+520,insurgentes san borja,14,03100,9
+521,iztaccihuatl,14,03520,9
+522,josefa ortiz de dominguez,14,03430,9
+524,letran valle,14,03650,9
+527,merced gomez,14,03930,9
+530,miravalle,14,03580,9
+531,nonoalco,14,03700,9
+533,narvarte oriente,14,03023,9
+534,moderna,14,03510,9
+535,napoles,14,03810,9
+536,noche buena,14,03720,9
+537,nativitas,14,03500,9
+575,campestre churubusco,3,04200,9
+576,campestre coyoacan,3,04938,9
+577,carmen serdan,3,04910,9
+581,copilco universidad,3,04360,9
+515,esperanza,14,03020,9
+516,emperadores,14,03320,9
+517,general anaya,14,03340,9
+523,la interamericana compañia de seguros sa,14,03219,9
+525,mail boxes ramon a gonzalez gutierrez,14,03105,9
+526,mail boxes rill y asociados sa de cv,14,03928,9
+528,modulo social las flores,14,03313,9
+529,miguel aleman,14,03420,9
+573,camara nacional de la industria editorial,3,04129,9
+574,cafetales,3,04918,9
+578,cantil del pedregal,3,04730,9
+579,ciudad jardin,3,04370,9
+580,copilco,3,04350,9
+582,country club,3,04220,9
+583,consejo de ciencia y tecnologia,3,04515,9
+584,copilco el bajo,3,04340,9
+593,copilco el alto,3,04360,9
+299,rinconada de tarango,10,01619,9
+588,culhuacan ctm obrero seccion 5,3,04440,9
+589,culhuacan ctm obrero seccion 9,3,04909,9
+590,culhuacan piloto 5,3,04490,9
+591,copilco universidad issste,3,04340,9
+592,coyoacan centro,3,04000,9
+594,cuchilla de la magdalena,3,04260,9
+595,culhuacan ctm obrero seccion 6,3,04480,9
+596,cuadrante de san francisco,3,04320,9
+597,churubusco,3,04120,9
+887,maza,15,06270,9
+603,educacion,3,04400,9
+604,el centinela,3,04450,9
+605,el caracol,3,04739,9
+608,el rosedal,3,04330,9
+609,el mirador,3,04950,9
+610,el reloj,3,04640,9
+611,el rosario,3,04380,9
+618,espartaco,3,04870,9
+585,culhuacan ctm obrero seccion 7,3,04489,9
+586,culhuacan ctm obrero seccion 8,3,04909,9
+587,culhuacan ctm obrero seccion 10,3,04939,9
+600,dr pedro r bernabe,3,04320,9
+601,delegacion politica coyoacan,3,04009,9
+602,del carmen,3,04100,9
+606,el hueso infonavit,3,04859,9
+607,el parque,3,04899,9
+612,empleados federales,3,04359,9
+613,emiliano zapata,3,04919,9
+614,emiliano zapata,3,04815,9
+615,ermita churubusco,3,04239,9
+616,exejido santa ursula coapa,3,04650,9
+617,exejido san pablo tepetlapa,3,04900,9
+619,fortin de chimalistac,3,04319,9
+620,exhacienda coapa,3,04980,9
+2433,tepepan,13,16020,9
+621,hacienda de coyoacan,3,04970,9
+622,hermosillo,3,04240,9
+626,insurgentes cuicuilco,3,04539,9
+629,insurgentes cuicuilco,3,04530,9
+630,jardines de coyoacan,3,04890,9
+632,joyas del pedregal,3,04660,9
+623,huayamilpas,3,04390,9
+624,integracion latinoamericana,3,04350,9
+625,issste,3,04317,9
+627,ing manuel rivera,3,04484,9
+628,insurgentes san angel,3,04340,9
+631,joyiplast sa,3,04109,9
+633,jardines del pedregal de san angel,3,04500,9
+794,lomas del chamizal,4,05129,9
+1960,chimilli,12,14749,9
+512,del valle sur,14,03104,9
+514,ermita,14,03590,9
+672,prado churubusco,3,04230,9
+674,petrolera taxqueña,3,04410,9
+675,presidentes ejidales,3,04470,9
+678,residencial copilco,3,04350,9
+682,romero de terreros,3,04310,9
+513,extremadura insurgentes,14,03740,9
+671,pedregal del sur,3,04719,9
+673,pedregal santa ursula,3,04600,9
+676,prados de coyoacan,3,04810,9
+677,quetzalcoatl,3,04270,9
+679,residencial la cantera,3,04368,9
+680,rinconada las playas infonavit,3,04729,9
+681,residencial paseo de las villas,3,04269,9
+683,rosedal,3,04330,9
+684,rincon de guanajuato,3,04327,9
+770,la palma,4,05248,9
+999,estrella,5,07810,9
+634,la candelaria,3,04380,9
+635,la candelaria,3,04389,9
+640,las campanas,3,04929,9
+641,los cedros,3,04800,9
+643,los cipreses,3,04830,9
+646,los olivos,3,04890,9
+650,los olivos,3,04890,9
+654,modulo social iman,3,04738,9
+656,monte de piedad,3,04310,9
+665,parque san andres,3,04040,9
+667,pedregal de monserrat,3,04309,9
+668,paseos de taxqueña,3,04250,9
+636,kodak mexicana sa,3,04851,9
+637,la concepcion,3,04020,9
+638,la otra banda,3,04519,9
+639,la zorra,3,04660,9
+642,los girasoles 2,3,04920,9
+644,los ciruelos,3,04830,9
+645,los robles,3,04870,9
+647,los reyes,3,04330,9
+648,los girasoles,3,04920,9
+649,los girasoles 3,3,04920,9
+651,los sauces,3,04940,9
+652,los fresnos,3,04650,9
+655,media luna,3,04737,9
+657,montserrat,3,04337,9
+658,nueva diaz ordaz,3,04390,9
+659,niño jesus,3,04330,9
+660,pedregal coyoacan,3,04330,9
+661,oxtopulco,3,04318,9
+662,olimpica,3,04710,9
+663,pedregal del maurel,3,04720,9
+664,pacifico,3,04330,9
+666,pedregal de santo domingo,3,04369,9
+669,pedregal de san francisco,3,04320,9
+670,pedregal de carrasco,3,04700,9
+2435,tlaxopan,13,16240,9
+728,ahuatenco,4,05039,9
+861,citibank sa,15,06695,9
+685,romero de terreros,3,04320,9
+686,san diego churubusco,3,04120,9
+687,san francisco culhuacan,3,04420,9
+688,san francisco culhuacan,3,04470,9
+689,san francisco culhuacan,3,04260,9
+690,san francisco culhuacan,3,04430,9
+691,san mateo,3,04120,9
+693,san pablo tepetlapa,3,04840,9
+694,san pablo tepetlapa,3,04620,9
+696,santa catarina,3,04010,9
+692,san lucas,3,04030,9
+695,santa cecilia,3,04930,9
+697,santa ursula coapa,3,04850,9
+698,sector marina,3,04849,9
+699,santa martha del sur,3,04270,9
+700,santa ursula coapa,3,04850,9
+701,santa ursula coapa,3,04650,9
+702,secretaria de marina armada de mexico,3,04843,9
+703,seguros la provincial sa,3,04339,9
+704,tepetlapa fovissste,3,04809,9
+705,stunam,3,04908,9
+706,taxqueña,3,04280,9
+707,tetlameya,3,04730,9
+708,urbana tlalpan fovissste,3,04410,9
+709,tlalpan,3,04410,9
+710,torres de coyoacan,3,04269,9
+730,amado nervo,4,05269,9
+739,cuajimalpa,4,05000,9
+743,cruz blanca,4,05700,9
+748,el ebano,4,05230,9
+727,agua bendita,4,05780,9
+729,altiburritos,4,05700,9
+731,azoyapan,4,05629,9
+732,bosque de la reforma prolongacion,4,05127,9
+733,cacalote,4,05270,9
+735,campestre palo alto,4,05119,9
+736,cooperativa palo alto,4,05110,9
+737,club de golf bosques,4,05214,9
+740,cooperativa palo alto,4,05110,9
+741,cruz manca,4,05349,9
+742,cumbres reforma,4,05128,9
+744,delegacion politica cuajimalpa de morelos,4,05009,9
+745,desarrollo santa fe,4,05348,9
+746,doña juana,4,05639,9
+747,el contadero,4,05500,9
+749,el ocote,4,05370,9
+750,el molinito,4,05310,9
+2360,oriente,13,16320,9
+598,churubusco country club,3,04210,9
+714,villa coyoacan,3,04000,9
+717,villa quietud,3,04960,9
+721,villa panamericana,3,04700,9
+723,xotepingo,3,04610,9
+724,vistas del maurel,3,04718,9
+726,adolfo lopez mateos,4,05280,9
+780,las lajas,4,05760,9
+781,las maromas,4,05710,9
+599,del carmen,3,04100,9
+711,torres de maurel,3,04535,9
+712,universidad nacional autonoma de mexico,3,04510,9
+713,torres de chimalistac,3,04319,9
+715,villa de san francisco,3,04326,9
+716,villas del pedregal,3,04719,9
+718,xotepingo 101,3,04370,9
+719,villas copilco,3,04350,9
+720,viveros de coyoacan,3,04110,9
+722,zapata,3,04336,9
+2426,tiziclipa,13,16520,9
+782,las trincheras,4,05780,9
+783,las tinajas,4,05370,9
+751,el molino,4,05720,9
+754,el puente,4,05080,9
+772,la navidad,4,05210,9
+775,la pila,4,05750,9
+784,loma del ocote,4,05370,9
+785,lomas de memetla,4,05330,9
+789,lomas de vista hermosa,4,05100,9
+791,lomas de san pedro,4,05379,9
+804,palo alto,4,05110,9
+752,el ocotal,4,05089,9
+755,el yaqui,4,05320,9
+756,el zarco,4,05790,9
+757,el vacilon,4,05770,9
+758,encinal,4,05509,9
+760,fresnos,4,05268,9
+761,granjas de palo alto,4,05118,9
+762,hacienda buenavista,4,05610,9
+763,jesus del monte,4,05260,9
+764,jardines de la palma,4,05249,9
+765,jose maria castorena,4,05060,9
+766,la artillera,4,05609,9
+767,la candelaria,4,05008,9
+768,la cañada,4,05620,9
+769,la colina,4,05180,9
+771,la manzanita,4,05040,9
+773,la rosita retama,4,05239,9
+774,la reposadera,4,05720,9
+776,la venta,4,05520,9
+777,la retama,4,05230,9
+778,la troje,4,05510,9
+779,la rosita,4,05340,9
+786,locaxco,4,05360,9
+787,lomas de la papa,4,05088,9
+788,lomas del chamizal 1a seccion,4,05129,9
+790,lomas del chamizal 4a seccion,4,05129,9
+792,lomas del chamizal 3a seccion,4,05129,9
+793,lomas del chamizal 2a seccion,4,05129,9
+795,lomas del padre,4,05020,9
+796,manzanastitla,4,05270,9
+797,mail boxes lilas sa de cv,4,05122,9
+798,memetla,4,05330,9
+799,mina vieja,4,05480,9
+800,memetla,4,05330,9
+801,nomanatl,4,05800,9
+802,monte de las cruces,4,05719,9
+803,nueva rosita,4,05238,9
+805,parque nacional valle de las monjas,4,05630,9
+806,prados de la montaña,4,05619,9
+807,puente grande,4,05760,9
+808,rancho alegre,4,05740,9
+809,puerto las cruces,4,05790,9
+810,rancho locaxco,4,05360,9
+811,rancho memetla,4,05330,9
+925,tabacalera,15,06030,9
+1623,atlaxco,8,10378,9
+814,san jose de los cedros,4,05200,9
+815,san mateo tlaltenango,4,05600,9
+812,rincon de las lomas,4,05130,9
+813,san jose de los cedros 2a seccion granja,4,05200,9
+816,san pablo chimalpa,4,05050,9
+817,san lorenzo acopilco,4,05410,9
+819,san pedro,4,05030,9
+821,tianguillo,4,05400,9
+824,tepetonco,4,05220,9
+830,zentlapatl,4,05010,9
+818,san marino,4,05509,9
+820,tantoco,4,05730,9
+822,tlachichilpa,4,05750,9
+823,tepetlalpa,4,05086,9
+825,tlaxala,4,05300,9
+826,villas de cuajimalpa,4,05268,9
+827,villas marbella,4,05126,9
+828,xalpa,4,05730,9
+829,vista hermosa,4,05109,9
+833,asturias,15,06850,9
+1651,la malinche,8,10010,9
+834,asturias,15,06890,9
+835,atlampa,15,06450,9
+842,buenos aires,15,06780,9
+855,centro urbano benito juarez,15,06740,9
+836,banca serfin sa,15,06009,9
+837,banco de mexico,15,06059,9
+838,banco internacional sa de cv,15,06606,9
+839,banco mexicano somex sa,15,06006,9
+840,camara nacional de comercio de la ciudad de mexico,15,06609,9
+841,camara nacional de aerotransportes,15,06589,9
+843,camara nacional de transportes y comunicacion,15,06693,9
+844,camara nacional de la industria cinematografica,15,06796,9
+845,carnet promocion y operacion sa de cv,15,06704,9
+846,buenavista,15,06350,9
+847,camara nacional de la industria de la television por cable,15,06691,9
+848,camara nacional de la industria de la radio y television,15,06588,9
+849,centro de la ciudad de mexico area 5,15,06050,9
+850,centro de la ciudad de mexico area 1,15,06000,9
+851,centro de la ciudad de mexico area 3,15,06020,9
+852,centro de la ciudad de mexico area 4,15,06040,9
+853,centro de la ciudad de mexico area 6,15,06060,9
+854,centro de la ciudad de mexico area 8,15,06080,9
+1201,los reyes,6,08620,9
+1564,san pedro,12,09000,9
+1698,america,16,11820,9
+2268,unidad kennedy,17,15950,9
+867,cuauhtemoc,15,06500,9
+873,esperanza,15,06840,9
+875,guerrero,15,06300,9
+878,hipodromo,15,06100,9
+893,morelos,15,06200,9
+901,paulino navarro,15,06870,9
+903,peralvillo,15,06220,9
+908,roma sur,15,06760,9
+909,san rafael,15,06470,9
+856,centro de la ciudad de mexico area 9,15,06090,9
+857,centro medico siglo xxi,15,06725,9
+858,centro de la ciudad de mexico area 2,15,06010,9
+859,centro de la ciudad de mexico area 7,15,06070,9
+860,compañia nacional de subsistencias populares conasupo,15,06049,9
+862,consejo de recursos minerales,15,06723,9
+863,comision federal de electricidad,15,06598,9
+865,confederacion de camaras industriales de los eum,15,06597,9
+866,confederacion de camaras nacionales de comercio,15,06079,9
+868,delegacion politica cuauhtemoc,15,06357,9
+869,departamento del distrito federal,15,06068,9
+870,doctores,15,06720,9
+871,direccion general de recaudacion de la shcp,15,06309,9
+872,exhipodromo de peralvillo,15,06250,9
+874,felipe pescador,15,06280,9
+876,h camara de senadores,15,06018,9
+877,hemphill schools,15,06479,9
+879,hipodromo de la condesa,15,06170,9
+880,hospital general de mexico,15,06726,9
+882,instituto maurer,15,06057,9
+883,nstituto mexicano de comercio exterior,15,06171,9
+885,inverlat,15,06694,9
+888,loteria nacional para la asistencia publica,15,06037,9
+889,mail boxes mail boxes,15,06605,9
+890,mail boxes alejandra massa trejo,15,06708,9
+891,nacional financiera sa,15,06008,9
+892,national schools,15,06692,9
+894,obrera,15,06800,9
+895,nonoalco tlatelolco,15,06900,9
+896,partido democrata mexicano,15,06035,9
+897,partido autentico de la revolucion mexicana,15,06595,9
+898,partido socialista de los trabajadores,15,06199,9
+899,partido de la revolucion democratica,15,06798,9
+900,partido popular socialista,15,06797,9
+902,partido revolucionario institucional,15,06359,9
+904,presidencia de la republica,15,06067,9
+905,plan tepito,15,06200,9
+906,procuraduria general de la república,15,06058,9
+907,roma norte,15,06700,9
+914,secretaria de salud,15,06696,9
+1036,la casilda,5,07150,9
+910,san simon tolnahuac,15,06920,9
+911,santa maria insurgentes,15,06430,9
+912,santa maria la ribera,15,06400,9
+1043,la cruz,5,07070,9
+1526,rotaria,12,09226,9
+2409,santa ines,13,16810,9
+913,secretaria de transportes y vialidad,15,06707,9
+915,secretaria de energia,15,06769,9
+916,secretaria de comercio y fomento industrial,15,06179,9
+1755,nextitla,16,11420,9
+2102,residencial hacienda coapa,12,14330,9
+917,secretaria de hacienda y credito publico,15,06066,9
+918,secretaria de gobernacion,15,06699,9
+919,servicio postal mexicano,15,06082,9
+920,secretaria de medio ambiente recursos naturales y pesca,15,06709,9
+921,secretaria de relaciones exteriores,15,06995,9
+922,secretaria de educacion publica,15,06802,9
+923,secretaria de agricultura ganaderia y desarrollo rural,15,06768,9
+924,suprema corte de justicia,15,06065,9
+926,televisa sa,15,06724,9
+1762,centro,9,12400,9
+2003,isidro fabela,12,14030,9
+832,algarin,15,06880,9
+930,transito,15,06820,9
+933,valle gomez,15,06240,9
+934,vista alegre,15,06860,9
+935,15 de agosto,5,07058,9
+936,25 de julio,5,07520,9
+939,7 de noviembre,5,07040,9
+944,ahuehuetes,5,07189,9
+948,aragon inguaran,5,07820,9
+831,adolfo lopez mateos,15,06900,9
+927,telefonos de mexico sa de cv,15,06599,9
+928,tesoreria del distrito federal,15,06727,9
+929,torre latinoamericana,15,06007,9
+931,unidad soldominio,15,06728,9
+932,tribunal fiscal de la federacion,15,06697,9
+937,3 estrellas,5,07820,9
+938,6 de junio,5,07183,9
+940,7 maravillas,5,07707,9
+941,acueducto de guadalupe,5,07279,9
+942,acueducto de guadalupe,5,07270,9
+943,acueducto de ticoman 1044,5,07349,9
+945,ampliacion cocoyotes,5,07180,9
+947,aragon fovissste,5,07959,9
+949,arboledas,5,07240,9
+950,arboledas de cuautepec el alto,5,07140,9
+1433,los cedros,12,09890,9
+2144,seccion xvi,12,14080,9
+2260,puebla,17,15020,9
+955,belisario dominguez,5,07869,9
+957,benito juarez,5,07250,9
+958,bondojito,5,07850,9
+959,campestre aragon,5,07530,9
+966,cocoyotes,5,07180,9
+967,compositores mexicanos,5,07130,9
+951,arboledas de cuautepec el alto,5,07140,9
+952,arroyo de guadalupe,5,07326,9
+954,atzacoalco ctm,5,07090,9
+960,casas aleman,5,07580,9
+961,capultitlan,5,07370,9
+962,castillo el grande,5,07220,9
+963,cerro prieto,5,07960,9
+964,cerro del chiquihuite,5,07258,9
+965,castillo el chico,5,07220,9
+2193,zacaton,12,14734,9
+1002,faja de oro,5,07850,9
+1004,gabriel hernandez,5,07080,9
+1006,gabriel hernandez,5,07089,9
+1010,granjas modernas,5,07460,9
+1012,guadalupe victoria,5,07790,9
+1003,fernando casas aleman,5,07960,9
+1005,fovissste,5,07320,9
+1007,frente cuchilla del tesoro,5,07909,9
+1008,gertrudis sanchez 2a seccion,5,07839,9
+1009,gertrudis sanchez 1a seccion,5,07830,9
+1011,graciano sanchez,5,07164,9
+1014,guadalupe,5,07660,9
+1337,el triunfo,12,09438,9
+2353,nativitas,13,16459,9
+970,cuchilla del tesoro,5,07900,9
+971,constitucion de la republica,5,07469,9
+973,chalma de guadalupe,5,07210,9
+974,defensores de la republica,5,07780,9
+976,del obrero,5,07430,9
+978,del bosque,5,07207,9
+992,el tepetatal,5,07130,9
+968,colector 13,5,07309,9
+969,cuautepec de madero,5,07200,9
+972,cuautepec el alto,5,07100,9
+975,cuchilla la joya,5,07890,9
+977,churubusco tepeyac,5,07730,9
+979,del carmen cuautepec,5,07199,9
+980,dm nacional,5,07450,9
+981,delegacion politica gustavo a madero,5,07059,9
+982,eduardo molina,5,07458,9
+983,el arbolillo ctm,5,07269,9
+984,el arbolillo ii croc,5,07249,9
+985,el arbolillo,5,07240,9
+986,el coyol 2,5,07457,9
+987,el arbolillo iii croc,5,07249,9
+988,el coyol,5,07420,9
+989,el milagro,5,07548,9
+990,el olivo,5,07920,9
+991,el risco ctm,5,07090,9
+1542,san lorenzo tezonco,12,09900,9
+2264,sevilla,17,15840,9
+993,emiliano zapata,5,07858,9
+995,el tepetatal,5,07130,9
+996,emiliano zapata,5,07889,9
+1013,guadalupe insurgentes,5,07870,9
+1017,guadalupe tepeyac,5,07840,9
+1018,guadalupe proletaria,5,07680,9
+1019,guadalupe proletaria,5,07670,9
+1022,guadalupe victoria,5,07209,9
+1024,heroes de chapultepec,5,07939,9
+1031,jorge negrete,5,07280,9
+1034,juan de dios batiz,5,07360,9
+1038,la cuchilla,5,07958,9
+1039,la escalera,5,07320,9
+1040,la forestal,5,07140,9
+1041,la forestal,5,07140,9
+1042,juventino rosas,5,07150,9
+1046,la joyita,5,07860,9
+1048,la escalera,5,07320,9
+1051,la pastora,5,07290,9
+1052,la joyita,5,07860,9
+1057,la pradera,5,07500,9
+994,estanzuela,5,07060,9
+997,exescuela de tiro,5,07960,9
+998,escuadron 201 infonavit,5,07328,9
+1000,exito enseñanza y triunfo,5,07530,9
+1001,ferrocarrilera insurgentes,5,07455,9
+1015,gral felipe berriozabal,5,07180,9
+1016,guadalupe ticoman,5,07350,9
+1020,heroe de nacozari,5,07780,9
+1021,industrial vallejo,5,07729,9
+1023,gustavo a madero,5,07050,9
+1025,hayde solis c,5,07248,9
+1026,industrial,5,07800,9
+1027,instituto politecnico nacional,5,07738,9
+1028,instituto nacional de la vivienda,5,07930,9
+1029,jose maria morelos y pavon 2,5,07457,9
+1030,la candelaria ticoman,5,07310,9
+1032,joyas de nieve,5,07148,9
+1033,jose maria morelos y pavon 1,5,07459,9
+1035,juan gonzalez romero,5,07410,9
+1037,la esmeralda,5,07540,9
+1044,la dinamita,5,07070,9
+1045,la esmeralda 2a seccion,5,07549,9
+1047,la esmeralda 1a seccion,5,07549,9
+1049,la joya,5,07890,9
+1050,la laguna ticoman,5,07340,9
+1053,la patera vallejo,5,07710,9
+1054,la ponderosa,5,07110,9
+1055,la pradera 1a seccion,5,07509,9
+1056,la purisima ticoman,5,07320,9
+1058,la pradera 2a seccion,5,07509,9
+1059,lardizabal carrera,5,07070,9
+1060,lasalle,5,07709,9
+1292,corralitos,12,09649,9
+1063,loma de la palma,5,07160,9
+1065,lomas de cuautepec,5,07110,9
+1068,malacates,5,07119,9
+1069,malinche,5,07899,9
+1070,martires de rio blanco,5,07859,9
+1071,magdalena de las salinas,5,07760,9
+1072,martires de rio blanco,5,07880,9
+1064,lindavista vallejo,5,07720,9
+1066,lomas de san juan ixhuatepec segunda seccion,5,07363,9
+1067,luis donaldo colosio,5,07164,9
+2300,ejidos de tepepan,13,16018,9
+1073,mexico ixapan,5,07248,9
+1076,montevideo,5,07730,9
+1468,palmitas,12,09707,9
+1114,san jose de la escalera,5,07630,9
+1115,san jose ticoman,5,07340,9
+1061,lindavista,5,07300,9
+1062,legislatura li,5,07456,9
+1110,san juan de aragon 7a seccion,5,07910,9
+1111,san jose de la montaña,5,07049,9
+1112,san juan de aragon 1a seccion,5,07969,9
+1113,san juan de aragon 6a seccion,5,07918,9
+1116,san juan de aragon,5,07470,9
+1117,san jose de la pradera,5,07049,9
+1118,san juan de aragon 4a seccion,5,07979,9
+1119,san juan de aragon 3a seccion,5,07970,9
+1077,martin carrera,5,07070,9
+1078,nueva industrial vallejo,5,07700,9
+1080,nueva atzacoalco,5,07420,9
+1081,nueva tenochtitlan,5,07890,9
+1082,nueva vallejo,5,07750,9
+1083,palmatitla,5,07170,9
+1084,panamericana,5,07770,9
+1085,panamericana,5,07770,9
+1074,matias romero,5,07248,9
+1075,maximino avila camacho,5,07380,9
+1079,narciso bassols,5,07980,9
+1086,parque del metropolitano,5,07149,9
+1087,parque del tepeyac,5,07010,9
+1088,planetario lindavista,5,07739,9
+1089,pemex lindavista,5,07323,9
+1090,politecnico,5,07348,9
+1091,progreso nacional,5,07650,9
+1092,progreso nacional,5,07600,9
+1093,providencia,5,07550,9
+1094,prados de cuautepec,5,07164,9
+1096,providencia,5,07560,9
+1699,anahuac,16,11320,9
+2130,san nicolas 2,12,14735,9
+1104,san antonio,5,07109,9
+1106,salvador diaz miron,5,07400,9
+1105,revolucion imss,5,07309,9
+1107,san bartolo atepehuacan,5,07730,9
+1108,san felipe de jesus,5,07510,9
+1109,san juan de aragon 2a seccion,5,07969,9
+1120,san juan de aragon,5,07920,9
+1121,san juan de aragon ejidos 1a seccion,5,07940,9
+1122,san juan ticoman,5,07350,9
+1123,san juan de aragon ctm,5,07990,9
+1124,san juan de aragon ejidos 2a seccion,5,07919,9
+1125,san juan de aragon,5,07950,9
+1126,san juan de aragon 5a seccion,5,07979,9
+1127,san juan de aragon ctm,5,07990,9
+1128,san miguel del rosario,5,07206,9
+1399,la hera,12,09750,9
+1766,la luz,9,12000,9
+1158,valle de madero,5,07190,9
+1159,vallejo,5,07870,9
+1160,vasco de quiroga,5,07440,9
+1165,vista hermosa,5,07187,9
+1167,zona escolar oriente,5,07239,9
+1176,cuchilla agricola oriental,6,08420,9
+1180,el rodeo,6,08510,9
+1186,gabriel ramos millan,6,08730,9
+1187,gabriel ramos millan,6,08020,9
+1161,villas de aragon,5,07573,9
+1162,villahermosa,5,07410,9
+1163,villahermosa,5,07410,9
+1164,zacatenco,5,07360,9
+1166,zona escolar,5,07230,9
+1168,5 de diciembre fovissste,6,08619,9
+1169,agricola oriental,6,08500,9
+1170,agricola pantitlan,6,08100,9
+1171,agua caliente,6,08160,9
+1172,belisario dominguez infonavit,6,08188,9
+1173,benito juarez,6,08930,9
+1174,coyuya,6,08320,9
+1175,cuchilla ramos millan,6,08030,9
+1177,delegacion politica iztacalco,6,08009,9
+1178,el mosco,6,08740,9
+1179,el recreo,6,08010,9
+1181,exejido magdalena mixhuca,6,08010,9
+1182,exempleados de la ford,6,08630,9
+1183,flores magon infonavit,6,08189,9
+1184,hermanos blancas,6,08520,9
+1185,gabriel ramos millan seccion bramadero,6,08000,9
+1188,granjas mexico,6,08400,9
+1189,granjas princess,6,08400,9
+1190,jardines de tecma,6,08920,9
+1191,iztacalco infonavit,6,08900,9
+1192,la asuncion,6,08600,9
+1438,magdalena atlazolpa,12,09040,9
+1579,santa rosa,12,09040,9
+1138,santiago atepetlac,5,07640,9
+1139,solidaridad nacional,5,07268,9
+1141,ticoman,5,07330,9
+1143,tablas de san agustin,5,07860,9
+1144,tepeyac insurgentes,5,07020,9
+1150,ticoman,5,07329,9
+1136,santa teresa,5,07260,9
+1137,santa coleta,5,07490,9
+1140,tablas de santa teresa,5,07248,9
+1142,sutic vallejo,5,07327,9
+1145,tepetates,5,07010,9
+1146,tlacamaca,5,07380,9
+1147,tlacaelel,5,07164,9
+1148,tlapexco,5,07188,9
+1149,tierra larga,5,07219,9
+1151,torres lindavista,5,07708,9
+1100,residencial zacatenco,5,07369,9
+1217,santa anita,6,08300,9
+1095,rio de guadalupe fovissste,5,07959,9
+1097,reclusorio norte,5,07208,9
+1098,residencial la escalera,5,07320,9
+1099,residencial oriente,5,07456,9
+1101,residencial plaza oriente,5,07456,9
+1102,s c t vallejo,5,07700,9
+1103,rosas del tepeyac,5,07010,9
+1213,residencial zaragoza,6,08180,9
+1214,san francisco xicaltongo,6,08230,9
+1215,san miguel,6,08650,9
+1216,san pedro,6,08220,9
+1964,ecuanil,12,14820,9
+1228,zapotla,6,08610,9
+1218,santa cruz,6,08910,9
+1219,santiago,6,08820,9
+1220,santiago sur,6,08800,9
+1221,santiago norte,6,08240,9
+1222,sur 12c fovissste,6,08560,9
+1223,sur 20 infonavit,6,08580,9
+1224,talleres,6,08040,9
+1225,tlacotal,6,08720,9
+1226,tlazintla,6,08710,9
+1227,viaducto piedad,6,08200,9
+1351,españa,12,09860,9
+1229,12 de diciembre,12,09870,9
+1230,22 ctm,12,09880,9
+1231,27 de septiembre,12,09079,9
+1193,juventino rosas,6,08700,9
+1208,militar marte,6,08830,9
+1209,nueva santa anita,6,08210,9
+1364,guadalupe,12,09900,9
+1210,reforma iztaccihuatl sur,6,08840,9
+1211,reforma iztaccihuatl norte,6,08810,9
+1240,alvaro obregon,12,09230,9
+1243,año de juarez,12,09780,9
+1203,mario moreno,6,08400,9
+1205,martires de tlatelolco,6,08930,9
+1206,mercados 1,6,08620,9
+1207,mujeres ilustres,6,08029,9
+1212,ricardo flores magon,6,08640,9
+1234,acapultitlan,12,09730,9
+1235,aculco,12,09410,9
+1236,albarrada,12,09249,9
+1237,albarrada,12,09350,9
+1238,alborada,12,09369,9
+1239,alcanfores,12,09839,9
+1241,anastacio bustamante,12,09740,9
+1242,antorcha popular,12,09227,9
+1244,año dos mil,12,09705,9
+1310,editorial trillas sa,12,09439,9
+1133,santa maria ticoman,5,07330,9
+1260,campestre estrella,12,09880,9
+1131,santa isabel tola,5,07010,9
+1132,san rafael ticoman,5,07359,9
+1134,san pedro zacatenco,5,07360,9
+1254,benito juarez,12,09859,9
+1256,benito juarez,12,09890,9
+1257,bertelman de mexico sa circulo de lectores,12,09309,9
+1258,bertha von blumer,12,09864,9
+1259,buenavista,12,09700,9
+1261,cabeza de juarez seccion vi,12,09225,9
+1262,campestre potrero,12,09637,9
+1263,cabeza de juarez,12,09227,9
+1266,cacama,12,09080,9
+2357,olivar,13,16790,9
+1289,corrales,12,09697,9
+1291,consejo agrarista mexicano,12,09760,9
+1301,chinampac de juarez,12,09208,9
+1290,condoplaza paseos de churubusco,12,09030,9
+1293,cuauhtemoc,12,09414,9
+1294,cooperativa de trabajadores sector pesca,12,09880,9
+1295,cuchilla del moral 1,12,09319,9
+1296,cooperativa cecualliohtli,12,09968,9
+1297,cuchilla del moral 2,12,09319,9
+1298,chilero 1,12,09449,9
+1299,chinampac de juarez frente x,12,09208,9
+1300,chinampac de juarez frente vii,12,09208,9
+1303,chinampac de juarez frente ix,12,09208,9
+1304,chinampac de juarez frente viii,12,09208,9
+1305,chilero 2,12,09449,9
+1306,del arbol,12,09780,9
+1307,chinampac de juarez frente xi,12,09208,9
+1308,degollado,12,09704,9
+1309,diasa,12,09630,9
+1394,la colmena,12,09000,9
+1880,san agustin,11,13508,9
+1998,heroes de 1910,12,14760,9
+2119,san andres,12,14749,9
+1202,maestros de iztacalco,6,08820,9
+1155,vallejo poniente,5,07790,9
+1156,villa de aragon,5,07570,9
+1157,victoria nueva seccion,5,07810,9
+1194,la cruz,6,08310,9
+1195,las rosas,6,08170,9
+1196,lic carlos zapata vela 2a seccion,6,08040,9
+1197,lic carlos zapata vela 1a seccion,6,08040,9
+1198,los picos inpi,6,08760,9
+1199,los picos inpi,6,08750,9
+1200,los picos de iztacalco,6,08770,9
+1312,ejercito constitucionalista,12,09220,9
+1313,ejercito de oriente vecinal 1,12,09230,9
+1314,delegacion politica iztapalapa,12,09009,9
+1333,el tesoro,12,09780,9
+1245,apatlaco,12,09430,9
+1249,banjidal,12,09450,9
+1282,constitucion de 1917,12,09260,9
+1246,apatlaco magdalena,12,09410,9
+1247,articulo 4 constitucional,12,09577,9
+1248,ayapetlali,12,09960,9
+1250,barranca de guadalupe,12,09689,9
+1251,bellavista,12,09860,9
+1252,benito juarez,12,09898,9
+1253,bellavista,12,09860,9
+1283,cooperativa oscovi,12,09960,9
+1284,comuna santo domingo iztapalapa,12,09700,9
+1554,san marcos,12,09800,9
+1796,tecaxtitla,9,12100,9
+2042,los encinos,12,14239,9
+1334,el rosario,12,09930,9
+1335,el retoño,12,09440,9
+1336,el santuario,12,09820,9
+1338,el vergel,12,09880,9
+1339,el triunfo,12,09430,9
+1344,escuadron 201,12,09060,9
+1345,estrella del sur,12,09820,9
+1347,estrella culhuacan,12,09800,9
+1350,estrella del sur,12,09820,9
+1353,francisco villa,12,09720,9
+1356,fuego nuevo,12,09800,9
+1361,guadalupe del moral,12,09300,9
+1362,granjas estrella,12,09880,9
+1363,granjas esmeralda,12,09810,9
+1285,colonial iztapalapa,12,09270,9
+1286,culhuacan ejidal,12,09800,9
+1287,cuitlahuac,12,09836,9
+1288,coronillas,12,09640,9
+1340,ermita iztapalapa,12,09360,9
+1341,el triangulo,12,09769,9
+1342,emiliano zapata,12,09638,9
+1343,ermita zaragoza,12,09180,9
+1346,esmeralda,12,09810,9
+1348,estado de veracruz,12,09856,9
+1349,fase 2,12,09779,9
+1352,fividesu avenida 3,12,09780,9
+1354,ermita hidalgo,12,09360,9
+1355,fuerte de loreto,12,09577,9
+1357,fovissste 1,12,09030,9
+1358,fuentes de zaragoza,12,09150,9
+1359,eva samano de lopez mateos,12,09359,9
+1360,fovissste 2,12,09030,9
+1367,gamma gavilan,12,09369,9
+2026,la mesa,12,14420,9
+1130,san pedro el chico,5,07480,9
+1317,dr alfonso ortiz tirado,12,09020,9
+1318,ejercito de agua prieta,12,09578,9
+1129,san miguel cuautepec el alto,5,07100,9
+1324,el mirador,12,09800,9
+1326,el manto,12,09830,9
+1327,el molino,12,09830,9
+1328,el santuario,12,09829,9
+1330,el paraiso,12,09230,9
+1331,el prado,12,09480,9
+1332,el rodeo,12,09860,9
+1374,huitzico,12,09699,9
+1377,ixtlahuacan,12,09690,9
+1380,insurgentes,12,09750,9
+1382,jacarandas,12,09880,9
+1385,jardines de churubusco,12,09410,9
+1386,jacarandas,12,09280,9
+1389,juan escutia,12,09100,9
+1391,jose lopez portillo,12,09920,9
+1392,justo sierra,12,09460,9
+1396,la esperanza,12,09150,9
+1400,la polvorilla,12,09704,9
+1404,la planta,12,09250,9
+1232,28 de junio,12,09505,9
+1233,6 de octubre,12,09208,9
+1315,ejidal los reyes,12,09849,9
+1316,desarrollo urbano quetzalcoatl,12,09700,9
+1319,ejercito de oriente zona peñon,12,09239,9
+1320,ejercito de oriente vecinal 2,12,09230,9
+1322,ejercito de oriente 2,12,09230,9
+1323,el gavilan,12,09369,9
+1329,el molino tezonco,12,09960,9
+2438,tesmil,13,16340,9
+1372,hidalgo y mina,12,09360,9
+1373,ignacio zaragoza,12,09228,9
+1375,husachiungo,12,09960,9
+1376,independiente ally,12,09705,9
+1378,industrial iztapalapa,12,09367,9
+1379,infonavit,12,09780,9
+1381,ing zaragoza,12,09578,9
+1383,iztapalapa centro,12,09000,9
+1384,infonavit,12,09360,9
+1387,jesus vela,12,09830,9
+1388,jardines de san lorenzo tezonco,12,09940,9
+1390,jose maria morelos y pavon,12,09230,9
+1395,la asuncion,12,09910,9
+1397,la concordia,12,09820,9
+1398,la mora grande,12,09720,9
+1401,la magueyera,12,09750,9
+1402,la noria,12,09340,9
+1403,la purisima,12,09960,9
+1405,la regadera,12,09110,9
+1269,casa blanca,12,09860,9
+1271,carlos hank gonzalez,12,09700,9
+1279,consejo agrarista mexicano,12,09760,9
+1280,cerro de la estrella,12,09860,9
+1264,carmen serdan,12,09979,9
+1265,cabeza de juarez 4 o frente 4,12,09577,9
+1267,cabeza de juarez 5 o frente 5,12,09579,9
+1268,central de abasto,12,09040,9
+1270,cedros,12,09850,9
+1272,cananea,12,09969,9
+1273,casa blanca rodeo,12,09860,9
+1274,carlos jongitud barrios,12,09897,9
+1275,carolinas,12,09850,9
+1276,cerro estrella,12,09860,9
+1277,celoalliotli,12,09960,9
+1278,complejo industrial ecologico,12,09207,9
+1281,citlalli,12,09660,9
+1457,najalti,12,09850,9
+1152,triunfo de la republica,5,07069,9
+1366,granjas san antonio,12,09070,9
+1370,huitzico,12,09638,9
+1371,heroes de churubusco,12,09090,9
+1432,lomas estrella,12,09208,9
+1153,tonaca coutitlan,5,07248,9
+1154,valle del tepeyac,5,07740,9
+1368,guelatao benito juarez,12,09229,9
+1369,hacienda las flores,12,09208,9
+1434,lomas estrella 2a seccion,12,09830,9
+1435,los angeles,12,09910,9
+1436,los mirasoles,12,09810,9
+1437,los cipreses,12,09410,9
+1439,los paseos de churubusco,12,09290,9
+1440,luis donaldo colosio,12,09849,9
+1441,los reyes,12,09420,9
+1442,los picos infonavit,12,09700,9
+1443,matamoros,12,09960,9
+1444,magueyera,12,09800,9
+1445,luis echeverria alvarez,12,09698,9
+1446,miguel de la madrid hurtado,12,09330,9
+1458,nautla,12,09210,9
+2005,issfam,12,14620,9
+1410,las peñas,12,09759,9
+1419,lomas de san lorenzo,12,09640,9
+1421,lomas de san lorenzo,12,09685,9
+1428,los angeles apanoaya,12,09620,9
+1429,lomas de zaragoza,12,09890,9
+1430,lomas estrella,12,09830,9
+1489,plan de iguala,12,09838,9
+1491,progresista,12,09240,9
+1321,el brillante,12,09160,9
+1406,la valenciana,12,09250,9
+1407,las americas,12,09860,9
+1408,las coronelas,12,09400,9
+1411,las torres,12,09638,9
+1412,las cruces,12,09579,9
+1413,las rosas,12,09636,9
+1414,loma larga,12,09310,9
+1415,leyes de reforma,12,09310,9
+1416,leyes de reforma,12,09227,9
+1417,lienzo charro,12,09640,9
+1418,lomas de la estancia,12,09780,9
+1420,lomas del paraiso,12,09780,9
+1422,lomas de bellavista,12,09880,9
+1423,lomas estrella 1a seccion,12,09899,9
+1424,lomas estrella fovissste,12,09709,9
+1425,lomas de santa cruz,12,09830,9
+1426,lomas el manto,12,09840,9
+1427,los reyes culhuacan,12,09710,9
+2320,la concha,13,16210,9
+1431,los angeles femenina,12,09890,9
+1488,progreso del surplutarco elias calles,12,09250,9
+1490,presidentes y plaza de la constitucion,12,09760,9
+1492,potrero de la luna,12,09648,9
+1493,popular oriente,12,09850,9
+1494,puente blanco,12,09770,9
+1495,presidentes de mexico,12,09740,9
+1502,puente blanco,12,09779,9
+1505,purisima atlazolpa,12,09429,9
+1507,reforma politica,12,09730,9
+1512,renovacion,12,09209,9
+1513,ricardo flores magon,12,09828,9
+1514,ricardo flores magon,12,09820,9
+1517,rinconada del molino,12,09960,9
+1520,san andres tetepilco,12,09440,9
+1496,predio san pedro y san pablo,12,09706,9
+1497,predio el zapote,12,09730,9
+1498,predio san antonio,12,09705,9
+1500,rancho capulines,12,09688,9
+1501,purisima 1,12,09209,9
+1503,procinemex,12,09890,9
+1504,predio san rafael,12,09704,9
+1506,residencial del valle,12,09767,9
+1508,reforma garay,12,09860,9
+1509,real del moral,12,09010,9
+1510,reclusorio oriente,12,09789,9
+1511,real del moral,12,09010,9
+1515,reforma educativa,12,09219,9
+1516,sabadell bellavista,12,09860,9
+1518,san andres tomatlan,12,09870,9
+1519,rinconada estrella fovissste,12,09889,9
+1448,miguel de la madrid,12,09739,9
+1450,mixcoatl,12,09099,9
+1452,monte alban,12,09860,9
+1454,miravalle,12,09810,9
+1471,paraje san juan,12,09830,9
+1472,paraje san juan,12,09695,9
+1475,paraje zacatepec,12,09858,9
+1479,paseos de churubusco,12,09707,9
+1480,paraje tetecon,12,09705,9
+1533,san juan xalpa,12,09850,9
+1536,san jose aculco,12,09410,9
+1537,san juan xalpa,12,09850,9
+1538,san jose buenavista,12,09706,9
+1447,margarita maza de juarez,12,09638,9
+1449,miltenco chico,12,09708,9
+1451,mexicaltzingo,12,09550,9
+1453,maria esther zuno de echeverria,12,09696,9
+1456,militar sedena,12,09960,9
+1459,moras primavera,12,09960,9
+1460,nueva generacion,12,09960,9
+1461,moyocoyani,12,09700,9
+1462,morelos 2,12,09850,9
+1463,naranjos,12,09430,9
+1464,nezahualcoyotl,12,09366,9
+1465,norma fovissste,12,09768,9
+1466,opus 3,12,09500,9
+1467,ojito de agua,12,09670,9
+1469,paraje de buenavista,12,09420,9
+1470,nueva rosita,12,09839,9
+1473,palmillas,12,09320,9
+1474,paraje san pedro,12,09560,9
+1476,paraje san juan cerro,12,09839,9
+1477,paraje san juan joya,12,09869,9
+1478,plaza estrella 2,12,09030,9
+1481,plan de ayala,12,09519,9
+1482,penitenciaria santa martha acatitla,12,09704,9
+1483,predio la cuchilla,12,09800,9
+1484,predio maravillas,12,09704,9
+1485,prados iztapalapa,12,09868,9
+1486,plaza estrella 1,12,09705,9
+1487,predio xaltepec,12,09810,9
+1521,san andres tomatlan,12,09870,9
+1522,residencial ermita,12,09710,9
+1523,san antonio culhuacan,12,09800,9
+1524,san antonio culhuacan,12,09800,9
+1525,san andres mas arriba,12,09870,9
+1527,san antonio,12,09900,9
+1528,san antonio tomatlan,12,09870,9
+1529,san andres tomatlan,12,09870,9
+1530,san francisco infonavit,12,09857,9
+1531,san ignacio,12,09000,9
+1532,san jose,12,09000,9
+1534,san juan fovissste,12,09839,9
+1535,san lucas,12,09000,9
+1700,anzures,16,11590,9
+1561,santa isabel industrial,12,09820,9
+1539,san juan joya,12,09839,9
+1540,san juanico nextipac,12,09400,9
+1541,san lorenzo xicotencatl,12,09130,9
+1543,san martin,12,09540,9
+1544,san miguel,12,09360,9
+1545,san juan estrella,12,09868,9
+1546,san miguel el alto,12,09699,9
+1547,san lorenzo,12,09857,9
+1548,san lorenzo tezonco,12,09790,9
+1549,san miguel,12,09360,9
+1550,san lorenzo tezonco fovissste,12,09839,9
+1551,san miguel 8a,12,09837,9
+1552,san nicolas tolentino,12,09850,9
+1553,san pablo 2a seccion,12,09648,9
+1555,san pablo,12,09000,9
+1556,san nicolas tolentino,12,09960,9
+1557,san nicolas tolentino,12,09850,9
+1558,san simon culhuacan,12,09800,9
+1559,san pablo 1a seccion,12,09648,9
+1560,san pedro albarrada,12,09320,9
+2149,tepepan,12,14646,9
+1589,sinatel,12,09470,9
+1590,tenorios,12,09680,9
+1591,solidaridad,12,09160,9
+1596,tepalcates,12,09210,9
+1598,tepalcates,12,09210,9
+1600,unidad modelo,12,09089,9
+1603,triangulo de las agujas,12,09885,9
+1605,valle de luces,12,09809,9
+1588,stunam,12,09719,9
+1592,tezonchichila,12,09750,9
+1593,tejocote infonavit,12,09704,9
+1594,tecuautitlan,12,09680,9
+1595,tepotitlan,12,09680,9
+1597,tierra y libertad,12,09705,9
+1599,tlaltenco,12,09960,9
+1601,tulyehualco,12,09919,9
+1602,toltecas santa barbara,12,09000,9
+1604,valle de luces 1a seccion,12,09800,9
+1622,atacasco,8,10378,9
+1624,barranca seca,8,10580,9
+1625,barros sierra,8,10380,9
+1628,cerro del judio,8,10310,9
+1629,cuauhtemoc,8,10020,9
+1311,degollado chico,12,09705,9
+1612,villas san diego,12,09829,9
+1613,valle de luces 2a seccion,12,09800,9
+1614,vieleta,12,09708,9
+1615,vicentina,12,09340,9
+1616,villas estrella,12,09898,9
+1617,voceadores,12,09120,9
+1618,xopa,12,09080,9
+1619,xalpa,12,09640,9
+1620,zafiro,12,09704,9
+1621,yoliliztli,12,09705,9
+1626,bosques de la magdalena,8,10290,9
+1627,cerro del judio reserva,8,10310,9
+1630,cresencio juarez chavira,8,10630,9
+1631,chichicaspa,8,10927,9
+1632,delegacion politica magdalena contreras,8,10589,9
+1887,san jose,11,13020,9
+1638,el rosal,8,10600,9
+1566,santa maria del monte,12,09850,9
+1570,santa martha acatitla sur,12,09530,9
+1573,santa maria tomatlan,12,09870,9
+1583,sinatel,12,09479,9
+1562,san sebastian tecoloxtitlan,12,09520,9
+1563,san miguel teotongo,12,09630,9
+1565,santa maria aztahuacan,12,09730,9
+1567,santa barbara,12,09000,9
+1568,santa cruz meyehualco,12,09700,9
+1569,san simon culhuacan,12,09870,9
+1571,santa maria aztahuacan,12,09500,9
+1572,santa martha acatitla,12,09510,9
+1574,santa maria aztahuacan,12,09570,9
+1575,santa cruz meyehualco,12,09290,9
+1576,santiago acahualtepec 1a,12,09608,9
+1577,santiago acahualtepec 2a,12,09609,9
+1580,santa martha acatitla norte,12,09140,9
+1582,sifon,12,09400,9
+1585,santiago acahualtepec,12,09600,9
+1586,sierra del valle,12,09730,9
+1587,secretaria de la reforma agraria,12,09437,9
+1635,el rosal alto,8,10600,9
+1636,el maestro,8,10130,9
+2052,mexico,12,14620,9
+2147,tenorios 2,12,14327,9
+1659,lomas de san bernabe,8,10369,9
+1660,lomas quebradas,8,10000,9
+1662,los padres,8,10340,9
+1666,pueblo nuevo alto,8,10640,9
+1667,potrerillo,8,10620,9
+1668,pueblo nuevo bajo,8,10640,9
+1670,potrerillo,8,10368,9
+1661,los capulines,8,10210,9
+1663,meyuca ii,8,10660,9
+1664,pedregal 2,8,10720,9
+1665,plazuela del pedregal,8,10840,9
+1669,puente sierra,8,10110,9
+1671,progreso,8,10120,9
+1672,rancho pachita,8,10650,9
+1673,reserva de los dinamos,8,10930,9
+1851,la habana,11,13050,9
+2219,caracol,17,15650,9
+1639,el toro,8,10610,9
+1640,el tanque,8,10320,9
+1644,huayatla,8,10360,9
+1645,heroes de padierna,8,10700,9
+1647,la concepcion,8,10830,9
+1648,la carbonera,8,10640,9
+1609,valle del sur,12,09819,9
+1611,valle de san lorenzo,12,09970,9
+1606,tula culhuacan,12,09800,9
+1607,valle de luces 3a seccion,12,09800,9
+1608,veracruzana,12,09856,9
+1610,vicente guerrero,12,09200,9
+1637,el rosal bajo,8,10600,9
+1641,ermitaño,8,10660,9
+1642,exhacienda de eslava,8,10900,9
+1643,gavillero,8,10900,9
+1646,ixtlahualtongo,8,10928,9
+1650,la guadalupe,8,10820,9
+2217,azteca,17,15320,9
+1633,el ocotal,8,10630,9
+1634,el oasis de san bernabe,8,10309,9
+1653,la presilla,8,10508,9
+1654,las calles,8,10840,9
+1678,san francisco,8,10500,9
+1679,san jeronimo aculco,8,10400,9
+1680,san francisco,8,10810,9
+1681,san jeronimo lidice,8,10200,9
+1683,santa teresa,8,10740,9
+1674,residencial san carlos,8,10509,9
+1675,rinconada teximaloya,8,10810,9
+1677,san bernabe ocotepec,8,10300,9
+1682,san nicolas totolapan,8,10900,9
+2060,milpas,12,14735,9
+1684,santa teresa,8,10710,9
+1685,santa teresa,8,10730,9
+1687,tierra unida,8,10369,9
+1655,las cruces,8,10330,9
+1656,las huertas,8,10920,9
+1657,las palmas,8,10370,9
+1693,16 de septiembre,16,11810,9
+1695,5 de mayo,16,11470,9
+1697,ahuehuetes anahuac,16,11450,9
+1701,argentina antigua,16,11270,9
+1702,argentina poniente,16,11230,9
+1707,casa blanca,16,11590,9
+1710,cuauhtemoc pensil,16,11490,9
+1686,subestacion,8,10929,9
+1688,unidad independencia imss,8,10100,9
+1689,tierra colorada,8,10926,9
+1690,villas del sol,8,10507,9
+1691,vista hermosa,8,10379,9
+1692,10 de abril,16,11250,9
+1696,agricultura,16,11360,9
+1703,bosque de chapultepec,16,11580,9
+1704,bosque de chapultepec parque nacional,16,11100,9
+1705,bosques de las lomas,16,11700,9
+1706,campo militar 1,16,11619,9
+1708,colgate palmolive sa,16,11501,9
+1709,compañia de luz y fuerza del centro sa,16,11379,9
+1879,roberto esperon,11,13230,9
+1725,ignacio manuel altamirano,16,11240,9
+1726,huichapan,16,11290,9
+1728,irrigacion,16,11500,9
+1731,lago sur,16,11460,9
+1732,lago norte,16,11460,9
+1733,legaria,16,11410,9
+1741,lomas de bezares,16,11910,9
+1727,hospital central militar,16,11649,9
+1729,jardines reforma,16,11950,9
+1730,la loma,16,11710,9
+1734,lazaro tata,16,11259,9
+1735,lomas barrilaco seccion vertientes,16,11010,9
+1736,lomas de chapultepec 8a seccion,16,11010,9
+1737,lomas altas,16,11950,9
+1738,loma hermosa,16,11200,9
+1739,lomas de chapultepec,16,11000,9
+1740,lomas de reforma,16,11930,9
+1775,san antonio tecomitl,9,12100,9
+1776,san francisco tecoxpa,9,12700,9
+1778,san jeronimo miacatlan,9,12600,9
+1780,san lorenzo tlacoyucan,9,12500,9
+1782,san juan tepenahuac,9,12800,9
+1784,san salvador cuauhtenco,9,12300,9
+1785,san pedro atocpan,9,12200,9
+1652,la magdalena contreras,8,10910,9
+1777,san juan,9,12400,9
+1779,san mateo,9,12000,9
+1781,san marcos,9,12000,9
+1783,san miguel,9,12400,9
+1786,san pablo oztotepec,9,12400,9
+1872,morelos,11,13720,9
+1787,santa ana tlacotenco 1a seccion,9,12900,9
+1658,lomas de san bernabe,8,10350,9
+1712,daniel garza,16,11830,9
+1715,daniel garza,16,11840,9
+1719,escandon,16,11800,9
+1721,granada,16,11529,9
+1722,granada,16,11520,9
+1711,chapultepec morales,16,11570,9
+1713,direccion general de talleres de impresion de estampillas y,16,11511,9
+1714,deportiva pensil,16,11470,9
+1716,del bosque,16,11510,9
+1717,delegacion politica miguel hidalgo,16,11869,9
+1718,exaeroclub,16,11619,9
+1720,francisco i madero,16,11480,9
+1723,guardias presidenciales,16,11619,9
+1724,hermanos serdan,16,11220,9
+1742,lomas san isidro,16,11620,9
+1748,los manzanos,16,11460,9
+1756,mexico nuevo,16,11260,9
+1758,molino del rey,16,11040,9
+1759,modelo pensil,16,11450,9
+1760,nueva anzures,16,11590,9
+1761,observatorio,16,11860,9
+1772,san agustin ohtenco,9,12080,9
+1774,san bartolome xicomulco,9,12250,9
+1743,lomas virreyes,16,11000,9
+1744,los morales seccion alameda,16,11530,9
+1745,lomas de sotelo,16,11200,9
+1746,los morales seccion palmas,16,11540,9
+1747,los morales,16,11510,9
+1749,mail boxes polanco post sa de cv,16,11565,9
+1750,mail boxes loma post sa de cv,16,11006,9
+1751,manuel avila camacho,16,11610,9
+1752,mail boxes mail anzures sa de cv,16,11595,9
+1753,mexico tacuba,16,11239,9
+1754,mariano escobedo,16,11310,9
+1757,militar lomas de sotelo iv,16,11618,9
+1763,cruztitla,9,12100,9
+1764,delegacion politica milpa alta,9,12009,9
+1765,la concepcion,9,12000,9
+1767,loma bonita,9,12210,9
+1768,los angeles,9,12000,9
+1769,nuchtla,9,12200,9
+1770,panchimalco,9,12200,9
+1771,ocotitla,9,12200,9
+1773,san agustin,9,12070,9
+1824,emiliano zapata,11,13570,9
+1825,emiliano zapata 1a seccion,11,13710,9
+1826,emiliano zapata 2a seccion,11,13710,9
+1881,san andres,11,13099,9
+1788,santa ana tlacotenco,9,12900,9
+1801,villa milpa alta,9,12000,9
+1804,agricola metropolitana,11,13280,9
+1789,santa cruz,9,12000,9
+1790,santa ana tlacotenco 2a seccion,9,12900,9
+1791,santa ana tlacotenco 3a seccion,9,12900,9
+1792,santa martha,9,12000,9
+1793,santa ana tlacotenco 4a seccion,9,12900,9
+1794,santa martha,9,12010,9
+1795,santa cruz,9,12020,9
+1797,tenantitla,9,12100,9
+1799,tula,9,12200,9
+1800,xaltipac,9,12100,9
+1802,xochitepec,9,12100,9
+1803,3 de mayo,11,13429,9
+1805,apolocalco,11,13129,9
+1854,la lupita,11,13510,9
+1859,la nopalera,11,13220,9
+1860,la turba,11,13250,9
+1842,la asuncion,11,13530,9
+1843,la asuncion,11,13000,9
+1844,la conchita,11,13720,9
+1845,la concepcion,11,13509,9
+1846,la conchita,11,13360,9
+1847,la draga,11,13273,9
+1848,la herradura,11,13318,9
+1849,la magdalena,11,13070,9
+1850,la mesa,11,13120,9
+1852,la joyita,11,13123,9
+1853,la habana,11,13050,9
+1855,la poblanita,11,13119,9
+1856,la orilla,11,13410,9
+1857,la loma,11,13529,9
+1858,la soledad,11,13508,9
+2232,fivipor,17,15669,9
+1814,del mar,11,13270,9
+1817,del mar,11,13270,9
+1822,el triangulo,11,13460,9
+1832,granjas cabrera,11,13230,9
+1806,aurorita,11,13317,9
+1807,benito quezada,11,13319,9
+1808,cañada,11,13110,9
+1809,concepcion,11,13150,9
+1810,comalchica,11,13625,9
+1811,cooperativa c i a n i,11,13270,9
+1812,cooperativa allapetlalli,11,13279,9
+1813,cristo rey,11,13720,9
+1815,del carmen,11,13100,9
+1816,chichilaula,11,13120,9
+1818,del llano,11,13550,9
+1819,delegacion politica tlahuac,11,13009,9
+1820,el mirador,11,13100,9
+1821,el rosario el alto,11,13540,9
+1823,el rosario el bajo,11,13540,9
+1827,francisco villa,11,13520,9
+1828,francia,11,13630,9
+1829,geovillas de xochimilco,11,13063,9
+1830,guadalupe,11,13060,9
+1831,geminis,11,13440,9
+1833,guadalupe tlaltenco,11,13450,9
+1834,guadalupe yecahuizotl,11,13100,9
+1835,hombres de la reforma,11,13060,9
+1836,jaime torres bodet,11,13530,9
+1837,jardines del llano,11,13550,9
+1838,jose lopez portillo,11,13419,9
+1839,jose lopez portillo,11,13410,9
+1840,la conchita,11,13364,9
+2411,santa catarina tepehuyuca,13,16880,9
+2412,santa maria de los olivos,13,16790,9
+2414,santa cruz acalpixca,13,16500,9
+2415,santa cruz de guadalupe,13,16866,9
+2416,santa cecilia tepetlapa,13,16880,9
+2410,santa cruz xochitepec,13,16100,9
+2413,santa cruz xochitepec,13,16109,9
+2417,santa cruz chavarrieta,13,16840,9
+2422,santa maria nativitas,13,16790,9
+2430,tierra nueva,13,16050,9
+2418,santa maria tulyehualco,13,16700,9
+2420,santiaguito,13,16776,9
+2421,santiago tepalcatlalpan,13,16200,9
+2423,tecoloxtitla,13,16776,9
+2424,tecacalanco,13,16510,9
+2425,tablas de san lorenzo,13,16090,9
+2427,tejomulco,13,16429,9
+2429,tecoloxtitla,13,16540,9
+2431,tlaxopan revolucion,13,16244,9
+2432,tetlatilco,13,16819,9
+2434,tecalipa,13,16866,9
+2436,tlaxopan 2,13,16243,9
+2437,tlaltepetla,13,16840,9
+2439,tototitla,13,16550,9
+2440,tlaxopan 1 2a seccion,13,16240,9
+2441,tepetitla,13,16246,9
+2442,tlaxopan 1 4a seccion,13,16240,9
+2443,tlaxopan 1 3a seccion,13,16240,9
+2444,tlaxopan 1 1a seccion,13,16240,9
+2445,villa san isidro,13,16889,9
+2446,villa xochimilco,13,16030,9
+2453,SIN COLONIA,,     ,

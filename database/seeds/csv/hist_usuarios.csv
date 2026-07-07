@@ -1,0 +1,42 @@
+id_usuario,nombre_usuario,paterno_usuario,materno_usuario,login,password,id_modulo,id_status
+2,finanzas,"","","","",28,1
+3,arturo,serrano,cariño,arturo.serrano,b116d50df127e36fe4bf00424e87daad,1,1
+4,luis alberto,chacon,urbina,alberto.chacon,25a386f4eb6c523296b8f521e7739a39,2,1
+5,omar,ardines,gonzalez,omar.ardines,6346788cf2efc295a4d264a76dd498b0,2,1
+6,raymundo fernando,meza,lopez,raymundo.meza,4a6212ae3b49adffe9c13653a5e8f3d1,4,1
+7,roberto,gonzalez,bejarano,roberto.gonzalez,8585351f08bf3d9d959e3aef59732320,5,1
+8,juan ignacio,rodriguez,maya,ignacio.rodriguez,87f3dad8a0b0580b256ccfd26243220c,7,1
+9,alejandro,aviña,velazquez,alejandro.aviña,82704806ac302c25861068bd95955589,7,1
+10,guilliana,carbo,romano,guilliana.carbo,49dc14fe4b2a182df3a0c977bebceeaa,8,1
+11,alejandra,dominguez,higareda,alejandra.dominguez,2cc90b07b07fb6180920a1026f8f5a8c,8,1
+13,maria guadalupe,ortiz,rodriguez,guadalupe.ortiz,d41616e76a9bb3feeaca605906874908,9,1
+14,ericka,flores,balderrama,ericka.flores,4d23b8053d132449d20c94e2fd67dfcd,10,1
+15,juan carlos,vazquez,cabrera,carlos.vazquez,5740bc83cfa90605c67a22b363ea1e78,11,1
+17,cesar augusto pavel,velasco,rodriguez,cesar.velasco,0c41f9ac13f8e63accebda610c6268a7,12,1
+18,lilian,zambrano,gonzalez,lilian.zambrano,6e23063cda746cd7ceaf7cb0e820dfb1,12,1
+20,astrid gabriela,padilla,covarrubias,astrid.padilla,08cda9f5ed25555789a631a87d2dff88,13,1
+21,luisa,agapito,abraham,luisa.abraham,44a9deca1c96f4de54b2044c1c1e5c3b,14,1
+23,enrique,linares,pineda,enrique.linares,9ec793a374dda27c48133cf2e60f1417,15,1
+24,jesus fabian,chavez,olguin,fabian.chavez,900833974908be95cca12e6a112afde9,17,1
+25,ernesto,partida,gutierrez,ernesto.partida,83f2c519b9190506580dac47c4a0bbbe,19,1
+26,claudia ines,lugo,bolaños,claudia.lugo,e0b092337930d27422b0cc15b3e4650f,20,1
+27,delfino adampol,cabrera,padilla,delfino.cabrera,bfaba5211485e6f82ae585286c6eac65,21,1
+28,aracely santa,cruz,suarez,aracely.cruz,667eac6d527087625e22c83e3413a603,23,1
+29,sergio aaron,gonzalez,alvarez,sergio.alvarez,fb9f29bc97279c1df50d3491f6b552b1,24,1
+30,jesus,granados,buendia,jesus.granados,0d5eb2292a9ba70c87fecc8456976185,25,1
+31,adolfo,hernandez,garcia,adolfo.hernandez,869163e6871b54aa28f809071207ebb3,26,1
+32,gustavo,vargas,morales,gustavo.morales,695c4a1af5a5091aadbbd534c909d923,27,1
+33,alejandro,pelaez,goycochea,alejandro.pelaez,86abe2dbbad445c749405af6ff7ecd3d,25,1
+34,olga lilia,gomez,martinez,olga.gomez,3c64e632993c133037438718ee2884e8,16,1
+35,veronica,sanchez,rodriguez,veronica.sanchez,cd78c8f5dce878355d566bb4d33b6253,22,1
+36,nancy,oviedo,camacho,nancy.oviedo,78bc9066e0efd52b580bdac469012b23,29,1
+19,erick alan,gonzalez,gomez,erick.gonzalez,a868ba9f6671cadee8c057a62433db65,13,2
+37,erick alan,gonzalez,gomez,erick.gonzalez,a868ba9f6671cadee8c057a62433db65,11,1
+22,maria xochilt,gordiano,callejas,xochilt.callejas,10e51251754dcf0875a8204b876dc77c,14,2
+38,maria xochilt,gordiano,callejas,xochilt.callejas,10e51251754dcf0875a8204b876dc77c,13,1
+39,santarosa,castillo,carvallo,santarosa,10e51251754dcf0875a8204b876dc77c,14,1
+16,lilia,jimenez,velasco,lilia.jimenez,0abd7a5224a2c613ef15ce5c4ea72df3,11,2
+40,lilia,jimenez,velasco,lilia.jimenez,0abd7a5224a2c613ef15ce5c4ea72df3,9,1
+12,alfredo,rodriguez,juarez,alfredo.rodriguez,72ee985de512b776539cf3ddb9742cd5,9,2
+41,alfredo,rodriguez,juarez,alfredo.rodriguez,72ee985de512b776539cf3ddb9742cd5,15,1
+1,nayeli,cuevas,reyes,nayeli.cuevas,5c46f89151c9d2bfbcfdac6805a53640,28,1

@@ -16,6 +16,7 @@ class CatalogoSeeder extends Seeder
 
         $datos = [
                 //Donadores
+            
             // Ocupación
             ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
             ['tipo' => 'Ocupacion', 'valor' => 'ESTUDIANTE', 'created_at' => now(), 'updated_at' => now()],
@@ -70,24 +71,38 @@ class CatalogoSeeder extends Seeder
             ['tipo' => 'Religion', 'valor' => 'NINGUNA', 'created_at' => now(), 'updated_at' => now()],
             ['tipo' => 'Religion', 'valor' => 'OTRO', 'created_at' => now(), 'updated_at' => now()],
             
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
-            ['tipo' => 'Ocupacion', 'valor' => 'TAREAS DEL HOGAR', 'created_at' => now(), 'updated_at' => now()],
+                //Sexo
+            ['tipo' => 'Sexo', 'valor' => 'HOMBRE', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'Sexo', 'valor' => 'MUJER', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'Sexo', 'valor' => 'OTRO', 'created_at' => now(), 'updated_at' => now()],
+
+                //Pregunta de seguridad
+            ['tipo' => 'Pregunta', 'valor' => '¿NOMBRE DE TU MASCOTA?', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'Pregunta', 'valor' => '¿NOMBRE DE ALGUNA NOVIA?', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'Pregunta', 'valor' => '¿MARCA PREFERIDA DE ROPA?', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'Pregunta', 'valor' => '¿FECHA MÁS IMPORTANTE DE TU VIDA?', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'Pregunta', 'valor' => '¿CANCIÓN PREFERIDA?', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'Pregunta', 'valor' => '¿QUIÉN FUE TU PRIMER NOVIO(A)?', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'Pregunta', 'valor' => '¿NOMBRE DE LA PRIMARIA EN LA QUE ESTUDIASTE?', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'Pregunta', 'valor' => '¿MEJOR AMIGO DE LA INFANCIA?', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'Pregunta', 'valor' => '¿NOMBRE COMPLETO DE LA MADRE?', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'Pregunta', 'valor' => '¿LUGAR DE NACIMIENTO DE LA MADRE?', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'Pregunta', 'valor' => '¿LUGAR DE NACIMIENTO DEL PADRE?', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'Pregunta', 'valor' => '¿NOMBRE DE TU PRIMERA MASCOTA?', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'Pregunta', 'valor' => '¿CUÁL ERA TU APODO DE NIÑO?', 'created_at' => now(), 'updated_at' => now()],
             
+                //Tipo de donación
+            ['tipo' => 'Tipo', 'valor' => 'AMPLIA', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'Tipo', 'valor' => 'LIMITADA', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'Tipo', 'valor' => 'NINGUNA', 'created_at' => now(), 'updated_at' => now()],
+
+                //Tipo de Órgano -> Es para el mapeo
+            ['tipo' => 'TipoOrg', 'valor' => 'ÓRGANO', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'TipoOrg', 'valor' => 'TEJIDO', 'created_at' => now(), 'updated_at' => now()],
+
+                //Estatus del histórico Linea de Captura
+            ['tipo' => 'status', 'valor' => 'GENERADA', 'created_at' => now(), 'updated_at' => now()],
+            ['tipo' => 'status', 'valor' => 'PAGADA', 'created_at' => now(), 'updated_at' => now()],
         ];
 
         DB::table('catalogos')->insert($datos);
