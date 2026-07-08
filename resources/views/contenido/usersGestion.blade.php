@@ -4,7 +4,7 @@
 
 @section('content')
 
-@can('Users index')
+@can('List Users')
     <section class="contentGestion">
         <div class="card mt-3 bg-transparent">
             <div class="card-header bg-transparent">
@@ -84,7 +84,7 @@
                                                                 </div>
                                                             @endcan
                                                         @else
-                                                            @can('Users destroy')
+                                                            @can('Delete User')
                                                                 <div class="m-2">
                                                                     <form action="{{ url('/user/'.$user->id) }}" id="form-eliminar-{{ $user->id }}" method="post">
                                                                         {{ csrf_field() }}
@@ -96,7 +96,7 @@
                                                                 </div>
                                                             @endcan
                                                         @endif
-                                                    @can('Users edit')
+                                                    @can('Update User')
                                                         <div class="m-2">
                                                             <a href="{{ url('/user/'.$user->id.'/edit') }}" class="btn btn-outline-secondary">
                                                                 Editar

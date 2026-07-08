@@ -15,8 +15,9 @@ class CreateRespuestasTable extends Migration
     {
         Schema::create('respuestas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('respuesta');
-            $table->string('id_pregunta');
+            $table->string('id_respuesta_seguridad');
+            $table->string('respuesta_seguridad');
+            $table->string('id_pregunta_seguridad');
             $table->string('id_donador');
             $table->timestamps();
         });

@@ -46,7 +46,7 @@
                                         <span class="text nav-text">Registro de Donante</span>
                                     </a>
                                 </li>
-                            @can('Users create')
+                            @can('Create User')
                             <li class="nav-link">
                                 <a href="{{url('/user/create')}}" class="a">
                                     <svg  class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"  
@@ -57,7 +57,7 @@
                                 </a>
                             </li>
                             @endcan
-                            @can('Donador index')
+                            @can('Listar Donadores')
                             <li class="nav-link">
                                 <a href="{{url('/donador')}}" class="a">
                                     <svg  class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"  
@@ -68,7 +68,7 @@
                                 </a>
                             </li>
                             @endcan
-                            @can('Users index')
+                            @can('List Users')
                             <li class="nav-link">
                                 <a href="{{url('/user')}}" class="a">
                                     <svg  class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"  

@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(OrganosSeeder::class);
         $this->call(alcaldiaSeeder::class);
         $this->call(CatalogoSeeder::class);
+        $this->call(RespuestaSeguridadSeeder::class);
 
             // Históricos
         $this->call(CatCalleSeeder::class);

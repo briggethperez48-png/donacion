@@ -237,6 +237,18 @@ class RoleSeeder extends Seeder
             'description' => 'Permission to read Documentation'
         ])->syncRoles([$role2, $role3]);
 
+            //Donadores
+        Permission::create([
+            'name' => 'Donador destroy',
+            'slug' => 'donador.detroy',
+            'description' => 'Permission to delete a donador'
+        ])->syncRoles([$role2, $role3]);
+        Permission::create([
+            'name' => 'Donador edit',
+            'slug' => 'donador.edit',
+            'description' => 'Permission to edit a donador'
+        ])->syncRoles([$role2, $role3]);
+
             //Users
         Permission::create([
             'name' => 'Users restore',

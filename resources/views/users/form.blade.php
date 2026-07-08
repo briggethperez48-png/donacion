@@ -119,6 +119,7 @@
                 </div>
             </fieldset>
 
+            @can('Atach roles to users')
                 <fieldset class="card mb-1 shadow-sm bg-transparent">
                     <div class="legend card-header border-bottom border-dark d-flex">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -151,7 +152,7 @@
                         </div>
                     </div>
                 </fieldset>
-
+            @endcan
 
             <div class="mb-4 pb-4">
                 <div class="mb-5 d-flex flex-column flex-md-row justify-content-md-between align-items-center">

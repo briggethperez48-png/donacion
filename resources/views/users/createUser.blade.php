@@ -3,7 +3,7 @@
 @section('title', 'Registro')
 
 @section('content')
-    @can('Users create')
+    @can('Create User')
         <section class="">
             <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data" style="width: 100%;">
                 {{ csrf_field() }}

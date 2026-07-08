@@ -61,84 +61,9 @@
                                 <label for="Ocupacion" class="font-weight-bold">Ocupación</label>
                                 <select name="Ocupacion" id="Ocupacion" class="form-control input">
                                     <option value="">SELECCIONE UNO...</option>
-                                    <option 
-                                        value="TAREAS DEL HOGAR" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'TAREAS DEL HOGAR' ? 'selected' : '' }}>
-                                        TAREAS DEL HOGAR
-                                    </option>
-                                    <option 
-                                        value="ESTUDIANTE" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'ESTUDIANTE' ? 'selected' : '' }}>
-                                        ESTUDIANTE
-                                    </option>
-                                    <option 
-                                        value="ARTESANA(O), OBRERA(O), TRABAJADOR(A)" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'ARTESANA(O), OBRERA(O), TRABAJADOR(A)' ? 'selected' : '' }}>
-                                        ARTESANA(O), OBRERA(O), TRABAJADOR(A)
-                                    </option>
-                                    <option 
-                                    value="EMPLEADA(O) DE OFICINA, TRABAJADOR(A) EN ACTIVIDADES ADMINISTRATIVAS O DE SERVICIOS" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'EMPLEADA(O) DE OFICINA, TRABAJADOR(A) EN ACTIVIDADES ADMINISTRATIVAS O DE SERVICIOS' ? 'selected' : '' }}>
-                                    EMPLEADA(O) DE OFICINA, TRABAJADOR(A) EN ACTIVIDADES ADMINISTRATIVAS O DE SERVICIOS</option>
-                                    <option 
-                                        value="COMERCIANTE O EMPLEADA(O) DE COMERCIO" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'COMERCIANTE O EMPLEADA(O) DE COMERCIO' ? 'selected' : '' }}>
-                                        COMERCIANTE O EMPLEADA(O) DE COMERCIO
-                                    </option>
-                                    <option 
-                                        value="JUBILADA(O) / PENSIONADA(O)" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'JUBILADA(O) / PENSIONADA(O)' ? 'selected' : '' }}>
-                                        JUBILADA(O) / PENSIONADA(O)
-                                    </option>
-                                    <option 
-                                        value="TRABAJADOR(A) EN ACTIVIDADES AGRICOLAS" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'TRABAJADOR(A) EN ACTIVIDADES AGRICOLAS' ? 'selected' : '' }}>
-                                        TRABAJADOR(A) EN ACTIVIDADES AGRÍCOLAS
-                                    </option>
-                                    <option 
-                                        value="TRABAJADOR(A) EN SERVICIOS DOMESTICOS" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'TRABAJADOR(A) EN SERVICIOS DOMESTICOS' ? 'selected' : '' }}>
-                                        TRABAJADOR(A) EN SERVICIOS DOMÉSTICOS
-                                    </option>
-                                    <option 
-                                    value="VENDEDOR(A) AMBULANTE" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'VENDEDOR(A) AMBULANTE' ? 'selected' : '' }}>
-                                    VENDEDOR(A) AMBULANTE</option>
-                                    <option 
-                                        value="CONDUCTOR(A) DE MEDIO DE TRANSPORTE" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'CONDUCTOR(A) DE MEDIO DE TRANSPORTE' ? 'selected' : '' }}>
-                                        CONDUCTOR(A) DE MEDIO DE TRANSPORTE
-                                    </option>
-                                    <option 
-                                        value="TRABAJADOR(A) EN SERVICIOS DE SEGURIDAD Y/O FUERZAS ARMADAS" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'TRABAJADOR(A) EN SERVICIOS DE SEGURIDAD Y/O FUERZAS ARMADAS' ? 'selected' : '' }}>
-                                        TRABAJADOR(A) EN SERVICIOS DE SEGURIDAD Y/O FUERZAS ARMADAS
-                                    </option>
-                                    <option 
-                                        value="MAESTRA(O), DOCENTE O TRABAJADOR(A) DE LA EDUCACION" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'MAESTRA(O), DOCENTE O TRABAJADOR(A) DE LA EDUCACION' ? 'selected' : '' }}>
-                                        MAESTRA(O), DOCENTE O TRABAJADOR(A) DE LA EDUCACIÓN
-                                    </option>
-                                    <option 
-                                        value="PROFESIONISTA O TECNICA(O) INDEPENDIENTE" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'PROFESIONISTA O TECNICA(O) INDEPENDIENTE' ? 'selected' : '' }}>
-                                        PROFESIONISTA O TÉCNICA(O) INDEPENDIENTE
-                                    </option>
-                                    <option 
-                                        value="LIDER O DIRECTIVA DEL SECTOR SOCIAL O CIVIL" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'LIDER O DIRECTIVA DEL SECTOR SOCIAL O CIVIL' ? 'selected' : '' }}>
-                                        LIDER O DIRECTIVA DEL SECTOR SOCIAL O CIVIL
-                                    </option>
-                                    <option 
-                                        value="FUNCIONARIA(O) DEL SECTOR PUBLICO" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'FUNCIONARIA(O) DEL SECTOR PUBLICO' ? 'selected' : '' }}>
-                                        FUNCIONARIA(O) DEL SECTOR PÚBLICO
-                                    </option>
-                                    <option 
-                                        value="EMPRESARIA(O), GERENTE O DIRECTIVA(O) DE EMPRESA" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'EMPRESARIA(O), GERENTE O DIRECTIVA(O) DE EMPRESA' ? 'selected' : '' }}>
-                                        EMPRESARIA(O), GERENTE O DIRECTIVA(O) DE EMPRESA
-                                    </option>
-                                    <option 
-                                        value="TRABAJADOR(A) POR CUENTA PROPIA" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'TRABAJADOR(A) POR CUENTA PROPIA' ? 'selected' : '' }}>
-                                        TRABAJADOR(A) POR CUENTA PROPIA
-                                    </option>
-                                    <option 
-                                        value="DESEMPLEADA(O) / BUSCADOR(A) DE TRABAJO" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'DESEMPLEADA(O) / BUSCADOR(A) DE TRABAJO' ? 'selected' : '' }}>
-                                        DESEMPLEADA(O) / BUSCADOR(A) DE TRABAJO
-                                    </option>
-                                    <option 
-                                        value="OTRO" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'OTRO' ? 'selected' : '' }}>
-                                        OTRA OCUPACIÓN / NO ESPECIFICADA
-                                    </option>
-                                    <option 
-                                        value="NO SABE" {{ old('Ocupacion', $donante->Ocupacion ?? '') == 'NO SABE' ? 'selected' : '' }}>
-                                        NO SABE
-                                    </option>
+                                    @foreach($ocupaciones as $ocupacion)
+                                        <option value="{{ $ocupacion->id_catalogo }}">{{ $ocupacion->valor }}</option>
+                                    @endforeach
                                 </select>
                                 @if($errors->has('Ocupacion'))
                                     <span class="text-danger small"><strong>{{ $errors->first('Ocupacion') }}</strong></span>
@@ -148,12 +73,9 @@
                                 <label for="EstCiv" class="font-weight-bold">Estado Civil</label>
                                 <select name="EstCiv" id="EstCiv" class="form-control input">
                                     <option value="">SELECCIONE UNO...</option>
-                                    <option value="SOLTERO" {{ old('EstCiv', $donante->EstCiv ?? '') == 'SOLTERO' ? 'selected' : '' }}>SOLTERA(O)</option>
-                                    <option value="CASADO" {{ old('EstCiv', $donante->EstCiv ?? '') == 'CASADO' ? 'selected' : '' }}>CASADA(O)</option>
-                                    <option value="VIUDO" {{ old('EstCiv', $donante->EstCiv ?? '') == 'VIUDO' ? 'selected' : '' }}>VIUDA(O)</option>
-                                    <option value="UNIONLIBRE" {{ old('EstCiv', $donante->EstCiv ?? '') == 'UNIONLIBRE' ? 'selected' : '' }}>UNIÓN LIBRE</option>
-                                    <option value="DIVORCIADO" {{ old('EstCiv', $donante->EstCiv ?? '') == 'DIVORCIADO' ? 'selected' : '' }}>DIVORCIADA(O)</option>
-                                    <option value="SN" {{ old('EstCiv', $donante->EstCiv ?? '') == 'SN' ? 'selected' : '' }}>NO SABE / SIN RESPUESTA</option>
+                                    @foreach($estados_civiles as $estado_civil)
+                                        <option value="{{ $estado_civil->id_catalogo }}">{{ $estado_civil->valor }}</option>
+                                    @endforeach
                                 </select>
                                 @if($errors->has('EstCiv'))
                                     <span class="text-danger small"><strong>{{ $errors->first('EstCiv') }}</strong></span>
@@ -166,19 +88,9 @@
                                 <label for="Estudios" class="font-weight-bold">Estudios</label>
                                 <select name="Estudios" id="Estudios" class="form-control input">
                                     <option value="">SELECCIONE UNO...</option>
-                                    <option value="NINGUNO" {{ old('Estudios', $donante->Estudios ?? '') == 'NINGUNO' ? 'selected' : '' }}>NINGUNO</option>
-                                    <option value="PREESCOLAR" {{ old('Estudios', $donante->Estudios ?? '') == 'PREESCOLAR' ? 'selected' : '' }}>PREESCOLAR</option>
-                                    <option value="PRIMARIA" {{ old('Estudios', $donante->Estudios ?? '') == 'PRIMARIA' ? 'selected' : '' }}>PRIMARIA</option>
-                                    <option value="PRIMARIAINC" {{ old('Estudios', $donante->Estudios ?? '') == 'PRIMARIAINC' ? 'selected' : '' }}>PRIMARIA INCOMPLETA</option>
-                                    <option value="SECUNDARIA" {{ old('Estudios', $donante->Estudios ?? '') == 'SECUNDARIA' ? 'selected' : '' }}>SECUNDARIA</option>
-                                    <option value="SECUNDARIAINC" {{ old('Estudios', $donante->Estudios ?? '') == 'SECUNDARIAINC' ? 'selected' : '' }}>SECUNDARIA INCOMPLETA</option>
-                                    <option value="PREPARATORIA" {{ old('Estudios', $donante->Estudios ?? '') == 'PREPARATORIA' ? 'selected' : '' }}>PREPARATORIA O BACHILLERATO</option>
-                                    <option value="PREPARATORIAINC" {{ old('Estudios', $donante->Estudios ?? '') == 'PREPARATORIAINC' ? 'selected' : '' }}>PREPARATORIA INCOMPLETA</option>
-                                    <option value="NORMAL" {{ old('Estudios', $donante->Estudios ?? '') == 'NORMAL' ? 'selected' : '' }}>NORMAL</option>
-                                    <option value="TECNICA" {{ old('Estudios', $donante->Estudios ?? '') == 'TECNICA' ? 'selected' : '' }}>CARRERA TÉCNICA / COMERCIAL</option>
-                                    <option value="PROFESIONAL" {{ old('Estudios', $donante->Estudios ?? '') == 'PROFESIONAL' ? 'selected' : '' }}>PROFESIONAL</option>
-                                    <option value="MAESTRIA" {{ old('Estudios', $donante->Estudios ?? '') == 'MAESTRIA' ? 'selected' : '' }}>MAESTRÍA / DOCTORADO</option>
-                                    <option value="SN" {{ old('Estudios', $donante->Estudios ?? '') == 'SN' ? 'selected' : '' }}>NO SABE / SIN RESPUESTA</option>
+                                    @foreach($grados_estudios as $grado_estudio)
+                                        <option value="{{ $grado_estudio->id_catalogo }}">{{ $grado_estudio->valor }}</option>
+                                    @endforeach
                                 </select>
                                 @if($errors->has('Estudios'))
                                     <span class="text-danger small"><strong>{{ $errors->first('Estudios') }}</strong></span>
@@ -188,13 +100,9 @@
                                 <label for="Religion" class="font-weight-bold">Religión</label>
                                 <select name="Religion" id="Religion" class="form-control input">
                                     <option value="">SELECCIONE UNO...</option>
-                                    <option value="CATOLICA" {{ old('Religion', $donante->Religion ?? '') == 'CATOLICA' ? 'selected' : '' }}>CATÓLICA</option>
-                                    <option value="JUDIA" {{ old('Religion', $donante->Religion ?? '') == 'JUDIA' ? 'selected' : '' }}>JUDÍA</option>
-                                    <option value="CRISTIANA" {{ old('Religion', $donante->Religion ?? '') == 'CRISTIANA' ? 'selected' : '' }}>CRISTIANA</option>
-                                    <option value="TESTIGO DE JEHOVA" {{ old('Religion', $donante->Religion ?? '') == 'TESTIGO DE JEHOVA' ? 'selected' : '' }}>TESTIGO DE JEHOVÁ</option>
-                                    <option value="EVANGELISTA" {{ old('Religion', $donante->Religion ?? '') == 'EVANGELISTA' ? 'selected' : '' }}>EVANGELISTA</option>
-                                    <option value="NINGUNA" {{ old('Religion', $donante->Religion ?? '') == 'NINGUNA' ? 'selected' : '' }}>NINGUNA</option>
-                                    <option value="OTRO" {{ old('Religion', $donante->Religion ?? '') == 'OTRO' ? 'selected' : '' }}>OTRO</option>
+                                    @foreach($religiones as $religion)
+                                        <option value="{{ $religion->id_catalogo }}">{{ $religion->valor }}</option>
+                                    @endforeach
                                 </select>
                                 @if($errors->has('Religion'))
                                     <span class="text-danger small"><strong>{{ $errors->first('Religion') }}</strong></span>
@@ -215,32 +123,20 @@
                                 <label for="Sexo" class="font-weight-bold">Sexo</label>
                                 <select name="Sexo" id="Sexo" class="form-control input">
                                     <option value="">SELECCIONE UNO...</option>
-                                    <option value="HOMBRE" {{ old('Sexo', $donante->Sexo ?? '') == 'HOMBRE' ? 'selected' : '' }}>HOMBRE</option>>
-                                    <option value="MUJER" {{ old('Sexo', $donante->Sexo ?? '') == 'MUJER' ? 'selected' : '' }}>MUJER</option>>
-                                    <option value="OTRO" {{ old('Sexo', $donante->Sexo ?? '') == 'OTRO' ? 'selected' : '' }}>OTRO</option>>
+                                    @foreach($sexos as $sexo)
+                                        <option value="{{ $sexo->id_catalogo }}">{{ $sexo->valor }}</option>
+                                    @endforeach
                                 </select>
                                 @if($errors->has('Sexo'))
                                     <span class="text-danger small"><strong>{{ $errors->first('Sexo') }}</strong></span>
                                 @endif
                             </div>
                             <div class="form-group col-md-4">
-                                @php $listaEstados = 
-                                    ['AGUASCALIENTES','BAJA CALIFORNIA','BAJA CALIFORNIA SUR','CAMPECHE','CHIAPAS','CHIHUAHUA','COAHUILA DE ZARAGOZA','COLIMA','CIUDAD DE MÉXICO','DURANGO','GUANAJUATO','GUERRERO','HIDALGO','JALISCO','ESTADO DE MÉXICO','MICHOACÁN DE OCAMPO','MORELOS','NAYARIT','NUEVO LEÓN','OAXACA','PUEBLA','QUERÉTARO DE ARTEAGA','QUINTANA ROO','SAN LUIS POTOSÍ','SINALOA','SONORA','TABASCO','TAMAULIPAS','TLAXCALA','VERACRUZ DE IGNACIO DE LA LLAVE','YUCATÁN','ZACATECAS'];
-                                @endphp
                                 <label for="estadoNac" class="font-weight-bold">Estado de Nacimiento</label>
-                                    <select name="estadoNac" id="estadoNac" class="form-control input">
+                                    <select name="estadoNac" id="estadoNac" class="form-control input text-uppercase">
                                         <option value="">SELECCIONE UNO...</option>
-                                        @foreach($listaEstados as $Estado)
-                                            @php
-                                                $estadoSinTilde = str_replace(
-                                                        ['Á', 'É', 'Í', 'Ó', 'Ú'], 
-                                                        ['A', 'E', 'I', 'O', 'U'], 
-                                                        $Estado
-                                                    );
-                                                    $seleccionado = old('estadoNac', $donante->estadoNac ?? '') == $estadoSinTilde;
-                                            @endphp
-
-                                            <option value="{{$estadoSinTilde}}" {{ $seleccionado ? 'selected' : '' }}>{{$Estado}}</option>
+                                        @foreach($estado_list as $est)
+                                            <option value="{{ $est->id_estado }}" class="text-uppercase">{{ $est->nombre_estado }}</option>
                                         @endforeach
                                     </select>
                                 @if($errors->has('estadoNac'))
@@ -262,17 +158,10 @@
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for="EstadoProc" class="font-weight-bold">Estado de Procedencia</label>
-                                <select name="EstadoProc" id="Entidad" data-dependent="Municipio" class="dynamic form-control input">
-                                    <option value="">SELECCIONE UNO...</option>
-                                    @foreach($estado_list as $estado)
-                                        @php
-                                            $valorActual = old('EstadoProc', $donante->EstadoProc ?? '');
-                                            $dbEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($valorActual)));
-                                            $listEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($estado->Entidad)));
-                                        @endphp
-                                        <option value="{{ $listEstado }}" {{ $dbEstado == $listEstado ? 'selected' : '' }}>
-                                            {{ $estado->Entidad }}
-                                        </option>
+                                <select name="EstadoProc" id="EstadoProc" data-dependent="Alcaldia" class="form-control input text-uppercase">
+                                    <option value="">SELECCIONE UNO</option>
+                                    @foreach($estado_list as $est)
+                                        <option value="{{ $est->id_estado }}" class="text-uppercase">{{ $est->nombre_estado }}</option>
                                     @endforeach
                                 </select>
                                 @if($errors->has('EstadoProc'))
@@ -282,8 +171,8 @@
 
                             <div class="form-group col-md-4" id="MunicipioI" style="{{ old('Alcaldia', $donante->Alcaldia ?? '') ? '' : 'display:none;' }}">
                                 <label for="Alcaldia" class="font-weight-bold">Alcaldía</label>
-                                <select name="Alcaldia" id="Municipio" data-dependent="Localidad" class="dynamic form-control input">
-                                    <option value="">-</option>
+                                <select name="Alcaldia" id="Alcaldia" data-dependent="Colonia" class="text-uppercase form-control input">
+                                    <option class="text-uppercase" value="">-</option>
                                 </select>
                                 @if($errors->has('Alcaldia'))
                                     <span class="text-danger small"><strong>{{ $errors->first('Alcaldia') }}</strong></span>
@@ -292,8 +181,8 @@
 
                             <div class="form-group col-md-4" id="LocalidadI" style="{{ old('Colonia', $donante->Colonia ?? '') ? '' : 'display:none;' }}">
                                 <label for="Colonia" class="font-weight-bold">Colonia</label>
-                                <select name="Colonia" id="Localidad" class="form-control input">
-                                    <option value="">-</option>
+                                <select name="Colonia" id="Colonia" class="form-control input text-uppercase" class="form-control input">
+                                    <option class="text-uppercase" value="">-</option>
                                 </select>
                                 @if($errors->has('Colonia'))
                                     <span class="text-danger small"><strong>{{ $errors->first('Colonia') }}</strong></span>
@@ -338,7 +227,7 @@
                             
                             <div class="row px-3 mt-2">
                                     @php
-                                        $seleccionados = old('Organo', isset($donante) ? $donante->organos->pluck('id')->toArray() : []);
+                                        $seleccionados = old('Organo', isset($donante) ? $donante->organos->pluck('id_organo')->toArray() : []);
                                     @endphp
 
                                     @foreach($todos_los_organos as $organo)
@@ -346,12 +235,12 @@
                                             <div class="custom-control custom-checkbox">
                                                 <input name="Organo[]" type="checkbox" 
                                                     class="checkbox custom-control-input"
-                                                    id="check{{ $organo->id }}" 
-                                                    value="{{ $organo->id }}"
-                                                    {{ in_array($organo->id, $seleccionados) ? 'checked' : '' }}>
+                                                    id="check{{ $organo->id_organo }}" 
+                                                    value="{{ $organo->id_organo }}"
+                                                    {{ in_array($organo->id_organo, $seleccionados) ? 'checked' : '' }}>
                                                 
-                                                <label class="custom-control-label ml-1 font-weight-bold" for="check{{ $organo->id }}">
-                                                    {{ $organo->nombre }}
+                                                <label class="custom-control-label ml-1 font-weight-bold" for="check{{ $organo->id_organo }}">
+                                                    {{ $organo->organo }}
                                                 </label>
                                             </div>
                                         </div>
@@ -399,19 +288,9 @@
                             <label for="Pregunta" class="font-weight-bold">Pregunta de seguridad</label>
                             <select name="Pregunta" id="Pregunta" class="form-control input">
                                 <option value="">SELECCIONE UNO...</option>
-                                <option value="NOMBRE MASCOTA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'NOMBRE MASCOTA' ? 'selected' : '' }}>¿NOMBRE DE TU MASCOTA?</option>
-                                <option value="NOMBRE NOVIA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'NOMBRE NOVIA' ? 'selected' : '' }}>¿NOMBRE DE ALGUNA NOVIA?</option>
-                                <option value="MARCA PREFERIDA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'MARCA PREFERIDA' ? 'selected' : '' }}>¿MARCA PREFERIDA DE ROPA?</option>
-                                <option value="FECHA IMPORTANTE" {{ old('Pregunta', $donante->Pregunta ?? '') == 'FECHA IMPORTANTE' ? 'selected' : '' }}>¿FECHA MÁS IMPORTANTE DE TU VIDA?</option>
-                                <option value="CANCION PREFERIDA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'CANCION PREFERIDA' ? 'selected' : '' }}>¿CANCIÓN PREFERIDA?</option>
-                                <option value="PRIMER NOVIO" {{ old('Pregunta', $donante->Pregunta ?? '') == 'PRIMER NOVIO' ? 'selected' : '' }}>¿QUIÉN FUE TU PRIMER NOVIO(A)?</option>
-                                <option value="PRIMARIA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'PRIMARIA' ? 'selected' : '' }}>¿NOMBRE DE LA PRIMARIA EN LA QUE ESTUDIASTE?</option>
-                                <option value="MEJOR AMIGO INFANCIA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'MEJOR AMIGO INFANCIA' ? 'selected' : '' }}>¿MEJOR AMIGO DE LA INFANCIA?</option>
-                                <option value="NOMBRE MADRE" {{ old('Pregunta', $donante->Pregunta ?? '') == 'NOMBRE MADRE' ? 'selected' : '' }}>¿NOMBRE COMPLETO DE LA MADRE?</option>
-                                <option value="LUGAR MADRE" {{ old('Pregunta', $donante->Pregunta ?? '') == 'LUGAR MADRE' ? 'selected' : '' }}>¿LUGAR DE NACIMIENTO DE LA MADRE?</option>
-                                <option value="LUGAR PADRE" {{ old('Pregunta', $donante->Pregunta ?? '') == 'LUGAR PADRE' ? 'selected' : '' }}>¿LUGAR DE NACIMIENTO DEL PADRE?</option>
-                                <option value="NOMBRE PRIMERA MASCOTA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'NOMBRE PRIMERA MASCOTA' ? 'selected' : '' }}>¿NOMBRE DE TU PRIMERA MASCOTA?</option>
-                                <option value="APODO INFANCIA" {{ old('Pregunta', $donante->Pregunta ?? '') == 'APODO INFANCIA' ? 'selected' : '' }}>¿CUÁL ERA TU APODO DE NIÑO?</option>
+                                @foreach($preguntas as $pregunta)
+                                    <option value="{{ $pregunta->id_catalogo }}">{{ $pregunta->valor }}</option>
+                                @endforeach
                             </select>
                             @if($errors->has('Pregunta'))
                                 <span class="text-danger small"><strong>{{ $errors->first('Pregunta') }}</strong></span>
@@ -453,53 +332,75 @@
 
 @section('scripts')
         <script>
-            $(document).ready(function(){
-                function cargarDependiente(elementoPadre, valorParaSeleccionar = null) {
-                    var selectID = $(elementoPadre).attr("id");
-                    var value = $(elementoPadre).val();
-                    var dependent = $(elementoPadre).data('dependent');
-                    var _token = $('input[name="_token"]').val();
+            $(document).ready(function() {
+                
+                // 1. AJAX: Cambio de Estado de Procedencia
+                $('#EstadoProc').change(function() {
+                    var estado_id = $(this).val();
+                    var dependent = $(this).data('dependent'); // "Alcaldia"
 
-                    if (value != '') {
-                        $('#' + dependent + 'I').show();
-
+                    if(estado_id != '') {
                         $.ajax({
                             url: "{{ route('donante.fetch') }}",
                             method: "POST",
                             data: {
-                                select: selectID, 
-                                value: value, 
-                                _token: _token, 
-                                dependent: dependent
+                                select: 'c_estado',
+                                value: estado_id,
+                                dependent: dependent,
+                                _token: '{{ csrf_token() }}'
                             },
                             success: function(result) {
                                 $('#' + dependent).html(result);
-
-                                if (valorParaSeleccionar) {
-                                    $('#' + dependent).val(valorParaSeleccionar.trim());
-
-                                    if ($('#' + dependent).hasClass('dynamic')) {
-                                        cargarDependiente($('#' + dependent), "{{ old('Colonia', $donante->Colonia ?? '') }}");
-                                    }
-                                }
+                                
+                                // CORREGIDO: Ahora limpia el select usando el id="Colonia" real
+                                $('#Colonia').html('<option value="">-</option>'); 
+                                
+                                // Ocultamos el contenedor de colonia por si estaba abierto antes
+                                $('#LocalidadI').fadeOut();
+                                
+                                // Mostramos el contenedor de la Alcaldía
+                                $('#MunicipioI').fadeIn();
                             }
                         });
+                    } else {
+                        // Si se limpia el estado, ocultamos contenedores y reseteamos opciones
+                        $('#MunicipioI').fadeOut();
+                        $('#LocalidadI').fadeOut();
+                        $('#Alcaldia').html('<option value="">-</option>');
+                        $('#Colonia').html('<option value="">-</option>');
                     }
-                }
-
-                $('.dynamic').change(function(){
-                    if($(this).attr("id") == "Entidad") {
-                        $('#Localidad').html('<option value="">-</option>');
-                        $('#LocalidadI').hide();
-                    }
-                    cargarDependiente(this);
                 });
 
-                var entidadYaSeleccionada = $('#Entidad').val();
-                
-                if(entidadYaSeleccionada != '') {
-                    cargarDependiente($('#Entidad'), "{{ old('Alcaldia', $donante->Alcaldia ?? '') }}");
-                }
+                // 2. AJAX: Cambio de Alcaldía
+                $('#Alcaldia').change(function() {
+                    var municipio_id = $(this).val();
+                    var estado_id = $('#EstadoProc').val();
+                    var dependent = $(this).data('dependent'); // "Colonia"
+
+                    if(municipio_id != '') {
+                        $.ajax({
+                            url: "{{ route('donante.fetch') }}",
+                            method: "POST",
+                            data: {
+                                select: 'c_mnpio',
+                                value: municipio_id,
+                                estado_id: estado_id,
+                                dependent: dependent,
+                                _token: '{{ csrf_token() }}'
+                            },
+                            success: function(result) {
+                                // Como tu HTML tiene id="Colonia", el string 'Colonia' inyectará el HTML aquí perfectamente
+                                $('#' + dependent).html(result);
+                                
+                                // Mostramos el contenedor de la Colonia
+                                $('#LocalidadI').fadeIn();
+                            }
+                        });
+                    } else {
+                        $('#LocalidadI').fadeOut();
+                        $('#Colonia').html('<option value="">-</option>');
+                    }
+                });
             });
         </script>
 
@@ -526,7 +427,7 @@
             }
         });
     </script>
-    <script>
+    <!-- <script>
         const contenedorA = document.getElementById('Entidad');
         const contenedorB = document.getElementById('MunicipioI');
         const contenedorC = document.getElementById('LocalidadI');
@@ -537,7 +438,7 @@
         contenedorB.addEventListener('change', function() {
                 contenedorC.style.display = 'block';
         });
-    </script>
+    </script> -->
     <script>
         (function() {
             const textarea = document.getElementById('Respuesta');

@@ -9,7 +9,8 @@ class Donante extends Model
 {
     protected $table = 'donantes';
     protected $primaryKey = 'id_donador';
-    public $incrementing = false;
+    public $incrementing = true;
+    protected $keyType = 'int';
 
     protected $casts = [
         'FechaNac' => 'date',
@@ -52,5 +53,13 @@ class Donante extends Model
             'id_donador',        // Llave foránea de este modelo (Donante) en la pivote
             'id_organo'          // Llave foránea del modelo destino (Organo) en la pivote
         );
+    }
+    public function preguntas() {
+        return $this->belongsToMany(
+            \App\Catalogo::class, // Tu modelo de la tabla 'catalogos'
+            'respuestas',                // El nombre de tu tabla intermedia
+            'id_donador',                // Llave foránea en 'respuestas' que apunta al Donante
+            'id_pregunta_seguridad'      // Llave foránea en 'respuestas' que apunta al Catálogo
+        )->withPivot('id_respuesta_seguridad', 'respuesta_seguridad'); // Columnas extras que vas a guardar/leer
     }
 }

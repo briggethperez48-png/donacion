@@ -3,8 +3,7 @@
 @section('title', 'Donadores')
 
 @section('content')
-@can('Donador index')
-<!-- https://youtu.be/EfzORBnuUak?list=RDtgMUtp9A50k -->
+@can('Listar Donadores')
         
     <section class="contentGestion">
         <div class="w-100 px-4"> 
