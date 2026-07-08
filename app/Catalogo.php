@@ -11,6 +11,7 @@ class Catalogo extends Model
 
     protected $fillable = [
         'tipo',
-        'valor'
+        'valor',
+        'hist_valor'
     ];
 }

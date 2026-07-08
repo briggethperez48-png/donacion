@@ -21,5 +21,12 @@ class DatabaseSeeder extends Seeder
         $this->call(OrganosSeeder::class);
         $this->call(alcaldiaSeeder::class);
 
+        $this->call(CatalogoSeeder::class);
+        $this->call(CatCalleSeeder::class);
+        $this->call(CatColoniaSeeder::class);
+        $this->call(CatDelegacionSeeder::class);
+        $this->call(CatModuloSeeder::class);
+        $this->call(HistUsuariosSeeder::class);
+        $this->call(LineaCapturaSeeder::class);
     }
 }

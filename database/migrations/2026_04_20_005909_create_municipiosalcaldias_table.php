@@ -15,12 +15,17 @@ class CreateMunicipiosalcaldiasTable extends Migration
     {
         Schema::create('municipiosalcaldias', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ClaveEntidad');
-            $table->string('Entidad');
-            $table->string('ClaveMuni');
-            $table->string('Municipio');
-            $table->string('ClaveLoc');
-            $table->string('Localidad');
+            $table->string('d_codigo')->nullable();
+            $table->string('d_asenta')->nullable();
+            $table->string('d_tipo_asenta')->nullable();
+            $table->string('D_mnpio')->nullable();
+            $table->string('d_estado')->nullable();
+            $table->string('d_ciudad')->nullable();
+            $table->string('d_CP')->nullable();
+            $table->string('c_estado')->nullable();
+            $table->string('c_oficina')->nullable();
+            $table->string('c_CP')->nullable();
+            $table->string('c_tipo_asenta')->nullable();
             $table->timestamps();
         });
     }

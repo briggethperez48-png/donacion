@@ -15,12 +15,12 @@ class CreateLineaCapturasTable extends Migration
     {
         Schema::create('linea_capturas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('id_linea_captura');
-            $table->string('id_donador');
-            $table->string('linea_captura');
-            $table->string('id_status');
-            $table->string('fecha_generada');
-            $table->string('fecha_pago');
+            $table->string('id_linea_captura')->nullable();
+            $table->string('id_donador')->nullable();
+            $table->string('linea_captura')->nullable();
+            $table->string('id_status')->nullable();
+            $table->string('fecha_generada')->nullable();
+            $table->string('fecha_pago')->nullable();
             $table->timestamps();
         });
     }

@@ -13,7 +13,7 @@ class alcaldiaSeeder extends Seeder
     public function run()
 {
     DB::disableQueryLog();
-    $path = base_path().'/database/seeds/csv/municipiosacaldias.csv';
+    $path = base_path().'/database/seeds/csv/codigoPostal.csv';
     
     $file = fopen($path, 'r');
     
@@ -31,12 +31,17 @@ class alcaldiaSeeder extends Seeder
         }
 
         $lote[] = [
-            'ClaveEntidad' => $row[0] ?? null,
-            'ClaveMuni'    => $row[1] ?? null,
-            'ClaveLoc'     => $row[2] ?? null,
-            'Entidad'      => $row[3] ?? null,
-            'Municipio'    => $row[5] ?? null, 
-            'Localidad'    => $row[6] ?? null,
+            'd_codigo' => $row[0] ?? null,
+            'd_asenta'    => $row[1] ?? null,
+            'd_tipo_asenta'     => $row[2] ?? null,
+            'D_mnpio'      => $row[3] ?? null,
+            'd_estado'    => $row[4] ?? null, 
+            'd_ciudad'    => $row[5] ?? null,
+            'd_CP'    => $row[6] ?? null,
+            'c_estado'    => $row[7] ?? null,
+            'c_oficina'    => $row[8] ?? null,
+            'c_CP'    => $row[9] ?? null,
+            'c_tipo_asenta'    => $row[10] ?? null,
             'created_at'   => now(),
             'updated_at'   => now(),
         ];
