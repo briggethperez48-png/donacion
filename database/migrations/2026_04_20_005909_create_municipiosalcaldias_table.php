@@ -26,6 +26,7 @@ class CreateMunicipiosalcaldiasTable extends Migration
             $table->string('c_oficina')->nullable();
             $table->string('c_CP')->nullable();
             $table->string('c_tipo_asenta')->nullable();
+            $table->string('c_mnpio')->nullable();
             $table->timestamps();
         });
     }

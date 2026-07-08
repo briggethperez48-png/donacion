@@ -19,6 +19,7 @@ class alcaldiaModel extends Model
         'c_estado',
         'c_oficina', 
         'c_CP', 
-        'c_tipo_asenta'
+        'c_tipo_asenta',
+        'c_mnpio'
     ];
 }

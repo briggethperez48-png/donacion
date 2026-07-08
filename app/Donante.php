@@ -7,11 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Donante extends Model
 {
+    protected $table = 'donantes';
+    protected $primaryKey = 'id_donador';
+    public $incrementing = false;
+
     protected $casts = [
         'FechaNac' => 'date',
     ];    
     
     protected $fillable = [
+            'id_donador',
             'Nombre',
             'ApPaterno',
             'ApMaterno',
@@ -40,7 +45,12 @@ class Donante extends Model
             // 'Pregunta',     //
             // 'Respuesta'
     ];
-    // public function organos() {
-    //     return $this->belongsToMany('App\Organo', 'relacion_o_d', 'donante_id', 'organo_id');
-    // }
+    public function organos() {
+        return $this->belongsToMany(
+            \App\Organo::class, // Modelo destino
+            'donante_organo',    // Nombre de la nueva tabla pivote
+            'id_donador',        // Llave foránea de este modelo (Donante) en la pivote
+            'id_organo'          // Llave foránea del modelo destino (Organo) en la pivote
+        );
+    }
 }

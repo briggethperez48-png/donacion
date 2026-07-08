@@ -42,6 +42,7 @@ class alcaldiaSeeder extends Seeder
             'c_oficina'    => $row[8] ?? null,
             'c_CP'    => $row[9] ?? null,
             'c_tipo_asenta'    => $row[10] ?? null,
+            'c_mnpio'    => $row[11] ?? null,
             'created_at'   => now(),
             'updated_at'   => now(),
         ];

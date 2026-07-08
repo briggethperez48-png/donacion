@@ -20,13 +20,16 @@ class DatabaseSeeder extends Seeder
         $this->call(AreasSeeder::class);
         $this->call(OrganosSeeder::class);
         $this->call(alcaldiaSeeder::class);
-
         $this->call(CatalogoSeeder::class);
+
+            // Históricos
         $this->call(CatCalleSeeder::class);
         $this->call(CatColoniaSeeder::class);
         $this->call(CatDelegacionSeeder::class);
         $this->call(CatModuloSeeder::class);
         $this->call(HistUsuariosSeeder::class);
         $this->call(LineaCapturaSeeder::class);
+        $this->call(DonanteOrganoSeeder::class);
+        $this->call(HistDonantesSeeder::class);
     }
 }

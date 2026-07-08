@@ -41,36 +41,67 @@ class DonanteController extends Controller
      */
     public function create()
     {
+        // 1. Catálogos Normalizados de la tabla única
+        $sexos            = DB::table('catalogos')->where('tipo', 'Sexo')->get();
+        $estados_civiles  = DB::table('catalogos')->where('tipo', 'EstCiv')->get();
+        $grados_estudios  = DB::table('catalogos')->where('tipo', 'Estudios')->get();
+        $tipos_donacion   = DB::table('catalogos')->where('tipo', 'Tipo')->get();
+        $religiones       = DB::table('catalogos')->where('tipo', 'Religion')->get();
+
+        // 2. Órganos independientes para checkboxes
         $todos_los_organos = Organo::all();
+
+        // 3. Ubicaciones: Estados iniciales (usando el modelo municipiosalcaldias)
+        // Agrupamos por 'c_estado' (la clave numérica del estado) y 'd_estado' (el nombre)
         $estado_list = DB::table('municipiosalcaldias')
-                        ->select('ClaveEntidad', 'Entidad')
+                        ->select('c_estado as id_estado', 'd_estado as nombre_estado')
                         ->distinct()
-                        ->orderBy('Entidad', 'asc')
+                        ->orderBy('nombre_estado', 'asc')
                         ->get();
-        return view('formulario.create', compact('todos_los_organos'))->with('estado_list'
-            , $estado_list);
+
+        return view('formulario.create', compact(
+            'sexos', 'estados_civiles', 'grados_estudios', 'tipos_donacion', 
+            'religiones', 'todos_los_organos', 'estado_list'
+        ));
     }
 
     public function fetch(Request $request) {
-        $select = $request->input('select');   
-        $value = trim($request->input('value')); 
-        $dependent = $request->input('dependent');
-
-        $data = DB::table('municipiosalcaldias')
-                ->where($select, $value)
-                ->select($dependent)
-                ->distinct()
-                ->orderBy($dependent, 'asc')
-                ->get();
+        $select    = $request->input('select');    // 'c_estado' o 'c_mnpio'
+        $value     = $request->input('value');     // El ID seleccionado
+        $dependent = $request->input('dependent'); // Lo que queremos renderizar ('D_mnpio' o 'd_asenta')
 
         $output = '<option value="">SELECCIONE UNO</option>';
-        foreach ($data as $row) {
+
+        // Caso A: Si seleccionaron un Estado, buscamos sus Municipios
+        if ($select == 'c_estado') {
+            $data = DB::table('municipiosalcaldias')
+                ->where('c_estado', $value)
+                ->select('c_mnpio as id', 'D_mnpio as nombre')
+                ->distinct()
+                ->orderBy('nombre', 'asc')
+                ->get();
+                
+            foreach ($data as $row) {
+                $output .= '<option value="' . $row->id . '">' . $row->nombre . '</option>';
+            }
+        } 
+        // Caso B: Si seleccionaron un Municipio, buscamos sus Colonias
+        // NOTA: Para no mezclar municipios de otros estados que compartan el mismo ID de municipio (ej: municipio 1 de CDMX vs municipio 1 de Puebla), cruzamos con el estado.
+        elseif ($select == 'c_mnpio') {
+            $estado_id = $request->input('estado_id'); // Pasaremos esto por AJAX
             
-            $valorTecnico = strtoupper(str_replace(
-                ['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($row->$dependent)
-            ));
-            
-            $output .= '<option value="' . $valorTecnico . '">' . $row->$dependent . '</option>';
+            $data = DB::table('municipiosalcaldias')
+                ->where('c_estado', $estado_id)
+                ->where('c_mnpio', $value)
+                ->select('id_municipio_alcaldia as id', 'd_asenta as nombre') // Asumiendo que tu tabla tiene una PK id, o puedes usar el CP
+                ->distinct()
+                ->orderBy('nombre', 'asc')
+                ->get();
+
+            foreach ($data as $row) {
+                // Mandamos el ID primario o el nombre limpio
+                $output .= '<option value="' . $row->id . '">' . $row->nombre . '</option>';
+            }
         }
 
         return response()->json($output);
@@ -82,97 +113,61 @@ class DonanteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
+        // Cambiamos las reglas para que acepten los IDs numéricos de tus catálogos
         $campos = [
-            'Nombre' => 'required|min:3', //
-            'ApPaterno' => 'required|min:3', //
-            'ApMaterno' => 'required|min:3', //
-            'FechaNac' => 'required',
-            'Ocupacion' => 'required', //
-            'EstCiv' => 'required',
-            'Estudios' => 'required',
-            'EstadoProc' => 'required', // 
-            'Alcaldia' => 'required', 
-            'Colonia' => 'required', 
-            'Religion' => 'required',
+            'Nombre'       => 'required|min:3|string',
+            'ApPaterno'    => 'required|min:3|string',
+            'ApMaterno'    => 'required|min:3|string',
+            'FechaNac'     => 'required|date',
+            'Ocupacion'    => 'required|string',
+            'EstCiv'       => 'required|integer', // ID Catálogo
+            'Estudios'     => 'required|integer', // ID Catálogo
+            'Sexo'         => 'required|integer', // ID Catálogo
+            'Religion'     => 'required|integer', // ID Catálogo
+            'estadoNac'    => 'required|integer', // ID Catálogo o Clave Entidad
+            
+            // Ubicación Geográfica (Ahora son IDs o Claves Numéricas)
+            'EstadoProc'   => 'required|integer', // Clave del Estado (c_estado)
+            'Alcaldia'     => 'required|integer', // Clave del Municipio (c_mnpio)
+            'Colonia'      => 'required|integer', // ID de la fila del asentamiento
+            
+            'Donador'      => 'required|in:SI,NO',
+            'Organo'       => 'required_if:Donador,SI|array', 
+            'Telefono'     => 'required|numeric|digits:10', 
+            'Referencias'  => 'required|string|max:191',
+            
             'CURP' => [
-                'required',
-                'string',
-                'size:18',
-                'unique:donantes,CURP',
+                'required', 'string', 'size:18', 'unique:donantes,CURP',
                 'regex:/^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE|CD)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/'
             ], 
-            'Sexo' => 'required', 
-            'estadoNac' => 'required',
-            'Donador' => 'required|in:SI,NO',
-            'Organo' => 'required_if:Donador,SI|array', 
-            'Referencias' => 'required|max:20',
-            'Telefono' => 'required|numeric|digits:10', 
-            'Pregunta' => 'required',
-            'Respuesta' => 'required|string|min:3|max:50',
         ];
 
-        $mensaje=[
-            'required'=>'El campo :attribute es requerido',
-            'CURP.regex' => 'El formato del CURP no es válido.',
-            'CURP.unique' => 'Este CURP ya se encuentra registrado.',
-            'CURP.size' => 'Complete el campo correctamente',
+        $mensaje = [
+            'required'           => 'El campo :attribute es requerido.',
+            'CURP.regex'         => 'El formato del CURP no es válido.',
+            'CURP.unique'        => 'Este CURP ya se encuentra registrado.',
+            'CURP.size'          => 'Complete el campo correctamente.',
             'Organo.required_if' => 'Si desea ser donador, debe seleccionar al menos un órgano.',
-            'min' => 'Complete el campo correctamente',
-            'max' => 'Ha excedido la cantidad de caracteres establecidos',
-            'Telefono.digits' => 'El teléfono debe tener exactamente 10 dígitos.',
-            'Telefono.unique' => 'Este teléfono ya ha sido registrado'
+            'Telefono.digits'    => 'El teléfono debe tener exactamente 10 dígitos.'
         ];
-        $this->validate($request,$campos,$mensaje,[
-            'Nombre' => 'Nombre',
-            'ApPaterno' => 'Apellido paterno',
-            'ApMaterno' => 'Apellido materno',
-            'FechaNac' => 'Fecha de nacimiento',
-            'Ocupacion' => 'Ocupacion',
-            'EstCiv' => 'Estado civil',
-            'Estudios' => 'Estudios',
-            'EstadoProc' => 'Entidad de procedencia',
-            'Religion' => 'Religión',
-            'CURP' => 'CURP',
-            'Sexo' => 'Sexo',
-            'estadoNac' => 'Estado de Nacimiento', 
-            'Alcaldia' => 'Municipio o Alcaldía',
-            'Colonia' => 'Localidad',
-            'Donador' => 'solicitado', //XD
-            'Organo' => 'Órgano',
-            'Referencias' => 'Referencias',
-            'Telefono' => 'Telefono',
-            'Pregunta' => 'solicitado',
-            'Respuesta' => 'solicitado',
-        ]);
-        $this->validate($request,$campos,$mensaje,[
-            'Nombre' => 'required',
-            'Organo' => 'required|array'
-        ]);
-        
-        $datosUsuario = $request->except(['_token']);
-        $organosSeleccionados = $request->input('Organo'); 
-            unset($datosUsuario['Organo']);
 
-    foreach ($datosUsuario as $key => $value) {
-        if(is_string($value)){
-            $value = str_replace(
-                ['Á','É','Í','Ó','Ú','á','é','í','ó','ú'],
-                ['A','E','I','O','U','A','E','I','O','U'],
-                $value
-            );
-            $datosUsuario[$key] = strtoupper($value);
-        }
-    }
+        $this->validate($request, $campos, $mensaje);
 
-    DB::beginTransaction();
+        // Capturamos los datos
+        $datosUsuario = $request->except(['_token', 'Organo']);
+        $organosSeleccionados = $request->input('Organo');
 
+        // ¡ZONA PURGADA! Ya no hay código de limpieza de acentos ni strtoupper. 
+        // Los textos libres (Nombre, etc.) se pueden guardar como los escriba el usuario y los selects van numéricos.
+
+        DB::beginTransaction();
         try {
-            
+            // Guardamos el registro limpio
             $donante = Donante::create($datosUsuario);
 
-            if (!empty($organosSeleccionados)) {
+            // Relación muchos a muchos con la tabla pivote
+            if ($request->input('Donador') === 'SI' && !empty($organosSeleccionados)) {
                 $donante->organos()->attach($organosSeleccionados);
             }
 
@@ -181,7 +176,7 @@ class DonanteController extends Controller
 
         } catch (\Exception $e) {
             DB::rollBack();
-            return "Error al guardar: " . $e->getMessage();
+            return back()->withInput()->withErrors(['error' => 'Error al guardar: ' . $e->getMessage()]);
         }
     }
 
