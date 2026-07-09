@@ -70,10 +70,10 @@
                             @endif
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="telefono" class="font-weight-bold">Teléfono</label>
-                            <input name="telefono" type="tel" class="form-control input" minlength="10" maxlength="10" id="telefono" value="{{ isset($user->telefono) ? $user->telefono : old('telefono') }}">
-                            @if($errors->has('telefono'))
-                                <span class="text-danger small"><strong>{{ $errors->first('telefono') }}</strong></span>
+                            <label for="login" class="font-weight-bold">Usuario</label>
+                            <input name="login" type="text" class="form-control input" maxlength="10" value="{{ isset($user->login) ? $user->login : old('login') }}">
+                            @if($errors->has('login'))
+                                <span class="text-danger small"><strong>{{ $errors->first('login') }}</strong></span>
                             @endif
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                                 <span class="text-danger small"><strong>{{ $errors->first('email') }}</strong></span>
                             @endif
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label for="password" class="font-weight-bold">Contraseña</label>
                             <input name="password" type="password" placeholder="••••••••" 
                                 style="text-transform: none;" class="form-control input mb-2" id="password" 
@@ -113,6 +113,13 @@
                             </label>
                             @if($errors->has('password'))
                                 <span class="text-danger small"><strong>{{ $errors->first('password') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="telefono" class="font-weight-bold">Teléfono</label>
+                            <input name="telefono" type="tel" class="form-control input" minlength="10" maxlength="10" id="telefono" value="{{ isset($user->telefono) ? $user->telefono : old('telefono') }}">
+                            @if($errors->has('telefono'))
+                                <span class="text-danger small"><strong>{{ $errors->first('telefono') }}</strong></span>
                             @endif
                         </div>
                     </div>

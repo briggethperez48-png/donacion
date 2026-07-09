@@ -140,7 +140,7 @@
                                                     </a>
                                                 </li>
                                             </ul>
-                                        @endCan
+                                        @endcan
                                     </li>
                                 </div>
                             @endcan

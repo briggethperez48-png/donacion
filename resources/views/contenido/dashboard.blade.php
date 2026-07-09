@@ -15,18 +15,7 @@
             <div id="info" style="min-height: 24px; margin-bottom: 10px;"></div>
         </div>
         <div class="containerD">
-            <div class="swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        @include('components.mexicoSVG')
-                    </div>
-                    <div class="swiper-slide">
-                        @include('components.cdmxSVG')
-                    </div>
-                </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-            </div>
+            @include('components.cdmxSVG')
         </div>
         @include('components.footerGen')
     </div>
@@ -37,22 +26,6 @@
 
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
-    $('#modalGraficaLugar').appendTo("body");
-  // Inicialización de Swiper
-  const swiper = new Swiper('.swiper', {
-    autoplay: {
-      delay: 5000,
-      disableOnDirection: false,
-    },
-    loop: true,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
-</script>
 
 <script>
     // Usamos el document directamente para evitar problemas de sincronización en el DOM con Swiper

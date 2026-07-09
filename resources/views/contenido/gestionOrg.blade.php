@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="gestion table-responsive">
-            <table class="border-2 shadow-sm table">
+            <table class="border-2 shadow-sm table text-uppercase">
                 <thead class="text-center">
                     <tr>
                         <th scope="col">ID</th>
@@ -35,7 +35,6 @@
                         <th scope="col">CURP</th>
                         <th scope="col">Sexo</th>
                         <th scope="col">Ocupación</th>
-                        <th scope="col">Procedencia</th>
                         <th scope="col">Domicilio</th>
                         <th scope="col">Donaciones</th>
                         <th scope="col">Telefono</th>
@@ -47,18 +46,17 @@
                         <tr>
                             @php 
                                 $nomCom = $dato->Nombre . ' ' . $dato->ApPaterno . ' ' . $dato->ApMaterno;
-                                $domicilio = $dato->EstadoProc . ', ' . $dato->Alcaldia . ', ' . $dato->Colonia;
+                                $domicilio = $dato->estadoNac. ', ' . $dato->Alcaldia . ', ' . $dato->Colonia;
                             @endphp
-                            <td scope="row">{{$dato->id}}</td>
+                            <td scope="row">{{$dato->id_donador}}</td>
                             <td>{{$nomCom}}</td>
                             <td>{{$dato->CURP}}</td>
-                            <td>{{ $dato->Sexo == 'HOMBRE' ? 'M' : ($dato->Sexo == 'MUJER' ? 'F' : 'O') }}</td>
+                            <td>{{ $dato->Sexo == '47' ? 'M' : ($dato->Sexo == '48' ? 'F' : 'O') }}</td>
                             <td>{{$dato->Ocupacion}}</td>
-                            <td>{{$dato->estadoNac}}</td>
                             <td>{{$domicilio}}</td>
                             <td>
                                 @if($dato->organos && $dato->organos->isNotEmpty())
-                                    {{ $dato->organos->implode('nombre', ', ') }}
+                                    {{ $dato->organos->implode('organo', ', ') }}
                                 @else
                                     NINGUNO
                                 @endif

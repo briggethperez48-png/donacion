@@ -107,7 +107,7 @@ class BuscadorController extends Controller
         ->when($request->has('Organo') && is_array($request->Organo) && count($request->Organo) > 0, function ($q) use ($request) {
             $q->whereHas('organos', function($sub) use ($request) {
                 // Buscamos directamente por el ID del órgano ya que el array trae IDs
-                $sub->whereIn('organos.id', $request->Organo); 
+                $sub->whereIn('organos.id_organo', $request->Organo); 
             });
         })
         // Cambiado al ID correcto de tu migración

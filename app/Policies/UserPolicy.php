@@ -10,7 +10,7 @@ class UserPolicy
     use HandlesAuthorization;
 
     public function before(User $user, $ability) {
-        if ($user->hasRole('SuperAdmin')) {
+        if ($user->hasRole('Administrador')) {
             return true;
         }
     }
@@ -34,7 +34,7 @@ class UserPolicy
      * @return mixed
      */
     public function create(User $user) {
-        return $user->hasPermissionTo('Users create');
+        return $user->hasPermissionTo('Create User');
     }
 
     /**
@@ -45,11 +45,11 @@ class UserPolicy
      * @return mixed
      */
     public function update(User $user, User $model) {
-        if ($model->hasRole('SuperAdmin')) {
+        if ($model->hasRole('Administrador')) {
             return false;
         }
 
-        return $user->hasPermissionTo('Users edit');
+        return $user->hasPermissionTo('Update User');
     }
 
     /**
@@ -64,10 +64,10 @@ class UserPolicy
             return false; 
         }
 
-        if ($model->hasRole('SuperAdmin')) {
+        if ($model->hasRole('Administrador')) {
             return false;
         }
 
-        return $user->hasPermissionTo('Users destroy');
+        return $user->hasPermissionTo('Delete User');
     }
 }

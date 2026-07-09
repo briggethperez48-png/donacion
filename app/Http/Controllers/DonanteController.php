@@ -17,6 +17,13 @@ class DonanteController extends Controller
     public function index(Request $request) {
         $query = trim($request->get('busqueda'));
 
+        $sexos            = DB::table('catalogos')->where('tipo', 'Sexo')->get();
+        $estados_civiles  = DB::table('catalogos')->where('tipo', 'EstCiv')->get();
+        $grados_estudios  = DB::table('catalogos')->where('tipo', 'Estudios')->get();
+        $tipos_donacion   = DB::table('catalogos')->where('tipo', 'Tipo')->get();
+        $religiones       = DB::table('catalogos')->where('tipo', 'Religion')->get();
+        $ocupaciones      = DB::table('catalogos')->where('tipo', 'Ocupacion')->get();
+
         $donantes = Donante::with('organos')
             ->when($query, function ($filter) use ($query) {
                 return $filter->where(function($q) use ($query) {
@@ -32,7 +39,10 @@ class DonanteController extends Controller
 
         $donantes->appends(['busqueda' => $query]);
 
-        return view('contenido.gestionOrg', compact('donantes', 'query'));
+        return view('contenido.gestionOrg', compact('donantes', 'query',
+            'sexos', 'estados_civiles', 'grados_estudios', 'tipos_donacion', 
+            'religiones', 'ocupaciones'
+        ));
     }
 
     /**

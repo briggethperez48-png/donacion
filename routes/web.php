@@ -42,17 +42,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::prefix('content')->group(function () {
         Route::view('/', 'contenido/dashboard')->name('content'); 
         Route::get('buscador', 'BuscadorController@index')
-            ->name('buscador.index')
-            ->middleware('role:SUPERADMIN|ADMIN|EDITOR|READER');
+            ->name('buscador.index');
         Route::post('buscador', 'BuscadorController@buscar');
         Route::get('reporte', 'ReporteController@index')
             ->name('reporte.index')
-            ->middleware('role:SUPERADMIN|ADMIN|EDITOR|READER');
+            ->middleware('role:Administrador|developer|EDITOR|READER');
         Route::get('reporte-export', 'ReporteController@export')
             ->name('reporte.export');
         Route::get('reporte-users', 'UsersReporteController@index')
             ->name('reporteUser.index')
-            ->middleware('role:SUPERADMIN|ADMIN');
+            ->middleware('role:Administrador|developer');
         Route::get('reporte-users-export', 'UsersReporteController@export')
             ->name('reporteUser.export');
         Route::get('estadisticas', 'GraficasController@verGraficas')
@@ -61,6 +60,6 @@ Route::group(['middleware' => 'auth'], function () {
             ->name('estadisticas.organosLugar');
         Route::get('novedades', 'AuditoriasController@index')
             ->name('novedades.index')
-            ->middleware('role:SUPERADMIN');
+            ->middleware('role:Administrador|developer');
     });
 });

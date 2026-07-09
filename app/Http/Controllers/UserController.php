@@ -49,6 +49,7 @@ class UserController extends Controller
     }
 
     public function store(Request $request) {
+        dd($request->all());
         $this->authorize('create', User::class);
 
         // ACTUALIZACIÓN DE ROLES: Blindamos 'Administrador' y 'developer'

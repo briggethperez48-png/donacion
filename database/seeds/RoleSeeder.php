@@ -54,18 +54,18 @@ class RoleSeeder extends Seeder
             'description' => 'Reporteador'
         ]);
             //Tiene permisos de consulta y de generar reportes de donadores, mas no de usuarios
-        $role7 = Role::create([
-            'name'=>'Unidades Admin',
-            'slug' => 'unidadadmin',
-            'description' => 'Administrador de unidades para los usuarios'
-        ]);
-            //Unidades es el equivalente al histórico de "ubicaciones", el cual fue cambiado por fines conceptuales
+        // $role7 = Role::create([
+        //     'name'=>'Unidades Admin',
+        //     'slug' => 'unidadadmin',
+        //     'description' => 'Administrador de unidades para los usuarios'
+        // ]);
+        //     //Unidades es el equivalente al histórico de "ubicaciones", el cual fue cambiado por fines conceptuales
 
-        $role8 = Role::create([
-            'name'=> 'Instituciones Admin',
-            'slug' => 'institucionesadmin',
-            'description' => 'Administrador de instituciones para los usuarios'
-        ]);
+        // $role8 = Role::create([
+        //     'name'=> 'Instituciones Admin',
+        //     'slug' => 'institucionesadmin',
+        //     'description' => 'Administrador de instituciones para los usuarios'
+        // ]);
 
         $role9 = Role::create([
             'name' => 'inactivo',
@@ -76,7 +76,7 @@ class RoleSeeder extends Seeder
 
             
             //Sólo es válido para los roles ACTIVOS, el rol número 9 no forma parte
-        $allRoles = [$role1, $role2, $role3, $role4, $role5, $role6, $role7, $role8];
+        $allRoles = [$role1, $role2, $role3, $role4, $role5, $role6];
 
             // Permisos. -> 05.Jul.2026. Varios han sido añadidos o modificados debido a la funcionalidad anterior del proyecto
 
@@ -90,12 +90,12 @@ class RoleSeeder extends Seeder
             'name'=>'Mostrar Donador',
             'slug' => 'donadores.show',
             'description' => 'mostrar donador'
-        ])->syncRoles([$role1, $role2, $role3, $role4, $role5, $role7, $role8]);
+        ])->syncRoles([$role1, $role2, $role3, $role4, $role5]);
         Permission::create([
             'name'=>'Buscar Donadores',
             'slug' => 'donadores.search',
             'description' => 'buscar donadores'
-        ])->syncRoles([$role1, $role2, $role3, $role4, $role5, $role7, $role8]);
+        ])->syncRoles([$role1, $role2, $role3, $role4, $role5]);
 
             //Users
         Permission::create([
@@ -161,54 +161,54 @@ class RoleSeeder extends Seeder
             'name'=>'List instituciones', //Se refiere a las dependencias
             'slug' => 'instituciones.index', //En vez de "list", se les colocará "index" para ser explícitos con el método
             'description' => 'Permission to read instituciones'
-        ])->syncRoles([$role2, $role3, $role8]);
+        ])->syncRoles([$role2, $role3]);
         Permission::create([
             'name'=>'Create instituciones',
             'slug' => 'instituciones.create',
             'description' => 'Permission to create instituciones'
-        ])->syncRoles([$role2, $role3, $role8]);
+        ])->syncRoles([$role2, $role3]);
         Permission::create([
             'name'=>'Update instituciones',
             'slug' => 'instituciones.update',
             'description' => 'Permission to update instituciones'
-        ])->syncRoles([$role2, $role3, $role8]);
+        ])->syncRoles([$role2, $role3]);
         Permission::create([
             'name'=>'Delete instituciones',
             'slug' => 'instituciones.delete',
             'description' => 'Permission to delete instituciones'
-        ])->syncRoles([$role2, $role3, $role8]);
+        ])->syncRoles([$role2, $role3]);
         Permission::create([
             'name'=>'Show institucion',
             'slug' => 'institucion.show',
             'description' => 'Permission to show an institucion'
-        ])->syncRoles([$role2, $role3, $role8]);
+        ])->syncRoles([$role2, $role3]);
 
             //Unidades
         Permission::create([
             'name'=>'List unidades', //Se refiere a las ubicaciones
             'slug' => 'unidades.index', //En vez de "list", se les colocará "index" para ser explícitos con el método
             'description' => 'Permission to read unidades'
-        ])->syncRoles([$role2, $role3, $role7]);
+        ])->syncRoles([$role2, $role3]);
         Permission::create([
             'name'=>'Create unidades',
             'slug' => 'unidades.create',
             'description' => 'Permission to create unidades'
-        ])->syncRoles([$role2, $role3, $role7]);
+        ])->syncRoles([$role2, $role3]);
         Permission::create([
             'name'=>'Update unidades',
             'slug' => 'unidades.update',
             'description' => 'Permission to update unidades'
-        ])->syncRoles([$role2, $role3, $role7]);
+        ])->syncRoles([$role2, $role3]);
         Permission::create([
             'name'=>'Delete unidades',
             'slug' => 'unidades.delete',
             'description' => 'Permission to delete unidades'
-        ])->syncRoles([$role2, $role3, $role7]);
+        ])->syncRoles([$role2, $role3]);
         Permission::create([
             'name'=>'Show unidad',
             'slug' => 'unidad.show',
             'description' => 'Permission to show an unidad'
-        ])->syncRoles([$role2, $role3, $role7]);
+        ])->syncRoles([$role2, $role3]);
 
             //Reporte de donadores -> Quedará eliminado y será reemplazado por los nuevos permisos
         // Permission::create([
@@ -266,7 +266,7 @@ class RoleSeeder extends Seeder
             'name' => 'Reportes index',
             'slug' => 'report.index',
             'description' => 'Permission to read a report'
-        ])->syncRoles([$role2, $role3, $role4, $role5, $role6, $role7, $role8]);
+        ])->syncRoles([$role2, $role3, $role6]);
         Permission::create([
             'name' => 'Reportes export',
             'slug' => 'report.export',
@@ -276,12 +276,12 @@ class RoleSeeder extends Seeder
             'name' => 'Reportes Usuarios Index',
             'slug' => 'reportUser.index',
             'description' => 'Permission to read a report user'
-        ])->syncRoles([$role1, $role2, $role4, $role5]);
+        ])->syncRoles([$role2, $role3, $role4]);
         Permission::create([
             'name' => 'Reportes Usuarios Export',
             'slug' => 'reportUser.export',
             'description' => 'Permission to export a report user'
-        ])->syncRoles([$role1, $role2, $role4]);
+        ])->syncRoles([$role2, $role3, $role4]);
         // Permission::create([
         //     'name'=>'Reportes Usuarios Eliminados',
         //     'slug' => '',

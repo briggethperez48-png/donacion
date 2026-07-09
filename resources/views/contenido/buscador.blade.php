@@ -29,26 +29,27 @@
                                 class="form-control input" id="Nombre" value="{{ isset($donante->Nombre) ? $donante->Nombre : old('Nombre') }}">
                         </div>
 						<div class="form-group col-md-4">
-							<label for="EstadoProc" class="font-weight-bold">Estado de Procedencia</label>
-							<select name="EstadoProc" id="Entidad" data-dependent="Municipio" class="dynamic form-control input">
-								<option value="">SELECCIONE UNO...</option>
-								@foreach($estado_list as $estado)
-									@php
-										$dbEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($donante->EstadoProc ?? '')));
-										$listEstado = strtoupper(str_replace(['Á','É','Í','Ó','Ú'], ['A','E','I','O','U'], trim($estado->Entidad)));
-									@endphp
-									<option value="{{ $listEstado }}" {{ $dbEstado == $listEstado ? 'selected' : '' }}>
-										{{ $estado->Entidad }}
-									</option>
-								@endforeach
-							</select>
-						</div>
-						<div class="form-group col-md-4" id="MunicipioI" style="{{ old('Alcaldia', $donante->Alcaldia ?? '') ? '' : 'display:none;' }}">
-							<label for="Alcaldia" class="font-weight-bold">Alcaldía</label>
-							<select name="Alcaldia" id="Municipio" class="dynamic form-control input">
-								<option value="">-</option>
-							</select>
-						</div>
+                                <label for="EstadoProc" class="font-weight-bold">Estado de Procedencia</label>
+                                <select name="EstadoProc" id="EstadoProc" data-dependent="Alcaldia" class="form-control input text-uppercase">
+                                    <option value="">SELECCIONE UNO</option>
+                                    @foreach($estado_list as $est)
+                                        <option value="{{ $est->id_estado }}" class="text-uppercase">{{ $est->nombre_estado }}</option>
+                                    @endforeach
+                                </select>
+                                @if($errors->has('EstadoProc'))
+                                    <span class="text-danger small"><strong>{{ $errors->first('EstadoProc') }}</strong></span>
+                                @endif
+                            </div>
+
+                            <div class="form-group col-md-4" id="MunicipioI" style="{{ old('Alcaldia', $donante->Alcaldia ?? '') ? '' : 'display:none;' }}">
+                                <label for="Alcaldia" class="font-weight-bold">Alcaldía</label>
+                                <select name="Alcaldia" id="Alcaldia" data-dependent="Colonia" class="text-uppercase form-control input">
+                                    <option class="text-uppercase" value="">-</option>
+                                </select>
+                                @if($errors->has('Alcaldia'))
+                                    <span class="text-danger small"><strong>{{ $errors->first('Alcaldia') }}</strong></span>
+                                @endif
+                            </div>
 					</div>
 					<div>
 						<div class="row">
@@ -58,31 +59,22 @@
                                 </div>
                                 <div class="row px-3 mt-2">
                                     @php
-                                            $lista_organos = [
-                                            'PULMONES' => 'PULMONES', 'HUESO' => 'HUESO', 'CORAZON' => 'CORAZÓN',
-                                            'CORNEAS' => 'CÓRNEAS', 'RIÑON' => 'RIÑÓN', 'VALVULAS' => 'VÁLVULAS',
-                                            'PIEL' => 'PIEL', 'PANCREAS' => 'PÁNCREAS', 'TENDONES' => 'TENDONES', 'HIGADO' => 'HÍGADO'
-                                            ]; 
-                                                $db_organos = $donante->Organo ?? [];
-                                            if (is_string($db_organos)) {
-                                                $db_organos = explode(',', $db_organos);
-                                            }
-                                            $organosSeleccionados = old('Organo', $db_organos);
+                                        $seleccionados = old('Organo', isset($donante) ? $donante->organos->pluck('id_organo')->toArray() : []);
                                     @endphp
 
-                                    @foreach($lista_organos as $claveBD => $nombreVisual)
+                                    @foreach($todos_los_organos as $organo)
                                         <div class="col-6 col-md-3 mb-3">
-                                                <div class="custom-control custom-checkbox">
-                                                        <input name="Organo[]" type="checkbox" 
-                                                                class="checkbox custom-control-input organo-checkbox"
-                                                                id="check{{ $claveBD }}" 
-                                                                value="{{ $claveBD }}"
-                                                                {{ (is_array($organosSeleccionados) && in_array($claveBD, $organosSeleccionados)) ? 'checked' : '' }}
-                                                                >
-                                                        <label class="custom-control-label ml-1 font-weight-bold" for="check{{ $claveBD }}">
-                                                                {{ $nombreVisual }}
-                                                        </label>
-                                                </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input name="Organo[]" type="checkbox" 
+                                                    class="checkbox custom-control-input"
+                                                    id="check{{ $organo->id_organo }}" 
+                                                    value="{{ $organo->id_organo }}"
+                                                    {{ in_array($organo->id_organo, $seleccionados) ? 'checked' : '' }}>
+                                                
+                                                <label class="custom-control-label ml-1 font-weight-bold" for="check{{ $organo->id_organo }}">
+                                                    {{ $organo->organo }}
+                                                </label>
+                                            </div>
                                         </div>
                                     @endforeach
 
@@ -98,10 +90,10 @@
 							<div class="form-group col-md-4">
 								<label for="Sexo" class="font-weight-bold">Sexo</label>
 								<select name="Sexo" id="Sexo" class="form-control input">
-									<option value="">SELECCIONE UNO...</option>
-									<option value="HOMBRE" {{ old('Sexo', $donante->Sexo ?? '') == 'HOMBRE' ? 'selected' : '' }}>HOMBRE</option>>
-									<option value="MUJER" {{ old('Sexo', $donante->Sexo ?? '') == 'MUJER' ? 'selected' : '' }}>MUJER</option>>
-									<option value="OTRO" {{ old('Sexo', $donante->Sexo ?? '') == 'OTRO' ? 'selected' : '' }}>OTRO</option>>
+                                    <option value="">SELECCIONE UNO</option>
+									@foreach($sexos as $sexo)
+                                        <option value="{{ $sexo->id_catalogo }}">{{ $sexo->valor }}</option>
+                                    @endforeach
 								</select>
 							</div>
 							<div class="form-group col-md-4">
@@ -155,26 +147,23 @@
                                                         @foreach($donantes as $dato)
                                                         <tr>
                                                                 @php 
-                                                                $nomCom = $dato->Nombre . ' ' . $dato->ApPaterno . ' ' . $dato->ApMaterno;
-                                                                $domicilio = $dato->EstadoProc . ', ' . $dato->Alcaldia . ', ' . $dato->Colonia;
-                                                                @endphp
-                                                                <td scope="row">{{$dato->id}}</td>
-                                                                <td>{{$nomCom}}</td>
-                                                                <td>{{$dato->CURP}}</td>
-                                                                <td>{{ $dato->Sexo == 'HOMBRE' ? 'M' : ($dato->Sexo == 'MUJER' ? 'F' : 'O') }}</td>
-                                                                <td>{{$dato->Ocupacion}}</td>
-                                                                <td>{{$dato->EstadoProc}}</td>
-                                                                <td>{{$domicilio}}</td>
-                                                                <td>
-                                                                    @if($dato->organos->count() > 0)
-																		@foreach($dato->organos as $organo)
-																				{{ $organo->nombre }}
-																		@endforeach
-																	@else
-																		NINGUNO
-																	@endif
-                                                                </td>
-                                                                <td>{{$dato->Telefono}}</td>
+                                $nomCom = $dato->Nombre . ' ' . $dato->ApPaterno . ' ' . $dato->ApMaterno;
+                                $domicilio = $dato->estadoNac. ', ' . $dato->Alcaldia . ', ' . $dato->Colonia;
+                            @endphp
+                            <td scope="row">{{$dato->id_donador}}</td>
+                            <td>{{$nomCom}}</td>
+                            <td>{{$dato->CURP}}</td>
+                            <td>{{ $dato->Sexo == '47' ? 'M' : ($dato->Sexo == '48' ? 'F' : 'O') }}</td>
+                            <td>{{$dato->Ocupacion}}</td>
+                            <td>{{$domicilio}}</td>
+                            <td>
+                                @if($dato->organos && $dato->organos->isNotEmpty())
+                                    {{ $dato->organos->implode('organo', ', ') }}
+                                @else
+                                    NINGUNO
+                                @endif
+                            </td>
+                            <td>{{$dato->Telefono}}</td>
                                                         </tr>
                                                         @endforeach
                                                 </tbody>
@@ -203,53 +192,75 @@
 @endcan
 @section('scripts')
         <script>
-            $(document).ready(function(){
-                function cargarDependiente(elementoPadre, valorParaSeleccionar = null) {
-                    var selectID = $(elementoPadre).attr("id");
-                    var value = $(elementoPadre).val();
-                    var dependent = $(elementoPadre).data('dependent');
-                    var _token = $('input[name="_token"]').val();
+            $(document).ready(function() {
+                
+                // 1. AJAX: Cambio de Estado de Procedencia
+                $('#EstadoProc').change(function() {
+                    var estado_id = $(this).val();
+                    var dependent = $(this).data('dependent'); // "Alcaldia"
 
-                    if (value != '') {
-                        $('#' + dependent + 'I').show();
-
+                    if(estado_id != '') {
                         $.ajax({
-                            url: "{{ route('buscador.fetch') }}",
+                            url: "{{ route('donante.fetch') }}",
                             method: "POST",
                             data: {
-                                select: selectID, 
-                                value: value, 
-                                _token: _token, 
-                                dependent: dependent
+                                select: 'c_estado',
+                                value: estado_id,
+                                dependent: dependent,
+                                _token: '{{ csrf_token() }}'
                             },
                             success: function(result) {
                                 $('#' + dependent).html(result);
-
-                                if (valorParaSeleccionar) {
-                                    $('#' + dependent).val(valorParaSeleccionar.trim());
-
-                                    if ($('#' + dependent).hasClass('dynamic')) {
-                                        cargarDependiente($('#' + dependent), "{{ old('Colonia', $donante->Colonia ?? '') }}");
-                                    }
-                                }
+                                
+                                // CORREGIDO: Ahora limpia el select usando el id="Colonia" real
+                                $('#Colonia').html('<option value="">-</option>'); 
+                                
+                                // Ocultamos el contenedor de colonia por si estaba abierto antes
+                                $('#LocalidadI').fadeOut();
+                                
+                                // Mostramos el contenedor de la Alcaldía
+                                $('#MunicipioI').fadeIn();
                             }
                         });
+                    } else {
+                        // Si se limpia el estado, ocultamos contenedores y reseteamos opciones
+                        $('#MunicipioI').fadeOut();
+                        $('#LocalidadI').fadeOut();
+                        $('#Alcaldia').html('<option value="">-</option>');
+                        $('#Colonia').html('<option value="">-</option>');
                     }
-                }
-
-                $('.dynamic').change(function(){
-                    if($(this).attr("id") == "Entidad") {
-                        $('#Localidad').html('<option value="">-</option>');
-                        $('#LocalidadI').hide();
-                    }
-                    cargarDependiente(this);
                 });
 
-                var entidadYaSeleccionada = $('#Entidad').val();
-                
-                if(entidadYaSeleccionada != '') {
-                    cargarDependiente($('#Entidad'), "{{ old('Alcaldia', $donante->Alcaldia ?? '') }}");
-                }
+                // 2. AJAX: Cambio de Alcaldía
+                $('#Alcaldia').change(function() {
+                    var municipio_id = $(this).val();
+                    var estado_id = $('#EstadoProc').val();
+                    var dependent = $(this).data('dependent'); // "Colonia"
+
+                    if(municipio_id != '') {
+                        $.ajax({
+                            url: "{{ route('donante.fetch') }}",
+                            method: "POST",
+                            data: {
+                                select: 'c_mnpio',
+                                value: municipio_id,
+                                estado_id: estado_id,
+                                dependent: dependent,
+                                _token: '{{ csrf_token() }}'
+                            },
+                            success: function(result) {
+                                // Como tu HTML tiene id="Colonia", el string 'Colonia' inyectará el HTML aquí perfectamente
+                                $('#' + dependent).html(result);
+                                
+                                // Mostramos el contenedor de la Colonia
+                                $('#LocalidadI').fadeIn();
+                            }
+                        });
+                    } else {
+                        $('#LocalidadI').fadeOut();
+                        $('#Colonia').html('<option value="">-</option>');
+                    }
+                });
             });
         </script>
 @endsection

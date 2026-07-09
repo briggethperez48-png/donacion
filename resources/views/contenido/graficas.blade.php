@@ -43,34 +43,34 @@
         </div>
 
         <section class="d-flex flex-column align-items-center graficas">
-            <div class="d-flex flex-wrap justify-content-center w-100">
+            <!-- <div class="d-flex flex-wrap justify-content-center w-100">
                 <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3">
                     <h3 class="text-center h5">Cantidad de Registros por Entidad</h3>
                     <canvas id="graficaCantidadEstado"></canvas>
-                </div>
+                </div> 
                 <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3">
                     <h3 class="text-center h5">Donantes y No Donantes</h3>
                     <canvas id="graficaDonador"></canvas>
                 </div>
-            </div>
+            </div> -->
 
             <div class="d-flex flex-wrap justify-content-center w-100">
-                <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3">
+                <div style="width: 80%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3">
                     <h3 class="text-center h5">Distribución de Órganos</h3>
                     <canvas id="graficaOrganos"></canvas>
                 </div>
-                <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3">
+                <div style="width: 80%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3">
                     <h3 class="text-center h5">Alcaldías Solicitantes</h3>
                     <canvas id="graficaAlcaldias"></canvas>
                 </div>
             </div>
 
             <div class="d-flex flex-wrap justify-content-center w-100">
-                <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3">
+                <!-- <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3">
                     <h3 class="text-center h5">Órganos por Entidad Procedente</h3>
                     <canvas id="graficaOrganosEstados"></canvas>
-                </div>
-                <div style="width: 45%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3">
+                </div> -->
+                <div style="width: 80%; min-width: 300px;" class="grafica m-3 border-1 shadow rounded p-3">
                     <h3 class="text-center h5">Tendencia de Donaciones por Sexo</h3>
                     <canvas id="graficaOrganosSexo"></canvas>
                 </div>
@@ -93,34 +93,7 @@
     ];
 
     // 1. Gráfica de Cantidad por Estado -> TIPO BARRA VERTICAL
-    new Chart(document.getElementById('graficaCantidadEstado'), {
-        type: 'bar',
-        data: {
-            labels: {!! json_encode($labelsC) !!},
-            datasets: [{
-                label: 'Registros',
-                data: {!! json_encode($valoresC) !!},
-                backgroundColor: coloresBg,
-                borderColor: coloresBorder,
-                borderWidth: 1
-            }]
-        },
-        options: { scales: { y: { beginAtZero: true } } }
-    });
-
-    // 2. Gráfica de Donador y No Donador -> TIPO PASTEL (PIE)
-    new Chart(document.getElementById('graficaDonador'), {
-        type: 'pie', 
-        data: {
-            labels: {!! json_encode($labelsN) !!},
-            datasets: [{
-                data: {!! json_encode($valoresN) !!},
-                backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)'],
-                borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
-                borderWidth: 1
-            }]
-        }
-    });
+    
 
     // 3. Gráfica de Órganos -> TIPO DONA (DOUGHNUT)
     var ctxOrganos = document.getElementById('graficaOrganos').getContext('2d');
@@ -184,18 +157,18 @@
     });
 
     // 5. Gráfica de Órganos por Estado -> TIPO ÁREA POLAR (POLAR AREA)
-    new Chart(document.getElementById('graficaOrganosEstados'), {
-        type: 'polarArea', 
-        data: {
-            labels: {!! json_encode($labelsP) !!},
-            datasets: [{
-                data: {!! json_encode($valoresP) !!},
-                backgroundColor: coloresBg,
-                borderColor: coloresBorder,
-                borderWidth: 1
-            }]
-        }
-    });
+    // new Chart(document.getElementById('graficaOrganosEstados'), {
+    //     type: 'polarArea', 
+    //     data: {
+    //         labels: {!! json_encode($labelsP) !!},
+    //         datasets: [{
+    //             data: {!! json_encode($valoresP) !!},
+    //             backgroundColor: coloresBg,
+    //             borderColor: coloresBorder,
+    //             borderWidth: 1
+    //         }]
+    //     }
+    // });
 
     // 6. Gráfica de Donaciones por Sexo -> TIPO LÍNEA
     new Chart(document.getElementById('graficaOrganosSexo'), {

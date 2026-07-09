@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(OrganosSeeder::class);
         $this->call(alcaldiaSeeder::class);
         $this->call(CatalogoSeeder::class);
-        //$this->call(RespuestaSeguridadSeeder::class);
+        $this->call(RespuestaSeguridadSeeder::class);
 
             // Históricos
         $this->call(CatCalleSeeder::class);
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CatModuloSeeder::class);
         $this->call(HistUsuariosSeeder::class);
         $this->call(LineaCapturaSeeder::class);
-        //$this->call(DonanteOrganoSeeder::class);
-        //$this->call(HistDonantesSeeder::class);
+        $this->call(DonanteOrganoSeeder::class);
+        $this->call(HistDonantesSeeder::class);
     }
 }
