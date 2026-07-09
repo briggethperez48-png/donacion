@@ -6,16 +6,11 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
-use App\Area;
-use App\User;
+use App\Area; // Asegúrate de la ruta correcta
+use App\User; // Asegúrate de la ruta correcta
 
 class UsersReporteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         $areas = Area::all();
@@ -24,16 +19,18 @@ class UsersReporteController extends Controller
         $allInputs = $request->all();
         $filtrosReales = $request->except('page');
 
-        $users = new \Illuminate\Pagination\LengthAwarePaginator([], 0, 15);
+        $users = new \Illuminate\Pagination\LengthAwarePaginator([], 0, 20); // Ajustado a 20 para coincidir con paginate
 
         if (!empty($filtrosReales) || $request->has('page')) {
             $users = $this->filtrarUsuarios($request)->paginate(20);
             $users->appends($allInputs);
             
-            if (!empty($filtrosReales) && $users->count() > 0) {
-                session()->now('success', 'Resultados obtenidos correctamente.');
-            } elseif (!empty($filtrosReales) && $users->count() == 0) {
-                session()->now('success', 'No se encontraron registros con los filtros aplicados.');
+            if (!empty($filtrosReales) && !$request->has('page')) {
+                if ($users->count() > 0) {
+                    session()->now('success', 'Resultados obtenidos correctamente.');
+                } else {
+                    session()->now('success', 'No se encontraron registros con los filtros aplicados.');
+                }
             }
         }
 
@@ -48,25 +45,27 @@ class UsersReporteController extends Controller
     {
         return User::withTrashed()
             ->with(['roles', 'relacionArea', 'administrador'])
-            ->when($request->mesIni, function ($q) use ($request) {
+            ->when($request->filled('mesIni'), function ($q) use ($request) {
                 return $q->whereDate('created_at', '>=', $request->mesIni);
             })
-            ->when($request->mesFin, function ($q) use ($request) {
+            ->when($request->filled('mesFin'), function ($q) use ($request) {
                 return $q->whereDate('created_at', '<=', $request->mesFin);
             })
-            ->when($request->roles, function ($q) use ($request) {
+            ->when($request->filled('roles'), function ($q) use ($request) {
                 return $q->role($request->roles);
             })
-            ->when($request->area, function ($q) use ($request) {
+            ->when($request->filled('area'), function ($q) use ($request) {
                 return $q->where('area', $request->area); 
             })
-            ->when($request->status, function ($q) use ($request) {
+            ->when($request->filled('status'), function ($q) use ($request) {
+                // Estandarización de la lógica de SoftDeletes
                 if ($request->status == 'INACTIVO') {
                     return $q->whereNotNull('deleted_at');
-                } else {
-                    return $q->whereNull('deleted_at');
                 }
+                return $q->whereNull('deleted_at');
             })
+            // En usuarios, el id suele ser autoincremental estándar, 
+            // mantenemos orderBy('id', 'desc') como estaba.
             ->orderBy('id', 'desc');
     }
 }

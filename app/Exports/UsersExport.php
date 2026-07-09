@@ -23,19 +23,24 @@ class UsersExport implements FromView, ShouldAutoSize, WithEvents {
         
         $users = User::withTrashed()
             ->with(['roles', 'relacionArea', 'administrador'])
-            ->when($this->request->mesIni, function ($q) {
+            // Filtro por fecha inicio
+            ->when($this->request->filled('mesIni'), function ($q) {
                 return $q->whereDate('created_at', '>=', $this->request->mesIni);
             })
-            ->when($this->request->mesFin, function ($q) {
+            // Filtro por fecha fin
+            ->when($this->request->filled('mesFin'), function ($q) {
                 return $q->whereDate('created_at', '<=', $this->request->mesFin);
             })
-            ->when($this->request->roles, function ($q) {
+            // Filtro por roles
+            ->when($this->request->filled('roles'), function ($q) {
                 return $q->role($this->request->roles);
             })
-            ->when($this->request->area, function ($q) {
+            // Filtro por área
+            ->when($this->request->filled('area'), function ($q) {
                 return $q->where('area', $this->request->area);
             })
-            ->when($this->request->status, function ($q) {
+            // Filtro por estatus (ACTIVO/INACTIVO)
+            ->when($this->request->filled('status'), function ($q) {
                 if ($this->request->status == 'INACTIVO') {
                     return $q->whereNotNull('deleted_at');
                 } else {

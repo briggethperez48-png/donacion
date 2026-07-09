@@ -30,15 +30,15 @@
                             </div>
                             <div class="login-content">
                                 <div class="form-group">
-                                    <label for="email" class="">Correo Electrónico</label>
-                                    <input id="email" type="email" 
-                                        class="input form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" 
-                                        name="email" value="{{ old('email') }}" 
-                                        placeholder="ejemplo@correo.com" required autofocus>
+                                    <label for="login" class="">Login</label>
+                                    <input id="login" type="text" 
+                                        class="input form-control {{ $errors->has('login') ? 'is-invalid' : '' }}" 
+                                        name="login" value="{{ old('login') }}" 
+                                        placeholder="Coloque su usuario" required autofocus>
                                     
-                                    @if ($errors->has('email'))
+                                    @if ($errors->has('login'))
                                         <div class="invalid-feedback">
-                                            <strong>{{ $errors->first('email') }}</strong>
+                                            <strong>{{ $errors->first('login') }}</strong>
                                         </div>
                                     @endif
                                 </div>

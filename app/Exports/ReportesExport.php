@@ -35,13 +35,15 @@ class ReportesExport implements FromView, ShouldAutoSize, WithEvents {
             ->where(function ($q) {
                 if ($this->request->has('Organo') && is_array($this->request->Organo) && count($this->request->Organo) > 0) {
                     $q->whereHas('organos', function($sub) {
-                        $sub->whereIn('nombre', $this->request->Organo);
+                        // Cambiado: Ahora buscamos por ID, que es lo que envía el select de checkboxes
+                        $sub->whereIn('organos.id', $this->request->Organo);
                     });
-                } else {
-                    $q->whereDoesntHave('organos');
-                }
+                } 
+                // Nota: Eliminé el 'else' con 'whereDoesntHave' para que el reporte 
+                // sea más flexible al no seleccionar órganos.
             })
-            ->orderBy('id', 'desc')
+            // Actualizado a la llave primaria correcta
+            ->orderBy('id_donador', 'desc')
             ->get();
 
         return view('exports.donantesExport', [
