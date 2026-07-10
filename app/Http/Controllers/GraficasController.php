@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Organo; 
+use App\Organo;
 
 class GraficasController extends Controller {
     
@@ -20,7 +20,47 @@ class GraficasController extends Controller {
             });
         };
 
-        // 1. Base Join ajustada al nuevo id_donador
+        // -----------------------------------------------------------------
+        // 1. CARGA DE CATÁLOGOS DE TRADUCCIÓN (Para cambiar IDs por Nombres)
+        // -----------------------------------------------------------------
+        $sexos = DB::table('catalogos')->where('tipo', 'Sexo')->pluck('valor', 'id_catalogo')->toArray();
+        
+        // Catálogo de estados
+        $estados = DB::table('municipiosalcaldias')->distinct()->pluck('d_estado', 'c_estado')->toArray();
+        
+        // Catálogo de alcaldías para la CDMX (Clave de entidad '9' o '09')
+        $alcaldiasCDMX = DB::table('municipiosalcaldias')
+            ->whereIn('c_estado', ['9', '09'])
+            ->distinct()
+            ->pluck('D_mnpio', 'c_mnpio')
+            ->toArray();
+
+        // Funciones auxiliares para blindar búsquedas por strings/enteros/ceros a la izquierda
+        $traducirEstado = function($id) use ($estados) {
+            $idStr = (string)$id;
+            $idClean = ltrim($idStr, '0');
+            $idPadded = str_pad($idStr, 2, '0', STR_PAD_LEFT);
+            
+            if (isset($estados[$idStr])) return $estados[$idStr];
+            if (isset($estados[$idClean])) return $estados[$idClean];
+            if (isset($estados[$idPadded])) return $estados[$idPadded];
+            return 'N/E';
+        };
+
+        $traducirAlcaldia = function($id) use ($alcaldiasCDMX) {
+            $idStr = (string)$id;
+            $idClean = ltrim($idStr, '0');
+            $idPadded = str_pad($idStr, 3, '0', STR_PAD_LEFT);
+            
+            if (isset($alcaldiasCDMX[$idStr])) return $alcaldiasCDMX[$idStr];
+            if (isset($alcaldiasCDMX[$idClean])) return $alcaldiasCDMX[$idClean];
+            if (isset($alcaldiasCDMX[$idPadded])) return $alcaldiasCDMX[$idPadded];
+            return $id;
+        };
+
+        // -----------------------------------------------------------------
+        // 2. EJECUCIÓN DE CONSULTAS ORIGINALES
+        // -----------------------------------------------------------------
         $baseJoin = DB::table('donante_organo')
             ->join('donantes', 'donante_organo.id_donador', '=', 'donantes.id_donador');
 
@@ -33,12 +73,12 @@ class GraficasController extends Controller {
             ->groupBy('donantes.Sexo')->get();
 
         $resultadosA = $filtrarPorFecha(clone $baseJoin)
-            ->where('donantes.estadoNac', '9')
+            ->whereIn('donantes.estadoNac', ['9', '09'])
             ->select('donantes.Alcaldia', DB::raw('count(DISTINCT donantes.id_donador) as total'))
             ->groupBy('donantes.Alcaldia')
             ->get();
 
-        // 2. Gráfica 3: Órganos (Usando modelo Organo)
+        // Gráfica de Órganos por Sexo
         $todosLosOrganos = Organo::pluck('organo')->toArray(); 
 
         $organosPorSexo = DB::table('donante_organo')
@@ -56,7 +96,6 @@ class GraficasController extends Controller {
         foreach ($organosPorSexo as $registro) {
             $index = array_search($registro->organo, $todosLosOrganos);
             if ($index !== false) {
-                // Limpieza básica de sexo sin convertir a mayúsculas todo
                 $sexo = trim($registro->Sexo);
                 if (in_array($sexo, ['MASCULINO', 'M', 'HOMBRE', '47'])) {
                     $valoresMasculino[$index] = $registro->total;
@@ -66,7 +105,7 @@ class GraficasController extends Controller {
             }
         }
 
-        // 3. Gráficas 6 y 7
+        // Gráficas de donantes generales
         $queryDonantes = DB::table('donantes');
 
         $resultadosC = $filtrarPorFecha(clone $queryDonantes)
@@ -77,19 +116,44 @@ class GraficasController extends Controller {
             ->select('Donador', DB::raw('count(*) as total'))
             ->groupBy('Donador')->get();
 
+        // -----------------------------------------------------------------
+        // 3. TRADUCCIÓN DINÁMICA DE LABELS ANTES DE ENVIAR A LA VISTA
+        // -----------------------------------------------------------------
+        $labelsP = $resultadosP->map(function($item) use ($traducirEstado) {
+            return $traducirEstado($item->estadoNac);
+        })->toArray();
+
+        $labelsS = $resultadosS->map(function($item) use ($sexos) {
+            return isset($sexos[$item->Sexo]) ? $sexos[$item->Sexo] : $item->Sexo;
+        })->toArray();
+
+        $labelsA = $resultadosA->map(function($item) use ($traducirAlcaldia) {
+            return $traducirAlcaldia($item->Alcaldia);
+        })->toArray();
+
+        $labelsC = $resultadosC->map(function($item) use ($traducirEstado) {
+            return $traducirEstado($item->estadoNac);
+        })->toArray();
+
+        $labelsN = $resultadosN->map(function($item) {
+            if ($item->Donador === 1 || $item->Donador === '1' || $item->Donador === true || $item->Donador === 'SÍ') return 'SÍ';
+            if ($item->Donador === 0 || $item->Donador === '0' || $item->Donador === false || $item->Donador === 'NO') return 'NO';
+            return $item->Donador;
+        })->toArray();
+
         return view('contenido.graficas', [
-            'labelsP' => $resultadosP->pluck('estadoNac')->toArray(),
+            'labelsP' => $labelsP,
             'valoresP' => $resultadosP->pluck('total')->toArray(),
-            'labelsS' => $resultadosS->pluck('Sexo')->toArray(),
+            'labelsS' => $labelsS,
             'valoresS' => $resultadosS->pluck('total')->toArray(),
             'labels' => $todosLosOrganos,        
             'valoresMasculino' => $valoresMasculino,
             'valoresFemenino' => $valoresFemenino,
-            'labelsC' => $resultadosC->pluck('estadoNac')->toArray(),
+            'labelsC' => $labelsC,
             'valoresC' => $resultadosC->pluck('total')->toArray(),
-            'labelsN' => $resultadosN->pluck('Donador')->toArray(),
+            'labelsN' => $labelsN,
             'valoresN' => $resultadosN->pluck('total')->toArray(),
-            'labelsA' => $resultadosA->pluck('Alcaldia')->toArray(),
+            'labelsA' => $labelsA,
             'valoresA' => $resultadosA->pluck('total')->toArray(),
         ]);
     }

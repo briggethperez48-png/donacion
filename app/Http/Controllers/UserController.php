@@ -49,7 +49,6 @@ class UserController extends Controller
     }
 
     public function store(Request $request) {
-        dd($request->all());
         $this->authorize('create', User::class);
 
         // ACTUALIZACIÓN DE ROLES: Blindamos 'Administrador' y 'developer'
@@ -65,10 +64,10 @@ class UserController extends Controller
             'apPaterno' => 'required|string|max:50',
             'apMaterno' => 'required|string|max:50',
             'login'     => 'required|string|max:50|unique:users',
-            'area'      => 'required|integer', 
+            'area'      => 'required', 
             'fechaAlta' => 'required|date', 
             'telefono'  => 'required|numeric|digits:10',
-            'activo'    => 'required|boolean', 
+            // 'activo'    => 'required|boolean', 
             'email'     => 'required|string|email|max:255|unique:users', 
             'password'  => 'required|string|min:6',
         ];
@@ -104,6 +103,8 @@ class UserController extends Controller
         $request->replace($input);
 
         $datosUsuario = $request->except(['_token', 'roles']);
+
+        $datosUsuario['activo'] = true; 
         
         foreach ($datosUsuario as $key => $value) {
             if (is_string($value)) {
@@ -186,16 +187,15 @@ class UserController extends Controller
             'area'      => 'required|integer', 
             'fechaAlta' => 'required|date', 
             'telefono'  => 'required|numeric|digits:10',
-            'activo'    => 'required|boolean',
             'email'     => 'required|string|email|max:255|unique:users,email,' . $user->id, 
-            'password'  => 'nullable|string|min:6|max:12', 
+            'password'  => 'nullable|string|min:6', // Removido max:12 por si la encriptación interfiere, nullable permite dejarlo vacío
         ];
 
         $mensaje = [
             'required'        => ':attribute es requerido',
             'email.unique'    => 'Este correo ya se encuentra registrado.',
             'login.unique'    => 'Este nombre de usuario (login) ya está en uso.',
-            'min'             => 'Complete el campo correctamente',
+            'min'             => 'Complete el campo correctamente (Mínimo 6 caracteres).',
             'max'             => 'Ha excedido la cantidad de caracteres establecidos',
             'telefono.digits' => 'El teléfono debe tener exactamente 10 dígitos.',
         ];
@@ -210,12 +210,12 @@ class UserController extends Controller
                     $datosUsuario[$key] = strtolower($value);
                 } 
                 elseif ($key === 'password') {
-                    continue; 
+                    continue; // Saltamos el formateo de mayúsculas
                 }
                 else {
                     $value = str_replace(
                         ['Á','É','Í','Ó','Ú','á','é','í','ó','ú'],
-                        ['A','E','I','O','U','A','E','I','O','U'],
+                        ['A','E','IOW','U','A','E','I','O','U'],
                         $value
                     );
                     $datosUsuario[$key] = strtoupper($value);
@@ -223,7 +223,12 @@ class UserController extends Controller
             }
         }
         
-        if (empty($datosUsuario['password'])) {
+        // CONTROL CRÍTICO DE LA CONTRASEÑA
+        if (!empty($datosUsuario['password'])) {
+            // Si el usuario escribió una nueva contraseña, se encripta de forma segura
+            $datosUsuario['password'] = bcrypt($datosUsuario['password']);
+        } else {
+            // Si el campo quedó vacío, se elimina del arreglo para mantener la contraseña actual
             unset($datosUsuario['password']);
         }
 
@@ -236,6 +241,11 @@ class UserController extends Controller
 
             $cambios = $user->getChanges();
             unset($cambios['updated_at']);
+
+            // Si la contraseña cambió, no queremos guardar el hash encriptado en el JSON de auditoría por seguridad
+            if (array_key_exists('password', $cambios)) {
+                $cambios['password'] = '******';
+            }
 
             $rolesActuales = $user->getRoleNames()->toArray();
             $cambioRoles = array_diff($rolesAnteriores, $rolesActuales) || array_diff($rolesActuales, $rolesAnteriores);

@@ -1,24 +1,12 @@
 <table>
     <thead>
+        <tr><th></th></tr>
+        <tr><th></th></tr>
+        <tr><th></th></tr>
+        <tr><th></th></tr>
+        <tr><th></th></tr>
         <tr>
-            <th></th>
-        </tr>
-        <tr>
-            <th></th>
-        </tr>
-        <tr>
-            <th></th>
-        </tr>
-        <tr>
-            <th></th>
-        </tr>
-        <tr>
-            <th></th>
-        </tr>
-        <tr>
-            <th>
-                REPORTE DE DONADORES
-            </th>
+            <th style="font-weight: bold; font-size: 14px;">REPORTE DE DONADORES</th>
         </tr>
         <tr>
             <th>ID</th>
@@ -48,32 +36,45 @@
     <tbody>
         @foreach($donadores as $donador)
         <tr>
-            <td>{{ $donador->id }}</td>
+            @php
+                // Traducción de las llaves compuestas y simples de geografía
+                $txtEstadoNac = isset($estados[$donador->estadoNac]) ? $estados[$donador->estadoNac] : $donador->estadoNac;
+                $txtEstadoPro = isset($estados[$donador->estadoNac]) ? $estados[$donador->estadoNac] : $donador->estadoNac; // Usa estadoNac como índice relacional
+                
+                $llaveMnpio   = $donador->estadoNac . '-' . $donador->Alcaldia;
+                $txtAlcaldia  = isset($alcaldias[$llaveMnpio]) ? $alcaldias[$llaveMnpio] : $donador->Alcaldia;
+                
+                $txtColonia   = isset($colonias[$donador->Colonia]) ? $colonias[$donador->Colonia] : $donador->Colonia;
+            @endphp
+            
+            <td>{{ $donador->id_donador }}</td>
             <td>{{ $donador->Nombre }}</td>
             <td>{{ $donador->ApPaterno }}</td>
             <td>{{ $donador->ApMaterno }}</td>
             <td>{{ $donador->FechaNac ? $donador->FechaNac->format('d/m/Y') : ''}}</td>
-            <td>{{ $donador->estadoNac }}</td>
-            <td>{{ $donador->Ocupacion }}</td>
-            <td>{{ $donador->EstCiv }}</td>
-            <td>{{ $donador->Estudios }}</td>
-            <td>{{ $donador->EstadoProc }}</td>
-            <td>{{ $donador->Alcaldia }}</td>
-            <td>{{ $donador->Colonia }}</td>
-            <td>{{ $donador->Religion }}</td>
+            
+            <td>{{ $txtEstadoNac }}</td>
+            <td>{{ isset($ocupaciones[$donador->Ocupacion]) ? $ocupaciones[$donador->Ocupacion] : $donador->Ocupacion }}</td>
+            <td>{{ isset($estados_civ[$donador->EstCiv]) ? $estados_civ[$donador->EstCiv] : $donador->EstCiv }}</td>
+            <td>{{ isset($estudios[$donador->Estudios]) ? $estudios[$donador->Estudios] : $donador->Estudios }}</td>
+            <td>{{ $txtEstadoPro }}</td>
+            <td>{{ $txtAlcaldia }}</td>
+            <td>{{ $txtColonia }}</td>
+            
+            <td>{{ isset($religiones[$donador->Religion]) ? $religiones[$donador->Religion] : $donador->Religion }}</td>
             <td>{{ $donador->CURP }}</td>
-            <td>{{ $donador->Sexo }}</td>
+            <td>{{ isset($sexos[$donador->Sexo]) ? $sexos[$donador->Sexo] : $donador->Sexo }}</td>
             <td>{{ $donador->Donador }}</td>
             <td>
                 @if($donador->organos && $donador->organos->isNotEmpty())
-                    {{ $donador->organos->implode('nombre', ', ') }}
+                    {{ $donador->organos->implode('organo', ', ') }}
                 @else
                     NINGUNO
                 @endif
             </td>
             <td>{{ $donador->Referencias }}</td>
             <td>{{ $donador->Telefono }}</td>
-            <td>{{ $donador->Pregunta }}</td>
+            <td>{{ isset($preguntas[$donador->Pregunta]) ? $preguntas[$donador->Pregunta] : $donador->Pregunta }}</td>
             <td>{{ $donador->Respuesta }}</td>
             <td>{{ $donador->created_at ? $donador->created_at->format('d/m/Y') : '' }}</td>
         </tr>

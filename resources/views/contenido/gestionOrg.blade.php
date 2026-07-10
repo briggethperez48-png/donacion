@@ -46,14 +46,28 @@
                         <tr>
                             @php 
                                 $nomCom = $dato->Nombre . ' ' . $dato->ApPaterno . ' ' . $dato->ApMaterno;
-                                $domicilio = $dato->estadoNac. ', ' . $dato->Alcaldia . ', ' . $dato->Colonia;
+                                
+                                // 1. Obtener Nombre del Estado
+                                $txtEstado = isset($estados[$dato->estadoNac]) ? $estados[$dato->estadoNac] : 'N/E';
+                                
+                                // 2. Obtener Nombre de la Alcaldía (Llave compuesta estado-municipio)
+                                $llaveAlcaldia = $dato->estadoNac . '-' . $dato->Alcaldia;
+                                $txtAlcaldia = isset($alcaldias[$llaveAlcaldia]) ? $alcaldias[$llaveAlcaldia] : 'N/E';
+                                
+                                // 3. Obtener Nombre de la Colonia (Llave simple directa usando tu 'id')
+                                $txtColonia = isset($colonias[$dato->Colonia]) ? $colonias[$dato->Colonia] : $dato->Colonia;
+
+                                // Concatenamos el domicilio final
+                                $domicilio = $txtEstado . ', ' . $txtAlcaldia . ', ' . $txtColonia;
                             @endphp
                             <td scope="row">{{$dato->id_donador}}</td>
                             <td>{{$nomCom}}</td>
                             <td>{{$dato->CURP}}</td>
-                            <td>{{ $dato->Sexo == '47' ? 'M' : ($dato->Sexo == '48' ? 'F' : 'O') }}</td>
-                            <td>{{$dato->Ocupacion}}</td>
+                            <td>{{ isset($sexos[$dato->Sexo]) ? $sexos[$dato->Sexo] : 'O' }}</td>
+                            <td>{{ isset($ocupaciones[$dato->Ocupacion]) ? $ocupaciones[$dato->Ocupacion] : 'N/E' }}</td>
+                            
                             <td>{{$domicilio}}</td>
+                            
                             <td>
                                 @if($dato->organos && $dato->organos->isNotEmpty())
                                     {{ $dato->organos->implode('organo', ', ') }}
@@ -66,7 +80,7 @@
                                 <div class="d-flex">
                                     @can('Donador destroy')
                                         <div class="m-2">
-                                            <form action="{{ url('/donador/'.$dato->id) }}" method="post">
+                                            <form action="{{ url('/donador/'.$dato->id_donador) }}" method="post">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
                                                 <button type="submit" class="btn btn-outline-danger" 
@@ -79,7 +93,7 @@
 
                                     @can('Donador edit')
                                         <div class="m-2">
-                                            <a href="{{ url('/donador/'.$dato->id.'/edit') }}" class="btn btn-outline-secondary">
+                                            <a href="{{ url('/donador/'.$dato->id_donador.'/edit') }}" class="btn btn-outline-secondary">
                                                 Editar
                                             </a>
                                         </div>

@@ -50,4 +50,18 @@ class AuthController extends Controller
         'login' => 'Las credenciales no coinciden con nuestros registros.',
     ])->withInput($request->only('login'));
 }
+    public function logout(Request $request)
+    {
+        // 1. Cierra la sesión del usuario
+        Auth::logout();
+
+        // 2. Invalida la sesión actual para borrar los datos guardados
+        $request->session()->invalidate();
+
+        // 3. Regenera el token de seguridad CSRF
+        $request->session()->regenerateToken();
+
+        // 4. Redirige a la pantalla principal o al login
+        return redirect('/login'); 
+    }
 }

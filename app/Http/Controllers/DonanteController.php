@@ -15,35 +15,54 @@ class DonanteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request) {
-        $query = trim($request->get('busqueda'));
+    $query = trim($request->get('busqueda'));
 
-        $sexos            = DB::table('catalogos')->where('tipo', 'Sexo')->get();
-        $estados_civiles  = DB::table('catalogos')->where('tipo', 'EstCiv')->get();
-        $grados_estudios  = DB::table('catalogos')->where('tipo', 'Estudios')->get();
-        $tipos_donacion   = DB::table('catalogos')->where('tipo', 'Tipo')->get();
-        $religiones       = DB::table('catalogos')->where('tipo', 'Religion')->get();
-        $ocupaciones      = DB::table('catalogos')->where('tipo', 'Ocupacion')->get();
+    // 1. Catálogos generales
+    $sexos            = DB::table('catalogos')->where('tipo', 'Sexo')->pluck('valor', 'id_catalogo');
+    $estados_civiles  = DB::table('catalogos')->where('tipo', 'EstCiv')->pluck('valor', 'id_catalogo');
+    $grados_estudios  = DB::table('catalogos')->where('tipo', 'Estudios')->pluck('valor', 'id_catalogo');
+    $tipos_donacion   = DB::table('catalogos')->where('tipo', 'Tipo')->pluck('valor', 'id_catalogo');
+    $religiones       = DB::table('catalogos')->where('tipo', 'Religion')->pluck('valor', 'id_catalogo');
+    $ocupaciones      = DB::table('catalogos')->where('tipo', 'Ocupacion')->pluck('valor', 'id_catalogo');
 
-        $donantes = Donante::with('organos')
-            ->when($query, function ($filter) use ($query) {
-                return $filter->where(function($q) use ($query) {
-                    $q->where('Nombre', 'LIKE', '%' . $query . '%')
-                    ->orWhere('ApPaterno', 'LIKE', '%' . $query . '%')
-                    ->orWhere('CURP', 'LIKE', '%' . $query . '%')
-                    ->orWhere('estadoNac', 'LIKE', '%' . $query . '%');
-                });
-            })
-            // CORREGIDO: Se cambia 'id' por tu clave primaria real 'id_donador'
-            ->orderBy('id_donador', 'desc')
-            ->paginate(20); 
+    // 2. Catálogos Geográficos adaptados a tu migración
+    
+    // Estados: Usa 'c_estado' como ID y 'd_estado' como valor
+    $estados = DB::table('municipiosalcaldias')
+        ->distinct()
+        ->pluck('d_estado', 'c_estado');
 
-        $donantes->appends(['busqueda' => $query]);
+    // Alcaldías: Combinamos [c_estado - c_mnpio] para que sean únicas
+    $alcaldias = DB::table('municipiosalcaldias')
+        ->select('c_estado', 'c_mnpio', 'D_mnpio')
+        ->distinct()
+        ->get()
+        ->mapWithKeys(function ($item) {
+            return [$item->c_estado . '-' . $item->c_mnpio => $item->D_mnpio];
+        });
 
-        return view('contenido.gestionOrg', compact('donantes', 'query',
-            'sexos', 'estados_civiles', 'grados_estudios', 'tipos_donacion', 
-            'religiones', 'ocupaciones'
-        ));
-    }
+    // Colonias: ¡Mucho más simple! Usamos tu columna 'id' autoincrementable y 'd_asenta'
+    $colonias = DB::table('municipiosalcaldias')->pluck('d_asenta', 'id');
+
+    $donantes = Donante::with('organos')
+        ->when($query, function ($filter) use ($query) {
+            return $filter->where(function($q) use ($query) {
+                $q->where('Nombre', 'LIKE', '%' . $query . '%')
+                ->orWhere('ApPaterno', 'LIKE', '%' . $query . '%')
+                ->orWhere('CURP', 'LIKE', '%' . $query . '%')
+                ->orWhere('estadoNac', 'LIKE', '%' . $query . '%');
+            });
+        })
+        ->orderBy('id_donador', 'desc')
+        ->paginate(20); 
+
+    $donantes->appends(['busqueda' => $query]);
+
+    return view('contenido.gestionOrg', compact('donantes', 'query',
+        'sexos', 'estados_civiles', 'grados_estudios', 'tipos_donacion', 
+        'religiones', 'ocupaciones', 'estados', 'alcaldias', 'colonias'
+    ));
+}
 
     /**
      * Show the form for creating a new resource.

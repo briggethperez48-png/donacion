@@ -28,40 +28,77 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    // Usamos el document directamente para evitar problemas de sincronización en el DOM con Swiper
+    // 1. Diccionarios de traducción para los IDs del SVG
+    const catalogoEstados = {
+        "1": "Aguascalientes", "2": "Baja California", "3": "Baja California Sur", "4": "Campeche",
+        "5": "Coahuila", "6": "Colima", "7": "Chiapas", "8": "Chihuahua", "9": "Ciudad de México",
+        "10": "Durango", "11": "Guanajuato", "12": "Guerrero", "13": "Hidalgo", "14": "Jalisco",
+        "15": "México", "16": "Michoacán", "17": "Morelos", "18": "Nayarit", "19": "Nuevo León",
+        "20": "Oaxaca", "21": "Puebla", "22": "Querétaro", "23": "Quintana Roo", "24": "San Luis Potosí",
+        "25": "Sinaloa", "26": "Sonora", "27": "Tabasco", "28": "Tamaulipas", "29": "Tlaxcala",
+        "30": "Veracruz", "31": "Yucatán", "32": "Zacatecas"
+    };
+
+    const catalogoAlcaldias = {
+        "2": "Azcapotzalco", "3": "Coyoacán", "4": "Cuajimalpa de Morelos", "5": "Gustavo A. Madero",
+        "6": "Iztacalco", "7": "Iztapalapa", "8": "La Magdalena Contreras", "9": "Milpa Alta",
+        "10": "Álvaro Obregón", "11": "Tláhuac", "12": "Tlalpan", "13": "Xochimilco",
+        "14": "Benito Juárez", "15": "Cuauhtémoc", "16": "Miguel Hidalgo", "17": "Venustiano Carranza"
+    };
+
     let miGraficaModal = null;
     const info = document.getElementById('info');
 
-    // 1. Manejo del HOVER en tiempo real
+    // Función auxiliar para traducir los códigos numéricos a texto visible
+    function obtenerNombreLugar(estadoId, alcaldiaId, defecto = '') {
+        if (estadoId && catalogoEstados[estadoId]) {
+            return catalogoEstados[estadoId];
+        }
+        if (alcaldiaId && catalogoAlcaldias[alcaldiaId]) {
+            return catalogoAlcaldias[alcaldiaId];
+        }
+        return defecto;
+    }
+
+    // 2. Manejo del HOVER en tiempo real
     document.addEventListener('mouseover', function(event) {
         if (event.target.classList.contains('map-region')) {
-            const name = event.target.getAttribute('data-estado') || 
-                         event.target.getAttribute('data-alcaldia') || 
-                         event.target.getAttribute('data-name');
-            if (name && info) {
-                info.textContent = name;
+            const estado = event.target.getAttribute('data-estado');
+            const alcaldia = event.target.getAttribute('data-alcaldia');
+            const fallbackName = event.target.getAttribute('data-name');
+            
+            // Traducimos el ID numérico a un nombre legible
+            const nombreLegible = obtenerNombreLugar(estado, alcaldia, fallbackName);
+            
+            if (nombreLegible && info) {
+                info.textContent = nombreLegible;
             }
         }
     });
 
-    // 2. Manejo del CLICK en tiempo real (Soluciona CDMX clonada)
+    // 3. Manejo del CLICK en tiempo real
     document.addEventListener('click', function(event) {
         if (event.target.classList.contains('map-region')) {
             const target = event.target;
-            const estado = target.getAttribute('data-estado');
-            const alcaldia = target.getAttribute('data-alcaldia');
-            const lugarNombre = estado || alcaldia;
+            const estadoId = target.getAttribute('data-estado');
+            const alcaldiaId = target.getAttribute('data-alcaldia');
+            const fallbackName = target.getAttribute('data-name');
 
-            if (!lugarNombre) return;
+            if (!estadoId && !alcaldiaId && !fallbackName) return;
 
-            document.getElementById('nombreLugar').innerText = lugarNombre;
+            // Traducimos el ID numérico para el título visible del Modal
+            const nombreVisible = obtenerNombreLugar(estadoId, alcaldiaId, fallbackName);
+            document.getElementById('nombreLugar').innerText = nombreVisible;
 
             const mesIni = document.getElementById('mesIni')?.value || '';
             const mesFin = document.getElementById('mesFin')?.value || '';
 
+            // Construimos la URL enviando los IDs numéricos puros que el controlador espera
             let url = `{{ route('estadisticas.organosLugar') }}?mesIni=${mesIni}&mesFin=${mesFin}`;
-            if (estado) url += `&estado=${encodeURIComponent(estado)}`;
-            if (alcaldia) url += `&alcaldia=${encodeURIComponent(alcaldia)}`;
+            
+            // CORREGIDO: Se cambia 'estado' por 'estadoNac' para coincidir con la petición del controlador
+            if (estadoId) url += `&estadoNac=${encodeURIComponent(estadoId)}`;
+            if (alcaldiaId) url += `&alcaldia=${encodeURIComponent(alcaldiaId)}`;
 
             fetch(url)
                 .then(response => response.json())
@@ -91,7 +128,7 @@
                         }
                     });
 
-                    // Activa el modal usando el jQuery que ya vive en tu Layout
+                    // Activa el modal dinámico
                     $('#modalGraficaLugar').modal('show');
                 })
                 .catch(error => console.error('Error al obtener los datos:', error));

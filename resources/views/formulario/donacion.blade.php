@@ -62,7 +62,9 @@
                                 <select name="Ocupacion" id="Ocupacion" class="form-control input">
                                     <option value="">SELECCIONE UNO...</option>
                                     @foreach($ocupaciones as $ocupacion)
-                                        <option value="{{ $ocupacion->id_catalogo }}">{{ $ocupacion->valor }}</option>
+                                        <option value="{{ $ocupacion->id_catalogo }}"
+                                        {{ old('Ocupacion', isset($donante->Ocupacion) ? $donante->Ocupacion : '') == $ocupacion->id_catalogo ? 'selected' : '' }}
+                                        >{{ $ocupacion->valor }}</option>
                                     @endforeach
                                 </select>
                                 @if($errors->has('Ocupacion'))
@@ -74,7 +76,9 @@
                                 <select name="EstCiv" id="EstCiv" class="form-control input">
                                     <option value="">SELECCIONE UNO...</option>
                                     @foreach($estados_civiles as $estado_civil)
-                                        <option value="{{ $estado_civil->id_catalogo }}">{{ $estado_civil->valor }}</option>
+                                        <option value="{{ $estado_civil->id_catalogo }}"
+                                        {{ old('EstCiv', isset($donante->EstCiv) ? $donante->EstCiv : '') == $estado_civil->id_catalogo ? 'selected' : '' }}
+                                        >{{ $estado_civil->valor }}</option>
                                     @endforeach
                                 </select>
                                 @if($errors->has('EstCiv'))
@@ -89,7 +93,9 @@
                                 <select name="Estudios" id="Estudios" class="form-control input">
                                     <option value="">SELECCIONE UNO...</option>
                                     @foreach($grados_estudios as $grado_estudio)
-                                        <option value="{{ $grado_estudio->id_catalogo }}">{{ $grado_estudio->valor }}</option>
+                                        <option value="{{ $grado_estudio->id_catalogo }}"
+                                        {{ old('Estudios', isset($donante->Estudios) ? $donante->Estudios : '') == $grado_estudio->id_catalogo ? 'selected' : '' }}
+                                        >{{ $grado_estudio->valor }}</option>
                                     @endforeach
                                 </select>
                                 @if($errors->has('Estudios'))
@@ -101,7 +107,9 @@
                                 <select name="Religion" id="Religion" class="form-control input">
                                     <option value="">SELECCIONE UNO...</option>
                                     @foreach($religiones as $religion)
-                                        <option value="{{ $religion->id_catalogo }}">{{ $religion->valor }}</option>
+                                        <option value="{{ $religion->id_catalogo }}"
+                                        {{ old('Religion', isset($donante->Religion) ? $donante->Religion : '') == $religion->id_catalogo ? 'selected' : '' }}
+                                        >{{ $religion->valor }}</option>
                                     @endforeach
                                 </select>
                                 @if($errors->has('Religion'))
@@ -124,7 +132,9 @@
                                 <select name="Sexo" id="Sexo" class="form-control input">
                                     <option value="">SELECCIONE UNO...</option>
                                     @foreach($sexos as $sexo)
-                                        <option value="{{ $sexo->id_catalogo }}">{{ $sexo->valor }}</option>
+                                        <option value="{{ $sexo->id_catalogo }}"
+                                        {{ old('Sexo', isset($donante->Sexo) ? $donante->Sexo : '') == $sexo->id_catalogo ? 'selected' : '' }}
+                                        >{{ $sexo->valor }}</option>
                                     @endforeach
                                 </select>
                                 @if($errors->has('Sexo'))
@@ -132,21 +142,23 @@
                                 @endif
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="estadoNac" class="font-weight-bold">Estado de Nacimiento</label>
-                                    <select name="estadoNac" id="estadoNac" class="form-control input text-uppercase">
+                                <label for="EstadoProc" class="font-weight-bold">Estado de Nacimiento</label>
+                                    <select name="EstadoProc" id="estadoNac" class="form-control input text-uppercase">
                                         <option value="">SELECCIONE UNO...</option>
                                         @foreach($estado_list as $est)
-                                            <option value="{{ $est->id_estado }}" class="text-uppercase">{{ $est->nombre_estado }}</option>
+                                            <option value="{{ $est->id_estado }}" class="text-uppercase"
+                                            {{ old('EstadoProc', isset($donante->EstadoProc) ? $donante->EstadoProc : '') == $est->id_estado ? 'selected' : '' }}
+                                            >{{ $est->nombre_estado }}</option>
                                         @endforeach
                                     </select>
-                                @if($errors->has('estadoNac'))
-                                    <span class="text-danger small"><strong>{{ $errors->first('estadoNac') }}</strong></span>
+                                @if($errors->has('EstadoProc'))
+                                    <span class="text-danger small"><strong>{{ $errors->first('EstadoProc') }}</strong></span>
                                 @endif
                             </div>
                         </div>
                     </div>
                 </fieldset>
-
+                    <!-- estadoNac -->
                 <fieldset class="card mb-4 shadow-sm border-light">
                     <div class="legend card-header border-bottom border-dark d-flex">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-globe-americas" viewBox="0 0 16 16">
@@ -157,19 +169,22 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-md-4">
-                                <label for="EstadoProc" class="font-weight-bold">Estado de Procedencia</label>
-                                <select name="EstadoProc" id="EstadoProc" data-dependent="Alcaldia" class="form-control input text-uppercase">
+                                <label for="estadoNac" class="font-weight-bold">Estado de Procedencia</label>
+                                <select name="estadoNac" id="EstadoProc" data-dependent="Alcaldia" class="form-control input text-uppercase">
                                     <option value="">SELECCIONE UNO</option>
                                     @foreach($estado_list as $est)
-                                        <option value="{{ $est->id_estado }}" class="text-uppercase">{{ $est->nombre_estado }}</option>
+                                        <option value="{{ $est->id_estado }}" class="text-uppercase"
+                                            {{ old('estadoNac', isset($donante->estadoNac) ? $donante->estadoNac : '') == $est->id_estado ? 'selected' : '' }}>
+                                            {{ $est->nombre_estado }}
+                                        </option>
                                     @endforeach
                                 </select>
-                                @if($errors->has('EstadoProc'))
-                                    <span class="text-danger small"><strong>{{ $errors->first('EstadoProc') }}</strong></span>
+                                @if($errors->has('estadoNac'))
+                                    <span class="text-danger small"><strong>{{ $errors->first('estadoNac') }}</strong></span>
                                 @endif
                             </div>
 
-                            <div class="form-group col-md-4" id="MunicipioI" style="{{ old('Alcaldia', $donante->Alcaldia ?? '') ? '' : 'display:none;' }}">
+                            <div class="form-group col-md-4" id="MunicipioI" style="{{ old('estadoNac', isset($donante->estadoNac) ? $donante->estadoNac : '') ? '' : 'display:none;' }}">
                                 <label for="Alcaldia" class="font-weight-bold">Alcaldía</label>
                                 <select name="Alcaldia" id="Alcaldia" data-dependent="Colonia" class="text-uppercase form-control input">
                                     <option class="text-uppercase" value="">-</option>
@@ -179,9 +194,9 @@
                                 @endif
                             </div>
 
-                            <div class="form-group col-md-4" id="LocalidadI" style="{{ old('Colonia', $donante->Colonia ?? '') ? '' : 'display:none;' }}">
+                            <div class="form-group col-md-4" id="LocalidadI" style="{{ old('Alcaldia', isset($donante->Alcaldia) ? $donante->Alcaldia : '') ? '' : 'display:none;' }}">
                                 <label for="Colonia" class="font-weight-bold">Colonia</label>
-                                <select name="Colonia" id="Colonia" class="form-control input text-uppercase" class="form-control input">
+                                <select name="Colonia" id="Colonia" class="form-control input text-uppercase">
                                     <option class="text-uppercase" value="">-</option>
                                 </select>
                                 @if($errors->has('Colonia'))
@@ -289,7 +304,9 @@
                             <select name="Pregunta" id="Pregunta" class="form-control input">
                                 <option value="">SELECCIONE UNO...</option>
                                 @foreach($preguntas as $pregunta)
-                                    <option value="{{ $pregunta->id_catalogo }}">{{ $pregunta->valor }}</option>
+                                    <option value="{{ $pregunta->id_catalogo }}"
+                                    {{ old('Pregunta', isset($donante->Pregunta) ? $donante->Pregunta : '') == $pregunta->id_catalogo ? 'selected' : '' }}>
+                                    {{ $pregunta->valor }}</option>
                                 @endforeach
                             </select>
                             @if($errors->has('Pregunta'))
@@ -334,6 +351,61 @@
         <script>
             $(document).ready(function() {
                 
+                // Pasar los valores de Laravel (old o base de datos) de forma segura a variables de JavaScript
+                var oldEstado   = "{{ old('estadoNac', isset($donante->estadoNac) ? $donante->estadoNac : '') }}";
+                var oldAlcaldia = "{{ old('Alcaldia', isset($donante->Alcaldia) ? $donante->Alcaldia : '') }}";
+                var oldColonia  = "{{ old('Colonia', isset($donante->Colonia) ? $donante->Colonia : '') }}";
+
+                // ==========================================
+                // BLOQUE DE INICIALIZACIÓN AUTOMÁTICA
+                // ==========================================
+                if (oldEstado !== '') {
+                    // Carga automática de Alcaldías
+                    $.ajax({
+                        url: "{{ route('donante.fetch') }}",
+                        method: "POST",
+                        data: {
+                            select: 'c_estado',
+                            value: oldEstado,
+                            dependent: 'Alcaldia',
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(result) {
+                            $('#Alcaldia').html(result);
+                            
+                            // Si existía una alcaldía seleccionada previamente, la marcamos
+                            if (oldAlcaldia !== '') {
+                                $('#Alcaldia').val(oldAlcaldia);
+                                
+                                // Carga automática de Colonias en cadena
+                                $.ajax({
+                                    url: "{{ route('donante.fetch') }}",
+                                    method: "POST",
+                                    data: {
+                                        select: 'c_mnpio',
+                                        value: oldAlcaldia,
+                                        estado_id: oldEstado,
+                                        dependent: 'Colonia',
+                                        _token: '{{ csrf_token() }}'
+                                    },
+                                    success: function(resultColonia) {
+                                        $('#Colonia').html(resultColonia);
+                                        
+                                        // Si existía una colonia seleccionada previamente, la marcamos
+                                        if (oldColonia !== '') {
+                                            $('#Colonia').val(oldColonia);
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+
+                // ==========================================
+                // TUS EVENTOS CHANGE ORIGINALES (CONSERVADOS)
+                // ==========================================
+                
                 // 1. AJAX: Cambio de Estado de Procedencia
                 $('#EstadoProc').change(function() {
                     var estado_id = $(this).val();
@@ -351,19 +423,12 @@
                             },
                             success: function(result) {
                                 $('#' + dependent).html(result);
-                                
-                                // CORREGIDO: Ahora limpia el select usando el id="Colonia" real
                                 $('#Colonia').html('<option value="">-</option>'); 
-                                
-                                // Ocultamos el contenedor de colonia por si estaba abierto antes
                                 $('#LocalidadI').fadeOut();
-                                
-                                // Mostramos el contenedor de la Alcaldía
                                 $('#MunicipioI').fadeIn();
                             }
                         });
                     } else {
-                        // Si se limpia el estado, ocultamos contenedores y reseteamos opciones
                         $('#MunicipioI').fadeOut();
                         $('#LocalidadI').fadeOut();
                         $('#Alcaldia').html('<option value="">-</option>');
@@ -389,10 +454,7 @@
                                 _token: '{{ csrf_token() }}'
                             },
                             success: function(result) {
-                                // Como tu HTML tiene id="Colonia", el string 'Colonia' inyectará el HTML aquí perfectamente
                                 $('#' + dependent).html(result);
-                                
-                                // Mostramos el contenedor de la Colonia
                                 $('#LocalidadI').fadeIn();
                             }
                         });

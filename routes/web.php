@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('buscador', 'BuscadorController@buscar');
         Route::get('reporte', 'ReporteController@index')
             ->name('reporte.index')
-            ->middleware('role:Administrador|developer|EDITOR|READER');
+            ->middleware('role:Administrador|developer|Reporteador');
         Route::get('reporte-export', 'ReporteController@export')
             ->name('reporte.export');
         Route::get('reporte-users', 'UsersReporteController@index')

@@ -10,11 +10,12 @@
                     </div>
                 @endif
 
-                {!! Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'put']) !!}
+                <form action="{{ route('user.update', $user->id) }}" method="POST">
                     {{ csrf_field() }}
+                    {{ method_field('PUT') }}
                     
                     @include('users.form', ['modo'=>'Edición'])
-                {!! Form::close() !!}
+                </form>
     </section>
 @endsection
 
